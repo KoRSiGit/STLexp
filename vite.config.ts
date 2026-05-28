@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/STLexp/', // замените на имя Вашего GitHub репозитория
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
