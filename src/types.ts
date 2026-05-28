@@ -3,7 +3,9 @@ export type ProductCategory =
   | 'furnaces'
   | 'shot-blast'
   | 'casting-machines'
-  | 'cooling-systems';
+  | 'cooling-systems'
+  | 'green-sand'
+  | 'core-making';
 
 export interface ProductSpec {
   name: string;
@@ -12,9 +14,23 @@ export interface ProductSpec {
   valueEn?: string;
 }
 
+export interface EquipmentVariant {
+  model: string;
+  capacity: string;
+  capacityEn?: string;
+  power: string;
+  powerEn?: string;
+  extraField?: string;
+  extraFieldVal?: string;
+  extraFieldValEn?: string;
+}
+
 export interface Product {
   id: string;
   category: ProductCategory;
+  subcategory?: string;
+  subcategoryRu?: string;
+  subcategoryEn?: string;
   title: string;
   titleEn?: string;
   model: string;
@@ -28,6 +44,7 @@ export interface Product {
   capacityEn?: string;
   power?: string;
   powerEn?: string;
+  variantModels?: EquipmentVariant[];
 }
 
 export interface RFQItem {

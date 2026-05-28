@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import ProductCatalog from './components/ProductCatalog';
 import FoundryCalculator from './components/FoundryCalculator';
 import AIAssistant from './components/AIAssistant';
+import AboutCompany from './components/AboutCompany';
 import RFQCart from './components/RFQCart';
 import Footer from './components/Footer';
 import { Product, RFQItem } from './types';
@@ -66,6 +67,21 @@ export default function App() {
           }
           window.scrollTo({ top: 0 });
         }}
+        onCategorySelect={(category, query, subId) => {
+          setSelectedCategoryFilter(category);
+          setCurrentTab('catalog');
+          if (query) {
+            (window as any)._pendingCatalogQuery = query;
+          } else {
+            (window as any)._pendingCatalogQuery = '';
+          }
+          if (subId) {
+            (window as any)._pendingCatalogSubId = subId;
+          } else {
+            (window as any)._pendingCatalogSubId = 'all';
+          }
+          window.dispatchEvent(new CustomEvent('catalog-query-sync'));
+        }}
         rfqItemsCount={rfqItemsCount}
         lang={lang}
         setLang={setLang}
@@ -94,6 +110,16 @@ export default function App() {
         )}
 
         {currentTab === 'calc' && <FoundryCalculator lang={lang} />}
+
+        {currentTab === 'about' && (
+          <AboutCompany 
+            lang={lang} 
+            onContactRequest={() => {
+              setCurrentTab('rfq');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
 
         {currentTab === 'assistant' && <AIAssistant lang={lang} />}
 

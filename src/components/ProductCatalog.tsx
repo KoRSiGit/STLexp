@@ -1,7 +1,27 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Product, ProductCategory } from '../types';
 import { PRODUCTS } from '../data/products';
-import { Search, ChevronDown, Check, Plus, AlertCircle } from 'lucide-react';
+import { 
+  Search, 
+  ChevronDown, 
+  Check, 
+  Plus, 
+  AlertCircle, 
+  Flame, 
+  Layers, 
+  Zap, 
+  Cpu, 
+  Wind, 
+  ArrowRight, 
+  HardHat, 
+  FileText, 
+  ShieldAlert, 
+  Compass, 
+  Activity, 
+  Settings,
+  Table,
+  Sliders
+} from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 
 interface ProductCatalogProps {
@@ -12,32 +32,253 @@ interface ProductCatalogProps {
 }
 
 export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsKeys, lang }: ProductCatalogProps) {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>(
-    (selectedCategory as ProductCategory) || 'all'
-  );
+  const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>('all');
+  const [activeSubcategory, setActiveSubcategory] = useState<string | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedProductSpecs, setExpandedProductSpecs] = useState<Record<string, boolean>>({});
+  
+  const catalogListSectionRef = useRef<HTMLDivElement>(null);
+
+  const SUBCATEGORIES_MAP: Record<string, { id: string; nameRu: string; nameEn: string; descRu: string; descEn: string }[]> = {
+    'sand-mixers-xtc': [
+      { id: 'mixers', nameRu: 'Смесители ХТС', nameEn: 'No-Bake Mixers', descRu: 'Смесители ХТС серии СХ непрерывного действия', descEn: 'Continuous mixers CX series' },
+      { id: 'reclamation', nameRu: 'Регенерация песка ХТС', nameEn: 'Resin Sand Reclamation', descRu: 'Установки и линии регенерации РП', descEn: 'Reclamation lines RP series' },
+      { id: 'compaction', nameRu: 'Вибростолы и формовка', nameEn: 'Compaction & Molding', descRu: 'Уплотнительные линии и вибростолы ВСФ', descEn: 'Compaction tables VSF series' },
+    ],
+    'furnaces': [
+      { id: 'induction', nameRu: 'Индукционные печи', nameEn: 'Induction Furnaces', descRu: 'Плавильные индукционные тигельные электропечи GW', descEn: 'High capacity coreless induction systems GW' },
+      { id: 'ladles', nameRu: 'Заливочные ковши', nameEn: 'Pouring Ladles', descRu: 'Литейные ковши чайникового типа КЛ', descEn: 'Teapot pouring ladles KL series' },
+    ],
+    'green-sand': [
+      { id: 'mixers', nameRu: 'Смесители ПГС', nameEn: 'Green Sand Mixers', descRu: 'Интенсивные вертикально-роторные смесители серии СТ', descEn: 'Intensive vertical rotor pan mixers ST series' },
+      { id: 'molding-lines', nameRu: 'Автоматические формовочные линии ПГС', nameEn: 'Automatic Molding Lines', descRu: 'Безопочные формовочные линии высокого давления АФЛ', descEn: 'Flaskless green sand molding lines AFL series' },
+      { id: 'molding-machines', nameRu: 'Формовочные машины', nameEn: 'Molding Machines', descRu: 'Встряхивающие формовочные машины с допрессовкой ФМ', descEn: 'Jolt squeeze molding machines FM series' },
+      { id: 'green-coolers', nameRu: 'Охладители оборотной смеси', nameEn: 'Spent Sand Coolers', descRu: 'Установки охлаждения кипящего слоя песка ОС', descEn: 'Fluid bed spend sand coolers OS series' },
+    ],
+    'core-making': [
+      { id: 'shooters', nameRu: 'Стержневые автоматы', nameEn: 'Core Shooters', descRu: 'Пескострельные полуавтоматы и автоматы серии СА', descEn: 'Amine gas shooters SA series' },
+    ],
+    'shot-blast': [
+      { id: 'hanger', nameRu: 'Подвесные камеры Q37', nameEn: 'Hanger Blast Chambers', descRu: 'Камеры с поворотным подвесным крюком Q37', descEn: 'Overhead hook shot blasters Q37' },
+      { id: 'tumble', nameRu: 'Барабанные дробеметы Q32', nameEn: 'Tumble Belt Blasters', descRu: 'Дробеметы с резиновым транспортером Q32', descEn: 'Tumble belt shot blasters Q32' },
+    ],
+    'casting-machines': [
+      { id: 'gravity', nameRu: 'Кокильные машины', nameEn: 'Gravity Die Casters', descRu: 'Станки кокильного литья с гидроблоком КМ', descEn: 'Gravity die casting machines KM' },
+      { id: 'centrifugal', nameRu: 'Центробежные машины', nameEn: 'Centrifugal Casters', descRu: 'Центробежные литейные полуавтоматы ЦЛ', descEn: 'Centrifugal casting machines CL' },
+    ],
+    'cooling-systems': [
+      { id: 'towers', nameRu: 'Закрытые градирни', nameEn: 'Closed Cooling Towers', descRu: 'Испарительные чистые градирни серии ГЗ', descEn: 'Closed evaporative water cooling towers GZ' },
+    ]
+  };
+
+  // Sync selectedCategory from parent component and handle custom event triggers
+  useEffect(() => {
+    if (selectedCategory) {
+      setActiveCategory(selectedCategory as ProductCategory | 'all');
+    }
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    const handleSync = () => {
+      const q = (window as any)._pendingCatalogQuery || '';
+      setSearchQuery(q);
+      const sub = (window as any)._pendingCatalogSubId || 'all';
+      setActiveSubcategory(sub);
+      if (selectedCategory) {
+        setActiveCategory(selectedCategory as ProductCategory | 'all');
+      }
+    };
+    window.addEventListener('catalog-query-sync', handleSync);
+    
+    // Initial check on mount
+    if ((window as any)._pendingCatalogQuery !== undefined) {
+      setSearchQuery((window as any)._pendingCatalogQuery);
+    }
+    if ((window as any)._pendingCatalogSubId !== undefined) {
+      setActiveSubcategory((window as any)._pendingCatalogSubId);
+    }
+    
+    return () => {
+      window.removeEventListener('catalog-query-sync', handleSync);
+    };
+  }, [selectedCategory]);
 
   const t = TRANSLATIONS[lang];
 
-  const categories: { id: ProductCategory | 'all'; label: string }[] = [
-    { id: 'all', label: t.catAll },
-    { id: 'sand-mixers-xtc', label: t.catXtc },
-    { id: 'furnaces', label: t.catFurnaces },
-    { id: 'shot-blast', label: t.catShotBlast },
-    { id: 'casting-machines', label: t.catCasting },
-    { id: 'cooling-systems', label: t.catCooling },
+  const categories: { id: ProductCategory | 'all'; label: string; descRu: string; descEn: string }[] = [
+    { id: 'all', label: t.catAll, descRu: 'Общий обзор всех производственных направлений', descEn: 'Overview of all foundry supply lines' },
+    { id: 'sand-mixers-xtc', label: t.catXtc, descRu: 'Смесители непрерывного действия, регенерация и вибростолы', descEn: 'Continuous mixers, dry reclamation and compaction' },
+    { id: 'furnaces', label: t.catFurnaces, descRu: 'Индукционные тигельные печи высокой мощности и ковши', descEn: 'High capacity coreless induction systems & pouring bails' },
+    { id: 'green-sand', label: t.catGreenSand, descRu: 'Вертикально-роторные смесители песка, охладители оборотной смеси ПГС', descEn: 'Vertical rotor sand mixers, spent sand fluid bed coolers' },
+    { id: 'core-making', label: t.catCoreMaking, descRu: 'Пескострельные стержневые полуавтоматы по Cold-Box-Amine процессу', descEn: 'Pneumatic core blowing shooters based on Cold-Box-Amine technology' },
+    { id: 'shot-blast', label: t.catShotBlast, descRu: 'Установки подвесного, барабанного и рольгангового типов', descEn: 'Hanger, rubber tumble belt and conveyor blast systems' },
+    { id: 'casting-machines', label: t.catCasting, descRu: 'Полуавтоматы кокильного литья и центробежная формовка', descEn: 'Tilting gravity die systems and centrifugal molding' },
+    { id: 'cooling-systems', label: t.catCooling, descRu: 'Закрытые герметичные градирни испарительного класса', descEn: 'Closed loop clean copper evaporative cool towers' },
+  ];
+
+  // Information details corresponding exactly to https://www.sltgroup.ru/catalog/ divisions
+  const sltDivisions = [
+    {
+      id: 'sand-mixers-xtc' as ProductCategory,
+      titleRu: 'Оборудование для формовки ХТС',
+      titleEn: 'No-Bake Molding & Sand Processing',
+      descRu: 'Автоматические лопастные смесители непрерывного действия СХ и высокоэффективные линии регенерации песка РП. Снижают закупку свежего песка до 90%.',
+      descEn: 'Automatic continuous sand mixers CX and high performance dry mechanical sand reclamation RP. Minimize costs of raw silica sand by up to 90%.',
+      icon: Layers,
+      color: 'border-orange-500/20 hover:border-orange-500',
+      tagRu: 'ХТС ФОРМОВКА',
+      tagEn: 'NO-BAKE MOLDING',
+      statsRu: 'Производительность: 3 — 30 т/ч',
+      statsEn: 'Throughput capacity: 3 — 30 t/h',
+      subcategoriesRu: [
+        { label: 'Смесители ХТС серии СХ', query: 'СХ', subId: 'mixers' },
+        { label: 'Линии регенерации РП-8', query: 'РП', subId: 'reclamation' },
+        { label: 'Вибростолы ВСФ-12', query: 'ВСФ', subId: 'compaction' }
+      ],
+      subcategoriesEn: [
+        { label: 'CX Series continuous mixers', query: 'CX', subId: 'mixers' },
+        { label: 'RP No-bake reclamation', query: 'RP', subId: 'reclamation' },
+        { label: 'VSF Compaction tables', query: 'VSF', subId: 'compaction' }
+      ]
+    },
+    {
+      id: 'furnaces' as ProductCategory,
+      titleRu: 'Индукционные плавильные комплексы',
+      titleEn: 'Induction Melting & Pouring Complexes',
+      descRu: 'Сверхмощные тигельные индукционные электропечи со стальным каркасом для литейного чугуна, углеродистой стали и бронзы.',
+      descEn: 'High capacity coreless induction melting furnaces equipped with robust steel structures and thyristor converters.',
+      icon: Flame,
+      color: 'border-[#e65410]/20 hover:border-[#e65410]',
+      tagRu: 'ПЛАВКА МЕТАЛЛА',
+      tagEn: 'MELTING METALLURGY',
+      statsRu: 'Емкость тигля: 0.25 — 5 тонн',
+      statsEn: 'Crucible size: 0.25 — 5 tons',
+      subcategoriesRu: [
+        { label: 'Тигельные печи GW-1.0', query: 'GW', subId: 'induction' },
+        { label: 'Чайниковые ковши КЛ-2', query: 'КЛ', subId: 'ladles' }
+      ],
+      subcategoriesEn: [
+        { label: 'Crucible furnaces GW', query: 'GW', subId: 'induction' },
+        { label: 'Teapot ladles KL', query: 'KL', subId: 'ladles' }
+      ]
+    },
+    {
+      id: 'green-sand' as ProductCategory,
+      titleRu: 'Оборудование ПГС',
+      titleEn: 'Green Sand Equipment',
+      descRu: 'Интенсивные вертикально-роторные чашечные смесители СТ, автоматические безопочные формовочные линии АФЛ и машины ФМ.',
+      descEn: 'High efficiency intensive pan mixers ST, automated flaskless molding lines AFL, jolt squeeze machines FM and fluid bed coolers OS.',
+      icon: Sliders,
+      color: 'border-emerald-500/20 hover:border-emerald-500',
+      tagRu: 'ПГС СМЕСЕПРИГОТОВЛЕНИЕ',
+      tagEn: 'GREEN SAND PREPARATION',
+      statsRu: 'Производительность: до 30 т/ч',
+      statsEn: 'Mix output limits: 30 t/h',
+      subcategoriesRu: [
+        { label: 'Интенсивные смесители СТ-1500', query: 'СТ', subId: 'mixers' },
+        { label: 'Автоматические линии АФЛ-6080', query: 'АФЛ', subId: 'molding-lines' },
+        { label: 'Формовочные машины ФМ-20', query: 'ФМ', subId: 'molding-machines' },
+        { label: 'Охладители оборотной смеси ОС-60', query: 'ОС', subId: 'green-coolers' }
+      ],
+      subcategoriesEn: [
+        { label: 'Intensive pan mixers ST', query: 'ST', subId: 'mixers' },
+        { label: 'Automated molding lines AFL', query: 'AFL', subId: 'molding-lines' },
+        { label: 'Molding machines FM', query: 'FM', subId: 'molding-machines' },
+        { label: 'Fluid bed spend coolers OS', query: 'OS', subId: 'green-coolers' }
+      ]
+    },
+    {
+      id: 'core-making' as ProductCategory,
+      titleRu: 'Стержневое оборудование',
+      titleEn: 'Core Blowing & Shooter Machinery',
+      descRu: 'Автоматические пескострельные заливочные машины СА по технологии Cold-Box-Amine для прецизионных заготовок стержней.',
+      descEn: 'High speed automated sand core blowing shooter machines CA with gaseous amine curing cabinets designed for bulk setups.',
+      icon: Compass,
+      color: 'border-purple-500/20 hover:border-purple-500',
+      tagRu: 'СТЕРЖНЕВОЕ ПРОИЗВОДСТВО',
+      tagEn: 'SAND CORE SHOOTING',
+      statsRu: 'Объемы стержня: до 80 литров',
+      statsEn: 'Core box volumes: up to 80L',
+      subcategoriesRu: [
+        { label: 'Пескострельные автоматы СА-400', query: 'СА', subId: 'shooters' }
+      ],
+      subcategoriesEn: [
+        { label: 'Amine shooters SA-400', query: 'SA', subId: 'shooters' }
+      ]
+    },
+    {
+      id: 'shot-blast' as ProductCategory,
+      titleRu: 'Дробеметное оборудование очистки',
+      titleEn: 'Shot Blasting & Decoring Cabinets',
+      descRu: 'Промышленные дробеметные камеры подвесного и барабанного типов для декорки, удаления песчаного пригара и окалины.',
+      descEn: 'Industrial heavy hanger and rubber tumble belt shotblasters for thorough decoring, rust and sand burn-on removal.',
+      icon: Zap,
+      color: 'border-yellow-500/20 hover:border-yellow-500',
+      tagRu: 'ФИНИШНАЯ ОЧИСТКА',
+      tagEn: 'FINISHING CLEANING',
+      statsRu: 'Ресурс брони: сталь Mn13',
+      statsEn: 'Lining material: Mn13 Steel',
+      subcategoriesRu: [
+        { label: 'Подвесные камеры Q37', query: 'Q37', subId: 'hanger' },
+        { label: 'Барабанные дробеметы Q32', query: 'Q32', subId: 'tumble' }
+      ],
+      subcategoriesEn: [
+        { label: 'Hanger cabinets Q37', query: 'Q37', subId: 'hanger' },
+        { label: 'Tumble belt blasters Q32', query: 'Q32', subId: 'tumble' }
+      ]
+    },
+    {
+      id: 'casting-machines' as ProductCategory,
+      titleRu: 'Литейные машины формования',
+      titleEn: 'Molding & Casting Machinery',
+      descRu: 'Литейные полуавтоматы кокильного литья с регулируемым гидравлическим наклоном, и центробежные литейные установки.',
+      descEn: 'Complex semi-automated gravity die casting systems with flexible tilting angles, and horizontal centrifugal systems.',
+      icon: Cpu,
+      color: 'border-indigo-500/20 hover:border-indigo-500',
+      tagRu: 'ЛИТЬЕ В ФОРМЫ',
+      tagEn: 'CASTING PROCESSES',
+      statsRu: 'Усилия запирания: до 200 кН',
+      statsEn: 'Mould clamping limits: 200 kN',
+      subcategoriesRu: [
+        { label: 'Кокильные машины КМ-800', query: 'КМ', subId: 'gravity' },
+        { label: 'Центробежные машины ЦЛ-400', query: 'ЦЛ', subId: 'centrifugal' }
+      ],
+      subcategoriesEn: [
+        { label: 'Gravity molders KM-800', query: 'KM', subId: 'gravity' },
+        { label: 'Centrifugal stations CL-400', query: 'CL', subId: 'centrifugal' }
+      ]
+    },
+    {
+      id: 'cooling-systems' as ProductCategory,
+      titleRu: 'Промышленные градирни и охлаждение',
+      titleEn: 'Industrial Cooling & Environment',
+      descRu: 'Замкнутые испарительные градирни ГЗ с чистыми медными теплообменниками для защиты катушек индуктора от сухой накипи.',
+      descEn: 'Closed evaporative water cooling towers GZ protecting induction power systems and cables from chemical calcium scale.',
+      icon: Wind,
+      color: 'border-cyan-500/20 hover:border-cyan-500',
+      tagRu: 'ХЛАДОСНАБЖЕНИЕ',
+      tagEn: 'COOLING INFRASTRUCTURE',
+      statsRu: 'Теплосъем: медный контур T2',
+      statsEn: 'Heat removal: Copper coil T2',
+      subcategoriesRu: [
+        { label: 'Закрытые градирни ГЗ-100', query: 'ГЗ', subId: 'towers' }
+      ],
+      subcategoriesEn: [
+        { label: 'Closed circuit towers GZ-100', query: 'GZ', subId: 'towers' }
+      ]
+    }
   ];
 
   const filteredProducts = PRODUCTS.filter((product) => {
     const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+    const matchesSubcategory = activeSubcategory === 'all' || product.subcategory === activeSubcategory;
     const matchesSearch =
       product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (product.titleEn && product.titleEn.toLowerCase().includes(searchQuery.toLowerCase())) ||
       product.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (product.descriptionEn && product.descriptionEn.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
+    return matchesCategory && matchesSubcategory && matchesSearch;
   });
 
   const toggleSpecs = (id: string) => {
@@ -47,235 +288,638 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     }));
   };
 
+  const handleSelectDivision = (categoryId: ProductCategory, query?: string, subId?: string) => {
+    setActiveCategory(categoryId);
+    if (subId) {
+      setActiveSubcategory(subId);
+    } else {
+      setActiveSubcategory('all');
+    }
+    if (query) {
+      setSearchQuery(query);
+    } else {
+      setSearchQuery('');
+    }
+  };
+
+  const handleAddCustomModel = (baseProduct: Product, specModel: string) => {
+    // Generate a cloned product item with the specific variant mark selected by the user
+    const clonedProduct: Product = {
+      ...baseProduct,
+      model: specModel,
+      title: `${baseProduct.title} (${specModel})`,
+      titleEn: baseProduct.titleEn ? `${baseProduct.titleEn} (${specModel})` : undefined
+    };
+    onAddToRFQ(clonedProduct);
+  };
+
+  const isSelectedVariantInSpecs = (baseProductId: string, variantModel: string): boolean => {
+    // Check if specifications contain this specific model mark
+    return rfqItemsKeys.some(key => key === baseProductId || rfqItemsKeys.includes(`${baseProductId}-${variantModel}`) || rfqItemsKeys.some(k => k === variantModel));
+  };
+
+  const resetAllFilters = () => {
+    setActiveCategory('all');
+    setActiveSubcategory('all');
+    setSearchQuery('');
+  };
+
   return (
-    <div className="bg-gray-50 min-h-screen py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Intro */}
-        <div className="border-b border-gray-200 pb-8 mb-8 space-y-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[#e65410] font-bold">{t.catalogSpecTitle}</span>
-              <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl font-display">{t.catalogHeader}</h1>
-              <p className="text-gray-650 text-sm mt-1 max-w-2xl leading-relaxed">
-                {t.catalogDesc}
+    <div className="bg-gray-50 min-h-screen">
+      
+      {/* 1. Industrial Header & Search Banner */}
+      <div className="bg-[#0b0f19] text-white py-14 border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <div className="max-w-3xl space-y-3">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#e65410] font-black flex items-center space-x-2">
+                <Activity className="h-4 w-4 text-[#e65410] animate-pulse" />
+                <span>{t.catalogSpecTitle}</span>
+              </span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight uppercase font-sans">
+                {activeCategory === 'all' 
+                  ? (lang === 'en' ? 'Metallurgical Equipment Catalog' : 'Каталог оборудования «Сибтехлит»')
+                  : categories.find(c => c.id === activeCategory)?.label
+                }
+              </h1>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-sans max-w-2xl">
+                {activeCategory === 'all'
+                  ? (lang === 'en' 
+                    ? 'Advanced casting systems matched to certified GOST standards. Full engineering customization, design of technological layouts, and support.' 
+                    : 'Специализированное литейное оборудование, сертифицированное под стандарты металлургии СНГ. Проектирование компоновок, поставка узлов, шеф-монтаж и запуск.')
+                  : categories.find(c => c.id === activeCategory)?.descRu
+                }
               </p>
             </div>
             
-            {/* Search inputs */}
-            <div className="relative w-full md:w-80 shrink-0 select-none">
-              <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-4 w-4 text-gray-400" />
-              </span>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={t.searchPlaceholder}
-                className="w-full pl-9 pr-4 py-2 bg-white border border-gray-300 rounded text-sm text-gray-900 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 focus:outline-hidden"
-              />
+            {/* Real Search Box */}
+            <div className="w-full lg:max-w-md bg-gray-900 p-5 rounded-lg border border-gray-800 space-y-2 shrink-0">
+              <label className="block text-[10px] font-mono text-gray-400 uppercase tracking-wider font-semibold">
+                {lang === 'en' ? 'Direct database hardware search' : 'Прямой металлургический поиск по ГОСТ/модели'}
+              </label>
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search className="h-4 w-4 text-[#e65410]" />
+                </span>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t.searchPlaceholder}
+                  className="w-full pl-9 pr-4 py-2.5 bg-gray-950 border border-gray-700 rounded text-sm text-white placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
+                />
+              </div>
+              <p className="text-[9px] text-gray-500 font-mono italic">
+                {lang === 'en' ? 'e.g., "CX-10", "reclamation", "induction crucible", "water tower"' : 'Например: "СХ-10", "регенерация", "индукционная печь", "ВСФ"'}
+              </p>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Category Selector Pills matching design theme */}
-        <div className="flex flex-wrap gap-2 mb-10 pb-2 border-b border-gray-200/50">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2.5 rounded text-xs font-semibold uppercase tracking-wider transition cursor-pointer select-none border ${
-                activeCategory === cat.id
-                  ? 'bg-[#111827] text-white shadow-inner border-gray-900'
-                  : 'bg-white text-gray-750 hover:text-gray-950 hover:bg-gray-105 border-gray-200/70'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Dynamic products Grid */}
-        {filteredProducts.length === 0 ? (
-          <div className="bg-white border border-gray-200 p-12 text-center rounded-lg max-w-lg mx-auto">
-            <AlertCircle className="h-10 w-10 text-orange-600 mx-auto" />
-            <h3 className="font-bold text-lg text-gray-900 mt-4">{t.noProductsFound}</h3>
-            <p className="text-gray-500 text-sm mt-1">
-              {t.noProductsDesc}
-            </p>
-            <button
-              onClick={() => {
-                setActiveCategory('all');
-                setSearchQuery('');
-              }}
-              className="mt-6 px-4 py-2 bg-gray-900 text-white rounded text-xs transition hover:bg-gray-800 cursor-pointer border-none"
-            >
-              {t.resetFilters}
-            </button>
-          </div>
-        ) : (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        {/* Render Page A: Main Catalog Categories Index Page (When Category === 'all') */}
+        {activeCategory === 'all' ? (
           <div className="space-y-12">
-            {filteredProducts.map((p) => {
-              const isSpecsExpanded = !!expandedProductSpecs[p.id];
-              const isAdded = rfqItemsKeys.includes(p.id);
+            <div className="border-l-4 border-[#e65410] pl-4">
+              <h2 className="text-xs font-mono uppercase tracking-widest text-gray-500 font-bold">
+                {lang === 'en' ? 'Industrial Departments' : 'Официальные направления поставок'}
+              </h2>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 uppercase tracking-tight font-sans mt-1">
+                {lang === 'en' ? 'Browse by Engineering Division' : 'Инжиниринговые разделы каталога'}
+              </h3>
+              <p className="text-sm text-gray-500 max-w-2xl mt-1">
+                {lang === 'en'
+                  ? 'Select a division category to view its specialized equipment variants, physical models, and capacity marks.'
+                  : 'Выберите интересующий вас раздел литейного цеха. Каждый раздел организован отдельной страницей с типами и марками оборудования.'}
+              </p>
+            </div>
 
-              const pTitle = lang === 'en' && p.titleEn ? p.titleEn : p.title;
-              const pDesc = lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description;
-              const pFeatures = lang === 'en' && p.featuresEn ? p.featuresEn : p.features;
-              const pCapacity = lang === 'en' && p.capacityEn ? p.capacityEn : p.capacity;
-              const pPower = lang === 'en' && p.powerEn ? p.powerEn : p.power;
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              {sltDivisions.map((div) => {
+                const IconComp = div.icon;
+                const title = lang === 'en' ? div.titleEn : div.titleRu;
+                const desc = lang === 'en' ? div.descEn : div.descRu;
+                const tag = lang === 'en' ? div.tagEn : div.tagRu;
+                const stats = lang === 'en' ? div.statsEn : div.statsRu;
+                const subs = lang === 'en' ? div.subcategoriesEn : div.subcategoriesRu;
 
-              return (
-                <div
-                  key={p.id}
-                  id={`product-${p.id}`}
-                  className="bg-white border border-gray-200 rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xs hover:shadow-lg transition duration-200"
-                >
-                  
-                  {/* Image & Main stats sidebar (4 columns) */}
-                  <div className="lg:col-span-4 p-6 sm:p-8 bg-gray-50 border-r border-gray-200 flex flex-col justify-between">
-                    <div>
-                      {/* Image container representation with high contrast frame */}
-                      <div className="relative aspect-video sm:aspect-4/3 w-full bg-slate-900 overflow-hidden rounded border border-gray-300">
-                        <img
-                          src={p.imageUrl}
-                          alt={pTitle}
-                          className="w-full h-full object-cover group-hover:scale-105 transition duration-350 filter brightness-95 hover:brightness-100"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute top-2 left-2 bg-[#111827]/90 text-amber-500 font-mono text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded">
-                          {p.model}
-                        </div>
-                      </div>
-
-                      {/* Mini spec indicators */}
-                      <div className="grid grid-cols-2 gap-3 mt-6">
-                        {pCapacity && (
-                          <div className="bg-white border border-gray-200 p-3 rounded">
-                            <span className="block text-[10px] font-mono text-gray-400 uppercase tracking-wider">{t.capacityLabel}</span>
-                            <span className="font-bold text-sm text-gray-900 mt-1 block leading-tight">{pCapacity}</span>
-                          </div>
-                        )}
-                        {pPower && (
-                          <div className="bg-white border border-gray-200 p-3 rounded">
-                            <span className="block text-[10px] font-mono text-gray-400 uppercase tracking-wider">{t.powerLabel}</span>
-                            <span className="font-bold text-sm text-gray-900 mt-1 block leading-tight">{pPower}</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="mt-8 space-y-3">
-                      {/* Add Button */}
-                      <button
-                        onClick={() => onAddToRFQ(p)}
-                        className={`w-full py-3.5 px-4 font-bold rounded text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition cursor-pointer select-none border-none outline-none ${
-                          isAdded
-                            ? 'bg-emerald-600 hover:bg-emerald-750 text-white'
-                            : 'bg-[#e65410] hover:bg-[#cc4a0c] text-white shadow shadow-orange-500/15'
-                        }`}
-                      >
-                        {isAdded ? (
-                          <>
-                            <Check className="h-4 w-4" />
-                            <span>{t.inSpecsBtn}</span>
-                          </>
-                        ) : (
-                          <>
-                            <Plus className="h-4 w-4" />
-                            <span>{t.addToSpecsBtn}</span>
-                          </>
-                        )}
-                      </button>
-
-                      <p className="text-[10px] text-gray-400 text-center font-mono italic">
-                        {t.drawingFreeMsg}
-                      </p>
-                    </div>
-
-                  </div>
-
-                  {/* High quality specification and description panel (8 columns) */}
-                  <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between">
-                    
-                    {/* General info */}
+                return (
+                  <div
+                    key={div.id}
+                    className={`bg-white border rounded-lg p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer group ${div.color} shadow-xs shadow-gray-100`}
+                    onClick={() => handleSelectDivision(div.id)}
+                  >
                     <div className="space-y-4">
-                      <div className="flex items-center space-x-2">
-                        <span className="px-2.5 py-0.5 font-mono text-[10px] font-black uppercase tracking-widest border border-orange-500/30 text-[#e65410] bg-[#e65410]/5 rounded">
-                          {p.category === 'sand-mixers-xtc' && t.catXtc}
-                          {p.category === 'furnaces' && t.catFurnaces}
-                          {p.category === 'shot-blast' && t.catShotBlast}
-                          {p.category === 'casting-machines' && t.catCasting}
-                          {p.category === 'cooling-systems' && t.catCooling}
+                      {/* Header */}
+                      <div className="flex items-center justify-between">
+                        <span className="text-[9px] font-mono font-black tracking-widest uppercase px-2 py-0.5 rounded bg-gray-100 text-gray-650 group-hover:bg-[#e65410] group-hover:text-white transition-colors">
+                          {tag}
                         </span>
-                        <div className="h-px bg-gray-200 grow" />
+                        <IconComp className="h-5 w-5 text-gray-400 group-hover:text-[#e65410] transition duration-300" />
                       </div>
 
-                      <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight font-display uppercase">
-                        {pTitle}
-                      </h2>
+                      {/* Meta info */}
+                      <div className="space-y-1.5">
+                        <h4 className="font-extrabold text-sm sm:text-base text-gray-900 group-hover:text-[#e65410] leading-snug transition duration-150 uppercase">
+                          {title}
+                        </h4>
+                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-4">
+                          {desc}
+                        </p>
+                      </div>
 
-                      <p className="text-sm text-gray-650 leading-relaxed">
-                        {pDesc}
-                      </p>
-
-                      {/* Main Benefits bullet-list */}
-                      <div className="bg-slate-50 border border-slate-200/60 p-5 rounded-lg">
-                        <h4 className="text-xs font-mono font-bold uppercase text-gray-500 tracking-wider mb-3">{t.specSectionHeader}</h4>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
-                          {pFeatures.map((feat, idx) => (
-                            <li key={idx} className="flex items-start text-xs text-gray-701">
-                              <span className="text-[#e65410] mr-2 font-mono font-bold">✓</span>
-                              <span className="leading-tight">{feat}</span>
+                      {/* Subcategories bullet links */}
+                      <div className="border-t border-gray-100 pt-3.5 space-y-1.5">
+                        <span className="text-[8px] font-mono uppercase text-gray-400 block tracking-widest font-black">
+                          {lang === 'en' ? 'Models & Sub-units:' : 'Модельный ряд комплексов:'}
+                        </span>
+                        <ul className="space-y-1 text-[11px] text-gray-650 font-medium">
+                          {subs.map((sub, idx) => (
+                            <li 
+                              key={idx} 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleSelectDivision(div.id, sub.query, sub.subId);
+                              }}
+                              className="flex items-center space-x-1 hover:text-[#e65410] transition-colors cursor-pointer py-0.5"
+                            >
+                              <span className="text-orange-500 font-mono text-[10px]">›</span>
+                              <span className="underline decoration-transparent hover:decoration-[#e65410]">{sub.label}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                     </div>
 
-                    {/* Specification Table Accordion matching custom theme */}
-                    <div className="mt-8">
+                    {/* Footer Stats block */}
+                    <div className="border-t border-gray-100 mt-5 pt-3 flex items-center justify-between text-[10px] font-mono text-gray-400">
+                      <span className="font-semibold">{stats}</span>
+                      <span className="font-bold flex items-center gap-1 text-[#e65410] text-[9px] uppercase tracking-wider">
+                        <span>Перейти</span>
+                        <ArrowRight className="h-3 w-3 shrink-0 transform group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* Quick search guide and assistance */}
+            <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg flex items-center justify-between flex-col sm:flex-row gap-4">
+              <div className="space-y-1">
+                <h4 className="text-sm font-bold text-gray-900 uppercase">Нужна помощь с проектированием технологического плана?</h4>
+                <p className="text-xs text-gray-600 max-w-2xl">Запустите интерактивного мастера на главной странице или получите моментальный расчет химических компонентов формовки в нашем расчетном модуле.</p>
+              </div>
+              <button
+                onClick={() => setSearchQuery('')}
+                className="shrink-0 px-4 py-2 bg-[#e65410] hover:bg-orange-700 text-white font-mono text-xs uppercase font-extrabold rounded border-none cursor-pointer tracking-wider"
+              >
+                Показать весь список
+              </button>
+            </div>
+          </div>
+        ) : (
+          
+          /* Render Page B: Dedicated Section Page with Sticky Left Sidebar Navigation */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* STICKY SIDEBAR: Division pages switcher (Organized as separate pages) */}
+            <div className="lg:col-span-3 lg:sticky lg:top-24 space-y-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4 space-y-4 shadow-xs">
+                <div className="pb-3 border-b border-gray-100 flex items-center justify-between">
+                  <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#e65410] font-black">
+                    {lang === 'en' ? 'Catalog Sections' : 'Разделы каталога'}
+                  </h4>
+                  <button 
+                    onClick={() => setActiveCategory('all')}
+                    className="text-[10px] font-bold text-gray-400 hover:text-gray-900 border-none bg-transparent cursor-pointer font-sans"
+                  >
+                    ← {lang === 'en' ? 'Index' : 'К разделам'}
+                  </button>
+                </div>
+                
+                <nav className="space-y-1.5">
+                  {categories.map((cat) => {
+                    const isPageActive = activeCategory === cat.id;
+                    return (
                       <button
-                        onClick={() => toggleSpecs(p.id)}
-                        className="w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 transition border border-gray-200 flex items-center justify-between text-xs font-mono uppercase font-black tracking-wider text-gray-600 cursor-pointer select-none outline-none"
+                        key={cat.id}
+                        onClick={() => {
+                          setActiveCategory(cat.id);
+                          setActiveSubcategory('all');
+                          setSearchQuery('');
+                        }}
+                        className={`w-full text-left px-3 py-2.5 rounded text-xs transition duration-150 font-bold border-none cursor-pointer flex items-center justify-between ${
+                          isPageActive
+                            ? 'bg-[#0b0f19] text-white'
+                            : 'bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-950'
+                        }`}
                       >
-                        <span>{t.specsAccordionTitle} {p.model}</span>
-                        <ChevronDown className={`h-4 w-4 transform transition-transform ${isSpecsExpanded ? 'rotate-180' : ''}`} />
+                        <span className="truncate">{cat.label === t.catAll ? (lang === 'en' ? 'Show All Equipment' : 'Показать весь список') : cat.label}</span>
+                        {isPageActive && <span className="h-1.5 w-1.5 rounded-full bg-[#e65410] shrink-0 ml-1" />}
                       </button>
+                    );
+                  })}
+                </nav>
+              </div>
 
-                      {isSpecsExpanded && (
-                        <div className="border border-t-0 border-gray-200 overflow-hidden bg-white animate-slideDown">
-                          <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-[#111827] text-white">
-                              <tr>
-                                <th scope="col" className="px-5 py-3 text-left text-[10px] font-mono uppercase tracking-wider">{t.specsTableCol1}</th>
-                                <th scope="col" className="px-5 py-3 text-right text-[10px] font-mono uppercase tracking-wider">{t.specsTableCol2}</th>
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-100 bg-white">
-                              {p.specs.map((s, idx) => {
-                                const sName = lang === 'en' && s.nameEn ? s.nameEn : s.name;
-                                const sVal = lang === 'en' && s.valueEn ? s.valueEn : s.value;
-                                return (
-                                  <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50/50' : ''}>
-                                    <td className="px-5 py-2.5 text-xs font-semibold text-gray-700 leading-tight">{sName}</td>
-                                    <td className="px-5 py-2.5 text-xs font-mono font-bold text-gray-900 text-right leading-tight">{sVal}</td>
-                                  </tr>
-                                );
-                              })}
-                            </tbody>
-                          </table>
-                        </div>
-                      )}
+              <div className="bg-[#0b0f19] text-white p-4 rounded-lg space-y-2 border border-gray-800 text-[11px] font-mono">
+                <span className="text-[#e65410] uppercase font-black tracking-wider block text-[9px]">Стандарты качества:</span>
+                <p className="text-gray-400 leading-relaxed">Все марки оборудования поставляются с пакетом чертежей фундаментов, схем подключения нагрузок и инструкциями ЧПУ на русском языке.</p>
+              </div>
+            </div>
+
+            {/* MAIN CATALOG CONTENT ON THE DEDICATED PAGE */}
+            <div className="lg:col-span-9 space-y-6">
+              
+              {/* Breadcrumb path navigation */}
+              <div className="flex items-center space-x-2 text-xs text-gray-400 font-mono">
+                <button 
+                  onClick={() => {
+                    setActiveCategory('all');
+                    setActiveSubcategory('all');
+                    setSearchQuery('');
+                  }}
+                  className="hover:text-gray-900 hover:underline border-none bg-transparent cursor-pointer p-0"
+                >
+                  {lang === 'en' ? 'Divisions' : 'Разделы'}
+                </button>
+                <span>/</span>
+                <span className="text-[#e65410] font-bold">
+                  {categories.find(c => c.id === activeCategory)?.label}
+                </span>
+                {searchQuery && (
+                  <>
+                    <span>/</span>
+                    <span className="text-gray-600 italic">Поиск: "{searchQuery}"</span>
+                  </>
+                )}
+              </div>
+
+              {/* Counter and header bar */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-3 gap-3">
+                <div className="space-y-1">
+                  <h3 className="text-lg font-black text-gray-900 uppercase">
+                    {categories.find(c => c.id === activeCategory)?.label}
+                  </h3>
+                  <p className="text-xs text-gray-500 font-mono">
+                    {lang === 'en' ? 'Showing custom configurations for:' : 'Доступный номенклатурный перечень по направлению:'} <span className="text-gray-800 font-bold">Сибтехлит</span>
+                  </p>
+                </div>
+                <span className="self-start sm:self-center bg-orange-500/10 text-[#e65410] text-[10px] font-mono px-2.5 py-1 rounded font-black border border-orange-500/20 shrink-0">
+                  {filteredProducts.length} {lang === 'en' ? 'models matching' : 'позиций в базе'}
+                </span>
+              </div>
+
+              {/* Interactive Subcategory Filter Cards */}
+              {activeCategory !== 'all' && SUBCATEGORIES_MAP[activeCategory] && (
+                <div className="bg-white border border-gray-200 rounded-lg p-4 space-y-3 shadow-xs">
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-1.5">
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#e65410] font-black">
+                      {lang === 'en' ? 'Sub-divisions & Equipment types' : 'Подразделы направления и типы агрегатов'}
+                    </h4>
+                    {activeSubcategory !== 'all' && (
+                      <button
+                        onClick={() => {
+                          setActiveSubcategory('all');
+                          setSearchQuery('');
+                        }}
+                        className="text-[10px] font-mono text-[#e65410] hover:underline bg-transparent border-none cursor-pointer"
+                      >
+                        {lang === 'en' ? 'Clear sub-filter' : 'Показать всё'}
+                      </button>
+                    )}
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    {/* "All" button */}
+                    <div
+                      onClick={() => {
+                        setActiveSubcategory('all');
+                        setSearchQuery('');
+                      }}
+                      className={`p-3 rounded-lg border cursor-pointer transition flex flex-col justify-between ${
+                        activeSubcategory === 'all'
+                          ? 'border-[#e65410] bg-orange-500/5 text-[#e65410]'
+                          : 'border-gray-200 bg-gray-50/50 hover:bg-gray-50'
+                      }`}
+                    >
+                      <span className="text-xs font-black uppercase font-sans">
+                        {lang === 'en' ? 'All units' : 'Все подразделы'}
+                      </span>
+                      <span className="text-[9px] text-gray-400 font-mono mt-1 block">
+                        {lang === 'en' ? 'Complete list combined' : 'Полный список оборудования'}
+                      </span>
                     </div>
 
+                    {SUBCATEGORIES_MAP[activeCategory].map((sub) => {
+                      const isSelected = activeSubcategory === sub.id;
+                      const subName = lang === 'en' ? sub.nameEn : sub.nameRu;
+                      const subDesc = lang === 'en' ? sub.descEn : sub.descRu;
+                      return (
+                        <div
+                          key={sub.id}
+                          onClick={() => {
+                            setActiveSubcategory(sub.id);
+                            setSearchQuery('');
+                          }}
+                          className={`p-3 rounded-lg border cursor-pointer transition flex flex-col justify-between ${
+                            isSelected
+                              ? 'border-[#e65410] bg-orange-500/5 text-[#e65410]'
+                              : 'border-gray-200 bg-gray-50/50 hover:bg-gray-50'
+                          }`}
+                        >
+                          <span className="text-xs font-black uppercase font-sans leading-tight">
+                            {subName}
+                          </span>
+                          <span className="text-[9px] text-gray-400 font-mono mt-1 block leading-tight line-clamp-1">
+                            {subDesc}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
-
                 </div>
-              );
-            })}
+              )}
+
+              {/* Products Rendering for separate category page */}
+              {filteredProducts.length === 0 ? (
+                <div className="bg-white border border-gray-200 p-12 text-center rounded-lg max-w-lg mx-auto">
+                  <AlertCircle className="h-10 w-10 text-orange-600 mx-auto" />
+                  <h3 className="font-bold text-lg text-gray-900 mt-4">{t.noProductsFound}</h3>
+                  <p className="text-gray-500 text-sm mt-1">
+                    В данной категории нет агрегатов, соответствующих вашему поисковому запросу "{searchQuery}". Попробуйте очистить строку поиска.
+                  </p>
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="mt-6 px-4 py-2 bg-[#e65410] hover:bg-[#cc4a0c] text-white rounded text-xs font-bold transition cursor-pointer border-none"
+                  >
+                    Очистить поиск
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-8">
+                  {filteredProducts.map((p) => {
+                    const isSpecsExpanded = !!expandedProductSpecs[p.id];
+                    const isAdded = rfqItemsKeys.includes(p.id);
+
+                    const pTitle = lang === 'en' && p.titleEn ? p.titleEn : p.title;
+                    const pDesc = lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description;
+                    const pFeatures = lang === 'en' && p.featuresEn ? p.featuresEn : p.features;
+                    const pCapacity = lang === 'en' && p.capacityEn ? p.capacityEn : p.capacity;
+                    const pPower = lang === 'en' && p.powerEn ? p.powerEn : p.power;
+
+                    return (
+                      <div
+                        key={p.id}
+                        className="bg-white border border-gray-200 rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xs hover:shadow-md transition duration-200"
+                      >
+                        
+                        {/* Column Left (4 units size): Image, Capacity fields and Main spec add button */}
+                        <div className="lg:col-span-4 p-5 sm:p-6 bg-gray-50 border-r border-gray-200 flex flex-col justify-between">
+                          <div className="space-y-4">
+                            
+                            {/* Product Frame Image */}
+                            <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded border border-gray-350">
+                              <img
+                                src={p.imageUrl}
+                                alt={pTitle}
+                                className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition duration-300"
+                                referrerPolicy="no-referrer"
+                              />
+                              <div className="absolute top-2 left-2 bg-gray-950/90 border border-gray-800 text-[#e65410] font-mono text-xs uppercase font-black tracking-widest px-2.5 py-0.5 rounded">
+                                Базовая: {p.model}
+                              </div>
+                            </div>
+
+                            {/* Capacity ratings */}
+                            <div className="grid grid-cols-2 gap-2 text-[11px] font-mono">
+                              {pCapacity && (
+                                <div className="bg-white border border-gray-200 p-2.5 rounded">
+                                  <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-bold">ЕНИЦА / ВЕС</span>
+                                  <span className="font-extrabold text-gray-900 block mt-0.5">{pCapacity}</span>
+                                </div>
+                              )}
+                              {pPower && (
+                                <div className="bg-white border border-gray-200 p-2.5 rounded">
+                                  <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-bold">МОЩНОСТЬ</span>
+                                  <span className="font-extrabold text-gray-900 block mt-0.5">{pPower}</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Base specifications additions */}
+                          <div className="mt-5 pt-4 border-t border-gray-200 space-y-2">
+                            <button
+                              onClick={() => onAddToRFQ(p)}
+                              className={`w-full py-2.5 px-3 font-bold rounded text-xs uppercase tracking-widest flex items-center justify-center space-x-2 transition border-none cursor-pointer outline-none ${
+                                isAdded
+                                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                  : 'bg-[#e65410] hover:bg-orange-700 text-white font-mono'
+                              }`}
+                            >
+                              {isAdded ? (
+                                <>
+                                  <Check className="h-3.5 w-3.5 shrink-0" />
+                                  <span>{t.inSpecsBtn} ({p.model})</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Plus className="h-3.5 w-3.5 shrink-0" />
+                                  <span>Выбрать базовую Спец</span>
+                                </>
+                              )}
+                            </button>
+                            <p className="text-[9px] text-[#e65410] text-center font-mono">
+                              *Разработка КД по ТЗ заказчика включена в стоимость.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Column Right (8 units size): Title, description, features list, specification variants table */}
+                        <div className="lg:col-span-8 p-5 sm:p-6 flex flex-col justify-between space-y-5">
+                          
+                          <div className="space-y-3">
+                            <div className="flex items-center space-x-2">
+                              <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest border border-orange-500/25 text-[#e65410] bg-[#e65410]/5 rounded">
+                                {p.category === 'sand-mixers-xtc' && 'Система ХТС'}
+                                {p.category === 'furnaces' && 'Плавильный комплекс'}
+                                {p.category === 'shot-blast' && 'Очистная камера'}
+                                {p.category === 'casting-machines' && 'Формовка / Литье'}
+                                {p.category === 'cooling-systems' && 'Инфраструктура охлаждения'}
+                              </span>
+                              <div className="h-px bg-gray-150 grow" />
+                            </div>
+
+                            {/* Title heading */}
+                            <h2 className="text-lg sm:text-xl font-extrabold text-gray-950 tracking-tight font-sans uppercase">
+                              {pTitle}
+                            </h2>
+
+                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans">
+                              {pDesc}
+                            </p>
+
+                            {/* Tech benefits list style */}
+                            <div className="bg-slate-50 border border-slate-200/50 p-4 rounded-lg">
+                              <h4 className="text-[9px] font-mono font-black uppercase text-gray-550 tracking-widest flex items-center space-x-1 mb-2">
+                                <Settings className="h-3 w-3 text-[#e65410]" />
+                                <span>Технологические преимущества серии {p.model}:</span>
+                              </h4>
+                              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-700">
+                                {pFeatures.map((feat, idx) => (
+                                  <li key={idx} className="flex items-start">
+                                    <span className="text-[#e65410] mr-1.5 font-bold">✓</span>
+                                    <span className="leading-tight">{feat}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          {/* INTERACTIVE COMPARATIVE SPECIFICATION OPTIONS: MARKS AND AGGREGATE TYPES IN THE SERIES */}
+                          {p.variantModels && p.variantModels.length > 0 && (
+                            <div className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-xs">
+                              <div className="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center justify-between">
+                                <h4 className="text-[10px] font-mono font-black uppercase tracking-wider text-gray-700 flex items-center gap-1.5">
+                                  <Sliders className="h-3 w-3 text-[#e65410]" />
+                                  <span>Типы и марки агрегатов в серии {p.model}:</span>
+                                </h4>
+                                <span className="text-[9px] font-mono text-gray-500">Сибтехлит оригинал</span>
+                              </div>
+                              
+                              <div className="overflow-x-auto">
+                                <table className="min-w-full divide-y divide-gray-150 text-[11px] font-sans">
+                                  <thead className="bg-[#0b0f19] text-white">
+                                    <tr>
+                                      <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Марка</th>
+                                      <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Пр-сть / Емкость</th>
+                                      <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Мощность</th>
+                                      {p.variantModels[0]?.extraField && (
+                                        <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">
+                                          {p.variantModels[0].extraField}
+                                        </th>
+                                      )}
+                                      <th scope="col" className="px-3 py-2 text-right font-mono font-black uppercase text-[#e65410]">Выбор</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody className="divide-y divide-gray-100 bg-white">
+                                    {p.variantModels.map((variant, vidx) => {
+                                      const isVariantSelectedInCart = isSelectedVariantInSpecs(p.id, variant.model);
+                                      return (
+                                        <tr key={vidx} className={vidx % 2 === 0 ? 'bg-gray-50/40' : ''}>
+                                          <td className="px-3 py-2 font-mono font-extrabold text-gray-900 border-none">
+                                            {variant.model}
+                                          </td>
+                                          <td className="px-3 py-2 text-gray-650 font-medium border-none">
+                                            {lang === 'en' && variant.capacityEn ? variant.capacityEn : variant.capacity}
+                                          </td>
+                                          <td className="px-3 py-2 text-gray-650 font-semibold border-none">
+                                            {variant.power}
+                                          </td>
+                                          {variant.extraField && (
+                                            <td className="px-3 py-2 text-gray-500 font-mono border-none">
+                                              {lang === 'en' && variant.extraFieldValEn ? variant.extraFieldValEn : variant.extraFieldVal}
+                                            </td>
+                                          )}
+                                          <td className="px-3 py-2 text-right border-none">
+                                            <button
+                                              onClick={() => handleAddCustomModel(p, variant.model)}
+                                              className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase transition border-none cursor-pointer ${
+                                                isVariantSelectedInCart
+                                                  ? 'bg-emerald-50 text-emerald-700 font-extrabold border border-emerald-300'
+                                                  : 'bg-orange-50 hover:bg-[#e65410] hover:text-white text-[#e65410] font-black'
+                                              }`}
+                                            >
+                                              {isVariantSelectedInCart ? 'В КП ✓' : '+ Выбрать'}
+                                            </button>
+                                          </td>
+                                        </tr>
+                                      );
+                                    })}
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Technical specification details accordion toggle (Old spec tables) */}
+                          <div>
+                            <button
+                              onClick={() => toggleSpecs(p.id)}
+                              className="w-full py-2.5 px-3.5 bg-gray-100 hover:bg-gray-150 transition border border-gray-250 flex items-center justify-between text-[11px] font-mono uppercase font-black text-gray-600 cursor-pointer select-none outline-none"
+                            >
+                              <span className="flex items-center space-x-1.5">
+                                <Table className="h-3.5 w-3.5 text-[#e65410] shrink-0" />
+                                <span>Технические габариты и ГОСТ-константы серии {p.model}</span>
+                              </span>
+                              <ChevronDown className={`h-3.5 w-3.5 transform transition-transform text-[#e65410] ${isSpecsExpanded ? 'rotate-180' : ''}`} />
+                            </button>
+
+                            {isSpecsExpanded && (
+                              <div className="border border-t-0 border-gray-250 bg-white animate-slideDown overflow-hidden">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                  <tbody className="divide-y divide-gray-100 text-[11px]">
+                                    {p.specs.map((s, idx) => {
+                                      const sName = lang === 'en' && s.nameEn ? s.nameEn : s.name;
+                                      const sVal = lang === 'en' && s.valueEn ? s.valueEn : s.value;
+                                      return (
+                                        <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50/45' : ''}>
+                                          <td className="px-4 py-2 text-gray-650 font-semibold leading-tight border-none">
+                                            {sName}
+                                          </td>
+                                          <td className="px-4 py-2 font-mono font-bold text-gray-900 text-right leading-tight border-none">
+                                            {sVal}
+                                          </td>
+                                        </tr>
+                                      );
+                                    })}
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
+                          </div>
+
+                        </div>
+
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+            
           </div>
         )}
+
+        {/* Core informational technical banner */}
+        <div className="bg-gradient-to-r from-gray-900 to-[#0b0f19] text-white p-8 rounded-lg border border-gray-800 space-y-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6 mt-16">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono text-[#e65410] uppercase tracking-widest font-black flex items-center space-x-1.5">
+              <ShieldAlert className="h-4.5 w-4.5 text-[#e65410]" />
+              <span>{lang === 'en' ? 'Blueprints Engineering Service' : 'Комплексный технологический инжиниринг'}</span>
+            </span>
+            <h4 className="text-xl font-black uppercase text-white font-sans max-w-xl leading-snug">
+              {lang === 'en' 
+                ? 'Your machinery can be modified to match existing foundation layouts' 
+                : 'Поставка нестандартных габаритов оборудования под существующие фундаменты цеха'}
+            </h4>
+            <p className="text-xs text-gray-400 max-w-2xl leading-relaxed">
+              {lang === 'en'
+                ? 'Siberian Foundry Technologies designs custom steel structures, extended arm mixers with custom reach, and customized filtration chambers matching any specific furnace or dust extraction profile.'
+                : '«Сибтехлит» производит индивидуальную подгонку сварных стальных корпусов, увеличивает радиусы обслуживания лопастных зажимов смесителей ХТС и пересчитывает компоновочные сбросы гравитационных печей под конкретную высоту кровельной фермы.'}
+            </p>
+          </div>
+          <div className="shrink-0 flex items-center space-x-2 bg-gray-950/40 border border-gray-800 p-4 rounded text-xs font-mono text-[#e65410]">
+            <HardHat className="h-5 w-5 text-[#e65410] shrink-0" />
+            <span>
+              {lang === 'en' ? 'Bespoke layouts calculated in 3D' : 'Проектирование в AutoCAD/КОМПАС 3D'}
+            </span>
+          </div>
+        </div>
 
       </div>
     </div>
