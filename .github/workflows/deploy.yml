@@ -35,7 +35,7 @@ jobs:
         with:
           node-size: 18
           node-version: 18
-          cache: 'npm'
+          cache: null
 
       - name: Install dependencies
         run: npm install
