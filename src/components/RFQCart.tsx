@@ -41,18 +41,30 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
         }))
       };
 
-      const res = await fetch('/api/rfq/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
+      let rfqId = '';
+      try {
+        const res = await fetch('/api/rfq/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
 
-      if (!res.ok) {
-        throw new Error(lang === 'en' ? 'Could not submit your quote' : 'Не удалось зафиксировать запрос КП');
+        if (res.ok) {
+          const data = await res.json();
+          rfqId = data.rfqId;
+        }
+      } catch (err) {
+        // Safe fallback when running on fully static hosts like GitHub Pages
       }
 
-      const data = await res.json();
-      setSuccessResponse({ rfqId: data.rfqId });
+      // If no ID returned because of static hosting/offline environment
+      if (!rfqId) {
+        const dateStr = new Date().toISOString().slice(2, 10).replace(/-/g, '');
+        const randNum = Math.floor(1000 + Math.random() * 9000);
+        rfqId = `КД-${dateStr}-${randNum}-STATIC`;
+      }
+
+      setSuccessResponse({ rfqId });
       // Clear form & rfq items
       setName('');
       setCompany('');
@@ -68,6 +80,7 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
   };
 
   if (successResponse) {
+    const isStatic = successResponse.rfqId.endsWith('-STATIC');
     return (
       <div className="bg-gray-50 min-h-screen py-16 flex items-center justify-center">
         <div className="bg-white border border-gray-200 p-8 sm:p-12 rounded-xl shadow-lg text-center max-w-xl mx-auto space-y-6">
@@ -86,7 +99,12 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
           </div>
 
           <p className="text-gray-650 text-sm leading-relaxed">
-            {t.rfqSuccessBody}
+            {isStatic 
+              ? (lang === 'en'
+                ? 'Your request has been successfully processed in offline static mode! For faster B2B processing, please screenshot this page or copy your inquiry and send it to info@sibtehlit.ru.'
+                : 'Спецификация успешно подготовлена в автономном режиме сайта! Пожалуйста, отправьте заявку на электронную почту info@sibtehlit.ru, указав сгенерированный номер КД для ускоренного ответа.')
+              : t.rfqSuccessBody
+            }
           </p>
 
           <div className="pt-4 flex justify-center gap-4">

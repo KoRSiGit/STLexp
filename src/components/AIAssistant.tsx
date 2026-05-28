@@ -70,28 +70,73 @@ export default function AIAssistant({ lang }: AIAssistantProps) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: textToSend,
-          lang: lang,
-          history: messages.map((m) => ({
-            role: m.sender === 'user' ? 'user' : 'model',
-            parts: [{ text: m.text }],
-          })),
-        }),
-      });
+      let replyText = '';
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: textToSend,
+            lang: lang,
+            history: messages.map((m) => ({
+              role: m.sender === 'user' ? 'user' : 'model',
+              parts: [{ text: m.text }],
+            })),
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(lang === 'en' ? 'Could not reach AI services' : 'Не удалось получить ответ ИИ');
+        if (response.ok) {
+          const data = await response.json();
+          replyText = data.reply;
+        }
+      } catch (e) {
+        // Backend not reachable, will fall back to static/offline answers below
       }
 
-      const data = await response.json();
+      if (!replyText) {
+        const lowerMsg = textToSend.toLowerCase();
+        if (lang === 'en') {
+          if (lowerMsg.includes('mixer') || lowerMsg.includes('molding') || lowerMsg.includes('sand') || lowerMsg.includes('furan')) {
+            replyText = `Thank you for your inquiry regarding furan mold technology!\n\n` +
+              `*Client-side Assistant Tips (Static / GitHub Pages Offline Mode):*\n` +
+              `• **Resin Content**: Typically ranges between 1.0% to 1.3% of the total dry quartz sand weight.\n` +
+              `• **Catalyst Concentration**: Maintain between 30% to 50% relative to resin mass, adjusting for local ambient storage temperatures.\n` +
+              `• **Compaction**: Ensure fluid vibration times are on-point (20 to 45 seconds on VSF vibrators) to maximize mold density.`;
+          } else if (lowerMsg.includes('furnace') || lowerMsg.includes('melting') || lowerMsg.includes('steel') || lowerMsg.includes('iron')) {
+            replyText = `Thank you for asking about induction melting chambers!\n\n` +
+              `*Client-side Assistant Tips (Static / GitHub Pages Offline Mode):*\n` +
+              `• **Induction Coil Shielding**: Sibtehlit GW heavy steel-shell furnaces are recommended over aluminum frames to prevent stray magnetic flux feedback and extend refractories lifetime.\n` +
+              `• **Cooling Design**: Setup dual dry hybrid water cooling units (GZ-60) to avoid lime or scale in power feeders.\n` +
+              `• **Lining Profile**: Pre-cast high-manganese linings ensure steady melt sequences.`;
+          } else {
+            replyText = `Hello! I am currently running in client-side static mode (ideal for GitHub Pages hosting with no Node.js backend).\n\n` +
+              `I can answer questions regarding foundry technology. Try asking about "*Furan Sand Mixer*" or "*Melting Furnace*". For full live chat power, run the NodeJS backend container by following the instructions in our README!`;
+          }
+        } else {
+          if (lowerMsg.includes('смесител') || lowerMsg.includes('хтс') || lowerMsg.includes('песк') || lowerMsg.includes('фуран') || lowerMsg.includes('формов')) {
+            replyText = `Благодарим за вопрос по технологии ХТС-процесса!\n\n` +
+              `*Технические рекомендации (Автономный режим GitHub Pages):*\n` +
+              `• **Дозировка смолы**: Должна быть в пределах 1.0 - 1.4% от массы сухого песка.\n` +
+              `• **Ввод катализатора**: Составляет от 30% до 50% от массы смолы в зависимости от температуры формовочной смеси.\n` +
+              `• **Процесс очистки**: Регулярно очищайте лопатки смесителя СХ и калибруйте весовые насосы-дозаторы жидкого связующего.`;
+          } else if (lowerMsg.includes('печ') || lowerMsg.includes('плавк') || lowerMsg.includes('индукц') || lowerMsg.includes('стали') || lowerMsg.includes('чугу')) {
+            replyText = `Благодарим за интерес к индукционным плавильным установкам!\n\n` +
+              `*Технические рекомендации (Автономный режим GitHub Pages):*\n` +
+              `• **Тигль и Каркас**: Для плавки стали в тяжелых условиях Сибири мы рекомендуем индукционные печи серии GW в жёстком стальном каркасе вместо алюминия для повышения стойкости футеровки.\n` +
+              `• **Охлаждение**: Печи лучше подключать к закрытым двухконтурным градирням ГЗ-60, чтобы предотвратить появление накипи в индукторе.\n` +
+              `• **Расчеты**: Вы можете воспользоваться нашими калькуляторами шихты и песка на соседней вкладке меню!`;
+          } else {
+            replyText = `Приветствую! В данный момент сервис работает в полностью автономном режиме обслуживания (сборка для статических сайтов GitHub Pages).\n\n` +
+              `Я настроен консультировать вас по литейным процессам СНГ. Напишите мне про «*Смесители ХТС*», «*Плавильные печи*» или «*Качество отливок*»!\n\n` +
+              `*(Для работы живого ИИ-Ассистента разверните бэкенд проекта на Node.js по инструкции из файла README.md).*`;
+          }
+        }
+      }
+
       const assistantMessage: Message = {
         id: Math.random().toString(),
         sender: 'assistant',
-        text: data.reply || (lang === 'en' ? 'I lost my train of thought. Please repeat your query.' : 'Простите, я потерял мысль. Повторите, пожалуйста, ваш вопрос.'),
+        text: replyText,
         timestamp: new Date(),
       };
 
@@ -101,8 +146,8 @@ export default function AIAssistant({ lang }: AIAssistantProps) {
         id: Math.random().toString(),
         sender: 'assistant',
         text: lang === 'en'
-          ? `Could not contact AI controller: ${err.message || 'unknown error'}. Ensure the server-side API key is set in the Secrets setting.`
-          : `Ошибка связи с ИИ-модулем: ${err.message || 'неизвестная ошибка'}. Убедитесь, что серверный ключ API настроен в панели Secrets.`,
+          ? `Could not contact AI controller: ${err.message || 'unknown error'}. Ensure the server-side API key is set.`
+          : `Ошибка связи с ИИ-модулем: ${err.message || 'неизвестная ошибка'}. Убедитесь, что серверный ключ API настроен.`,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
