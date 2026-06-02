@@ -1,16 +1,20 @@
 import { Product } from '../types';
 
 export const PRODUCTS: Product[] = [
+  // SECTION 1: NO-BAKE MOLDING (ХТС)
   {
-    id: 'xtc-mixer-s10',
+    id: 'xtc-mixer-single-arm',
     category: 'sand-mixers-xtc',
     subcategory: 'mixers',
     subcategoryRu: 'Смесители ХТС',
     subcategoryEn: 'No-Bake Mixers',
+    subsubcategory: 'single-arm',
+    subsubcategoryRu: 'Однорукавного типа СХ',
+    subsubcategoryEn: 'Single-arm type CX',
     title: 'Однорукавный смеситель ХТС непрерывного действия',
     titleEn: 'Single-arm continuous resin-sand mixer',
     model: 'СХ-10',
-    description: 'Высокопроизводительный однорукавный смеситель для формовки по ХТС-процессу (холоднотвердеющие смеси). Обеспечивает высокоточное дозирование связующего (смолы) и катализатора с мгновенным прекращением подачи, предотвращая появление брака смеси.',
+    description: 'Высокопроизводственный однорукавный смеситель для формовки по ХТС-процессу (холоднотвердеющие смеси). Обеспечивает высокоточное дозирование связующего (смолы) и катализатора с мгновенным прекращением подачи, предотвращая появление брака смеси.',
     descriptionEn: 'High-performance single-arm mixer for cold-recovering sand casting processes (no-bake/XTC). Features high-precision dosing of resin binder and catalyst with instant shut-off, preventing sand mix wastage.',
     imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
     capacity: '10 тонн/час',
@@ -48,11 +52,60 @@ export const PRODUCTS: Product[] = [
     ]
   },
   {
-    id: 'xtc-reclamation-r8',
+    id: 'xtc-mixer-double-arm',
+    category: 'sand-mixers-xtc',
+    subcategory: 'mixers',
+    subcategoryRu: 'Смесители ХТС',
+    subcategoryEn: 'No-Bake Mixers',
+    subsubcategory: 'double-arm',
+    subsubcategoryRu: 'Двухрукавного типа СХФ',
+    subsubcategoryEn: 'Double-arm type CXF',
+    title: 'Двухрукавный смеситель ХТС непрерывного действия',
+    titleEn: 'Double-arm continuous resin-sand mixer',
+    model: 'СХФ-15',
+    description: 'Поворотный двухсекционный лопастной смеситель непрерывного действия. Предназначен для заполнения крупных заливочных форм и средних опок в пределах большого технологического радиуса действия рукавов (до 4.5 метров). Обеспечивает гибкий охват формовочной зоны.',
+    descriptionEn: 'Double-arm articulating continuous resin-sand mixer with secondary slewing swivel arm. Designed to fill massive foundry flasks across a large operating radius (up to 4.5 meters). Increases molding flexibility.',
+    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    capacity: '15 тонн/час',
+    capacityEn: '15 tons/hour',
+    power: '15.0 кВт',
+    powerEn: '15.0 kW',
+    features: [
+      'Артикуляционная двухсекционная стрела для максимального радиуса обслуживания',
+      'Высоконадежные зубчатые насосы-дозаторы с преобразователями частоты',
+      'Система подогрева насосного шкафа для стабильной вязкости смолы зимой',
+      'Раздельная подача связующих и катализатора непосредственно в сопло смесителя'
+    ],
+    featuresEn: [
+      'Two-stage folding articulation boom for largest reachable floor layout',
+      'Super rigid gear pumps controlled via smart frequency micro-converters',
+      'Heated pumping cabinet maintaining optimal chemical viscosity during winters',
+      'Separate terminal outlets feeding reactants directly into the vortex nozzle tip'
+    ],
+    specs: [
+      { name: 'Диапазон производительности', value: '10 - 20 тонн/час', nameEn: 'Capacity range', valueEn: '10 - 20 tons/hour' },
+      { name: 'Максимальный рабочий радиус', value: '4500 мм', nameEn: 'Maximum operating radius', valueEn: '4500 mm' },
+      { name: 'Длина первого рукава', value: '2500 мм', nameEn: 'Primary arm length', valueEn: '2500 mm' },
+      { name: 'Длина смесительного рукава', value: '2000 мм', nameEn: 'Mixing arm length', valueEn: '2000 mm' },
+      { name: 'Точность дозирования компонентов', value: '≤ ±1.0%', nameEn: 'Dosing precision limit', valueEn: '≤ ±1.0%' },
+      { name: 'Общая установленная мощность', value: '15.0 кВт', nameEn: 'Total installed power', valueEn: '15.0 kW' }
+    ],
+    variantModels: [
+      { model: 'СХФ-10', capacity: '10 тонн/час', capacityEn: '10 t/h', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Макс. радиус', extraFieldVal: '3500 мм', extraFieldValEn: '3500 mm' },
+      { model: 'СХФ-15', capacity: '15 тонн/час', capacityEn: '15 t/h', power: '15.0 кВт', powerEn: '15.0 kW', extraField: 'Макс. радиус', extraFieldVal: '4500 мм', extraFieldValEn: '4500 mm' },
+      { model: 'СХФ-20', capacity: '20 тонн/час', capacityEn: '20 t/h', power: '18.5 кВт', powerEn: '18.5 kW', extraField: 'Макс. радиус', extraFieldVal: '5000 мм', extraFieldValEn: '5000 mm' },
+      { model: 'СХФ-30', capacity: '30 тонн/час', capacityEn: '30 t/h', power: '30.0 кВт', powerEn: '30.0 kW', extraField: 'Макс. радиус', extraFieldVal: '5500 мм', extraFieldValEn: '5500 mm' }
+    ]
+  },
+  {
+    id: 'xtc-reclamation-mechanical',
     category: 'sand-mixers-xtc',
     subcategory: 'reclamation',
     subcategoryRu: 'Регенерация песка ХТС',
     subcategoryEn: 'No-Bake Reclamation',
+    subsubcategory: 'mechanical',
+    subsubcategoryRu: 'Механическая регенерация РП',
+    subsubcategoryEn: 'Mechanical reclamation RP',
     title: 'Линия механической регенерации песка ХТС',
     titleEn: 'No-bake / resin sand mechanical reclamation line',
     model: 'РП-8',
@@ -88,16 +141,62 @@ export const PRODUCTS: Product[] = [
       { model: 'РП-5', capacity: '5 тонн/час', capacityEn: '5 t/h', power: '37 кВт', powerEn: '37 kW', extraField: 'Степень очистки', extraFieldVal: '92%', extraFieldValEn: '92%' },
       { model: 'РП-8', capacity: '8 тонн/час', capacityEn: '8 t/h', power: '45 кВт', powerEn: '45 kW', extraField: 'Степень очистки', extraFieldVal: '95%', extraFieldValEn: '95%' },
       { model: 'РП-12', capacity: '12 тонн/час', capacityEn: '12 t/h', power: '55 кВт', powerEn: '55 kW', extraField: 'Степень очистки', extraFieldVal: '95%', extraFieldValEn: '95%' },
-      { model: 'РП-15', capacity: '15 тонн/час', capacityEn: '15 t/h', power: '75 кВт', powerEn: '75 kW', extraField: 'Степень очистки', extraFieldVal: '96%', extraFieldValEn: '96%' },
       { model: 'РП-20', capacity: '20 тонн/час', capacityEn: '20 t/h', power: '90 кВт', powerEn: '90 kW', extraField: 'Степень очистки', extraFieldVal: '96%', extraFieldValEn: '96%' }
     ]
   },
   {
-    id: 'xtc-vibro-vs5',
+    id: 'xtc-reclamation-thermal',
+    category: 'sand-mixers-xtc',
+    subcategory: 'reclamation',
+    subcategoryRu: 'Регенерация песка ХТС',
+    subcategoryEn: 'No-Bake Reclamation',
+    subsubcategory: 'thermal',
+    subsubcategoryRu: 'Термическая регенерация РП-Т',
+    subsubcategoryEn: 'Thermal calcining RP-T',
+    title: 'Установка термической регенерации песка ХТС',
+    titleEn: 'Thermal calcination sand reclamation system',
+    model: 'РП-Т3',
+    description: 'Установка прокалки отработанного песка в печи кипящего слоя. Идеально выжигает органические остатки смолы и полимеризованного связующего с активной рекуперацией тепла. Используется для жестких требований к качеству регенерата в прецизионном стальном литье.',
+    descriptionEn: 'Fluid bed thermal calcination furnace developed to burn off organic binders and phenolic resin coatings from spent sand grain. Perfect for high-duty mold core sand circuits making steel parts.',
+    imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+    capacity: '3 тонн/час',
+    capacityEn: '3 tons/hour',
+    power: '120 кВт (газ/электро)',
+    powerEn: '120 kW (gas/electric)',
+    features: [
+      'Полное выжигание остаточной смолы (L.O.I. снижается до уровня < 0.15%)',
+      'Энергоэффективная рекуперация тепла для предварительного нагрева воздуха печи',
+      'Печь непрерывного действия с футеровкой из жаропрочного бетона',
+      'Двухконтурное циклонное охлаждение песка до комнатных температур'
+    ],
+    featuresEn: [
+      'Complete burn-out of resin coatings (L.O.I. reduced to less than 0.15%)',
+      'Energy efficient thermal recuperators utilizing exhaust heat to preheat furnace blower drafts',
+      'Heavy monolithic refractory cast linings resisting continuous thermal loads',
+      'Dual-stage cyclonic sand coolers dropping returned grain temperatures immediately'
+    ],
+    specs: [
+      { name: 'Производительность прокалки', value: '3.0 тонны/час', nameEn: 'Calcination capacity', valueEn: '3.0 tons/hour' },
+      { name: 'Температура обжига песка', value: '650 - 750 °C', nameEn: 'Calcination temperature', valueEn: '650 - 750 °C' },
+      { name: 'Расход топлива (природный газ)', value: '18 - 22 м³/тонна', nameEn: 'Natural gas consumption rate', valueEn: '18 - 22 m³/ton' },
+      { name: 'Показатель остаточных смол L.O.I.', value: '≤ 0.15 %', nameEn: 'Residual Loss On Ignition index', valueEn: '≤ 0.15 %' },
+      { name: 'Управление технологическими циклами', value: 'ЧПУ на базе Siemens S7-1500', nameEn: 'Control execution hardware', valueEn: 'PLC Siemens S7-1500' }
+    ],
+    variantModels: [
+      { model: 'РП-Т1', capacity: '1 тонна/час', capacityEn: '1 t/h', power: '75 кВт', powerEn: '75 kW', extraField: 'Остаточный LOI', extraFieldVal: '≤ 0.15%', extraFieldValEn: '≤ 0.15%' },
+      { model: 'РП-Т3', capacity: '3 тонны/час', capacityEn: '3 t/h', power: '120 кВт', powerEn: '120 kW', extraField: 'Остаточный LOI', extraFieldVal: '≤ 0.15%', extraFieldValEn: '≤ 0.15%' },
+      { model: 'РП-Т5', capacity: '5 тонн/час', capacityEn: '5 t/h', power: '180 кВт', powerEn: '180 kW', extraField: 'Остаточный LOI', extraFieldVal: '≤ 0.12%', extraFieldValEn: '≤ 0.12%' }
+    ]
+  },
+  {
+    id: 'xtc-vibro-tables',
     category: 'sand-mixers-xtc',
     subcategory: 'compaction',
     subcategoryRu: 'Вибростолы и формовка',
     subcategoryEn: 'Compaction Tables',
+    subsubcategory: 'tables',
+    subsubcategoryRu: 'Вибростолы уплотнительные ВСФ',
+    subsubcategoryEn: 'Compaction tables VSF',
     title: 'Вибростол формовочный уплотнительный',
     titleEn: 'Vibrating mold compaction table',
     model: 'ВСФ-12',
@@ -135,33 +234,38 @@ export const PRODUCTS: Product[] = [
       { model: 'ВСФ-30', capacity: 'До 8.0 тонн', capacityEn: 'Up to 8.0 tons', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Размер плиты', extraFieldVal: '2400х1800 мм', extraFieldValEn: '2400x1800 mm' }
     ]
   },
+
+  // SECTION 2: MELTING FURNACES (ПЛАВКА)
   {
-    id: 'furnace-induction-gw1',
+    id: 'furnace-induction-steel-frame',
     category: 'furnaces',
-    subcategory: 'furnaces-list',
+    subcategory: 'induction',
     subcategoryRu: 'Индукционные печи',
     subcategoryEn: 'Induction Furnaces',
-    title: 'Индукционная тигельная плавильная печь',
-    titleEn: 'Induction crucible melting furnace',
-    model: 'GW-1.0-800',
-    description: 'Высокочастотная индукционная плавильная установка с гидравлическим наклоном тигля. Предназначена для эффективной плавки черных металлов (чугун, сталь) и цветных сплавов (бронза, латунь, медь). Обладает высоким КПД и точной регулировкой температуры нагрева.',
-    descriptionEn: 'High-frequency induction melting furnace system with double hydraulic tilt cylinders. Highly efficient melting for ferrous metals (cast iron, carbon steel) and non-ferrous alloys. Extremely accurate thermal monitoring.',
+    subsubcategory: 'steel-frame',
+    subsubcategoryRu: 'Стальной каркас серия GW-S',
+    subsubcategoryEn: 'Steel frame series GW-S',
+    title: 'Индукционная плавильная печь в прочном стальном каркасе',
+    titleEn: 'High capacity steel shell induction melting furnace',
+    model: 'GW-1.0-800S',
+    description: 'Индукционная печь высокой жесткости в стальном сварном исполнении с тяжелыми защитными магнитными ярлыками и вибропоглощающими плитами под гидравлическим управлением. Оптимальный выбор для сибирских условий выплавки сталей черной металлургии.',
+    descriptionEn: 'Super heavy duty coreless induction furnace encased in computer-modeled steel shell with back yokes. Guarantees long lining lifetime and minimized electromagnetic flux leakages.',
     imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
     capacity: '1.0 тонна стали',
     capacityEn: '1.0 ton of steel',
     power: '800 кВт',
     powerEn: '800 kW',
     features: [
-      'Прочный сварной стальной корпус печи с гидравлическим подъемом плиты',
-      'Микропроцессорные тиристорные преобразователи частоты с цифровым автоподбором резонанса',
-      'Система контроля проедания и прорыва футеровки защищает узел от аварий',
-      'Закрытый гидравлический контур для надежного наклона'
+      'Тяжелый сварной стальной корпус печи с гидравлическим подъемом плиты',
+      'Защитные ферромагнитные пакеты ярлыков (магнитные шунты) экранируют 95% потока индуктора',
+      'Микропроцессорные тиристорные инверторы с автосенсорным ведением плавки',
+      'Система непрерывного автоматического контроля целостности футеровки и прорыва ванны'
     ],
     featuresEn: [
       'Rigid welded steel structure of the furnace frame with secure magnetic yokes',
-      'Microprocessor thyrister frequency inverter with smart dynamic resonance adaptation',
-      'Anti-penetration lining leakage detection guard module to minimize hazards',
-      'Closed hydraulic loop for smooth tilt cylinder discharge operation'
+      '95% flux shielding magnetic noise bypass packages guarding the cylinder frame',
+      'HMI touch inverter with automatic resonance tracking and active melting programs',
+      'Continuous lining decay leak-detection safety interface protecting from runout'
     ],
     specs: [
       { name: 'Номинальная емкость печи', value: '1.0 тонна по стали / чугуну', nameEn: 'Nominal furnace capacity', valueEn: '1.0 ton of steel / iron' },
@@ -172,23 +276,66 @@ export const PRODUCTS: Product[] = [
       { name: 'Расход охлаждающей воды контура', value: '40 м³/час', nameEn: 'Water cooling loop requirement', valueEn: '40 m³/hour' }
     ],
     variantModels: [
-      { model: 'GW-0.25-160', capacity: '0.25 тонны', capacityEn: '0.25 tons', power: '160 кВт', powerEn: '160 kW', extraField: 'Частота тока', extraFieldVal: '1000 Гц', extraFieldValEn: '1000 Hz' },
-      { model: 'GW-0.5-350', capacity: '0.50 тонны', capacityEn: '0.50 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Частота тока', extraFieldVal: '1000 Гц', extraFieldValEn: '1000 Hz' },
-      { model: 'GW-1.0-800', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '800 кВт', powerEn: '800 kW', extraField: 'Частота тока', extraFieldVal: '1000 Гц', extraFieldValEn: '1000 Hz' },
-      { model: 'GW-2.0-1500', capacity: '2.00 тонны', capacityEn: '2.00 tons', power: '1500 кВт', powerEn: '1500 kW', extraField: 'Частота тока', extraFieldVal: '500 Гц', extraFieldValEn: '500 Hz' },
-      { model: 'GW-3.0-2500', capacity: '3.00 тонны', capacityEn: '3.00 tons', power: '2500 кВт', powerEn: '2500 kW', extraField: 'Частота тока', extraFieldVal: '500 Гц', extraFieldValEn: '500 Hz' },
-      { model: 'GW-5.0-3750', capacity: '5.00 тонн', capacityEn: '5.00 tons', power: '3750 кВт', powerEn: '3750 kW', extraField: 'Частота тока', extraFieldVal: '500 Гц', extraFieldValEn: '500 Hz' }
+      { model: 'GW-1.0-800S', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '800 кВт', powerEn: '800 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
+      { model: 'GW-2.0-1500S', capacity: '2.00 тонны', capacityEn: '2.00 tons', power: '1500 кВт', powerEn: '1500 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
+      { model: 'GW-3.0-2500S', capacity: '3.00 тонны', capacityEn: '3.00 tons', power: '2500 кВт', powerEn: '2500 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
+      { model: 'GW-5.0-3750S', capacity: '5.00 тонн', capacityEn: '5.00 tons', power: '3750 кВт', powerEn: '3750 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' }
     ]
   },
   {
-    id: 'ladle-kl2',
+    id: 'furnace-induction-aluminum-frame',
+    category: 'furnaces',
+    subcategory: 'induction',
+    subcategoryRu: 'Индукционные печи',
+    subcategoryEn: 'Induction Furnaces',
+    subsubcategory: 'aluminum-frame',
+    subsubcategoryRu: 'Алюминиевый каркас серия GW-A',
+    subsubcategoryEn: 'Aluminum frame series GW-A',
+    title: 'Индукционная плавильная печь в экономичном алюминиевом каркасе',
+    titleEn: 'Aluminum shell compact induction melting furnace',
+    model: 'GW-0.5-350A',
+    description: 'Экономичная плавильная тигельная печь в прочном литом под давлением алюминиевом каркасе. Обладает компактной конструкцией, малым весом пустого агрегата и легким доступом к внутреннему трубчатому змеевику индуктора. Прекрасно подходит для небольших фасонных плавок цветных сплавов.',
+    descriptionEn: 'Economic induction heating crucible furnace housed in a high-grade cast aluminum frame. Features lighter empty weight and rapid side maintenance access to induction water coil pipe.',
+    imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+    capacity: '0.5 тонн стали/бронзы',
+    capacityEn: '0.5 tons capacity',
+    power: '350 кВт',
+    powerEn: '350 kW',
+    features: [
+      'Высокопрочный литой алюминиевый вентилируемый корпус',
+      'Прогрессивные индукционные катушки из профильной бескислородной меди высокой очистки',
+      'Защитная откидная двухстворчатая крышка тигля для снижения лучистых теплопотерь',
+      'Безопасный ручной или цепной привод наклона для компактных установок'
+    ],
+    featuresEn: [
+      'Corrosion resistant structural aluminum split shell casing with natural ventilation slots',
+      'High grade oxygen-free copper profile tubing coils ensuring maximum coil electrical efficiency',
+      'Integrated manual exhaust dust flap screen cover blocks saving heater losses',
+      'Compact footprint layout for workshops having restricted space and overhead clear limits'
+    ],
+    specs: [
+      { name: 'Номинальная емкость печи', value: '0.5 тонны по чугуну/бронзе', nameEn: 'Nominal furnace capacity', valueEn: '0.5 ton of iron / bronze' },
+      { name: 'Номинальная мощность силовой части', value: '350 кВт', nameEn: 'Inverter power supply', valueEn: '350 kW' },
+      { name: 'Рабочая частота тока', value: '1000 Гц', nameEn: 'Electrical frequency', valueEn: '1000 Hz' },
+      { name: 'Скорость наклона плиты слива', value: 'Регулируется гидравликой', nameEn: 'Tilting discharge flow speed', valueEn: 'Hydraulic cylinders regulated' }
+    ],
+    variantModels: [
+      { model: 'GW-0.25-160A', capacity: '0.25 тонны', capacityEn: '0.25 tons', power: '160 кВт', powerEn: '160 kW', extraField: 'Каркас', extraFieldVal: 'Алюминиевый', extraFieldValEn: 'Aluminum' },
+      { model: 'GW-0.5-350A', capacity: '0.50 тонны', capacityEn: '0.50 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Каркас', extraFieldVal: 'Алюминиевый', extraFieldValEn: 'Aluminum' }
+    ]
+  },
+  {
+    id: 'ladle-kl-teapot',
     category: 'furnaces',
     subcategory: 'ladles',
     subcategoryRu: 'Заливочные ковши',
     subcategoryEn: 'Pouring Ladles',
-    title: 'Ковш литейный чайникового типа с редуктором',
+    subsubcategory: 'teapot',
+    subsubcategoryRu: 'Чайникового типа КЛ',
+    subsubcategoryEn: 'Teapot type KL',
+    title: 'Ковш заливочный чайникового типа с редуктором',
     titleEn: 'Foundry teapot pouring ladle with gearbox',
-    model: 'КЛ-2',
+    model: 'КЛ-2.0',
     description: 'Чайниковый заливочный ковш для приема жидкого металла из индукционных печей и последующей бережной разливки в песчаные формы. Чайниковая сифонная система задерживает шлак внутри ковша, подавая в изложницу исключительно чистый расплав.',
     descriptionEn: 'Teapot pouring ladle designed to transfer liquid grey iron/cast steel from induction furnaces to sand molds. Bottom syphon gate holds back slag automatically during direct pours.',
     imageUrl: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80',
@@ -223,12 +370,17 @@ export const PRODUCTS: Product[] = [
       { model: 'КЛ-5.0', capacity: 'Емкость 5000 кг', capacityEn: 'Capacity 5000 kg', power: 'Редуктор червячный 1:120', powerEn: 'Manual worm 1:120', extraField: 'Самоторможение', extraFieldVal: 'Да', extraFieldValEn: 'Yes' }
     ]
   },
+
+  // SECTION 3: GREEN SAND (ПГС)
   {
     id: 'green-sand-mixer-st1500',
     category: 'green-sand',
     subcategory: 'mixers',
-    subcategoryRu: 'Смесители',
-    subcategoryEn: 'Mixers',
+    subcategoryRu: 'Смесители ПГС',
+    subcategoryEn: 'Green Sand Mixers',
+    subsubcategory: 'vertical-rotor',
+    subsubcategoryRu: 'Вертикально-роторные смесители СТ',
+    subsubcategoryEn: 'Vertical rotor mixers ST',
     title: 'Интенсивный чашечный смеситель ПГС вертикально-роторный',
     titleEn: 'Intensive vertical rotor green sand muller mixer',
     model: 'СТ-1500',
@@ -241,7 +393,7 @@ export const PRODUCTS: Product[] = [
     powerEn: '37 kW',
     features: [
       'Оснащен скоростным завихрителем (ротором) со сменными лопатками из карбида вольфрама',
-      'Автоматилированный пневматический донный затвор разгрузки с датчиками положения',
+      'Автоматизированный пневматический донный затвор разгрузки с датчиками положения',
       'Корпус чаши из высокопрочной износостойкой стали с марганцевыми бронеплитами Mn13',
       'Интегрированные форсунки с ЧПУ для автоматического увлажнения смеси во время замеса'
     ],
@@ -272,8 +424,11 @@ export const PRODUCTS: Product[] = [
     id: 'green-sand-cooler-os60',
     category: 'green-sand',
     subcategory: 'green-coolers',
-    subcategoryRu: 'Охладители смеси',
-    subcategoryEn: 'Sand Coolers',
+    subcategoryRu: 'Охладители оборотной смеси',
+    subcategoryEn: 'Spent Sand Coolers',
+    subsubcategory: 'fluid-bed',
+    subsubcategoryRu: 'Установки кипящего слоя песка ОС',
+    subsubcategoryEn: 'Fluid bed spend coolers OS',
     title: 'Охладитель оборотной песчаной смеси непрерывного действия',
     titleEn: 'Continuous fluid bed green sand cooler & dust remover',
     model: 'ОС-60',
@@ -315,7 +470,10 @@ export const PRODUCTS: Product[] = [
     category: 'green-sand',
     subcategory: 'molding-lines',
     subcategoryRu: 'Автоматические формовочные линии ПГС',
-    subcategoryEn: 'Automatic green sand molding lines',
+    subcategoryEn: 'Automatic Molding Lines',
+    subsubcategory: 'automatic-afl',
+    subsubcategoryRu: 'Автоматические линии АФЛ',
+    subsubcategoryEn: 'Automatic flaskless lines AFL',
     title: 'Автоматическая безопочная формовочная линия ПГС',
     titleEn: 'Automatic flaskless green sand molding line',
     model: 'АФЛ-6080',
@@ -358,6 +516,9 @@ export const PRODUCTS: Product[] = [
     subcategory: 'molding-machines',
     subcategoryRu: 'Формовочные машины',
     subcategoryEn: 'Molding Machines',
+    subsubcategory: 'jolt-squeeze',
+    subsubcategoryRu: 'Встряхивающие прессовые ФМ',
+    subsubcategoryEn: 'Jolt squeeze machines FM',
     title: 'Встряхивающая формовочная машина с допрессовкой',
     titleEn: 'Jolt squeeze green sand molding machine',
     model: 'ФМ-20',
@@ -394,12 +555,17 @@ export const PRODUCTS: Product[] = [
       { model: 'ФМ-35', capacity: 'Опока 1000х800', capacityEn: 'Flask 1000x800', power: '0.6 МПа', powerEn: '0.6 MPa', extraField: 'Прессовый узел', extraFieldVal: 'Ø450 мм', extraFieldValEn: 'Ø450 mm' }
     ]
   },
+
+  // SECTION 4: CORE MAKING (СТЕРЖНЕВОЕ ОБОРУДОВАНИЕ)
   {
     id: 'core-shooter-sa400',
     category: 'core-making',
     subcategory: 'shooters',
     subcategoryRu: 'Стержневые автоматы',
     subcategoryEn: 'Core Shooters',
+    subsubcategory: 'cold-box-amine',
+    subsubcategoryRu: 'Cold-Box-Amine процесс СА',
+    subsubcategoryEn: 'Cold-Box-Amine SA series',
     title: 'Стержневой автомат пескострельного типа Cold-box-amine',
     titleEn: 'Pneumatic cold-box-amine automated core shooter machine',
     model: 'СА-400',
@@ -438,98 +604,198 @@ export const PRODUCTS: Product[] = [
     ]
   },
   {
-    id: 'shot-blast-q37',
-    category: 'shot-blast',
-    subcategory: 'hanger',
-    subcategoryRu: 'Подвесные камеры Q37',
-    subcategoryEn: 'Hanger Blast Chambers',
-    title: 'Дробеметная камера подвесного типа',
-    titleEn: 'Hanger-type shot blasting chamber',
-    model: 'Q378',
-    description: 'Дробеметная камера периодического действия с вращающимся подвесным крюком. Разработана для очистки от пригара формовочной смеси, окалины, ржавчины и заусенцев отливок сложной пространственной конфигурации массой до 1.5 тонн.',
-    descriptionEn: 'Batch-operated overhead hook shot blasting cabinet. Engineered for decoring, desand, and descaling cast items with complex configurations up to 1.5-ton load capacity.',
-    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
-    capacity: 'До 1.5 тонн нагрузки',
-    capacityEn: 'Up to 1.5-ton cargo',
-    power: '22 кВт',
-    powerEn: '22 kW',
+    id: 'core-shooter-hot-box',
+    category: 'core-making',
+    subcategory: 'shooters',
+    subcategoryRu: 'Стержневые автоматы',
+    subcategoryEn: 'Core Shooters',
+    subsubcategory: 'hot-box',
+    subsubcategoryRu: 'Hot-Box нагреваемый процесс СТ',
+    subsubcategoryEn: 'Hot-Box heated process ST',
+    title: 'Стержневая машина горячей оснастки Hot-Box',
+    titleEn: 'Electric heated Hot-Box core shooting machine',
+    model: 'СТ-20H',
+    description: 'Пескострельный стержневой автомат с электрическим нагревом металлического стержневого ящика. Предназначен для работы по процессам Hot-Box и Shell-процессам (оболочковые формы). Гарантирует прецизионную геометрию и высокую газопроницаемость тонких стержней.',
+    descriptionEn: 'High reliability sand core blower configured for heated tooling boxes (Hot-box and Shell resin systems). Integrated electro-heaters provide rapid mold baking, producing incredibly lightweight high-strength shell cores.',
+    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    capacity: 'Стержневой ящик до 20 л',
+    capacityEn: 'Weight size limit 20L',
+    power: '45 кВт (электронагрев)',
+    powerEn: '45 kW (electric mold heat)',
     features: [
-      'Две высокопроизводительные турбины прямого привода с высокой плотностью факела дроби',
-      'Регулировка скорости вращения и реверса крюка для обработки скрытых полостей отливок',
-      'Многоступенчатая система фильтрации и сепарации дроби от пыли с эффективностью 99.8%',
-      'Внутренняя защита камеры из ударопрочных плит марганцовистой стали Mn13'
+      'Многозонный нагревательный контроллер температуры (до 300°C) с термопарами обратной связи',
+      'Выталкивающая система с регулировкой глубины выдвижения стержня',
+      'Пневматический цилиндр наддува песка с износостойким уплотнением сопла',
+      'Автоматический зажимной гидропереключатель для предотвращения просыпания песка'
     ],
     featuresEn: [
-      'Two high efficiency direct-drive blast wheels ensuring dense abrasive projection pattern',
-      'Rotary hook with adjustable spinning speed and auto-reverse to blast deep pockets',
-      'Multi-stage airflow separator and dust collector filter with 99.8% extraction efficiency',
-      'Internal heavy protective lining made of impact-resistant Mn13 manganese steel plates'
+      'Multi-zone digitally adjustable electric cartridge shell heaters (up to 300°C)',
+      'Built-in linear pneumatic core ejector systems with stroke limit pins',
+      'Heavy duty shooting sand tank with polyurethane sealing washers to avoid leaks',
+      'Double locking latch with side safe limit sensors to abort in case of misalignment'
     ],
     specs: [
-      { name: 'Максимальный диаметр подвески', value: 'Ø1100 мм', nameEn: 'Maximum hook swing diameter', valueEn: 'Ø1100 mm' },
-      { name: 'Максимальная высота отливок', value: '1500 мм', nameEn: 'Maximum vertical clearance', valueEn: '1500 mm' },
-      { name: 'Грузоподъемность крюка', value: '1500 кг', nameEn: 'Hook load capacity limit', valueEn: '1500 kg' },
-      { name: 'Количество турбин (турбоголовок)', value: '2 шт.', nameEn: 'Quantity of turbine wheels', valueEn: '2 units' },
-      { name: 'Мощность одного дробеметного колеса', value: '11 кВт', nameEn: 'Single turbine motor power', valueEn: '11 kW' },
-      { name: 'Общая мощность аспирации', value: '7.5 кВт', nameEn: 'Aspiration system power', valueEn: '7.5 kW' },
-      { name: 'Производительность очистки за цикл', value: '3 - 8 минут', nameEn: 'Typical blast cycle duration', valueEn: '3 - 8 minutes' }
+      { name: 'Максимальный вес стержня', value: '20 кг', nameEn: 'Maximum sand weight', valueEn: '20 kg' },
+      { name: 'Размер нагревательных плит', value: '500 х 400 мм', nameEn: 'Heater plate size', valueEn: '500 x 400 mm' },
+      { name: 'Диапазон рабочих температур уставки', value: '150 - 300 °C', nameEn: 'Baking temperature range', valueEn: '150 - 300 °C' },
+      { name: 'Мощность нагревательных патронов', value: '24 кВт', nameEn: 'Heating elements rating', valueEn: '24 kW' },
+      { name: 'Полный рабочий цикл (базовый)', value: '45 - 90 секунд', nameEn: 'Total cycle time range', valueEn: '45 - 90 seconds' }
     ],
     variantModels: [
-      { model: 'Q376', capacity: 'До 0.6 тонн', capacityEn: 'Up to 0.6 tons', power: '15.0 кВт', powerEn: '15.0 kW', extraField: 'Размер детали', extraFieldVal: 'Ø800х1200 мм', extraFieldValEn: 'Ø800x1200 mm' },
-      { model: 'Q378', capacity: 'До 1.5 тонн', capacityEn: 'Up to 1.5 tons', power: '22.0 кВт', powerEn: '22.0 kW', extraField: 'Размер детали', extraFieldVal: 'Ø1100х1500 мм', extraFieldValEn: 'Ø1100x1500 mm' },
-      { model: 'Q3710', capacity: 'До 2.0 тонн', capacityEn: 'Up to 2.0 tons', power: '33.0 кВт', powerEn: '33.0 kW', extraField: 'Размер детали', extraFieldVal: 'Ø1400х1800 мм', extraFieldValEn: 'Ø1400x1800 mm' },
-      { model: 'Q3715', capacity: 'До 3.0 тонн', capacityEn: 'Up to 3.0 tons', power: '45.0 кВт', powerEn: '45.0 kW', extraField: 'Размер детали', extraFieldVal: 'Ø1600х2000 мм', extraFieldValEn: 'Ø1600x2000 mm' },
-      { model: 'Q3720', capacity: 'До 5.0 тонн', capacityEn: 'Up to 5.0 tons', power: '55.0 кВт', powerEn: '55.0 kW', extraField: 'Размер детали', extraFieldVal: 'Ø2000х2400 мм', extraFieldValEn: 'Ø2000x2400 mm' }
+      { model: 'СТ-10H', capacity: 'Ящик до 10л', capacityEn: 'Up to 10L', power: '24 кВт', powerEn: '24 kW', extraField: 'Плита нагрева', extraFieldVal: '400х300 мм', extraFieldValEn: '400x300 mm' },
+      { model: 'СТ-20H', capacity: 'Ящик до 20л', capacityEn: 'Up to 20L', power: '45 кВт', powerEn: '45 kW', extraField: 'Плита нагрева', extraFieldVal: '500х400 мм', extraFieldValEn: '500x400 mm' }
+    ]
+  },
+
+  // SECTION 5: SHOT BLAST DIVISION (ДРОБЕМЁТЫ - THE USER'S DIRECT FOCUS EXAMPLE)
+  {
+    id: 'shot-blast-q32-rubber',
+    category: 'shot-blast',
+    subcategory: 'shot-blast-machines',
+    subcategoryRu: 'Дробемётное оборудование',
+    subcategoryEn: 'Shot blasting units',
+    subsubcategory: 'tumble-rubber',
+    subsubcategoryRu: 'Ленточного типа',
+    subsubcategoryEn: 'Tumble belt rubber apron type',
+    title: 'Дробеметная установка ленточного типа с резиновым транспортером',
+    titleEn: 'Tumble belt shot blasters with rubber belt',
+    model: 'Q3210',
+    description: 'Высокопроизводственное дробеметное оборудование периодического действия. Внутри камеры детали бережно перекатываются на бесконечной толстой резиновой ленте-транспортере (ленточное исполнение) под направленным центробежным факелом абразива высокой плотности. Позволяет полностью автоматизировать разгрузку путем реверсивного движения ленты наружу.',
+    descriptionEn: 'High-power batch tumble belt mechanical shotblast system. Features a thick protective rubber belt conveyor supporting and continuous turning of small-to-medium castings under a powerful directed abrasive stream. Reversing the belt direction unloads parts automatically.',
+    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+    capacity: 'Загрузка до 1000 кг',
+    capacityEn: 'Batch limit up to 1000 kg',
+    power: '22.0 кВт',
+    powerEn: '22.0 kW',
+    features: [
+      'Износостойкая резиновая бесконечная лента-транспортер увеличенной толщины со стальным кордом',
+      'Высокомощное центробежное дробеметное колесо с высокоэффективной прямой передачей',
+      'Автоматическое открытие/закрытие двери камеры с пневматическим уплотнением',
+      'Интегрированный ковшовый элеватор, воздушный сепаратор дроби и картриджный аспиратор'
+    ],
+    featuresEn: [
+      'Endless reinforced rubber apron belt resisting heavy impacts and intense friction wear',
+      'Highly efficient motor-coupled turbine wheel projecting optimized high flow density',
+      'Pneumatically operated vertical chamber gate with air-locked rubber curtain sealings',
+      'Built-in bucket elevator, dynamic separator and heavy duty dry dust controller'
+    ],
+    specs: [
+      { name: 'Объем загрузочной камеры ленты', value: '0.30 м³', nameEn: 'Chamber load volume', valueEn: '0.30 m³' },
+      { name: 'Максимальный вес одной детали', value: '35 кг', nameEn: 'Maximum single workpiece weight', valueEn: '35 kg' },
+      { name: 'Номинальная грузоподъемность', value: '1000 кг', nameEn: 'Maximum payload weight', valueEn: '1000 kg' },
+      { name: 'Количество турбин дробления', value: '1 шт. (22 кВт)', nameEn: 'Turbine wheels count', valueEn: '1 unit (22 kW)' },
+      { name: 'Расход дроби при обработке', value: '180 кг/мин', nameEn: 'Abrasive projection rate', valueEn: '180 kg/min' },
+      { name: 'Средний цикл очистки отливок', value: '6 - 12 минут', nameEn: 'Standard cleaning cycle time', valueEn: '6 - 12 minutes' }
+    ],
+    variantModels: [
+      { model: 'Q324', capacity: 'Загрузка до 300 кг', capacityEn: 'Batch limit 300 kg', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Объем барабана', extraFieldVal: '0.08 м³', extraFieldValEn: '0.08 m³' },
+      { model: 'Q326', capacity: 'Загрузка до 600 кг', capacityEn: 'Batch limit 600 kg', power: '15.5 кВт', powerEn: '15.5 kW', extraField: 'Объем барабана', extraFieldVal: '0.15 м³', extraFieldValEn: '0.15 m³' },
+      { model: 'Q3210', capacity: 'Загрузка до 1000 кг', capacityEn: 'Batch limit 1000 kg', power: '22.0 кВт', powerEn: '22.0 kW', extraField: 'Объем барабана', extraFieldVal: '0.30 м³', extraFieldValEn: '0.30 m³' }
     ]
   },
   {
-    id: 'shot-blast-q32',
+    id: 'shot-blast-q31-drum',
     category: 'shot-blast',
-    subcategory: 'tumble',
-    subcategoryRu: 'Барабанные дробеметы Q32',
-    subcategoryEn: 'Tumble Belt Blasters',
-    title: 'Дробеметная установка барабанного типа',
-    titleEn: 'Tumble belt shotblaster with rubber belt',
-    model: 'Q326',
-    description: 'Компактная высокопроизводительная дробеметная камера барабанного типа с износостойкой резиновой лентой. Предназначена для интенсивной очистки мелких деталей, штамповок и отливок весом до 30 кг от песка, пригара и окалины во вращающемся режиме.',
-    descriptionEn: 'Rotary rubber tumble belt mechanical blast cabinet. Best for mass processing small forgings or castings up to 30 kg, removing burn-on residue via tumbling under dense abrasive jet flows.',
+    subcategory: 'shot-blast-machines',
+    subcategoryRu: 'Дробемётное оборудование',
+    subcategoryEn: 'Shot blasting units',
+    subsubcategory: 'tumble-steel',
+    subsubcategoryRu: 'Барабанного типа',
+    subsubcategoryEn: 'Tumble steel drum type',
+    title: 'Дробеметная установка барабанного типа (стальной конвейер)',
+    titleEn: 'Tumble steel flight drum-type shotblaster',
+    model: 'Q3113',
+    description: 'Супертяжелые дробеметные установки барабанного типа периодического действия. Детали перекатываются под мощным струйным факелом во вращающемся барабане со стальными звеньями конвейера из сверхустойчивой марганцовистой стали. Лучшее индустриальное решение для тяжелых толстостенных отливок чугуна весом до 100 кг, твердых поковок и масштабной окалины после печи.',
+    descriptionEn: 'Ultra heavy duty drum batch shot blasting system with manganese steel flight conveyors. Designed to roll and tumble heavier castings (up to 100 kg per item) safely beneath a high volume abrasive flow.',
     imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
-    capacity: 'Загрузка до 600 кг',
-    capacityEn: 'Batch limit up to 600 kg',
-    power: '15.5 кВт',
-    powerEn: '15.5 kW',
+    capacity: 'Загрузка до 1200 кг',
+    capacityEn: 'Batch limit up to 1200 kg',
+    power: '37.0 кВт',
+    powerEn: '37.0 kW',
     features: [
-      'Износостойкая резиновая транспортерная лента повышенной толщины и эластичности',
-      'Высокомощное центробежное дробеметное колесо с прямой передачей вращения',
-      'Автоматическая разгрузка обработанных деталей путем реверсивного движения ленты',
-      'Двухступенчатая очистка пылевоздушного спектра рукавным сертифицированным фильтром'
+      'Стальной звеньевой конвейер-чешуя из высокопрочной брони Mn13 с износостойкостью 10000 часов',
+      'Закаленный бесшовный вращающийся барабан во избежание захвата тонких кромок деталей',
+      'Турбоголовка высокой мощности с прямым ременным демпфирующим приводом',
+      'Автоматический механический загрузочный ковш (скиповый подъемник) в базовой комплектации'
     ],
     featuresEn: [
-      'Extra thick wear-resistant endless rubber apron ensuring smooth structural rolling',
-      'High speed directly coupled turbine blade wheel projecting heavy shot streams',
-      'Automatic discharge of processed casting workpieces by simply reversing the conveyor belt',
-      'High capacity air ventilation and dust collection system with a cartridge filter'
+      'Highly reinforced Mn13 heavy steel flight links designed for heavy iron cast impacts',
+      'Gapless rotating drum construction protecting parts from being wedged or pinched',
+      'High capacity blast turbine with direct V-belt vibration absorption drive',
+      'Integrated hydraulic skip loader providing automated bulk hardware loading sequence'
     ],
     specs: [
-      { name: 'Объем загрузочной камеры', value: '0.15 м³', nameEn: 'Tumble chamber net volume', valueEn: '0.15 m³' },
-      { name: 'Максимальный вес одной детали', value: '30 кг', nameEn: 'Maximum single component weight', valueEn: '30 kg' },
-      { name: 'Грузоподъемность барабана', value: '600 кг', nameEn: 'Total tumble weight limit', valueEn: '600 kg' },
-      { name: 'Количество и мощность турбин', value: '1 х 11.0 кВт', nameEn: 'Blast wheel motor power', valueEn: '1 x 11.0 kW' },
-      { name: 'Производительность подачи дроби', value: '120 кг/мин', nameEn: 'Blast abrasive feed rate limit', valueEn: '120 kg/min' },
-      { name: 'Продолжительность очистки партии', value: '5 - 15 минут', nameEn: 'Processing cycle time range', valueEn: '5 - 15 minutes' }
+      { name: 'Объем вращающегося барабана', value: '0.40 м³', nameEn: 'Steel drum capacity volume', valueEn: '0.40 m³' },
+      { name: 'Максимальный одиночный вес отливки', value: '100 кг', nameEn: 'Max single component weight', valueEn: '100 kg' },
+      { name: 'Вес разовой загрузки барабана', value: '1200 кг', nameEn: 'Aggregate batch weight limits', valueEn: '1200 kg' },
+      { name: 'Мощность турбинного индуктора', value: '1 х 30.0 кВт', nameEn: 'Blast wheel motor power rating', valueEn: '1 x 30.0 kW' },
+      { name: 'Производительность подачи дроби', value: '250 кг/мин', nameEn: 'Media flow extraction rate', valueEn: '250 kg/min' },
+      { name: 'Габаритные размеры (ДхШхВ)', value: '3800 х 2400 х 4100 мм', nameEn: 'Dimensions (LxWxH)', valueEn: '3800 x 2400 x 4100 mm' }
     ],
     variantModels: [
-      { model: 'Q324', capacity: 'Загрузка до 300 кг', capacityEn: 'Batch 300 kg', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Объем барабана', extraFieldVal: '0.08 м³', extraFieldValEn: '0.08 m³' },
-      { model: 'Q326', capacity: 'Загрузка до 600 кг', capacityEn: 'Batch 600 kg', power: '15.5 кВт', powerEn: '15.5 kW', extraField: 'Объем барабана', extraFieldVal: '0.15 м³', extraFieldValEn: '0.15 m³' },
-      { model: 'Q3210', capacity: 'Загрузка до 1000 кг', capacityEn: 'Batch 1000 kg', power: '22.0 кВт', powerEn: '22.0 kW', extraField: 'Объем барабана', extraFieldVal: '0.30 м³', extraFieldValEn: '0.30 m³' }
+      { model: 'Q3110', capacity: 'Загрузка до 600 кг', capacityEn: 'Batch limit 600 kg', power: '22.0 кВт', powerEn: '22.0 kW', extraField: 'Вес детали', extraFieldVal: '50 кг', extraFieldValEn: '50 kg' },
+      { model: 'Q3113', capacity: 'Загрузка до 1200 кг', capacityEn: 'Batch limit 1200 kg', power: '37.0 кВт', powerEn: '37.0 kW', extraField: 'Вес детали', extraFieldVal: '100 кг', extraFieldValEn: '100 kg' },
+      { model: 'Q3115', capacity: 'Загрузка до 2000 кг', capacityEn: 'Batch limit 2000 kg', power: '55.0 кВт', powerEn: '55.0 kW', extraField: 'Вес детали', extraFieldVal: '150 кг', extraFieldValEn: '150 kg' }
     ]
   },
+  {
+    id: 'shot-blast-q37-hanger',
+    category: 'shot-blast',
+    subcategory: 'shot-blast-machines',
+    subcategoryRu: 'Дробемётное оборудование',
+    subcategoryEn: 'Shot blasting units',
+    subsubcategory: 'hanger-hook',
+    subsubcategoryRu: 'Подвесные',
+    subsubcategoryEn: 'Overhead hook type',
+    title: 'Дробеметная камера подвесного типа (крюковые дробеметы)',
+    titleEn: 'Hanger-type shotblaster with rotary hooks',
+    model: 'Q3710',
+    description: 'Профессиональная дробеметная камера подвесного типа серии Q37 с вращающимися и колеблющимися подвесными крюками. Позволяет обрабатывать отливки сложной пространственной формы, подвешенные на крюковой подвеске грузоподъемностью до 2.0 тонн (стальные каркасы, корпуса редукторов, блоки цилиндров). Исключает взаимное соударение деталей во время очистки.',
+    descriptionEn: 'Heavy duty overhead hook hanger shot blast cabinet. Multiple high-precision rotor wheels blast complex spatial shapes suspending and spinning from dual-track trolley hooks. Prevents components from bumping each other.',
+    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+    capacity: 'До 2.0 тонн на крюке',
+    capacityEn: 'Up to 2.0 tons load',
+    power: '33.0 кВт',
+    powerEn: '33.0 kW',
+    features: [
+      'Два или три высокомощных дробеметных колеса, установленных под выверенными углами атаки',
+      'Система непрерывного автоматического вращения и продольного реверса подвески крюка',
+      'Полная внутренняя бронировка камеры горячекатаной марганцевой сталью толщиной 12 мм',
+      'Эффективная очистка запыленного воздуха в патронном циклонном фильтре'
+    ],
+    featuresEn: [
+      'Multiple heavy direct-drive turbine engines placed at strategically computed angles',
+      'Dynamic spinning and auto-reversing overhead hoist hook supporting total area views',
+      '12mm thick heavy wear Mn13 steel plates securing the inner direct-impact chamber',
+      'Cartridge exhaust ventilator returning clean workplace air back to the room'
+    ],
+    specs: [
+      { name: 'Максимальный диаметр обметания', value: 'Ø1400 мм', nameEn: 'Maximum swing load diameter', valueEn: 'Ø1400 mm' },
+      { name: 'Максимальная высота заготовки', value: '1800 мм', nameEn: 'Maximum vertical space clearance', valueEn: '1800 mm' },
+      { name: 'Грузоподъемность одного крюка', value: '2000 кг', nameEn: 'Hanger hoist load capacity', valueEn: '2000 kg' },
+      { name: 'Количество установленных турбин', value: '2 шт.', nameEn: 'Turbine wheels qty', valueEn: '2 units' },
+      { name: 'Удельный выброс дроби турбоголовок', value: '2 x 120 кг/мин', nameEn: 'Total media projection output', valueEn: '2 x 120 kg/min' },
+      { name: 'Мощность одного двигателя турбины', value: '11.0 кВт', nameEn: 'Single blast engine rating', valueEn: '11.0 kW' }
+    ],
+    variantModels: [
+      { model: 'Q376', capacity: 'Подвес до 600 кг', capacityEn: 'Hook load 600 kg', power: '15.0 кВт', powerEn: '15.0 kW', extraField: 'Высота детали', extraFieldVal: '1200 мм', extraFieldValEn: '1200 mm' },
+      { model: 'Q378', capacity: 'Подвес до 1500 кг', capacityEn: 'Hook load 1500 kg', power: '22.0 кВт', powerEn: '22.0 kW', extraField: 'Высота детали', extraFieldVal: '1500 мм', extraFieldValEn: '1500 mm' },
+      { model: 'Q3710', capacity: 'Подвес до 2000 кг', capacityEn: 'Hook load 2000 kg', power: '33.0 кВт', powerEn: '33.0 kW', extraField: 'Высота детали', extraFieldVal: '1800 мм', extraFieldValEn: '1800 mm' },
+      { model: 'Q3715', capacity: 'Подвес до 3000 кг', capacityEn: 'Hook load 3000 kg', power: '45.0 кВт', powerEn: '45.0 kW', extraField: 'Высота детали', extraFieldVal: '2000 мм', extraFieldValEn: '2000 mm' },
+      { model: 'Q3720', capacity: 'Подвес до 5000 кг', capacityEn: 'Hook load 5000 kg', power: '55.0 кВт', powerEn: '55.0 kW', extraField: 'Высота детали', extraFieldVal: '2400 мм', extraFieldValEn: '2400 mm' }
+    ]
+  },
+
+  // SECTION 6: CASTING FORMING MACHINES (ЛИТЕЙНЫЕ МАШИНЫ)
   {
     id: 'casting-gravity-k800',
     category: 'casting-machines',
-    subcategory: 'gravity',
-    subcategoryRu: 'Кокильные машины',
-    subcategoryEn: 'Gravity Die Casters',
+    subcategory: 'molders',
+    subcategoryRu: 'Литейные формообразующие машины',
+    subcategoryEn: 'Molding & Casting Machinery',
+    subsubcategory: 'gravity-die',
+    subsubcategoryRu: 'Кокильные станки КМ-Г',
+    subsubcategoryEn: 'Gravity die systems KM-G',
     title: 'Кокильная машина с гидравлическим наклоном кокиля',
     titleEn: 'Hydraulic tilt gravity die casting machine',
     model: 'КМ-800-Г',
@@ -570,16 +836,19 @@ export const PRODUCTS: Product[] = [
   {
     id: 'casting-centrifugal-cl400',
     category: 'casting-machines',
-    subcategory: 'centrifugal',
-    subcategoryRu: 'Центробежные машины',
-    subcategoryEn: 'Centrifugal Casters',
-    title: 'Центробежная литейная машина',
+    subcategory: 'molders',
+    subcategoryRu: 'Литейные формообразующие машины',
+    subcategoryEn: 'Molding & Casting Machinery',
+    subsubcategory: 'centrifugal',
+    subsubcategoryRu: 'Центробежные полуавтоматы ЦЛ',
+    subsubcategoryEn: 'Centrifugal stations CL',
+    title: 'Центробежная литейная машина горизонтальная',
     titleEn: 'Horizontal centrifugal casting machine',
     model: 'ЦЛ-400',
-    description: 'Литейная машина центробежного типа для изготовления полых цилиндрических отливок высокого качества (втулки, гильзы, кольца) из чугуна, стали и бронзы. Вращение изложницы гарантирует плотную мелкозернистую структуру отливки без раковин.',
+    description: 'Литейная машина центробежного типа для изготовления полых цилиндрических отливок высокого качества (втулки, гильзы, кольца) из чугуна, стали и бронзы. Вращение изложницы гарантирует плотные изотропные свойства отливки.',
     descriptionEn: 'Horizontal centrifugal casting station configured to manufacture high-density cylindrical hollow sleeve castings out of bronze, cast steel, or iron, eliminating gas pores.',
     imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
-    capacity: 'Отливка до Ø400 мм',
+    capacity: 'Отливки до Ø400 мм',
     capacityEn: 'Outer diameter up to 400mm',
     power: '18.5 кВт',
     powerEn: '18.5 kW',
@@ -609,12 +878,17 @@ export const PRODUCTS: Product[] = [
       { model: 'ЦЛ-600', capacity: 'Ø200 - Ø600 мм', capacityEn: 'Ø200 - Ø600 mm', power: '30.0 кВт', powerEn: '30.0 kW', extraField: 'Длина отливки', extraFieldVal: '800 мм', extraFieldValEn: '800 mm' }
     ]
   },
+
+  // SECTION 7: COOLING SYSTEMS (ГРАДИРНИ)
   {
     id: 'cooling-tower-wt100',
     category: 'cooling-systems',
-    subcategory: 'towers',
-    subcategoryRu: 'Закрытые градирни',
-    subcategoryEn: 'Closed Cooling Towers',
+    subcategory: 'cooling-towers',
+    subcategoryRu: 'Охладительное оборудование',
+    subcategoryEn: 'Cooling Equipment',
+    subsubcategory: 'closed-circuit',
+    subsubcategoryRu: 'Закрытые испарительные градирни ГЗ',
+    subsubcategoryEn: 'Closed evaporative towers GZ',
     title: 'Испарительная закрытая градирня для печей и тиристоров',
     titleEn: 'Closed evaporative cooling tower for furnaces',
     model: 'ГЗ-100',

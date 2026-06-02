@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { Product, ProductCategory } from '../types';
 import { PRODUCTS } from '../data/products';
 import { 
@@ -34,8 +34,10 @@ interface ProductCatalogProps {
 export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsKeys, lang }: ProductCatalogProps) {
   const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>('all');
   const [activeSubcategory, setActiveSubcategory] = useState<string | 'all'>('all');
+  const [activeSubsubcategory, setActiveSubsubcategory] = useState<string | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedProductSpecs, setExpandedProductSpecs] = useState<Record<string, boolean>>({});
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   
   const catalogListSectionRef = useRef<HTMLDivElement>(null);
 
@@ -59,17 +61,50 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       { id: 'shooters', nameRu: 'Стержневые автоматы', nameEn: 'Core Shooters', descRu: 'Пескострельные полуавтоматы и автоматы серии СА', descEn: 'Amine gas shooters SA series' },
     ],
     'shot-blast': [
-      { id: 'hanger', nameRu: 'Подвесные камеры Q37', nameEn: 'Hanger Blast Chambers', descRu: 'Камеры с поворотным подвесным крюком Q37', descEn: 'Overhead hook shot blasters Q37' },
-      { id: 'tumble', nameRu: 'Барабанные дробеметы Q32', nameEn: 'Tumble Belt Blasters', descRu: 'Дробеметы с резиновым транспортером Q32', descEn: 'Tumble belt shot blasters Q32' },
+      { id: 'shot-blast-machines', nameRu: 'Дробемётное оборудование', nameEn: 'Shot blasting units', descRu: 'Дробемёты: ленточного, барабанного, подвесного типов', descEn: 'Tumble rubber, tumble steel, overhead hook' }
     ],
     'casting-machines': [
-      { id: 'gravity', nameRu: 'Кокильные машины', nameEn: 'Gravity Die Casters', descRu: 'Станки кокильного литья с гидроблоком КМ', descEn: 'Gravity die casting machines KM' },
-      { id: 'centrifugal', nameRu: 'Центробежные машины', nameEn: 'Centrifugal Casters', descRu: 'Центробежные литейные полуавтоматы ЦЛ', descEn: 'Centrifugal casting machines CL' },
+      { id: 'molders', nameRu: 'Литейные формообразующие машины', nameEn: 'Molding & Casting Machinery', descRu: 'Кокильные станки КМ-Г и центробежные установки ЦЛ', descEn: 'Hydraulic die molding and centrifugal casters' }
     ],
     'cooling-systems': [
-      { id: 'towers', nameRu: 'Закрытые градирни', nameEn: 'Closed Cooling Towers', descRu: 'Испарительные чистые градирни серии ГЗ', descEn: 'Closed evaporative water cooling towers GZ' },
+      { id: 'cooling-towers', nameRu: 'Охладительное оборудование', nameEn: 'Cooling Equipment', descRu: 'Закрытые кулеры и испарительные градирни серии ГЗ', descEn: 'Closed evaporative water cooling towers GZ' }
     ]
   };
+
+  // Automatically reset sub-subcategory selection when active category or subcategory updates
+  useEffect(() => {
+    setActiveSubsubcategory('all');
+  }, [activeCategory, activeSubcategory]);
+
+  // Reset selected product when category or subcategory changes manually
+  useEffect(() => {
+    setSelectedProductId(null);
+  }, [activeCategory, activeSubcategory]);
+
+  // Compute sub-subcategories available dynamically from physical products data for active choice
+  const availableSubsubcategories = useMemo(() => {
+    if (activeCategory === 'all' || activeSubcategory === 'all') return [];
+    
+    const items = PRODUCTS.filter(
+      (p) => p.category === activeCategory && p.subcategory === activeSubcategory
+    );
+    
+    const seen = new Set<string>();
+    const list: { id: string; nameRu: string; nameEn: string }[] = [];
+    
+    items.forEach((p) => {
+      if (p.subsubcategory && !seen.has(p.subsubcategory)) {
+        seen.add(p.subsubcategory);
+        list.push({
+          id: p.subsubcategory,
+          nameRu: p.subsubcategoryRu || p.subsubcategory,
+          nameEn: p.subsubcategoryEn || p.subsubcategory
+        });
+      }
+    });
+    
+    return list;
+  }, [activeCategory, activeSubcategory]);
 
   // Sync selectedCategory from parent component and handle custom event triggers
   useEffect(() => {
@@ -87,6 +122,14 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       if (selectedCategory) {
         setActiveCategory(selectedCategory as ProductCategory | 'all');
       }
+      const prodId = (window as any)._pendingProductId || '';
+      if (prodId) {
+        setSelectedProductId(prodId);
+        // Clear to avoid double trigger
+        (window as any)._pendingProductId = '';
+      } else {
+        setSelectedProductId(null);
+      }
     };
     window.addEventListener('catalog-query-sync', handleSync);
     
@@ -96,6 +139,10 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     }
     if ((window as any)._pendingCatalogSubId !== undefined) {
       setActiveSubcategory((window as any)._pendingCatalogSubId);
+    }
+    if ((window as any)._pendingProductId) {
+      setSelectedProductId((window as any)._pendingProductId);
+      (window as any)._pendingProductId = '';
     }
     
     return () => {
@@ -219,12 +266,14 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       statsRu: 'Ресурс брони: сталь Mn13',
       statsEn: 'Lining material: Mn13 Steel',
       subcategoriesRu: [
-        { label: 'Подвесные камеры Q37', query: 'Q37', subId: 'hanger' },
-        { label: 'Барабанные дробеметы Q32', query: 'Q32', subId: 'tumble' }
+        { label: 'Модели ленточного типа Q32', query: 'Q32', subId: 'shot-blast-machines' },
+        { label: 'Модели барабанного типа Q31', query: 'Q31', subId: 'shot-blast-machines' },
+        { label: 'Подвесные крюковые камеры Q37', query: 'Q37', subId: 'shot-blast-machines' }
       ],
       subcategoriesEn: [
-        { label: 'Hanger cabinets Q37', query: 'Q37', subId: 'hanger' },
-        { label: 'Tumble belt blasters Q32', query: 'Q32', subId: 'tumble' }
+        { label: 'Tumble belt models Q32', query: 'Q32', subId: 'shot-blast-machines' },
+        { label: 'Tumble drum models Q31', query: 'Q31', subId: 'shot-blast-machines' },
+        { label: 'Hanger hook chambers Q37', query: 'Q37', subId: 'shot-blast-machines' }
       ]
     },
     {
@@ -240,12 +289,12 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       statsRu: 'Усилия запирания: до 200 кН',
       statsEn: 'Mould clamping limits: 200 kN',
       subcategoriesRu: [
-        { label: 'Кокильные машины КМ-800', query: 'КМ', subId: 'gravity' },
-        { label: 'Центробежные машины ЦЛ-400', query: 'ЦЛ', subId: 'centrifugal' }
+        { label: 'Кокильные машины КМ-Г', query: 'KM', subId: 'molders' },
+        { label: 'Центробежные машины ЦЛ', query: 'CL', subId: 'molders' }
       ],
       subcategoriesEn: [
-        { label: 'Gravity molders KM-800', query: 'KM', subId: 'gravity' },
-        { label: 'Centrifugal stations CL-400', query: 'CL', subId: 'centrifugal' }
+        { label: 'Gravity molders KM-G', query: 'KM', subId: 'molders' },
+        { label: 'Centrifugal stations CL', query: 'CL', subId: 'molders' }
       ]
     },
     {
@@ -261,10 +310,10 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       statsRu: 'Теплосъем: медный контур T2',
       statsEn: 'Heat removal: Copper coil T2',
       subcategoriesRu: [
-        { label: 'Закрытые градирни ГЗ-100', query: 'ГЗ', subId: 'towers' }
+        { label: 'Закрытые градирни ГЗ', query: 'GZ', subId: 'cooling-towers' }
       ],
       subcategoriesEn: [
-        { label: 'Closed circuit towers GZ-100', query: 'GZ', subId: 'towers' }
+        { label: 'Closed circuit towers GZ', query: 'GZ', subId: 'cooling-towers' }
       ]
     }
   ];
@@ -272,13 +321,14 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
   const filteredProducts = PRODUCTS.filter((product) => {
     const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
     const matchesSubcategory = activeSubcategory === 'all' || product.subcategory === activeSubcategory;
+    const matchesSubsubcategory = activeSubsubcategory === 'all' || product.subsubcategory === activeSubsubcategory;
     const matchesSearch =
       product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (product.titleEn && product.titleEn.toLowerCase().includes(searchQuery.toLowerCase())) ||
       product.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (product.descriptionEn && product.descriptionEn.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSubcategory && matchesSearch;
+    return matchesCategory && matchesSubcategory && matchesSubsubcategory && matchesSearch;
   });
 
   const toggleSpecs = (id: string) => {
@@ -482,58 +532,10 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
           </div>
         ) : (
           
-          /* Render Page B: Dedicated Section Page with Sticky Left Sidebar Navigation */
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* STICKY SIDEBAR: Division pages switcher (Organized as separate pages) */}
-            <div className="lg:col-span-3 lg:sticky lg:top-24 space-y-4">
-              <div className="bg-white border border-gray-200 rounded-lg p-4 space-y-4 shadow-xs">
-                <div className="pb-3 border-b border-gray-100 flex items-center justify-between">
-                  <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#e65410] font-black">
-                    {lang === 'en' ? 'Catalog Sections' : 'Разделы каталога'}
-                  </h4>
-                  <button 
-                    onClick={() => setActiveCategory('all')}
-                    className="text-[10px] font-bold text-gray-400 hover:text-gray-900 border-none bg-transparent cursor-pointer font-sans"
-                  >
-                    ← {lang === 'en' ? 'Index' : 'К разделам'}
-                  </button>
-                </div>
-                
-                <nav className="space-y-1.5">
-                  {categories.map((cat) => {
-                    const isPageActive = activeCategory === cat.id;
-                    return (
-                      <button
-                        key={cat.id}
-                        onClick={() => {
-                          setActiveCategory(cat.id);
-                          setActiveSubcategory('all');
-                          setSearchQuery('');
-                        }}
-                        className={`w-full text-left px-3 py-2.5 rounded text-xs transition duration-150 font-bold border-none cursor-pointer flex items-center justify-between ${
-                          isPageActive
-                            ? 'bg-[#0b0f19] text-white'
-                            : 'bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-950'
-                        }`}
-                      >
-                        <span className="truncate">{cat.label === t.catAll ? (lang === 'en' ? 'Show All Equipment' : 'Показать весь список') : cat.label}</span>
-                        {isPageActive && <span className="h-1.5 w-1.5 rounded-full bg-[#e65410] shrink-0 ml-1" />}
-                      </button>
-                    );
-                  })}
-                </nav>
-              </div>
-
-              <div className="bg-[#0b0f19] text-white p-4 rounded-lg space-y-2 border border-gray-800 text-[11px] font-mono">
-                <span className="text-[#e65410] uppercase font-black tracking-wider block text-[9px]">Стандарты качества:</span>
-                <p className="text-gray-400 leading-relaxed">Все марки оборудования поставляются с пакетом чертежей фундаментов, схем подключения нагрузок и инструкциями ЧПУ на русском языке.</p>
-              </div>
-            </div>
-
-            {/* MAIN CATALOG CONTENT ON THE DEDICATED PAGE */}
-            <div className="lg:col-span-9 space-y-6">
-              
+          /* Render Page B: Dedicated Section Page - Clean Full Width Layout without Sidebar and Subcategory filters */
+          <div className="w-full space-y-6 animate-fade-in">
+            {/* Header / Breadcrumb navigation panel with Back button */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-gray-200 p-4 rounded-lg shadow-2xs">
               {/* Breadcrumb path navigation */}
               <div className="flex items-center space-x-2 text-xs text-gray-400 font-mono">
                 <button 
@@ -544,7 +546,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   }}
                   className="hover:text-gray-900 hover:underline border-none bg-transparent cursor-pointer p-0"
                 >
-                  {lang === 'en' ? 'Divisions' : 'Разделы'}
+                  {lang === 'en' ? 'Catalog' : 'Каталог'}
                 </button>
                 <span>/</span>
                 <span className="text-[#e65410] font-bold">
@@ -558,6 +560,22 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 )}
               </div>
 
+              <button
+                onClick={() => {
+                  setActiveCategory('all');
+                  setActiveSubcategory('all');
+                  setSearchQuery('');
+                }}
+                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#0b0f19] hover:bg-slate-800 text-white font-mono text-[10px] uppercase font-bold rounded shadow-xs transition cursor-pointer self-start sm:self-auto"
+              >
+                <ArrowRight className="h-3.5 w-3.5 transform rotate-180 text-[#e65410]" />
+                <span>{lang === 'en' ? 'Back to Divisions' : 'Назад к разделам'}</span>
+              </button>
+            </div>
+
+            {/* MAIN CATALOG CONTENT ON THE DEDICATED PAGE */}
+            <div className="space-y-6">
+              
               {/* Counter and header bar */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-3 gap-3">
                 <div className="space-y-1">
@@ -572,77 +590,6 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   {filteredProducts.length} {lang === 'en' ? 'models matching' : 'позиций в базе'}
                 </span>
               </div>
-
-              {/* Interactive Subcategory Filter Cards */}
-              {activeCategory !== 'all' && SUBCATEGORIES_MAP[activeCategory] && (
-                <div className="bg-white border border-gray-200 rounded-lg p-4 space-y-3 shadow-xs">
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-1.5">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-[#e65410] font-black">
-                      {lang === 'en' ? 'Sub-divisions & Equipment types' : 'Подразделы направления и типы агрегатов'}
-                    </h4>
-                    {activeSubcategory !== 'all' && (
-                      <button
-                        onClick={() => {
-                          setActiveSubcategory('all');
-                          setSearchQuery('');
-                        }}
-                        className="text-[10px] font-mono text-[#e65410] hover:underline bg-transparent border-none cursor-pointer"
-                      >
-                        {lang === 'en' ? 'Clear sub-filter' : 'Показать всё'}
-                      </button>
-                    )}
-                  </div>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                    {/* "All" button */}
-                    <div
-                      onClick={() => {
-                        setActiveSubcategory('all');
-                        setSearchQuery('');
-                      }}
-                      className={`p-3 rounded-lg border cursor-pointer transition flex flex-col justify-between ${
-                        activeSubcategory === 'all'
-                          ? 'border-[#e65410] bg-orange-500/5 text-[#e65410]'
-                          : 'border-gray-200 bg-gray-50/50 hover:bg-gray-50'
-                      }`}
-                    >
-                      <span className="text-xs font-black uppercase font-sans">
-                        {lang === 'en' ? 'All units' : 'Все подразделы'}
-                      </span>
-                      <span className="text-[9px] text-gray-400 font-mono mt-1 block">
-                        {lang === 'en' ? 'Complete list combined' : 'Полный список оборудования'}
-                      </span>
-                    </div>
-
-                    {SUBCATEGORIES_MAP[activeCategory].map((sub) => {
-                      const isSelected = activeSubcategory === sub.id;
-                      const subName = lang === 'en' ? sub.nameEn : sub.nameRu;
-                      const subDesc = lang === 'en' ? sub.descEn : sub.descRu;
-                      return (
-                        <div
-                          key={sub.id}
-                          onClick={() => {
-                            setActiveSubcategory(sub.id);
-                            setSearchQuery('');
-                          }}
-                          className={`p-3 rounded-lg border cursor-pointer transition flex flex-col justify-between ${
-                            isSelected
-                              ? 'border-[#e65410] bg-orange-500/5 text-[#e65410]'
-                              : 'border-gray-200 bg-gray-50/50 hover:bg-gray-50'
-                          }`}
-                        >
-                          <span className="text-xs font-black uppercase font-sans leading-tight">
-                            {subName}
-                          </span>
-                          <span className="text-[9px] text-gray-400 font-mono mt-1 block leading-tight line-clamp-1">
-                            {subDesc}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
 
               {/* Products Rendering for separate category page */}
               {filteredProducts.length === 0 ? (
@@ -659,23 +606,31 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                     Очистить поиск
                   </button>
                 </div>
-              ) : (
-                <div className="space-y-8">
-                  {filteredProducts.map((p) => {
-                    const isSpecsExpanded = !!expandedProductSpecs[p.id];
-                    const isAdded = rfqItemsKeys.includes(p.id);
+              ) : selectedProductId && filteredProducts.some((prod) => prod.id === selectedProductId) ? (
+                /* 1. SINGLE DETAILED PRODUCT DETAILED VIEW */
+                (() => {
+                  const p = PRODUCTS.find((prod) => prod.id === selectedProductId)!;
+                  const isSpecsExpanded = !!expandedProductSpecs[p.id];
+                  const isAdded = rfqItemsKeys.includes(p.id);
 
-                    const pTitle = lang === 'en' && p.titleEn ? p.titleEn : p.title;
-                    const pDesc = lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description;
-                    const pFeatures = lang === 'en' && p.featuresEn ? p.featuresEn : p.features;
-                    const pCapacity = lang === 'en' && p.capacityEn ? p.capacityEn : p.capacity;
-                    const pPower = lang === 'en' && p.powerEn ? p.powerEn : p.power;
+                  const pTitle = lang === 'en' && p.titleEn ? p.titleEn : p.title;
+                  const pDesc = lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description;
+                  const pFeatures = lang === 'en' && p.featuresEn ? p.featuresEn : p.features;
+                  const pCapacity = lang === 'en' && p.capacityEn ? p.capacityEn : p.capacity;
+                  const pPower = lang === 'en' && p.powerEn ? p.powerEn : p.power;
 
-                    return (
-                      <div
-                        key={p.id}
-                        className="bg-white border border-gray-200 rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xs hover:shadow-md transition duration-200"
+                  return (
+                    <div className="space-y-6 animate-fade-in">
+                      {/* Back to cards listing button */}
+                      <button
+                        onClick={() => setSelectedProductId(null)}
+                        className="flex items-center space-x-1.5 px-3 py-2 bg-white hover:bg-gray-100 text-gray-705 hover:text-gray-950 font-bold font-sans text-xs rounded border border-gray-200 shadow-2xs transition cursor-pointer"
                       >
+                        <ArrowRight className="h-4 w-4 transform rotate-180 text-[#e65410]" />
+                        <span>{lang === 'en' ? 'Back to list of models' : 'Назад к выбору моделей'}</span>
+                      </button>
+
+                      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-sm">
                         
                         {/* Column Left (4 units size): Image, Capacity fields and Main spec add button */}
                         <div className="lg:col-span-4 p-5 sm:p-6 bg-gray-50 border-r border-gray-200 flex flex-col justify-between">
@@ -698,7 +653,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                             <div className="grid grid-cols-2 gap-2 text-[11px] font-mono">
                               {pCapacity && (
                                 <div className="bg-white border border-gray-200 p-2.5 rounded">
-                                  <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-bold">ЕНИЦА / ВЕС</span>
+                                  <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-bold">ЕДИНЩА / ВЕС</span>
                                   <span className="font-extrabold text-gray-900 block mt-0.5">{pCapacity}</span>
                                 </div>
                               )}
@@ -743,15 +698,35 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                         <div className="lg:col-span-8 p-5 sm:p-6 flex flex-col justify-between space-y-5">
                           
                           <div className="space-y-3">
-                            <div className="flex items-center space-x-2">
-                              <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest border border-orange-500/25 text-[#e65410] bg-[#e65410]/5 rounded">
-                                {p.category === 'sand-mixers-xtc' && 'Система ХТС'}
-                                {p.category === 'furnaces' && 'Плавильный комплекс'}
-                                {p.category === 'shot-blast' && 'Очистная камера'}
-                                {p.category === 'casting-machines' && 'Формовка / Литье'}
-                                {p.category === 'cooling-systems' && 'Инфраструктура охлаждения'}
+                            <div className="flex items-center space-x-1.5 flex-wrap gap-y-1.5">
+                              <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest border border-orange-500/20 text-[#e65410] bg-[#e65410]/5 rounded">
+                                {p.category === 'sand-mixers-xtc' && (lang === 'en' ? 'No-Bake System' : 'Система ХТС')}
+                                {p.category === 'furnaces' && (lang === 'en' ? 'Melting Complex' : 'Плавильный комплекс')}
+                                {p.category === 'green-sand' && (lang === 'en' ? 'Green Sand System' : 'Система ПГС')}
+                                {p.category === 'core-making' && (lang === 'en' ? 'Sand Core Production' : 'Стержневое производство')}
+                                {p.category === 'shot-blast' && (lang === 'en' ? 'Shot Blasting' : 'Дробемётное очистное')}
+                                {p.category === 'casting-machines' && (lang === 'en' ? 'Casting / Molding' : 'Формовка / Литье')}
+                                {p.category === 'cooling-systems' && (lang === 'en' ? 'Cooling Infrastructure' : 'Охлаждение')}
                               </span>
-                              <div className="h-px bg-gray-150 grow" />
+                              
+                              {p.subcategory && (
+                                <>
+                                  <span className="text-gray-300 text-[10px] font-mono select-none">/</span>
+                                  <span className="px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-widest text-slate-500 border border-slate-200 bg-slate-100 rounded">
+                                    {lang === 'en' ? p.subcategoryEn || p.subcategory : p.subcategoryRu || p.subcategory}
+                                  </span>
+                                </>
+                              )}
+
+                              {p.subsubcategory && (
+                                <>
+                                  <span className="text-gray-300 text-[10px] font-mono select-none">/</span>
+                                  <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest text-[#e65410] border border-orange-400/30 bg-orange-500/10 rounded animate-fade-in">
+                                    {lang === 'en' ? p.subsubcategoryEn || p.subsubcategory : p.subsubcategoryRu || p.subsubcategory}
+                                  </span>
+                                </>
+                              )}
+                              <div className="h-px bg-gray-150 grow min-w-[20px]" />
                             </div>
 
                             {/* Title heading */}
@@ -885,6 +860,77 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
                         </div>
 
+                      </div>
+                    </div>
+                  );
+                })()
+              ) : (
+                /* 2. CARD-BASED GRID VIEW OF CATEGORY PRODUCTS */
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                  {filteredProducts.map((p) => {
+                    const pTitle = lang === 'en' && p.titleEn ? p.titleEn : p.title;
+                    const pDesc = lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description;
+                    const pCapacity = lang === 'en' && p.capacityEn ? p.capacityEn : p.capacity;
+
+                    return (
+                      <div
+                        key={p.id}
+                        onClick={() => setSelectedProductId(p.id)}
+                        className="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group shadow-xs shadow-gray-100"
+                      >
+                        <div className="p-5 space-y-4">
+                          {/* Framed image */}
+                          <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded border border-gray-200">
+                            <img
+                              src={p.imageUrl}
+                              alt={pTitle}
+                              className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-all duration-300"
+                              referrerPolicy="no-referrer"
+                            />
+                            <div className="absolute top-2 left-2 bg-gray-950/90 border border-gray-800 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2 py-0.5 rounded">
+                              Серия: {p.model}
+                            </div>
+                          </div>
+
+                          <div className="space-y-2">
+                            <div className="flex items-center space-x-1 flex-wrap gap-y-1">
+                              <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest border border-orange-200 text-[#e65410] bg-[#e65410]/5 rounded">
+                                {p.category === 'sand-mixers-xtc' && (lang === 'en' ? 'No-Bake' : 'ХТС')}
+                                {p.category === 'furnaces' && (lang === 'en' ? 'Melting' : 'Плавка')}
+                                {p.category === 'green-sand' && (lang === 'en' ? 'Green Sand' : 'ПГС')}
+                                {p.category === 'core-making' && (lang === 'en' ? 'Sand Core' : 'Стержни')}
+                                {p.category === 'shot-blast' && (lang === 'en' ? 'Shot Blasting' : 'Дробемёт')}
+                                {p.category === 'casting-machines' && (lang === 'en' ? 'Casting' : 'Литье')}
+                                {p.category === 'cooling-systems' && (lang === 'en' ? 'Cooling' : 'Охлаждение')}
+                              </span>
+                              
+                              {p.subsubcategory && (
+                                <span className="px-1.5 py-0.5 font-mono text-[8px] font-medium uppercase tracking-widest text-slate-500 border border-slate-200 bg-slate-100 rounded">
+                                  {lang === 'en' ? p.subsubcategoryEn || p.subsubcategory : p.subsubcategoryRu || p.subsubcategory}
+                                </span>
+                              )}
+                            </div>
+
+                            <h3 className="font-extrabold text-sm text-gray-900 group-hover:text-[#e65410] leading-snug uppercase transition-colors line-clamp-2">
+                              {pTitle}
+                            </h3>
+
+                            <p className="text-xs text-gray-550 leading-relaxed line-clamp-3">
+                              {pDesc}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Action strip */}
+                        <div className="border-t border-gray-150 p-4 bg-gray-50/60 flex items-center justify-between text-[11px] font-mono">
+                          <span className="text-gray-500 font-medium">
+                            {pCapacity ? `${lang === 'en' ? 'Cap: ' : 'Пр-сть: '} ${pCapacity}` : ''}
+                          </span>
+                          <span className="font-black flex items-center gap-1.5 text-[#e65410] uppercase tracking-wider text-[10px]">
+                            <span>{lang === 'en' ? 'Details' : 'Описание'}</span>
+                            <ArrowRight className="h-3.5 w-3.5 shrink-0 transform group-hover:translate-x-1.5 transition-transform" />
+                          </span>
+                        </div>
                       </div>
                     );
                   })}

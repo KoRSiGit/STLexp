@@ -5,7 +5,7 @@ import { TRANSLATIONS } from '../data/translations';
 interface HeaderProps {
   currentTab: string;
   setCurrentTab: (tab: string) => void;
-  onCategorySelect?: (category: string, query?: string, subId?: string) => void;
+  onCategorySelect?: (category: string, query?: string, subId?: string, productId?: string) => void;
   rfqItemsCount: number;
   lang: 'ru' | 'en';
   setLang: (l: 'ru' | 'en') => void;
@@ -68,8 +68,9 @@ export default function Header({
       labelRu: 'Дробеметная очистка',
       labelEn: 'Shot Blasting',
       items: [
-        { labelRu: 'Дробеметные камеры Q37', labelEn: 'Hanger chambers Q37', query: 'Q37', subId: 'hanger' },
-        { labelRu: 'Барабанные дробеметы Q32', labelEn: 'Tumble belt blasters Q32', query: 'Q32', subId: 'tumble' },
+        { labelRu: 'Ленточные дробеметы Q32', labelEn: 'Tumble belt blasters Q32', query: 'Q32', subId: 'shot-blast-machines', productId: 'shot-blast-q32-rubber' },
+        { labelRu: 'Барабанные дробеметы Q31', labelEn: 'Tumble steel drum systems Q31', query: 'Q31', subId: 'shot-blast-machines', productId: 'shot-blast-q31-drum' },
+        { labelRu: 'Подвесные дробеметы Q37', labelEn: 'Overhead hook chambers Q37', query: 'Q37', subId: 'shot-blast-machines', productId: 'shot-blast-q37-hanger' },
       ],
     },
     {
@@ -99,9 +100,9 @@ export default function Header({
     { id: 'assistant', label: t.navAssistant, icon: ShieldAlert },
   ];
 
-  const handleCategoryClick = (catId: string, query?: string, subId?: string) => {
+  const handleCategoryClick = (catId: string, query?: string, subId?: string, productId?: string) => {
     if (onCategorySelect) {
-      onCategorySelect(catId, query, subId);
+      onCategorySelect(catId, query, subId, productId);
     } else {
       setCurrentTab('catalog');
     }
@@ -229,7 +230,7 @@ export default function Header({
                               {cat.items.map((sub, sidx) => (
                                 <li key={sidx}>
                                   <button
-                                    onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId)}
+                                    onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId, sub.productId)}
                                     className="text-left text-[11px] text-gray-300 hover:text-white transition duration-150 flex items-start gap-1 py-0.5 group/sub border-none bg-transparent p-0 cursor-pointer w-full"
                                   >
                                     <span className="text-[#e65410] opacity-50 group-hover/sub:opacity-100 font-mono">›</span>
@@ -355,7 +356,7 @@ export default function Header({
                             {cat.items.map((sub, sidx) => (
                               <li key={sidx}>
                                 <button
-                                  onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId)}
+                                  onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId, sub.productId)}
                                   className="text-left text-[11px] text-gray-600 hover:text-[#e65410] block py-1 border-none bg-transparent cursor-pointer w-full"
                                 >
                                   • {lang === 'en' ? sub.labelEn : sub.labelRu}

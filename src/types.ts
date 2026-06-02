@@ -31,6 +31,9 @@ export interface Product {
   subcategory?: string;
   subcategoryRu?: string;
   subcategoryEn?: string;
+  subsubcategory?: string;
+  subsubcategoryRu?: string;
+  subsubcategoryEn?: string;
   title: string;
   titleEn?: string;
   model: string;

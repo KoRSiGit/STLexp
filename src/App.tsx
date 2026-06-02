@@ -67,7 +67,7 @@ export default function App() {
           }
           window.scrollTo({ top: 0 });
         }}
-        onCategorySelect={(category, query, subId) => {
+        onCategorySelect={(category, query, subId, productId) => {
           setSelectedCategoryFilter(category);
           setCurrentTab('catalog');
           if (query) {
@@ -79,6 +79,11 @@ export default function App() {
             (window as any)._pendingCatalogSubId = subId;
           } else {
             (window as any)._pendingCatalogSubId = 'all';
+          }
+          if (productId) {
+            (window as any)._pendingProductId = productId;
+          } else {
+            (window as any)._pendingProductId = '';
           }
           window.dispatchEvent(new CustomEvent('catalog-query-sync'));
         }}
