@@ -7,6 +7,8 @@ import AIAssistant from './components/AIAssistant';
 import AboutCompany from './components/AboutCompany';
 import RFQCart from './components/RFQCart';
 import Footer from './components/Footer';
+import Contacts from './components/Contacts';
+import InStockEquipment from './components/InStockEquipment';
 import { Product, RFQItem } from './types';
 
 export default function App() {
@@ -124,6 +126,21 @@ export default function App() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           />
+        )}
+
+        {currentTab === 'in-stock' && (
+          <InStockEquipment 
+            lang={lang} 
+            onAddToRFQ={(prod) => {
+              handleAddToRFQ(prod);
+              setCurrentTab('rfq');
+            }}
+            rfqItemsKeys={rfqItemsKeys}
+          />
+        )}
+
+        {currentTab === 'contacts' && (
+          <Contacts lang={lang} />
         )}
 
         {currentTab === 'assistant' && <AIAssistant lang={lang} />}

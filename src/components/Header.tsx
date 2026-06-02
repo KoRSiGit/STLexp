@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info } from 'lucide-react';
+import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info, Phone } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
@@ -93,11 +93,10 @@ export default function Header({
   ];
 
   const navItems = [
-    { id: 'home', label: t.navHome, icon: Cpu },
-    { id: 'catalog', label: t.navCatalog, icon: FileText, hasDropdown: true },
-    { id: 'calc', label: t.navCalc, icon: HardHat },
-    { id: 'about', label: t.navAbout, icon: Info },
-    { id: 'assistant', label: t.navAssistant, icon: ShieldAlert },
+    { id: 'catalog', label: lang === 'en' ? 'Catalog' : 'Каталог', icon: FileText, hasDropdown: true },
+    { id: 'in-stock', label: lang === 'en' ? 'In Stock' : 'Наличие', icon: Award },
+    { id: 'about', label: lang === 'en' ? 'Company' : 'Компания', icon: Info },
+    { id: 'contacts', label: lang === 'en' ? 'Contacts' : 'Контакты', icon: Phone },
   ];
 
   const handleCategoryClick = (catId: string, query?: string, subId?: string, productId?: string) => {
@@ -145,16 +144,16 @@ export default function Header({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex items-center justify-between h-16">
           
           {/* Logo with the beautiful custom official Sibtehlit SVG */}
           <div 
             onClick={() => setCurrentTab('home')} 
-            className="flex items-center space-x-3 cursor-pointer group select-none"
+            className="flex items-center space-x-2.5 cursor-pointer group select-none"
           >
             <svg 
-              className="h-11 w-11 shrink-0 transition-transform duration-200 group-hover:scale-105" 
+              className="h-8 w-8 shrink-0 transition-transform duration-200 group-hover:scale-105" 
               viewBox="0 0 100 100" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
@@ -174,12 +173,12 @@ export default function Header({
               />
             </svg>
             <div>
-              <div className="flex items-center">
-                <span className="font-sans font-black text-xl tracking-tight text-[#00404b] uppercase sm:text-2xl">
+              <div className="flex items-center leading-none">
+                <span className="font-sans font-black text-base sm:text-lg tracking-tight text-[#00404b] uppercase">
                   {lang === 'en' ? 'Sibtehlit' : 'Сибтехлит'}
                 </span>
               </div>
-              <p className="text-[9px] text-[#00404b] font-bold tracking-wider uppercase font-sans mt-px">
+              <p className="text-[8px] text-[#00404b] font-bold tracking-wider uppercase font-sans mt-0.5 leading-none">
                 {lang === 'en' ? 'YOUR FOUNDRY PARTNER' : 'ВАШ ЛИТЕЙНЫЙ ПАРТНЕР'}
               </p>
             </div>
@@ -195,7 +194,7 @@ export default function Header({
                 return (
                   <div
                     key={item.id}
-                    className="relative h-full flex items-center"
+                    className="h-full flex items-center"
                     onMouseEnter={() => setDropdownOpen(true)}
                     onMouseLeave={() => setDropdownOpen(false)}
                   >
@@ -204,7 +203,7 @@ export default function Header({
                         setCurrentTab('catalog');
                         if (onCategorySelect) onCategorySelect('all');
                       }}
-                      className={`flex items-center space-x-1.5 h-12 px-2 text-[12px] font-bold uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
+                      className={`flex items-center space-x-1.5 h-11 px-2.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
                         isActive || dropdownOpen
                           ? 'border-[#e65410] text-[#e65410]'
                           : 'border-transparent text-gray-700 hover:text-[#e65410]'
@@ -217,7 +216,7 @@ export default function Header({
 
                     {/* Megamenu absolute panel */}
                     {dropdownOpen && (
-                      <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 w-[880px] max-w-5xl bg-[#0b0f19] text-white rounded-lg shadow-2xl border border-gray-800 p-6 z-50 animate-fadeIn grid grid-cols-4 gap-6">
+                      <div className="absolute top-[calc(100%-4px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#0b0f19] text-white rounded-lg shadow-2xl border border-gray-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                         {catalogDropdownCategories.map((cat) => (
                           <div key={cat.id} className="space-y-3">
                             <h5 
@@ -242,7 +241,7 @@ export default function Header({
                           </div>
                         ))}
                         
-                        <div className="col-span-4 border-t border-gray-800 pt-4 mt-2 flex items-center justify-between text-[10px] text-gray-400 font-mono">
+                        <div className="col-span-2 lg:col-span-4 border-t border-gray-800 pt-4 mt-2 flex items-center justify-between text-[10px] text-gray-400 font-mono">
                           <span className="flex items-center gap-1">
                             <Sparkles className="h-3 w-3 text-[#e65410] animate-pulse" />
                             <span>{lang === 'en' ? 'Direct navigation from Siberian Foundry Technologies (Sibtehlit)' : 'Официальный номенклатурный список «Сибтехлит»'}</span>
@@ -264,7 +263,7 @@ export default function Header({
                 <button
                   key={item.id}
                   onClick={() => setCurrentTab(item.id)}
-                  className={`flex items-center space-x-1.5 h-12 px-2 text-[12px] font-bold uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
+                  className={`flex items-center space-x-1.5 h-11 px-2.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
                     isActive
                       ? 'border-[#e65410] text-[#e65410]'
                       : 'border-transparent text-gray-700 hover:text-[#e65410]'
@@ -313,6 +312,42 @@ export default function Header({
             </button>
           </div>
 
+        </div>
+      </div>
+
+      {/* Secondary Row for Equipment Selection and Calculations */}
+      <div className="bg-slate-50 border-t border-b border-gray-150 py-3 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+          <div className="text-[11px] font-bold text-gray-550 font-mono flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#e65410] animate-pulse" />
+            <span>{lang === 'en' ? 'ENGINEERING & AUTOMATION ZONE:' : 'ИНЖЕНЕРНО-ТЕХНОЛОГИЧЕСКИЙ РАЗДЕЛ:'}</span>
+          </div>
+          
+          <div className="flex flex-wrap gap-2.5 sm:gap-4 justify-center">
+            <button 
+              onClick={() => setCurrentTab('calc')}
+              className={`flex items-center space-x-2 text-[11px] font-black uppercase tracking-wider px-4 py-2 transition-all duration-200 cursor-pointer rounded border ${
+                currentTab === 'calc'
+                  ? 'bg-[#e65410] border-[#e65410] text-white shadow-xs'
+                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#e65410] hover:border-[#e65410]'
+              }`}
+            >
+              <Sliders className="h-3.5 w-3.5" />
+              <span>{lang === 'en' ? 'Foundry Calculator' : 'Литейный калькулятор'}</span>
+            </button>
+
+            <button 
+              onClick={() => setCurrentTab('assistant')}
+              className={`flex items-center space-x-2 text-[11px] font-black uppercase tracking-wider px-4 py-2 transition-all duration-200 cursor-pointer rounded border ${
+                currentTab === 'assistant'
+                  ? 'bg-[#00404b] border-[#00404b] text-white shadow-xs'
+                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#00404b] hover:border-[#00404b]'
+              }`}
+            >
+              <Sparkles className="h-3.5 w-3.5 text-orange-500 animate-pulse" />
+              <span>{lang === 'en' ? 'AI-Assistant / Selection Guide' : 'ИИ-Подбор оборудования'}</span>
+            </button>
+          </div>
         </div>
       </div>
 

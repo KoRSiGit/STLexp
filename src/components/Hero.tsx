@@ -35,17 +35,33 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
     let recommendation: Product | null = null;
     
     if (tech === 'sand-mixers-xtc') {
-      if (volume === 'low' || volume === 'medium') {
-        recommendation = PRODUCTS.find(p => p.id === 'xtc-mixer-s10') || null;
+      if (volume === 'low') {
+        recommendation = PRODUCTS.find(p => p.id === 'xtc-mixer-single-arm') || null;
+      } else if (volume === 'medium') {
+        recommendation = PRODUCTS.find(p => p.id === 'xtc-mixer-double-arm') || null;
       } else {
-        recommendation = PRODUCTS.find(p => p.id === 'xtc-reclamation-r8') || null;
+        recommendation = PRODUCTS.find(p => p.id === 'xtc-reclamation-mechanical') || null;
       }
     } else if (tech === 'furnaces') {
-      recommendation = PRODUCTS.find(p => p.id === 'furnace-induction-gw1') || null;
+      if (volume === 'low' || volume === 'medium') {
+        recommendation = PRODUCTS.find(p => p.id === 'furnace-induction-aluminum-frame') || null;
+      } else {
+        recommendation = PRODUCTS.find(p => p.id === 'furnace-induction-steel-frame') || null;
+      }
     } else if (tech === 'shot-blast') {
-      recommendation = PRODUCTS.find(p => p.id === 'shot-blast-q37') || null;
+      if (volume === 'low') {
+        recommendation = PRODUCTS.find(p => p.id === 'shot-blast-q32-rubber') || null;
+      } else if (volume === 'medium') {
+        recommendation = PRODUCTS.find(p => p.id === 'shot-blast-q31-drum') || null;
+      } else {
+        recommendation = PRODUCTS.find(p => p.id === 'shot-blast-q37-hanger') || null;
+      }
     } else if (tech === 'casting-machines') {
-      recommendation = PRODUCTS.find(p => p.id === 'casting-gravity-k800') || null;
+      if (volume === 'low' || volume === 'medium') {
+        recommendation = PRODUCTS.find(p => p.id === 'casting-centrifugal-cl400') || null;
+      } else {
+        recommendation = PRODUCTS.find(p => p.id === 'casting-gravity-k800') || null;
+      }
     } else {
       recommendation = PRODUCTS.find(p => p.id === 'cooling-tower-wt100') || null;
     }
@@ -78,7 +94,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight font-black text-white uppercase font-display">
                 {t.heroTitle} <br />
-                <span className="text-[#e65410]">SIBTEHLIT</span>
+                <span className="text-[#e65410]">{lang === 'en' ? 'SIBTEHLIT' : 'СИБТЕХЛИТ'}</span>
               </h1>
               <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
                 {t.heroSubtitle}

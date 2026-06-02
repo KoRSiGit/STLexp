@@ -102,7 +102,7 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
             {isStatic 
               ? (lang === 'en'
                 ? 'Your request has been successfully processed in offline static mode! For faster B2B processing, please screenshot this page or copy your inquiry and send it to info@sibtehlit.ru.'
-                : 'Спецификация успешно подготовлена в автономном режиме сайта! Пожалуйста, отправьте заявку на электронную почту info@sibtehlit.ru, указав сгенерированный номер КД для ускоренного ответа.')
+                : 'Запрос оборудования успешно подготовлен в автономном режиме сайта! Пожалуйста, отправьте заявку на электронную почту info@sibtehlit.ru, указав сгенерированный номер КД для ускоренного ответа.')
               : t.rfqSuccessBody
             }
           </p>
@@ -199,7 +199,7 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
                         <button
                           onClick={() => onRemoveItem(item.product.id)}
                           className="p-1.5 text-gray-400 hover:text-red-650 hover:bg-gray-100 rounded transition cursor-pointer bg-transparent border-none"
-                          title={lang === 'en' ? 'Remove component' : 'Удалить из спецификации'}
+                          title={lang === 'en' ? 'Remove component' : 'Удалить из запроса'}
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
