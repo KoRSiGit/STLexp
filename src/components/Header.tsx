@@ -145,12 +145,12 @@ export default function Header({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20 py-2 sm:py-3">
           
           {/* Logo with the beautiful custom official Sibtehlit SVG */}
           <div 
             onClick={() => setCurrentTab('home')} 
-            className="flex items-center space-x-2.5 cursor-pointer group select-none"
+            className="flex items-center space-x-2.5 cursor-pointer group select-none hover:opacity-95"
           >
             <svg 
               className="h-8 w-8 shrink-0 transition-transform duration-200 group-hover:scale-105" 
@@ -184,8 +184,78 @@ export default function Header({
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-1 lg:space-x-4 h-full items-center">
+          {/* Actions: Calculators, AI-Assistant & RFQ Cart */}
+          <div className="flex items-center space-x-1.5 sm:space-x-3">
+            {/* Foundry Calculator Button */}
+            <button 
+              onClick={() => setCurrentTab('calc')}
+              className={`flex items-center space-x-1.5 px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider rounded border transition-all duration-150 cursor-pointer ${
+                currentTab === 'calc'
+                  ? 'bg-[#e65410] border-[#e65410] text-white shadow-xs'
+                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#e65410] hover:border-[#e65410]'
+              }`}
+            >
+              <Sliders className="h-3.5 w-3.5" />
+              <span className="hidden md:inline">{lang === 'en' ? 'Calculator' : 'Литейный калькулятор'}</span>
+              <span className="inline md:hidden">{lang === 'en' ? 'Calc' : 'Калькулятор'}</span>
+            </button>
+
+            {/* AI-Assistant Button */}
+            <button 
+              onClick={() => setCurrentTab('assistant')}
+              className={`flex items-center space-x-1.5 px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider rounded border transition-all duration-150 cursor-pointer ${
+                currentTab === 'assistant'
+                  ? 'bg-[#00404b] border-[#00404b] text-white shadow-xs'
+                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#00404b] hover:border-[#00404b]'
+              }`}
+            >
+              <Sparkles className="h-3.5 w-3.5 text-orange-500 animate-pulse" />
+              <span className="hidden md:inline">{lang === 'en' ? 'AI Selection' : 'ИИ-Подбор'}</span>
+              <span className="inline md:hidden">{lang === 'en' ? 'AI' : 'ИИ-Подбор'}</span>
+            </button>
+
+            {/* RFQ Cart Trigger */}
+            <button
+              id="rfq-cart-btn"
+              onClick={() => setCurrentTab('rfq')}
+              className={`relative flex items-center space-x-1.5 px-3 py-2.5 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-150 rounded border cursor-pointer ${
+                currentTab === 'rfq'
+                  ? 'bg-[#e65410] border-[#e65410] text-white'
+                  : 'bg-[#1A1A1A] border-[#1A1A1A] hover:bg-[#e65410] hover:border-[#e65410] text-white'
+              }`}
+            >
+              <ShoppingCart className="h-4 w-4" />
+              <span className="hidden lg:inline">{t.specRequest}</span>
+              <span className="inline lg:hidden">{lang === 'en' ? 'RFQ' : 'Запрос'}</span>
+              
+              {rfqItemsCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-[#e65410] border border-white text-white rounded-full text-[10px] font-black h-5 w-5 flex items-center justify-center animate-bounce">
+                  {rfqItemsCount}
+                </span>
+              )}
+            </button>
+
+            {/* Mobile menu trigger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-gray-700 hover:text-black rounded-lg focus:outline-none cursor-pointer"
+            >
+              <span className="sr-only">Открыть меню</span>
+              {mobileMenuOpen ? (
+                <span className="text-xl font-mono block w-6 text-center">✕</span>
+              ) : (
+                <span className="text-xl font-mono block w-6 text-center">☰</span>
+              )}
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Secondary Row - Main Navigation Menu (like on sltgroup.ru) */}
+      <div className="bg-slate-50 border-t border-b border-gray-200 hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <nav className="flex space-x-2 lg:space-x-8 h-12 items-center justify-center">
             {navItems.map((item) => {
               const IconComp = item.icon;
               const isActive = currentTab === item.id;
@@ -203,10 +273,10 @@ export default function Header({
                         setCurrentTab('catalog');
                         if (onCategorySelect) onCategorySelect('all');
                       }}
-                      className={`flex items-center space-x-1.5 h-11 px-2.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
+                      className={`flex items-center space-x-1.5 h-full px-4 text-[11px] font-black uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
                         isActive || dropdownOpen
                           ? 'border-[#e65410] text-[#e65410]'
-                          : 'border-transparent text-gray-700 hover:text-[#e65410]'
+                          : 'border-transparent text-gray-750 hover:text-[#e65410]'
                       }`}
                     >
                       <IconComp className="h-3.5 w-3.5" />
@@ -216,7 +286,7 @@ export default function Header({
 
                     {/* Megamenu absolute panel */}
                     {dropdownOpen && (
-                      <div className="absolute top-[calc(100%-4px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#0b0f19] text-white rounded-lg shadow-2xl border border-gray-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                      <div className="absolute top-[calc(100%-1px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#0b0f19] text-white rounded-b-lg shadow-2xl border border-gray-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                         {catalogDropdownCategories.map((cat) => (
                           <div key={cat.id} className="space-y-3">
                             <h5 
@@ -263,10 +333,10 @@ export default function Header({
                 <button
                   key={item.id}
                   onClick={() => setCurrentTab(item.id)}
-                  className={`flex items-center space-x-1.5 h-11 px-2.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
+                  className={`flex items-center space-x-1.5 h-full px-4 text-[11px] font-black uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
                     isActive
                       ? 'border-[#e65410] text-[#e65410]'
-                      : 'border-transparent text-gray-700 hover:text-[#e65410]'
+                      : 'border-transparent text-gray-750 hover:text-[#e65410]'
                   }`}
                 >
                   <IconComp className="h-3.5 w-3.5" />
@@ -275,79 +345,6 @@ export default function Header({
               );
             })}
           </nav>
-
-          {/* Actions: RFQ Basket & Contacts */}
-          <div className="flex items-center space-x-4">
-            {/* RFQ Cart Trigger Button */}
-            <button
-              id="rfq-cart-btn"
-              onClick={() => setCurrentTab('rfq')}
-              className={`relative flex items-center space-x-2 px-5 py-3 text-xs font-bold uppercase tracking-wider transition-all duration-150 cursor-pointer ${
-                currentTab === 'rfq'
-                  ? 'bg-[#e65410] text-white'
-                  : 'bg-[#1A1A1A] hover:bg-[#e65410] text-white'
-              }`}
-            >
-              <ShoppingCart className="h-4 w-4" />
-              <span className="hidden lg:inline">{t.specRequest}</span>
-              
-              {rfqItemsCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#e65410] border border-white text-white rounded-full text-[10px] font-black h-5 w-5 flex items-center justify-center animate-bounce">
-                  {rfqItemsCount}
-                </span>
-              )}
-            </button>
-
-            {/* Mobile menu trigger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-black rounded-lg focus:outline-none cursor-pointer"
-            >
-              <span className="sr-only">Открыть меню</span>
-              {mobileMenuOpen ? (
-                <span className="text-xl font-mono block w-6 text-center">✕</span>
-              ) : (
-                <span className="text-xl font-mono block w-6 text-center">☰</span>
-              )}
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Secondary Row for Equipment Selection and Calculations */}
-      <div className="bg-slate-50 border-t border-b border-gray-150 py-3 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
-          <div className="text-[11px] font-bold text-gray-550 font-mono flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#e65410] animate-pulse" />
-            <span>{lang === 'en' ? 'ENGINEERING & AUTOMATION ZONE:' : 'ИНЖЕНЕРНО-ТЕХНОЛОГИЧЕСКИЙ РАЗДЕЛ:'}</span>
-          </div>
-          
-          <div className="flex flex-wrap gap-2.5 sm:gap-4 justify-center">
-            <button 
-              onClick={() => setCurrentTab('calc')}
-              className={`flex items-center space-x-2 text-[11px] font-black uppercase tracking-wider px-4 py-2 transition-all duration-200 cursor-pointer rounded border ${
-                currentTab === 'calc'
-                  ? 'bg-[#e65410] border-[#e65410] text-white shadow-xs'
-                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#e65410] hover:border-[#e65410]'
-              }`}
-            >
-              <Sliders className="h-3.5 w-3.5" />
-              <span>{lang === 'en' ? 'Foundry Calculator' : 'Литейный калькулятор'}</span>
-            </button>
-
-            <button 
-              onClick={() => setCurrentTab('assistant')}
-              className={`flex items-center space-x-2 text-[11px] font-black uppercase tracking-wider px-4 py-2 transition-all duration-200 cursor-pointer rounded border ${
-                currentTab === 'assistant'
-                  ? 'bg-[#00404b] border-[#00404b] text-white shadow-xs'
-                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#00404b] hover:border-[#00404b]'
-              }`}
-            >
-              <Sparkles className="h-3.5 w-3.5 text-orange-500 animate-pulse" />
-              <span>{lang === 'en' ? 'AI-Assistant / Selection Guide' : 'ИИ-Подбор оборудования'}</span>
-            </button>
-          </div>
         </div>
       </div>
 
