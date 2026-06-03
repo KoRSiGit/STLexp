@@ -291,7 +291,7 @@ export default function Header({
                           <div key={cat.id} className="space-y-3">
                             <h5 
                               onClick={() => handleCategoryClick(cat.id)}
-                              className="text-[11px] font-black uppercase text-[#e65410] tracking-wider cursor-pointer hover:underline border-b border-gray-800 pb-1.5"
+                              className="text-[11px] font-black uppercase text-[#e65410] tracking-wider cursor-pointer hover:underline border-b border-[#004a55] pb-1.5"
                             >
                               {lang === 'en' ? cat.labelEn : cat.labelRu}
                             </h5>
@@ -300,7 +300,7 @@ export default function Header({
                                 <li key={sidx}>
                                   <button
                                     onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId, sub.productId)}
-                                    className="text-left text-[11px] text-gray-300 hover:text-white transition duration-150 flex items-start gap-1 py-0.5 group/sub border-none bg-transparent p-0 cursor-pointer w-full"
+                                    className="text-left text-[11px] text-gray-100 hover:text-white transition duration-150 flex items-start gap-1 py-0.5 group/sub border-none bg-transparent p-0 cursor-pointer w-full"
                                   >
                                     <span className="text-[#e65410] opacity-50 group-hover/sub:opacity-100 font-mono">›</span>
                                     <span>{lang === 'en' ? sub.labelEn : sub.labelRu}</span>
@@ -311,14 +311,14 @@ export default function Header({
                           </div>
                         ))}
                         
-                        <div className="col-span-2 lg:col-span-4 border-t border-gray-800 pt-4 mt-2 flex items-center justify-between text-[10px] text-gray-400 font-mono">
+                        <div className="col-span-2 lg:col-span-4 border-t border-[#004a55] pt-4 mt-2 flex items-center justify-between text-[10px] text-gray-200 font-mono">
                           <span className="flex items-center gap-1">
                             <Sparkles className="h-3 w-3 text-[#e65410] animate-pulse" />
                             <span>{lang === 'en' ? 'Direct navigation from Siberian Foundry Technologies (Sibtehlit)' : 'Официальный номенклатурный список «Сибтехлит»'}</span>
                           </span>
                           <button
                             onClick={() => handleCategoryClick('all')}
-                            className="bg-gray-800 hover:bg-[#e65410] text-white px-3 py-1 rounded text-[9px] uppercase font-bold transition border-none cursor-pointer"
+                            className="bg-[#001f24] hover:bg-[#e65410] border border-[#004a55] hover:border-[#e65410] text-white px-3 py-1 rounded text-[9px] uppercase font-bold transition cursor-pointer"
                           >
                             {lang === 'en' ? 'Open Full Catalog' : 'Открыть весь каталог ↗'}
                           </button>

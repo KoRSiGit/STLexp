@@ -279,7 +279,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
       </section>
 
       {/* Interactive Selector Wizard / Configurator Section */}
-      <section id="wizard-section" className="py-20 bg-[#00333b] text-white border-t border-gray-800">
+      <section id="wizard-section" className="py-20 bg-[#00333b] text-white border-t border-teal-850">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -290,10 +290,10 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
               <h2 className="text-3xl font-black text-white tracking-tight leading-tight uppercase font-display font-sans">
                 {t.wizardHeader}
               </h2>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-200 text-sm leading-relaxed">
                 {t.wizardDesc}
               </p>
-              <div className="bg-[#111111] p-5 rounded-none border border-gray-800">
+              <div className="bg-[#00252b] p-5 rounded-none border border-teal-800">
                 <span className="text-[11px] font-mono text-gray-400 uppercase tracking-widest block font-bold">{t.currentAlg}</span>
                 <div className="flex items-center space-x-2 mt-3 font-mono">
                   <div className="h-2 w-2 rounded-full bg-[#e65410] animate-ping" />
@@ -304,18 +304,18 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
 
             {/* Multi-step Widget (8 columns) */}
             <div className="lg:col-span-8 font-sans">
-              <div className="bg-[#111111] border-t-4 border-[#e65410] p-6 sm:p-10 shadow-3xl">
+              <div className="bg-[#001f24] border-t-4 border-[#e65410] p-6 sm:p-10 shadow-3xl">
                 
                 {/* Step indicator */}
-                <div className="flex items-center justify-between mb-8 border-b border-gray-800 pb-4 font-mono">
+                <div className="flex items-center justify-between mb-8 border-b border-teal-900 pb-4 font-mono">
                   <div className="flex items-center space-x-1.5">
                     <span className="text-xs text-gray-400 uppercase">{t.wizardStepIndicator}:</span>
                     <span className="text-sm font-bold text-[#e65410]">{step} {t.wizardStepOf} 3</span>
                   </div>
                   <div className="flex space-x-2">
-                    <div className={`h-1.5 w-12 rounded-none transition ${step >= 1 ? 'bg-[#e65410]' : 'bg-gray-800'}`} />
-                    <div className={`h-1.5 w-12 rounded-none transition ${step >= 2 ? 'bg-[#e65410]' : 'bg-gray-800'}`} />
-                    <div className={`h-1.5 w-12 rounded-none transition ${step >= 3 ? 'bg-[#e65410]' : 'bg-gray-800'}`} />
+                    <div className={`h-1.5 w-12 rounded-none transition ${step >= 1 ? 'bg-[#e65410]' : 'bg-teal-950/70'}`} />
+                    <div className={`h-1.5 w-12 rounded-none transition ${step >= 2 ? 'bg-[#e65410]' : 'bg-teal-950/70'}`} />
+                    <div className={`h-1.5 w-12 rounded-none transition ${step >= 3 ? 'bg-[#e65410]' : 'bg-teal-950/70'}`} />
                   </div>
                 </div>
 
@@ -341,7 +341,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                           className={`flex items-center space-x-4 p-4 rounded-none border text-left cursor-pointer transition duration-150 ${
                             alloyType === alloy.id
                               ? 'bg-[#e65410]/10 border-[#e65410] text-[#e65410]'
-                              : 'bg-[#00333b] border-gray-800 hover:border-gray-700 text-gray-300'
+                              : 'bg-[#00252b] border-[#003c46] hover:border-[#004e5a] text-gray-200'
                           }`}
                         >
                           <div className="bg-black/35 p-2 rounded-none shrink-0">
@@ -375,11 +375,11 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                           className={`flex flex-col p-5 rounded-none border text-left cursor-pointer transition duration-150 ${
                             volume === vol.id
                               ? 'bg-[#e65410]/10 border-[#e65410] text-[#e65410]'
-                              : 'bg-[#00333b] border-gray-800 hover:border-gray-700 text-gray-300'
+                              : 'bg-[#00252b] border-[#003c46] hover:border-[#004e5a] text-gray-200'
                           }`}
                         >
                           <span className="font-bold text-[#E5E7EB] uppercase tracking-wider text-xs">{vol.label}</span>
-                          <span className="text-[11px] text-gray-400 mt-2 leading-snug">{vol.desc}</span>
+                          <span className="text-[11px] text-gray-300 mt-2 leading-snug">{vol.desc}</span>
                         </button>
                       ))}
                     </div>
@@ -410,7 +410,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                         <button
                           key={item.id}
                           onClick={() => handleProcessSelection(item.id)}
-                          className="flex items-center justify-between p-4 rounded-none border bg-[#00333b] border-gray-800 hover:border-gray-600 text-gray-350 text-left cursor-pointer transition duration-150"
+                          className="flex items-center justify-between p-4 rounded-none border bg-[#00252b] border-[#003c46] hover:border-[#004e5a] text-gray-200 text-left cursor-pointer transition duration-150"
                         >
                           <span className="text-xs font-bold text-white uppercase tracking-wider leading-snug">{item.label}</span>
                           <ArrowRight className="h-4 w-4 text-[#e65410] ml-2 shrink-0" />
@@ -437,13 +437,13 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                         <h4 className="text-xs font-bold text-white uppercase tracking-widest leading-none">
                           {t.wizardDoneHeader}
                         </h4>
-                        <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+                        <p className="text-xs text-gray-300 mt-2 leading-relaxed">
                           {t.wizardDoneDesc}
                         </p>
                       </div>
                     </div>
 
-                    <div className="bg-black/30 border border-gray-800 p-5 rounded-none flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="bg-[#00252b]/40 border border-teal-850 p-5 rounded-none flex flex-col sm:flex-row items-center justify-between gap-6">
                       <div className="space-y-2 text-center sm:text-left">
                         <span className="text-[10px] font-mono text-[#e65410] bg-[#e65410]/10 border border-[#e65410]/20 px-2 py-0.5 rounded-none uppercase font-bold">
                           {t.wizardModelLabel} {calculatedResult.model}
@@ -451,7 +451,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                         <h4 className="text-base font-bold text-white">
                           {lang === 'en' && calculatedResult.titleEn ? calculatedResult.titleEn : calculatedResult.title}
                         </h4>
-                        <p className="text-xs text-gray-405 line-clamp-2 max-w-lg leading-relaxed">
+                        <p className="text-xs text-gray-300 line-clamp-2 max-w-lg leading-relaxed">
                           {lang === 'en' && calculatedResult.descriptionEn ? calculatedResult.descriptionEn : calculatedResult.description}
                         </p>
                       </div>
@@ -467,13 +467,13 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-800 justify-between items-center text-center sm:text-left">
-                      <p className="text-[11px] text-gray-500 font-mono italic">
+                    <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-teal-900 justify-between items-center text-center sm:text-left">
+                      <p className="text-[11px] text-gray-400 font-mono italic">
                         {t.wizardDiscl}
                       </p>
                       <button
                         onClick={handleResetQuiz}
-                        className="text-xs font-mono text-gray-400 hover:text-white border-b border-gray-700 pb-0.5 cursor-pointer bg-transparent border-none outline-none"
+                        className="text-xs font-mono text-gray-400 hover:text-white border-b border-teal-700 pb-0.5 cursor-pointer bg-transparent border-none outline-none"
                       >
                         {t.wizardReset}
                       </button>
