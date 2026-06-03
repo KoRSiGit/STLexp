@@ -211,7 +211,7 @@ export default function AIAssistant({ lang }: AIAssistantProps) {
                     isAssistant ? 'self-start mr-auto' : 'self-end ml-auto flex-row-reverse space-x-reverse'
                   }`}
                 >
-                  <div className={`p-1.5 rounded-lg shrink-0 mt-0.5 ${isAssistant ? 'bg-[#111827] text-amber-500' : 'bg-[#e65410] text-white'}`}>
+                  <div className={`p-1.5 rounded-lg shrink-0 mt-0.5 ${isAssistant ? 'bg-[#00333b] text-amber-500' : 'bg-[#e65410] text-white'}`}>
                     {isAssistant ? <Bot className="h-4 w-4" /> : <User className="h-4 w-4" />}
                   </div>
                   
@@ -231,7 +231,7 @@ export default function AIAssistant({ lang }: AIAssistantProps) {
 
             {loading && (
               <div className="flex items-start space-x-3 max-w-[85%] self-start mr-auto">
-                <div className="p-1.5 rounded-lg bg-[#111827] text-amber-500 animate-pulse">
+                <div className="p-1.5 rounded-lg bg-[#00333b] text-amber-500 animate-pulse">
                   <Bot className="h-4 w-4" />
                 </div>
                 <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
@@ -286,7 +286,7 @@ export default function AIAssistant({ lang }: AIAssistantProps) {
               <button
                 type="submit"
                 disabled={!input.trim() || loading}
-                className="bg-[#111827] hover:bg-gray-800 disabled:opacity-40 text-amber-500 p-2.5 px-4 rounded transition duration-150 font-bold text-xs uppercase tracking-wider flex items-center space-x-1.5 cursor-pointer border-none"
+                className="bg-[#00333b] hover:bg-teal-900 disabled:opacity-40 text-amber-500 p-2.5 px-4 rounded transition duration-150 font-bold text-xs uppercase tracking-wider flex items-center space-x-1.5 cursor-pointer border-none"
               >
                 <span>{t.aiSendBtn}</span>
               </button>

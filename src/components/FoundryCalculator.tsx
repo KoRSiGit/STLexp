@@ -108,7 +108,7 @@ export default function FoundryCalculator({ lang }: FoundryCalculatorProps) {
             onClick={() => setActiveCalc('xtc')}
             className={`flex items-center justify-center space-x-3 p-5 rounded-lg border text-sm uppercase tracking-wider font-extrabold transition cursor-pointer ${
               activeCalc === 'xtc'
-                ? 'bg-[#111827] text-white border-[#111827]'
+                ? 'bg-[#00333b] text-white border-[#00333b]'
                 : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
             }`}
           >
@@ -119,7 +119,7 @@ export default function FoundryCalculator({ lang }: FoundryCalculatorProps) {
             onClick={() => setActiveCalc('furnace')}
             className={`flex items-center justify-center space-x-3 p-5 rounded-lg border text-sm uppercase tracking-wider font-extrabold transition cursor-pointer ${
               activeCalc === 'furnace'
-                ? 'bg-[#111827] text-white border-[#111827]'
+                ? 'bg-[#00333b] text-white border-[#00333b]'
                 : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
             }`}
           >
@@ -251,7 +251,7 @@ export default function FoundryCalculator({ lang }: FoundryCalculatorProps) {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="bg-gray-50 p-4 border border-gray-100 rounded">
                   <span className="text-[10px] font-mono text-gray-400 uppercase">{t.calcXtcSandSpent}</span>
-                  <span className="font-sans font-black text-lg block text-[#111827] mt-1">{sandPerMonth.toLocaleString()} {t.calcXtcTons}</span>
+                  <span className="font-sans font-black text-lg block text-[#00333b] mt-1">{sandPerMonth.toLocaleString()} {t.calcXtcTons}</span>
                 </div>
                 <div className="bg-gray-50 p-4 border border-gray-100 rounded">
                   <span className="text-[10px] font-mono text-gray-400 uppercase font-semibold text-orange-600">{t.calcXtcResinSpent}</span>
@@ -267,7 +267,7 @@ export default function FoundryCalculator({ lang }: FoundryCalculatorProps) {
               <div className="space-y-2 font-mono">
                 <span className="text-[10px] uppercase text-gray-500">{t.calcXtcBudgetShares}</span>
                 <div className="h-5 rounded-md overflow-hidden flex text-[10px] font-bold text-white">
-                  <div style={{ width: `${sandPct}%` }} className="bg-[#111827] h-full flex items-center justify-center min-w-4 truncate px-1">
+                  <div style={{ width: `${sandPct}%` }} className="bg-[#00333b] h-full flex items-center justify-center min-w-4 truncate px-1">
                     {t.calcXtcSandPart} ({Math.round(sandPct)}%)
                   </div>
                   <div style={{ width: `${binderPct}%` }} className="bg-orange-650 h-full flex items-center justify-center min-w-4 truncate px-1">
@@ -290,7 +290,7 @@ export default function FoundryCalculator({ lang }: FoundryCalculatorProps) {
                   </div>
                   <div className="sm:text-right">
                     <span className="text-[10px] font-mono text-gray-400 uppercase block">{t.calcXtcPerTonCost}</span>
-                    <span className="font-mono font-extrabold text-[#111827] text-lg">
+                    <span className="font-mono font-extrabold text-[#00333b] text-lg">
                       {Math.round(costPerTon).toLocaleString()} {t.calcXtcRubTon}
                     </span>
                   </div>
@@ -388,13 +388,13 @@ export default function FoundryCalculator({ lang }: FoundryCalculatorProps) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-[#111827] text-white p-5 rounded border border-gray-800">
+                <div className="bg-[#00333b] text-white p-5 rounded border border-teal-800">
                   <span className="text-[10px] font-mono text-gray-400 uppercase">{t.calcFurnaceMeltTime}</span>
                   <span className="font-sans font-black text-2xl block text-amber-500 mt-1">{furnaceResult.meltTimeMinutes} {t.calcFurnaceMin}</span>
                 </div>
                 <div className="bg-gray-50 p-5 border border-gray-100 rounded">
                   <span className="text-[10px] font-mono text-gray-400 uppercase font-bold text-gray-950">{t.calcFurnaceHourlyYield}</span>
-                  <span className="font-sans font-black text-xl block text-[#111827] mt-1">
+                  <span className="font-sans font-black text-xl block text-[#00333b] mt-1">
                     {furnaceResult.hourlyProductivity} {t.calcFurnaceThour || (lang === 'en' ? 't/hour' : 'т/час')}
                   </span>
                 </div>

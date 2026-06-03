@@ -10,39 +10,39 @@ export default function Footer({ setCurrentTab, lang }: FooterProps) {
   const t = TRANSLATIONS[lang];
 
   return (
-    <footer className="bg-[#0b0f19] text-white border-t border-gray-800 pt-16 pb-12">
+    <footer className="bg-[#00333b] text-white border-t border-teal-800 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           
           {/* Col 1: Brand & Desc (5 cols) */}
           <div className="md:col-span-5 space-y-5">
-            <div className="flex items-center space-x-3 cursor-pointer select-none" onClick={() => setCurrentTab('home')}>
+            <div className="flex items-center space-x-3.5 cursor-pointer select-none" onClick={() => setCurrentTab('home')}>
               <svg 
-                className="h-10 w-10 shrink-0 transition-transform duration-200 hover:scale-105" 
+                className="h-11 w-11 sm:h-13 sm:w-13 shrink-0 transition-transform duration-200 hover:scale-105" 
                 viewBox="0 0 100 100" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Bulky deep teal container representing the ladle */}
+                {/* The open circle representing the ladle, with professional thick stroke */}
                 <path
-                  d="M 68.6 29.8 A 29 29 0 1 1 31.4 29.8"
-                  stroke="#00404b"
-                  strokeWidth="16"
-                  strokeLinecap="round"
+                  d="M 68 25 A 36 36 0 1 1 32 25"
+                  stroke="#ffffff"
+                  strokeWidth="15"
+                  strokeLinecap="butt"
                   fill="none"
                 />
-                {/* Larger, flowing stream of molten metal pouring out, scaled and shaped beautifully */}
+                {/* The energetic crescent flame swooshing out of the top-left */}
                 <path
-                  d="M 31.5 4 C 39.5 -5, 50 5, 50 20 C 50 32, 48 44, 47 48 C 45 38, 44 26, 45.5 17 C 47 8, 38.5 9, 31.5 4 Z"
+                  d="M 50 43 C 54 34, 52 14, 24 4 C 35 12, 45 28, 50 43 Z"
                   fill="#e65410"
                 />
               </svg>
               <div>
-                <span className="font-sans font-black text-xl tracking-tight uppercase text-white block">
+                <span className="font-sans font-black text-2xl tracking-normal uppercase text-white block">
                   {lang === 'en' ? 'Sibtehlit' : 'Сибтехлит'}
                 </span>
-                <span className="text-[8px] font-mono tracking-wider uppercase text-gray-500 block leading-tight">
+                <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.15em] uppercase text-teal-200 block leading-none mt-1">
                   {lang === 'en' ? 'YOUR FOUNDRY PARTNER' : 'ВАШ ЛИТЕЙНЫЙ ПАРТНЕР'}
                 </span>
               </div>

@@ -378,7 +378,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     <div className="bg-gray-50 min-h-screen">
       
       {/* 1. Industrial Header & Search Banner */}
-      <div className="bg-[#0b0f19] text-white py-14 border-b border-gray-800">
+      <div className="bg-[#00333b] text-white py-14 border-b border-teal-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <div className="max-w-3xl space-y-3">
@@ -416,7 +416,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t.searchPlaceholder}
-                  className="w-full pl-9 pr-4 py-2.5 bg-gray-950 border border-gray-700 rounded text-sm text-white placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
+                  className="w-full pl-9 pr-4 py-2.5 bg-[#00252b] border border-teal-800 rounded text-sm text-white placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
                 />
               </div>
               <p className="text-[9px] text-gray-500 font-mono italic">
@@ -566,7 +566,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   setActiveSubcategory('all');
                   setSearchQuery('');
                 }}
-                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#0b0f19] hover:bg-slate-800 text-white font-mono text-[10px] uppercase font-bold rounded shadow-xs transition cursor-pointer self-start sm:self-auto"
+                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#00333b] hover:bg-teal-900 text-white font-mono text-[10px] uppercase font-bold rounded shadow-xs transition cursor-pointer self-start sm:self-auto"
               >
                 <ArrowRight className="h-3.5 w-3.5 transform rotate-180 text-[#e65410]" />
                 <span>{lang === 'en' ? 'Back to Divisions' : 'Назад к разделам'}</span>
@@ -644,7 +644,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                                 className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition duration-300"
                                 referrerPolicy="no-referrer"
                               />
-                              <div className="absolute top-2 left-2 bg-gray-950/90 border border-gray-800 text-[#e65410] font-mono text-xs uppercase font-black tracking-widest px-2.5 py-0.5 rounded">
+                              <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-800 text-[#e65410] font-mono text-xs uppercase font-black tracking-widest px-2.5 py-0.5 rounded">
                                 Базовая: {p.model}
                               </div>
                             </div>
@@ -768,7 +768,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                               
                               <div className="overflow-x-auto">
                                 <table className="min-w-full divide-y divide-gray-150 text-[11px] font-sans">
-                                  <thead className="bg-[#0b0f19] text-white">
+                                  <thead className="bg-[#00333b] text-white">
                                     <tr>
                                       <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Марка</th>
                                       <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Пр-сть / Емкость</th>
@@ -887,7 +887,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                               className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-all duration-300"
                               referrerPolicy="no-referrer"
                             />
-                            <div className="absolute top-2 left-2 bg-gray-950/90 border border-gray-800 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2 py-0.5 rounded">
+                            <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-800 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2 py-0.5 rounded">
                               Серия: {p.model}
                             </div>
                           </div>
@@ -942,7 +942,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
         )}
 
         {/* Core informational technical banner */}
-        <div className="bg-gradient-to-r from-gray-900 to-[#0b0f19] text-white p-8 rounded-lg border border-gray-800 space-y-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6 mt-16">
+        <div className="bg-gradient-to-r from-[#00252b] to-[#00333b] text-white p-8 rounded-lg border border-teal-800 space-y-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6 mt-16">
           <div className="space-y-2">
             <span className="text-[10px] font-mono text-[#e65410] uppercase tracking-widest font-black flex items-center space-x-1.5">
               <ShieldAlert className="h-4.5 w-4.5 text-[#e65410]" />
@@ -959,7 +959,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 : '«Сибтехлит» производит индивидуальную подгонку сварных стальных корпусов, увеличивает радиусы обслуживания лопастных зажимов смесителей ХТС и пересчитывает компоновочные сбросы гравитационных печей под конкретную высоту кровельной фермы.'}
             </p>
           </div>
-          <div className="shrink-0 flex items-center space-x-2 bg-gray-950/40 border border-gray-800 p-4 rounded text-xs font-mono text-[#e65410]">
+          <div className="shrink-0 flex items-center space-x-2 bg-[#00252b]/45 border border-teal-800 p-4 rounded text-xs font-mono text-[#e65410]">
             <HardHat className="h-5 w-5 text-[#e65410] shrink-0" />
             <span>
               {lang === 'en' ? 'Bespoke layouts calculated in 3D' : 'Проектирование в AutoCAD/КОМПАС 3D'}

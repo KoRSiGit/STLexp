@@ -229,7 +229,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
 
             {/* Grid display image mockup placeholder */}
             <div className="lg:col-span-5 relative">
-              <div className="bg-gray-950 text-white rounded-lg p-6 border border-gray-800 font-mono shadow-md overflow-hidden relative">
+              <div className="bg-[#00333b] text-white rounded-lg p-6 border border-teal-800 font-mono shadow-md overflow-hidden relative">
                 <span className="absolute top-2 right-2 flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>

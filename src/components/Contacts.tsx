@@ -114,11 +114,11 @@ export default function Contacts({ lang }: ContactsProps) {
 
             {/* Warehouse Item */}
             <div className="flex gap-4 items-start">
-              <div className="p-3 bg-blue-500/5 text-[#00404b] rounded-lg shrink-0">
+              <div className="p-3 bg-blue-500/5 text-[#00333b] rounded-lg shrink-0">
                 <Building className="h-5 w-5" />
               </div>
               <div className="space-y-1">
-                <h4 className="text-sm font-bold uppercase tracking-wide text-[#00404b] font-sans">
+                <h4 className="text-sm font-bold uppercase tracking-wide text-[#00333b] font-sans">
                   {t.warehouseHeader}
                 </h4>
                 <p className="text-xs text-gray-600 leading-relaxed font-sans">
@@ -165,8 +165,8 @@ export default function Contacts({ lang }: ContactsProps) {
           </div>
 
           {/* Legal Details Box */}
-          <div className="bg-[#0b0f19] text-white border border-gray-800 rounded-xl p-6 sm:p-8 space-y-4">
-            <div className="flex items-center gap-2 border-b border-gray-800 pb-2.5">
+          <div className="bg-[#00333b] text-white border border-teal-800 rounded-xl p-6 sm:p-8 space-y-4">
+            <div className="flex items-center gap-2 border-b border-teal-800 pb-2.5">
               <FileText className="h-4 w-4 text-[#e65410]" />
               <span className="font-mono text-xs text-[#e65410] font-bold uppercase tracking-wider">{t.legalHeader}</span>
             </div>
@@ -218,7 +218,7 @@ export default function Contacts({ lang }: ContactsProps) {
               <div className="relative self-center flex flex-col items-center justify-center space-y-1">
                 <div className="h-4 w-4 bg-[#e65410] rounded-full flex items-center justify-center animate-ping absolute" />
                 <div className="h-3 w-3 bg-[#e65410] rounded-full border-2 border-white z-10" />
-                <span className="text-[10px] font-black text-white bg-[#00404b] border border-emerald-500 px-2 py-1 rounded shadow-md uppercase">
+                <span className="text-[10px] font-black text-white bg-[#00333b] border border-teal-500 px-2 py-1 rounded shadow-md uppercase">
                   ООО Сибтехлит
                 </span>
               </div>

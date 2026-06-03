@@ -74,7 +74,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
     <div className="bg-[#F4F4F4] text-gray-900">
       
       {/* Industrial Hero Section with Professional Polish high-contrast styling */}
-      <section className="relative bg-[#1A1A1A] text-white py-20 sm:py-28 overflow-hidden">
+      <section className="relative bg-[#00333b] text-white py-20 sm:py-28 overflow-hidden">
         {/* Fine engineering grid overlay and orange subtle gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(230,84,16,0.12),transparent_40%)]" />
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -198,7 +198,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <span className="text-xs font-bold text-[#e65410] uppercase tracking-[0.3em] mb-1 block">{t.techChainTitle}</span>
-            <h2 className="text-3xl font-black text-[#1A1A1A] tracking-tight uppercase sm:text-4xl font-display">
+            <h2 className="text-3xl font-black text-[#00333b] tracking-tight uppercase sm:text-4xl font-display">
               {t.techChainHeader}
             </h2>
             <p className="text-gray-600 text-sm max-w-2xl mx-auto leading-relaxed">
@@ -211,7 +211,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
             {/* Category 1 */}
             <div 
               onClick={() => onNavigateToCatalog('sand-mixers-xtc')}
-              className="group bg-white border-t-4 border-[#1A1A1A] hover:border-[#e65410] p-8 rounded-none shadow-xs hover:shadow-md transition duration-150 cursor-pointer flex flex-col justify-between"
+              className="group bg-white border-t-4 border-[#00333b] hover:border-[#e65410] p-8 rounded-none shadow-xs hover:shadow-md transition duration-150 cursor-pointer flex flex-col justify-between"
             >
               <div>
                 <div className="bg-[#e65410]/5 group-hover:bg-[#e65410]/10 p-4 w-14 h-14 rounded-none flex items-center justify-center text-[#e65410] transition-colors">
@@ -233,7 +233,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
             {/* Category 2 */}
             <div 
               onClick={() => onNavigateToCatalog('furnaces')}
-              className="group bg-white border-t-4 border-[#1A1A1A] hover:border-[#e65410] p-8 rounded-none shadow-xs hover:shadow-md transition duration-150 cursor-pointer flex flex-col justify-between"
+              className="group bg-white border-t-4 border-[#00333b] hover:border-[#e65410] p-8 rounded-none shadow-xs hover:shadow-md transition duration-150 cursor-pointer flex flex-col justify-between"
             >
               <div>
                 <div className="bg-[#e65410]/5 group-hover:bg-[#e65410]/10 p-4 w-14 h-14 rounded-none flex items-center justify-center text-[#e65410] transition-colors">
@@ -255,7 +255,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
             {/* Category 3 */}
             <div 
               onClick={() => onNavigateToCatalog('shot-blast')}
-              className="group bg-white border-t-4 border-[#1A1A1A] hover:border-[#e65410] p-8 rounded-none shadow-xs hover:shadow-md transition duration-150 cursor-pointer flex flex-col justify-between"
+              className="group bg-white border-t-4 border-[#00333b] hover:border-[#e65410] p-8 rounded-none shadow-xs hover:shadow-md transition duration-150 cursor-pointer flex flex-col justify-between"
             >
               <div>
                 <div className="bg-[#e65410]/5 group-hover:bg-[#e65410]/10 p-4 w-14 h-14 rounded-none flex items-center justify-center text-[#e65410] transition-colors">
@@ -279,7 +279,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
       </section>
 
       {/* Interactive Selector Wizard / Configurator Section */}
-      <section id="wizard-section" className="py-20 bg-[#1A1A1A] text-white border-t border-gray-800">
+      <section id="wizard-section" className="py-20 bg-[#00333b] text-white border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -341,7 +341,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                           className={`flex items-center space-x-4 p-4 rounded-none border text-left cursor-pointer transition duration-150 ${
                             alloyType === alloy.id
                               ? 'bg-[#e65410]/10 border-[#e65410] text-[#e65410]'
-                              : 'bg-[#1A1A1A] border-gray-800 hover:border-gray-700 text-gray-300'
+                              : 'bg-[#00333b] border-gray-800 hover:border-gray-700 text-gray-300'
                           }`}
                         >
                           <div className="bg-black/35 p-2 rounded-none shrink-0">
@@ -375,7 +375,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                           className={`flex flex-col p-5 rounded-none border text-left cursor-pointer transition duration-150 ${
                             volume === vol.id
                               ? 'bg-[#e65410]/10 border-[#e65410] text-[#e65410]'
-                              : 'bg-[#1A1A1A] border-gray-800 hover:border-gray-700 text-gray-300'
+                              : 'bg-[#00333b] border-gray-800 hover:border-gray-700 text-gray-300'
                           }`}
                         >
                           <span className="font-bold text-[#E5E7EB] uppercase tracking-wider text-xs">{vol.label}</span>
@@ -410,7 +410,7 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
                         <button
                           key={item.id}
                           onClick={() => handleProcessSelection(item.id)}
-                          className="flex items-center justify-between p-4 rounded-none border bg-[#1A1A1A] border-gray-800 hover:border-gray-600 text-gray-350 text-left cursor-pointer transition duration-150"
+                          className="flex items-center justify-between p-4 rounded-none border bg-[#00333b] border-gray-800 hover:border-gray-600 text-gray-350 text-left cursor-pointer transition duration-150"
                         >
                           <span className="text-xs font-bold text-white uppercase tracking-wider leading-snug">{item.label}</span>
                           <ArrowRight className="h-4 w-4 text-[#e65410] ml-2 shrink-0" />

@@ -112,7 +112,7 @@ export default function Header({
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-xs">
       {/* Top micro-bar */}
-      <div className="bg-[#1A1A1A] text-white text-[11px] py-2.5 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#00333b] text-white text-[11px] py-2.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex justify-between items-center font-mono">
           <div className="flex gap-6">
             <span>📍 {t.addressCity}</span>
@@ -150,35 +150,35 @@ export default function Header({
           {/* Logo with the beautiful custom official Sibtehlit SVG */}
           <div 
             onClick={() => setCurrentTab('home')} 
-            className="flex items-center space-x-2.5 cursor-pointer group select-none hover:opacity-95"
+            className="flex items-center space-x-3.5 cursor-pointer group select-none hover:opacity-95"
           >
             <svg 
-              className="h-8 w-8 shrink-0 transition-transform duration-200 group-hover:scale-105" 
+              className="h-11 w-11 sm:h-13 sm:w-13 shrink-0 transition-transform duration-200 group-hover:scale-105" 
               viewBox="0 0 100 100" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Bulky deep teal container representing the ladle */}
+              {/* The open circle representing the ladle, with professional thick stroke */}
               <path
-                d="M 68.6 29.8 A 29 29 0 1 1 31.4 29.8"
-                stroke="#00404b"
-                strokeWidth="16"
-                strokeLinecap="round"
+                d="M 68 25 A 36 36 0 1 1 32 25"
+                stroke="#00333b"
+                strokeWidth="15"
+                strokeLinecap="butt"
                 fill="none"
               />
-              {/* Larger, flowing stream of molten metal pouring out, scaled and shaped beautifully */}
+              {/* The energetic crescent flame swooshing out of the top-left */}
               <path
-                d="M 31.5 4 C 39.5 -5, 50 5, 50 20 C 50 32, 48 44, 47 48 C 45 38, 44 26, 45.5 17 C 47 8, 38.5 9, 31.5 4 Z"
+                d="M 50 43 C 54 34, 52 14, 24 4 C 35 12, 45 28, 50 43 Z"
                 fill="#e65410"
               />
             </svg>
             <div>
               <div className="flex items-center leading-none">
-                <span className="font-sans font-black text-base sm:text-lg tracking-tight text-[#00404b] uppercase">
+                <span className="font-sans font-black text-xl sm:text-2xl tracking-normal text-[#00333b] uppercase">
                   {lang === 'en' ? 'Sibtehlit' : 'Сибтехлит'}
                 </span>
               </div>
-              <p className="text-[8px] text-[#00404b] font-bold tracking-wider uppercase font-sans mt-0.5 leading-none">
+              <p className="text-[9px] sm:text-[10px] text-[#00333b] font-bold tracking-[0.15em] uppercase font-sans mt-1 leading-none">
                 {lang === 'en' ? 'YOUR FOUNDRY PARTNER' : 'ВАШ ЛИТЕЙНЫЙ ПАРТНЕР'}
               </p>
             </div>
@@ -205,8 +205,8 @@ export default function Header({
               onClick={() => setCurrentTab('assistant')}
               className={`flex items-center space-x-1.5 px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider rounded border transition-all duration-150 cursor-pointer ${
                 currentTab === 'assistant'
-                  ? 'bg-[#00404b] border-[#00404b] text-white shadow-xs'
-                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#00404b] hover:border-[#00404b]'
+                  ? 'bg-[#00333b] border-[#00333b] text-white shadow-xs'
+                  : 'bg-white border-gray-200 text-gray-700 hover:text-[#00333b] hover:border-[#00333b]'
               }`}
             >
               <Sparkles className="h-3.5 w-3.5 text-orange-500 animate-pulse" />
@@ -221,7 +221,7 @@ export default function Header({
               className={`relative flex items-center space-x-1.5 px-3 py-2.5 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-150 rounded border cursor-pointer ${
                 currentTab === 'rfq'
                   ? 'bg-[#e65410] border-[#e65410] text-white'
-                  : 'bg-[#1A1A1A] border-[#1A1A1A] hover:bg-[#e65410] hover:border-[#e65410] text-white'
+                  : 'bg-[#00333b] border-[#00333b] hover:bg-[#e65410] hover:border-[#e65410] text-white'
               }`}
             >
               <ShoppingCart className="h-4 w-4" />
@@ -286,7 +286,7 @@ export default function Header({
 
                     {/* Megamenu absolute panel */}
                     {dropdownOpen && (
-                      <div className="absolute top-[calc(100%-1px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#0b0f19] text-white rounded-b-lg shadow-2xl border border-gray-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                      <div className="absolute top-[calc(100%-1px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#00333b] text-white rounded-b-lg shadow-2xl border border-teal-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                         {catalogDropdownCategories.map((cat) => (
                           <div key={cat.id} className="space-y-3">
                             <h5 
@@ -401,7 +401,7 @@ export default function Header({
                       <div className="pt-2 border-t border-gray-200">
                         <button
                           onClick={() => handleCategoryClick('all')}
-                          className="w-full py-2 bg-gray-900 text-white rounded text-xs font-bold uppercase tracking-wide cursor-pointer text-center border-none"
+                          className="w-full py-2 bg-[#00333b] text-white rounded text-xs font-bold uppercase tracking-wide cursor-pointer text-center border-none"
                         >
                           {lang === 'en' ? 'All Equipment' : 'Все оборудование'}
                         </button>

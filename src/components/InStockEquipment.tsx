@@ -234,7 +234,7 @@ export default function InStockEquipment({
                   <div className="absolute top-3 left-3 bg-emerald-600 text-white font-mono text-[10px] uppercase font-bold py-1 px-2.5 rounded-md shadow-sm">
                     {lang === 'en' ? 'In Stock' : 'В наличии'}
                   </div>
-                  <div className="absolute bottom-3 right-3 bg-[#0b0f19]/90 text-white font-mono text-[9px] py-0.5 px-2 rounded">
+                  <div className="absolute bottom-3 right-3 bg-[#00333b]/90 text-white font-mono text-[9px] py-0.5 px-2 rounded">
                     {p.model}
                   </div>
                 </div>
@@ -290,7 +290,7 @@ export default function InStockEquipment({
       </div>
 
       {/* Spares and Consumables Banner */}
-      <div className="bg-[#0b0f19] text-white rounded-xl border border-gray-800 p-6 sm:p-8 flex flex-col md:flex-row gap-6 md:items-center justify-between relative overflow-hidden">
+      <div className="bg-[#00333b] text-white rounded-xl border border-teal-800 p-6 sm:p-8 flex flex-col md:flex-row gap-6 md:items-center justify-between relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
         
         <div className="space-y-3 max-w-2xl">

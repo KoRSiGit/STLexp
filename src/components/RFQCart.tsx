@@ -92,7 +92,7 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
             <span className="text-xs font-mono uppercase text-emerald-600 font-bold tracking-widest bg-emerald-50 px-2 py-0.5 rounded border border-emerald-500/10">
               {t.rfqSuccessBadge}
             </span>
-            <h2 className="text-2xl font-black text-[#111827]">{t.rfqSuccessHeading}</h2>
+            <h2 className="text-2xl font-black text-[#00333b]">{t.rfqSuccessHeading}</h2>
             <p className="text-sm font-mono text-gray-400">
               {t.rfqSuccessIdLabel} <span className="text-gray-900 font-bold">{successResponse.rfqId}</span>
             </p>
@@ -112,7 +112,7 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
               onClick={() => {
                 setSuccessResponse(null);
               }}
-              className="px-5 py-3 bg-[#111827] text-white rounded font-extrabold text-xs uppercase tracking-wider transition hover:bg-gray-800 cursor-pointer border-none"
+              className="px-5 py-3 bg-[#00333b] text-white rounded font-extrabold text-xs uppercase tracking-wider transition hover:bg-teal-900 cursor-pointer border-none"
             >
               {t.rfqHomeBackBtn}
             </button>
@@ -171,7 +171,7 @@ export default function RFQCart({ rfqItems, onUpdateQty, onRemoveItem, onClearRF
                         <span className="text-[10px] font-mono text-amber-600 bg-amber-500/15 border border-amber-500/20 px-2 py-0.5 rounded font-black uppercase">
                           {t.rfqModelPrefix} {item.product.model}
                         </span>
-                        <h4 className="font-bold text-sm text-[#111827]">{pTitle}</h4>
+                        <h4 className="font-bold text-sm text-[#00333b]">{pTitle}</h4>
                         <p className="text-xs text-gray-400 mt-1">
                           {t.rfqCategoryPrefix} {item.product.category === 'sand-mixers-xtc' ? t.rfqCatXtcName : t.rfqCatFurnacesName}
                         </p>
