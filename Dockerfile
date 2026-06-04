@@ -5,7 +5,8 @@ WORKDIR /app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm install
+# Disable unnecessary network features (audit/fund) and show progress
+RUN npm install --no-audit --no-fund --loglevel=info
 
 # Copy all files and compile front/back bundles
 COPY . .
@@ -18,7 +19,7 @@ WORKDIR /app
 
 # Install production dependencies only
 COPY package*.json ./
-RUN npm install --omit=dev
+RUN npm install --omit=dev --no-audit --no-fund --loglevel=info
 
 # Copy compiled static assets and server output from builder
 COPY --from=builder /app/dist ./dist
