@@ -78,6 +78,63 @@ export default function Contacts({ lang }: ContactsProps) {
     },
   }[lang];
 
+  const offices = [
+    {
+      id: 'msk',
+      city: lang === 'en' ? 'Moscow' : 'Москва',
+      region: lang === 'en' ? 'Central District' : 'Центральный ФО',
+      address: lang === 'en' ? 'Moscow, Kuskovskaya str., 20A, office 501' : 'г. Москва, ул. Кусковская, д. 20А, офис 501',
+      phone: '+7 (495) 120-41-45',
+      email: 'msk@sibtehlit.ru',
+      specialization: lang === 'en' ? 'No-bake/cold-box molding line supply and engineering support' : 'Поставка формовочного оборудования ХТС, смесителей и печей'
+    },
+    {
+      id: 'spb',
+      city: lang === 'en' ? 'Saint Petersburg' : 'Санкт-Петербург',
+      region: lang === 'en' ? 'North-West District' : 'Северо-Западный ФО',
+      address: lang === 'en' ? 'St. Petersburg, Obukhovskoy Oborony ave., 120, Lit. B, office 408' : 'г. Санкт-Петербург, пр. Обуховской Обороны, д. 120, лит. Б, оф. 408',
+      phone: '+7 (812) 640-28-54',
+      email: 'spb@sibtehlit.ru',
+      specialization: lang === 'en' ? 'ZIP parts warehouse, mixer spare blades, on-site service support' : 'Склад ЗИП, лопатки смесителей ХТС, техническая поддержка'
+    },
+    {
+      id: 'chel',
+      city: lang === 'en' ? 'Chelyabinsk' : 'Челябинск',
+      region: lang === 'en' ? 'Urals Region' : 'Уральский ФО',
+      address: lang === 'en' ? 'Chelyabinsk, Sverdlovsky tract, 5, office 203' : 'г. Челябинск, Свердловский тракт, д. 5, оф. 203',
+      phone: '+7 (351) 220-44-32',
+      email: 'chel@sibtehlit.ru',
+      specialization: lang === 'en' ? 'Induction furnace maintenance, power system upgrades, and spare parts' : 'Сервисное обслуживание индукционных печей ИСТ/ИАТ, пусконаладка'
+    },
+    {
+      id: 'ekb',
+      city: lang === 'en' ? 'Yekaterinburg' : 'Екатеринбург',
+      region: lang === 'en' ? 'Urals Region' : 'Уральский ФО',
+      address: lang === 'en' ? 'Yekaterinburg, Sibirsky tract, 12, bld. 3, office 311' : 'г. Екатеринбург, ул. Сибирский тракт, д. 12, стр. 3, оф. 311',
+      phone: '+7 (343) 311-54-12',
+      email: 'ekb@sibtehlit.ru',
+      specialization: lang === 'en' ? 'Foundry workspace design, core making machine setups & sand reclaim' : 'Проектирование литейных цехов, подбор оснастки и регенерации'
+    },
+    {
+      id: 'minsk',
+      city: lang === 'en' ? 'Minsk' : 'Минск',
+      region: lang === 'en' ? 'Belarus' : 'Республика Беларусь',
+      address: lang === 'en' ? 'Minsk, Radialnaya str., 40, office 22' : 'г. Минск, ул. Радиальная, д. 40, оф. 22',
+      phone: '+375 (17) 388-12-54',
+      email: 'bel@sibtehlit.ru',
+      specialization: lang === 'en' ? 'Official representative office in BY, silicon carbide crucible deliveries' : 'Официальное представительство в РБ, поставки тиглей и запчастей'
+    },
+    {
+      id: 'pavlodar',
+      city: lang === 'en' ? 'Pavlodar' : 'Павлодар',
+      region: lang === 'en' ? 'Kazakhstan' : 'Республика Казахстан',
+      address: lang === 'en' ? 'Pavlodar, Torgovaya str., 9, office 104' : 'г. Павлодар, ул. Торговая, д. 9, оф. 104',
+      phone: '+7 (7182) 65-12-54',
+      email: 'kz@sibtehlit.ru',
+      specialization: lang === 'en' ? 'Official representative office in KZ, quartz sand & chemical lining supplies' : 'Официальное представительство в РК, кварцит и футеровочные смеси'
+    },
+  ];
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
@@ -129,25 +186,37 @@ export default function Contacts({ lang }: ContactsProps) {
 
             {/* Grid for Quick Contacts */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
-              <div className="flex gap-3 items-center">
-                <div className="p-2 bg-slate-100 text-gray-700 rounded-lg shrink-0">
+              <div className="flex gap-3 items-start">
+                <div className="p-2 bg-slate-100 text-gray-700 rounded-lg shrink-0 mt-1">
                   <Phone className="h-4 w-4" />
                 </div>
-                <div>
-                  <span className="text-[10px] text-gray-400 font-mono block uppercase">{t.phone}</span>
-                  <a href="tel:+73833818812" className="text-xs font-bold text-gray-900 hover:text-[#e65410] font-mono">
-                    +7 (383) 381-88-12
-                  </a>
+                <div className="space-y-1.5">
+                  <div>
+                    <span className="text-[10px] text-gray-400 font-mono block uppercase leading-none">
+                      {lang === 'en' ? 'Toll-free RF' : 'Телефон (бесплатный):'}
+                    </span>
+                    <a href="tel:88005506054" className="text-xs font-bold text-gray-900 hover:text-[#e65410] font-mono leading-none block mt-0.5">
+                      8-800-550-60-54
+                    </a>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-gray-400 font-mono block uppercase leading-none">
+                      {lang === 'en' ? 'Multi-channel' : 'Телефон (многоканальный):'}
+                    </span>
+                    <a href="tel:+73833354054" className="text-xs font-bold text-gray-900 hover:text-[#e65410] font-mono leading-none block mt-0.5">
+                      (383) 33-54-0-54
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex gap-3 items-center">
-                <div className="p-2 bg-slate-100 text-gray-700 rounded-lg shrink-0">
+              <div className="flex gap-3 items-start">
+                <div className="p-2 bg-slate-100 text-gray-700 rounded-lg shrink-0 mt-1">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-gray-400 font-mono block uppercase">{t.email}</span>
-                  <a href="mailto:info@sibtehlit.ru" className="text-xs font-bold text-gray-900 hover:text-[#e65410] font-mono">
+                  <span className="text-[10px] text-gray-400 font-mono block uppercase leading-none">{t.email}</span>
+                  <a href="mailto:info@sibtehlit.ru" className="text-xs font-bold text-gray-900 hover:text-[#e65410] font-mono leading-none block mt-1">
                     info@sibtehlit.ru
                   </a>
                 </div>
@@ -333,6 +402,76 @@ export default function Contacts({ lang }: ContactsProps) {
               </button>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* Regional Representative Offices Section */}
+      <div className="mt-16 pt-12 border-t border-gray-200 space-y-8">
+        <div className="text-center md:text-left max-w-2xl">
+          <span className="font-mono text-[10px] text-[#e65410] uppercase tracking-widest font-black block">
+            {lang === 'en' ? 'REGIONAL PRESENCE' : 'МАСШТАБЫ ПОСТАВОК'}
+          </span>
+          <h2 className="text-xl sm:text-2xl font-black text-gray-950 uppercase mt-1 tracking-tight font-sans">
+            {lang === 'en' ? 'Regional Representative Offices' : 'Наши региональные представительства'}
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed font-sans">
+            {lang === 'en' 
+              ? 'Find our authorized local engineer near you for swift calculation of foundry equipment, localized service, and spare parts supply.' 
+              : 'Свяжитесь с официальными представителями компании «Сибтехлит» в вашем регионе для оперативного решения технологических задач, пусконаладки и поставок.'}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {offices.map((office) => (
+            <div 
+              key={office.id} 
+              className="bg-white border border-gray-200 hover:border-slate-350 hover:shadow-xs transition duration-200 p-6 rounded-xl flex flex-col justify-between space-y-4"
+            >
+              <div className="space-y-3">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-base font-bold text-gray-900 font-sans tracking-tight">
+                      {office.city}
+                    </h3>
+                    <span className="text-[10px] font-mono text-gray-400 block uppercase mt-0.5 font-bold">
+                      {office.region}
+                    </span>
+                  </div>
+                  <span className="bg-[#e65410]/5 text-[#e65410] border border-[#e65410]/10 text-[10px] font-mono uppercase font-black px-2.5 py-1 rounded">
+                    {office.id === 'msk' || office.id === 'spb' ? (lang === 'en' ? 'OFFICE + STOCK' : 'Офис + Склад') : (lang === 'en' ? 'OFFICE' : 'Офис')}
+                  </span>
+                </div>
+
+                <div className="space-y-2 text-xs text-gray-700">
+                  <div className="flex gap-2 items-start">
+                    <MapPin className="h-4 w-4 text-[#00333b] shrink-0 mt-0.5" />
+                    <span>{office.address}</span>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <Phone className="h-4 w-4 text-[#00333b] shrink-0" />
+                    <a href={`tel:${office.phone.replace(/[^+\d]/g, '')}`} className="font-mono hover:text-[#e65410] font-bold">
+                      {office.phone}
+                    </a>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <Mail className="h-4 w-4 text-[#00333b] shrink-0" />
+                    <a href={`mailto:${office.email}`} className="font-mono hover:text-[#e65410] font-bold">
+                      {office.email}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-3.5 border-t border-gray-100">
+                <span className="text-[9px] font-mono text-[#00333b] uppercase tracking-wider block font-bold leading-none mb-1.5">
+                  {lang === 'en' ? 'Specification' : 'Спецификация представительства'}
+                </span>
+                <p className="text-[11px] text-gray-650 leading-relaxed font-sans font-medium">
+                  {office.specialization}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

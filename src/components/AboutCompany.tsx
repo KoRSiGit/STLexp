@@ -510,7 +510,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
                 <ChevronRight className="h-4 w-4" />
               </button>
               <div className="text-center text-[10px] text-gray-400 font-mono mt-2">
-                info@sibtehlit.ru / +7 (383) 381-88-12
+                info@sibtehlit.ru / 8-800-550-60-54 / (383) 33-54-0-54
               </div>
             </div>
           </div>

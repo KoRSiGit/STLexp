@@ -116,8 +116,9 @@ export default function Header({
         <div className="max-w-7xl mx-auto flex justify-between items-center font-mono">
           <div className="flex gap-6">
             <span>📍 {t.addressCity}</span>
-            <span className="hidden sm:inline">📞 +7 (383) 381-88-12</span>
-            <span className="hidden md:inline">✉ info@sibtehlit.ru</span>
+            <span className="hidden sm:inline">📞 8-800-550-60-54</span>
+            <span className="hidden md:inline">📞 +7 (383) 33-54-0-54</span>
+            <span className="hidden lg:inline">✉ info@sibtehlit.ru</span>
           </div>
           <div className="flex gap-4">
             <button

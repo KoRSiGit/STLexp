@@ -103,9 +103,12 @@ export default function Footer({ setCurrentTab, lang }: FooterProps) {
                   <strong>{lang === 'en' ? 'Address:' : 'Адрес:'}</strong> {t.addressFull}
                 </span>
               </li>
-              <li className="flex items-center space-x-2.5">
-                <Phone className="h-4 w-4 text-[#e65410] shrink-0" />
-                <span>+7 (383) 381-88-12 ({lang === 'en' ? 'Novosibirsk' : 'Новосибирск'})</span>
+              <li className="ml-6.5 relative leading-relaxed">
+                <Phone className="h-4 w-4 text-[#e65410] absolute left-[-26px] top-1 shrink-0" />
+                <div className="flex flex-col space-y-0.5">
+                  <span>8-800-550-60-54 ({lang === 'en' ? 'Toll-free RF' : 'Бесплатный'})</span>
+                  <span>+7 (383) 33-54-0-54 ({lang === 'en' ? 'Novosibirsk' : 'Многоканальный'})</span>
+                </div>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Mail className="h-4 w-4 text-[#e65410] shrink-0" />
