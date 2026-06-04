@@ -10,7 +10,7 @@ export default function Footer({ setCurrentTab, lang }: FooterProps) {
   const t = TRANSLATIONS[lang];
 
   return (
-    <footer className="bg-[#00333b] text-white border-t border-teal-800 pt-16 pb-12">
+    <footer className="bg-[#001418] text-white border-t-4 border-[#e65410] pt-16 pb-12 shadow-[0_-8px_30px_rgba(0,0,0,0.4)] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
