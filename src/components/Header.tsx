@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info, Phone } from 'lucide-react';
+import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info, Phone, Flame, Layers, Snowflake, Wrench } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
@@ -27,15 +27,7 @@ export default function Header({
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled((prevScrolled) => {
-        if (currentScrollY > 100) {
-          return true;
-        } else if (currentScrollY < 40) {
-          return false;
-        }
-        return prevScrolled;
-      });
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
@@ -46,39 +38,42 @@ export default function Header({
   const renderMegamenuDropdown = () => {
     if (!dropdownOpen) return null;
     return (
-      <div className="absolute top-[calc(100%-1px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#00333b] text-white rounded-b-lg shadow-2xl border border-teal-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-        {catalogDropdownCategories.map((cat) => (
-          <div key={cat.id} className="space-y-3">
-            <h5 
-              onClick={() => handleCategoryClick(cat.id)}
-              className="text-[11px] font-black uppercase text-[#e65410] tracking-wider cursor-pointer hover:underline border-b border-[#004a55] pb-1.5"
-            >
-              {lang === 'en' ? cat.labelEn : cat.labelRu}
-            </h5>
-            <ul className="space-y-2">
-              {cat.items.map((sub, sidx) => (
-                <li key={sidx}>
-                  <button
-                    onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId, sub.productId)}
-                    className="text-left text-[11px] text-gray-100 hover:text-white transition duration-150 flex items-start gap-1 py-0.5 group/sub border-none bg-transparent p-0 cursor-pointer w-full"
-                  >
-                    <span className="text-[#e65410] opacity-50 group-hover/sub:opacity-100 font-mono">›</span>
-                    <span>{lang === 'en' ? sub.labelEn : sub.labelRu}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div className="absolute top-full left-0 right-0 mx-auto w-full max-w-7xl bg-[#00242a] text-white rounded-b-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] border-l border-r border-b border-teal-850 p-7 z-[9999] animate-fadeIn border-t-4 border-t-[#e65410] -mt-1">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-5">
+          {catalogDropdownCategories.map((cat) => (
+            <div key={cat.id} className="space-y-3.5">
+              <h5 
+                onClick={() => handleCategoryClick(cat.id)}
+                className="text-[12px] font-black uppercase text-[#e65410] tracking-wider cursor-pointer hover:underline border-b border-[#003d47] pb-2 flex items-center gap-1.5 transition duration-150 hover:text-white"
+              >
+                <cat.icon className="h-3.5 w-3.5 shrink-0 text-[#e65410]" />
+                <span>{lang === 'en' ? cat.labelEn : cat.labelRu}</span>
+              </h5>
+              <ul className="space-y-2">
+                {cat.items.map((sub, sidx) => (
+                  <li key={sidx}>
+                    <button
+                      onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId, sub.productId)}
+                      className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex items-start gap-1 py-0.5 group/sub border-none bg-transparent p-0 cursor-pointer w-full leading-tight"
+                    >
+                      <span className="text-[#e65410] opacity-50 group-hover/sub:opacity-100 font-mono">›</span>
+                      <span className="group-hover/sub:underline">{lang === 'en' ? sub.labelEn : sub.labelRu}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
         
-        <div className="col-span-2 lg:col-span-4 border-t border-[#004a55] pt-4 mt-2 flex items-center justify-between text-[10px] text-gray-200 font-mono">
-          <span className="flex items-center gap-1">
-            <Sparkles className="h-3 w-3 text-[#e65410] animate-pulse" />
+        <div className="border-t border-[#003d47] pt-4.5 mt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10.5px] text-gray-300 font-mono">
+          <span className="flex items-center gap-2">
+            <Sparkles className="h-3.5 w-3.5 text-[#e65410] animate-pulse" />
             <span>{lang === 'en' ? 'Direct navigation from Siberian Foundry Technologies (Sibtehlit)' : 'Официальный номенклатурный список «Сибтехлит»'}</span>
           </span>
           <button
             onClick={() => handleCategoryClick('all')}
-            className="bg-[#001f24] hover:bg-[#e65410] border border-[#004a55] hover:border-[#e65410] text-white px-3 py-1 rounded text-[9px] uppercase font-bold transition cursor-pointer"
+            className="bg-[#00171b] hover:bg-[#e65410] border border-[#003d47] hover:border-[#e65410] text-white px-3.5 py-1.5 rounded text-[9.5px] uppercase font-bold transition-all duration-150 cursor-pointer shadow-sm active:scale-95"
           >
             {lang === 'en' ? 'Open Full Catalog' : 'Открыть весь каталог ↗'}
           </button>
@@ -92,6 +87,7 @@ export default function Header({
       id: 'sand-mixers-xtc',
       labelRu: 'Формовка ХТС',
       labelEn: 'No-Bake Molding XTC',
+      icon: Layers,
       items: [
         { labelRu: 'Смесители ХТС серии СХ', labelEn: 'Continuous mixers CX', query: 'СХ', subId: 'mixers' },
         { labelRu: 'Линии регенерации песка РП', labelEn: 'Sand reclamation lines RP', query: 'РП', subId: 'reclamation' },
@@ -102,6 +98,7 @@ export default function Header({
       id: 'furnaces',
       labelRu: 'Плавильное оборуд.',
       labelEn: 'Melting Furnaces',
+      icon: Flame,
       items: [
         { labelRu: 'Индукционные печи GW', labelEn: 'Induction furnaces GW', query: 'GW', subId: 'induction' },
         { labelRu: 'Чайниковые ковши КЛ', labelEn: 'Teapot pouring ladles KL', query: 'КЛ', subId: 'ladles' },
@@ -111,6 +108,7 @@ export default function Header({
       id: 'green-sand',
       labelRu: 'Оборудование ПГС',
       labelEn: 'Green Sand Equipment',
+      icon: Sliders,
       items: [
         { labelRu: 'Смесители ПГС серии СТ', labelEn: 'Intensive mixers ST', query: 'СТ', subId: 'mixers' },
         { labelRu: 'Автоматические формовочные линии АФЛ', labelEn: 'Automated molding lines AFL', query: 'АФЛ', subId: 'molding-lines' },
@@ -122,6 +120,7 @@ export default function Header({
       id: 'core-making',
       labelRu: 'Стержневое оборуд.',
       labelEn: 'Core Making Equipment',
+      icon: Cpu,
       items: [
         { labelRu: 'Стержневые автоматы СА', labelEn: 'Core shooters SA', query: 'СА', subId: 'shooters' },
       ],
@@ -130,6 +129,7 @@ export default function Header({
       id: 'shot-blast',
       labelRu: 'Дробеметная очистка',
       labelEn: 'Shot Blasting',
+      icon: HardHat,
       items: [
         { labelRu: 'Ленточные дробеметы Q32', labelEn: 'Tumble belt blasters Q32', query: 'Q32', subId: 'shot-blast-machines', productId: 'shot-blast-q32-rubber' },
         { labelRu: 'Барабанные дробеметы Q31', labelEn: 'Tumble steel drum systems Q31', query: 'Q31', subId: 'shot-blast-machines', productId: 'shot-blast-q31-drum' },
@@ -140,6 +140,7 @@ export default function Header({
       id: 'casting-machines',
       labelRu: 'Литейные машины',
       labelEn: 'Casting Machinery',
+      icon: ShieldAlert,
       items: [
         { labelRu: 'Кокильные станки КМ', labelEn: 'Tilt gravity molders KM', query: 'КМ', subId: 'gravity' },
         { labelRu: 'Центробежные машины ЦЛ', labelEn: 'Centrifugal stations CL', query: 'ЦЛ', subId: 'centrifugal' },
@@ -149,6 +150,7 @@ export default function Header({
       id: 'cooling-systems',
       labelRu: 'Системы охлаждения',
       labelEn: 'Water Cooling Systems',
+      icon: Snowflake,
       items: [
         { labelRu: 'Испарительные градирни ГЗ', labelEn: 'Closed cooling towers GZ', query: 'ГЗ', subId: 'towers' },
       ],
@@ -173,9 +175,10 @@ export default function Header({
   };
 
   return (
-    <header className={`sticky top-0 z-50 bg-white border-b border-gray-200 transition-all duration-300 ${
-      isScrolled ? 'shadow-md' : 'shadow-xs'
-    }`}>
+    <>
+      <header className={`fixed top-0 left-0 right-0 w-full z-50 bg-white border-b border-gray-200 transition-all duration-300 ${
+        isScrolled ? 'shadow-md shadow-slate-100/10' : 'shadow-xs'
+      }`}>
       {/* Top micro-bar */}
       <div className={`bg-[#00333b] text-white text-[11px] px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out ${
         isScrolled 
@@ -550,5 +553,8 @@ export default function Header({
         </div>
       )}
     </header>
+    {/* Stable layout spacer to prevent layout-shift and jittering */}
+    <div className="h-[116px] md:h-[164px] w-full shrink-0" />
+    </>
   );
 }
