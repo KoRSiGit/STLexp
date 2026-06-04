@@ -22,7 +22,70 @@ export default function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCatalogOpen, setMobileCatalogOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const t = TRANSLATIONS[lang];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled((prevScrolled) => {
+        if (currentScrollY > 100) {
+          return true;
+        } else if (currentScrollY < 40) {
+          return false;
+        }
+        return prevScrolled;
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const renderMegamenuDropdown = () => {
+    if (!dropdownOpen) return null;
+    return (
+      <div className="absolute top-[calc(100%-1px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#00333b] text-white rounded-b-lg shadow-2xl border border-teal-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        {catalogDropdownCategories.map((cat) => (
+          <div key={cat.id} className="space-y-3">
+            <h5 
+              onClick={() => handleCategoryClick(cat.id)}
+              className="text-[11px] font-black uppercase text-[#e65410] tracking-wider cursor-pointer hover:underline border-b border-[#004a55] pb-1.5"
+            >
+              {lang === 'en' ? cat.labelEn : cat.labelRu}
+            </h5>
+            <ul className="space-y-2">
+              {cat.items.map((sub, sidx) => (
+                <li key={sidx}>
+                  <button
+                    onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId, sub.productId)}
+                    className="text-left text-[11px] text-gray-100 hover:text-white transition duration-150 flex items-start gap-1 py-0.5 group/sub border-none bg-transparent p-0 cursor-pointer w-full"
+                  >
+                    <span className="text-[#e65410] opacity-50 group-hover/sub:opacity-100 font-mono">›</span>
+                    <span>{lang === 'en' ? sub.labelEn : sub.labelRu}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        
+        <div className="col-span-2 lg:col-span-4 border-t border-[#004a55] pt-4 mt-2 flex items-center justify-between text-[10px] text-gray-200 font-mono">
+          <span className="flex items-center gap-1">
+            <Sparkles className="h-3 w-3 text-[#e65410] animate-pulse" />
+            <span>{lang === 'en' ? 'Direct navigation from Siberian Foundry Technologies (Sibtehlit)' : 'Официальный номенклатурный список «Сибтехлит»'}</span>
+          </span>
+          <button
+            onClick={() => handleCategoryClick('all')}
+            className="bg-[#001f24] hover:bg-[#e65410] border border-[#004a55] hover:border-[#e65410] text-white px-3 py-1 rounded text-[9px] uppercase font-bold transition cursor-pointer"
+          >
+            {lang === 'en' ? 'Open Full Catalog' : 'Открыть весь каталог ↗'}
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   const catalogDropdownCategories = [
     {
@@ -110,9 +173,15 @@ export default function Header({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-xs">
+    <header className={`sticky top-0 z-50 bg-white border-b border-gray-200 transition-all duration-300 ${
+      isScrolled ? 'shadow-md' : 'shadow-xs'
+    }`}>
       {/* Top micro-bar */}
-      <div className="bg-[#00333b] text-white text-[11px] py-2.5 px-4 sm:px-6 lg:px-8">
+      <div className={`bg-[#00333b] text-white text-[11px] px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out ${
+        isScrolled 
+          ? 'h-0 py-0 overflow-hidden opacity-0 pointer-events-none' 
+          : 'h-auto py-2.5 opacity-100'
+      }`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center font-mono">
           <div className="flex gap-6">
             <span>📍 {t.addressCity}</span>
@@ -145,16 +214,16 @@ export default function Header({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center justify-between h-20 py-2 sm:py-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative h-full">
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14 sm:h-15' : 'h-20'} py-1 sm:py-2`}>
           
           {/* Logo with the beautiful custom official Sibtehlit SVG */}
           <div 
             onClick={() => setCurrentTab('home')} 
-            className="flex items-center space-x-3.5 cursor-pointer group select-none hover:opacity-95"
+            className="flex items-center space-x-2.5 sm:space-x-3.5 cursor-pointer group select-none hover:opacity-95"
           >
             <svg 
-              className="h-11 w-11 sm:h-13 sm:w-13 shrink-0 transition-transform duration-200 group-hover:scale-105" 
+              className={`shrink-0 transition-all duration-300 group-hover:scale-105 ${isScrolled ? 'h-8 w-8 sm:h-9 sm:w-9' : 'h-11 w-11 sm:h-13 sm:w-13'}`}
               viewBox="0 0 100 100" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
@@ -175,28 +244,104 @@ export default function Header({
             </svg>
             <div>
               <div className="flex items-center leading-none">
-                <span className="font-sans font-black text-xl sm:text-2xl tracking-normal text-[#00333b] uppercase">
+                <span className={`font-sans font-black tracking-normal text-[#00333b] uppercase transition-all duration-350 ${isScrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`}>
                   {lang === 'en' ? 'Sibtehlit' : 'Сибтехлит'}
                 </span>
               </div>
-              <p className="text-[9px] sm:text-[10px] text-[#00333b] font-bold tracking-[0.15em] uppercase font-sans mt-1 leading-none">
+              <p className={`text-[9px] sm:text-[10px] text-[#00333b] font-bold tracking-[0.14em] uppercase font-sans mt-0.5 leading-none transition-all duration-300 ${isScrolled ? 'h-0 opacity-0 overflow-hidden mt-0' : 'h-auto opacity-100'}`}>
                 {lang === 'en' ? 'YOUR FOUNDRY PARTNER' : 'ВАШ ЛИТЕЙНЫЙ ПАРТНЕР'}
               </p>
             </div>
           </div>
 
+          {/* Centered Menu on Scrolled Header */}
+          <nav className={`hidden md:flex items-center lg:space-x-5 space-x-2 transition-all duration-300 h-full ${
+            isScrolled ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible w-0 overflow-hidden pointer-events-none'
+          }`}>
+            {navItems.map((item) => {
+              const IconComp = item.icon;
+              const isActive = currentTab === item.id;
+
+              if (item.hasDropdown) {
+                return (
+                  <div
+                    key={item.id}
+                    className="h-full flex items-center"
+                    onMouseEnter={() => setDropdownOpen(true)}
+                    onMouseLeave={() => setDropdownOpen(false)}
+                  >
+                    <button
+                      onClick={() => {
+                        setCurrentTab('catalog');
+                        if (onCategorySelect) onCategorySelect('all');
+                      }}
+                      className={`flex items-center space-x-1.5 h-full px-2 lg:px-3 text-[10px] sm:text-[11px] font-black uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
+                        isActive || dropdownOpen
+                          ? 'border-[#e65410] text-[#e65410]'
+                          : 'border-transparent text-gray-750 hover:text-[#e65410]'
+                      }`}
+                    >
+                      <IconComp className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                      <span>{item.label}</span>
+                      <ChevronDown className={`h-2.5 w-2.5 sm:h-3 sm:w-3 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    {renderMegamenuDropdown()}
+                  </div>
+                );
+              }
+
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentTab(item.id)}
+                  className={`flex items-center space-x-1.5 h-full px-2 lg:px-3 text-[10px] sm:text-[11px] font-black uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
+                    isActive
+                      ? 'border-[#e65410] text-[#e65410]'
+                      : 'border-transparent text-gray-750 hover:text-[#e65410]'
+                  }`}
+                >
+                  <IconComp className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </nav>
+
           {/* Actions: Calculators, AI-Assistant & RFQ Cart */}
-          <div className="flex items-center space-x-1.5 sm:space-x-3">
+          <div className="flex items-center space-x-1.5 sm:space-x-2.5">
+            {/* Language Switcher for Scrolled Mode */}
+            {isScrolled && (
+              <div className="hidden sm:flex items-center gap-2 pr-2.5 mr-0.5 border-r border-gray-200 text-[10px] font-mono leading-none">
+                <button
+                  onClick={() => setLang('en')}
+                  className={`cursor-pointer transition-colors duration-150 ${lang === 'en' ? 'font-bold text-[#e65410]' : 'text-gray-400 hover:text-gray-700'}`}
+                >
+                  EN
+                </button>
+                <span className="text-gray-300">|</span>
+                <button
+                  onClick={() => setLang('ru')}
+                  className={`cursor-pointer transition-colors duration-150 ${lang === 'ru' ? 'font-bold text-[#e65410]' : 'text-gray-400 hover:text-gray-700'}`}
+                >
+                  RU
+                </button>
+              </div>
+            )}
+
             {/* Foundry Calculator Button */}
             <button 
               onClick={() => setCurrentTab('calc')}
-              className={`flex items-center space-x-1.5 px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider rounded border transition-all duration-150 cursor-pointer ${
+              className={`flex items-center space-x-1.5 font-bold uppercase tracking-wider rounded border transition-all duration-150 cursor-pointer ${
                 currentTab === 'calc'
                   ? 'bg-[#e65410] border-[#e65410] text-white shadow-xs'
                   : 'bg-white border-gray-200 text-gray-700 hover:text-[#e65410] hover:border-[#e65410]'
+              } ${
+                isScrolled 
+                  ? 'px-2 py-1.5 sm:px-3 sm:py-2 text-[10px]' 
+                  : 'px-3 py-2 sm:px-4 sm:py-2.5 text-[11px]'
               }`}
             >
-              <Sliders className="h-3.5 w-3.5" />
+              <Sliders className={isScrolled ? 'h-3 w-3' : 'h-3.5 w-3.5'} />
               <span className="hidden md:inline">{lang === 'en' ? 'Calculator' : 'Литейный калькулятор'}</span>
               <span className="inline md:hidden">{lang === 'en' ? 'Calc' : 'Калькулятор'}</span>
             </button>
@@ -204,13 +349,17 @@ export default function Header({
             {/* AI-Assistant Button */}
             <button 
               onClick={() => setCurrentTab('assistant')}
-              className={`flex items-center space-x-1.5 px-3 py-2 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider rounded border transition-all duration-150 cursor-pointer ${
+              className={`flex items-center space-x-1.5 font-bold uppercase tracking-wider rounded border transition-all duration-150 cursor-pointer ${
                 currentTab === 'assistant'
                   ? 'bg-[#00333b] border-[#00333b] text-white shadow-xs'
                   : 'bg-white border-gray-200 text-gray-700 hover:text-[#00333b] hover:border-[#00333b]'
+              } ${
+                isScrolled 
+                  ? 'px-2 py-1.5 sm:px-3 sm:py-2 text-[10px]' 
+                  : 'px-3 py-2 sm:px-4 sm:py-2.5 text-[11px]'
               }`}
             >
-              <Sparkles className="h-3.5 w-3.5 text-orange-500 animate-pulse" />
+              <Sparkles className={`${isScrolled ? 'h-3 w-3' : 'h-3.5 w-3.5'} text-orange-500 animate-pulse`} />
               <span className="hidden md:inline">{lang === 'en' ? 'AI Selection' : 'ИИ-Подбор'}</span>
               <span className="inline md:hidden">{lang === 'en' ? 'AI' : 'ИИ-Подбор'}</span>
             </button>
@@ -219,13 +368,17 @@ export default function Header({
             <button
               id="rfq-cart-btn"
               onClick={() => setCurrentTab('rfq')}
-              className={`relative flex items-center space-x-1.5 px-3 py-2.5 sm:px-4 sm:py-2.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-150 rounded border cursor-pointer ${
+              className={`relative flex items-center space-x-1.5 font-bold uppercase tracking-wider transition-all duration-150 rounded border cursor-pointer ${
                 currentTab === 'rfq'
                   ? 'bg-[#e65410] border-[#e65410] text-white'
                   : 'bg-[#00333b] border-[#00333b] hover:bg-[#e65410] hover:border-[#e65410] text-white'
+              } ${
+                isScrolled 
+                  ? 'px-2 py-1.5 sm:px-3 sm:py-2 text-[10px]' 
+                  : 'px-3 py-2.5 sm:px-4 sm:py-2.5 text-[11px]'
               }`}
             >
-              <ShoppingCart className="h-4 w-4" />
+              <ShoppingCart className={isScrolled ? 'h-3.5 w-3.5' : 'h-4 w-4'} />
               <span className="hidden lg:inline">{t.specRequest}</span>
               <span className="inline lg:hidden">{lang === 'en' ? 'RFQ' : 'Запрос'}</span>
               
@@ -254,7 +407,11 @@ export default function Header({
       </div>
 
       {/* Secondary Row - Main Navigation Menu (like on sltgroup.ru) */}
-      <div className="bg-slate-50 border-t border-b border-gray-200 hidden md:block">
+      <div className={`bg-slate-50 border-t border-b border-gray-200 hidden md:block transition-all duration-300 ease-in-out origin-top ${
+        isScrolled 
+          ? 'h-0 overflow-hidden border-t-0 border-b-0 opacity-0 pointer-events-none' 
+          : 'h-12 opacity-100'
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <nav className="flex space-x-2 lg:space-x-8 h-12 items-center justify-center">
             {navItems.map((item) => {
@@ -284,48 +441,7 @@ export default function Header({
                       <span>{item.label}</span>
                       <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
-
-                    {/* Megamenu absolute panel */}
-                    {dropdownOpen && (
-                      <div className="absolute top-[calc(100%-1px)] left-4 right-4 md:left-0 md:right-0 mx-auto w-[calc(100vw-2rem)] md:w-full max-w-5xl bg-[#00333b] text-white rounded-b-lg shadow-2xl border border-teal-800 p-6 z-[9999] animate-fadeIn grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-                        {catalogDropdownCategories.map((cat) => (
-                          <div key={cat.id} className="space-y-3">
-                            <h5 
-                              onClick={() => handleCategoryClick(cat.id)}
-                              className="text-[11px] font-black uppercase text-[#e65410] tracking-wider cursor-pointer hover:underline border-b border-[#004a55] pb-1.5"
-                            >
-                              {lang === 'en' ? cat.labelEn : cat.labelRu}
-                            </h5>
-                            <ul className="space-y-2">
-                              {cat.items.map((sub, sidx) => (
-                                <li key={sidx}>
-                                  <button
-                                    onClick={() => handleCategoryClick(cat.id, sub.query, sub.subId, sub.productId)}
-                                    className="text-left text-[11px] text-gray-100 hover:text-white transition duration-150 flex items-start gap-1 py-0.5 group/sub border-none bg-transparent p-0 cursor-pointer w-full"
-                                  >
-                                    <span className="text-[#e65410] opacity-50 group-hover/sub:opacity-100 font-mono">›</span>
-                                    <span>{lang === 'en' ? sub.labelEn : sub.labelRu}</span>
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                        
-                        <div className="col-span-2 lg:col-span-4 border-t border-[#004a55] pt-4 mt-2 flex items-center justify-between text-[10px] text-gray-200 font-mono">
-                          <span className="flex items-center gap-1">
-                            <Sparkles className="h-3 w-3 text-[#e65410] animate-pulse" />
-                            <span>{lang === 'en' ? 'Direct navigation from Siberian Foundry Technologies (Sibtehlit)' : 'Официальный номенклатурный список «Сибтехлит»'}</span>
-                          </span>
-                          <button
-                            onClick={() => handleCategoryClick('all')}
-                            className="bg-[#001f24] hover:bg-[#e65410] border border-[#004a55] hover:border-[#e65410] text-white px-3 py-1 rounded text-[9px] uppercase font-bold transition cursor-pointer"
-                          >
-                            {lang === 'en' ? 'Open Full Catalog' : 'Открыть весь каталог ↗'}
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                    {renderMegamenuDropdown()}
                   </div>
                 );
               }
