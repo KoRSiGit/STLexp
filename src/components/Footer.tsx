@@ -1,6 +1,8 @@
 import { ShieldCheck, Mail, Phone, MapPin, FileText } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 
+const steelPouringBg = 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=1600&q=80';
+
 interface FooterProps {
   setCurrentTab: (tab: string) => void;
   lang: 'ru' | 'en';
@@ -10,8 +12,16 @@ export default function Footer({ setCurrentTab, lang }: FooterProps) {
   const t = TRANSLATIONS[lang];
 
   return (
-    <footer className="bg-[#001418] text-white border-t-4 border-[#e65410] pt-16 pb-12 shadow-[0_-8px_30px_rgba(0,0,0,0.4)] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#001418] text-white border-t-4 border-[#e65410] pt-16 pb-12 shadow-[0_-8px_30px_rgba(0,0,0,0.4)] relative overflow-hidden">
+      {/* Photo background of steel pouring process with luxury low opacity */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-[0.16] bg-no-repeat mix-blend-luminosity"
+        style={{ backgroundImage: `url(${steelPouringBg})` }}
+      />
+      {/* Warm temperature glow accent */}
+      <div className="absolute right-0 bottom-0 w-96 h-96 bg-[#e65410]/5 blur-[130px] pointer-events-none z-0 rounded-full" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           

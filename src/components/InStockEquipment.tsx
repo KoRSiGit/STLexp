@@ -1,6 +1,8 @@
 import { ShoppingCart, CheckCircle2, Snowflake, ShieldCheck, ArrowRight, Table } from 'lucide-react';
 import { Product, ProductCategory } from '../types';
 
+const steelPouringBg = 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=1600&q=80';
+
 interface InStockEquipmentProps {
   lang: 'ru' | 'en';
   onAddToRFQ: (product: Product) => void;
@@ -290,10 +292,15 @@ export default function InStockEquipment({
       </div>
 
       {/* Spares and Consumables Banner */}
-      <div className="bg-[#00333b] text-white rounded-xl border border-teal-800 p-6 sm:p-8 flex flex-col md:flex-row gap-6 md:items-center justify-between relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-[#00171b] text-white rounded-xl border border-teal-850 p-6 sm:p-8 flex flex-col md:flex-row gap-6 md:items-center justify-between relative overflow-hidden">
+        {/* Photo background of steel pouring process with luxury low opacity */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-[0.14] bg-no-repeat mix-blend-luminosity"
+          style={{ backgroundImage: `url(${steelPouringBg})` }}
+        />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none z-0" />
         
-        <div className="space-y-3 max-w-2xl">
+        <div className="space-y-3 max-w-2xl relative z-10">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
             <span className="font-mono text-xs text-emerald-500 uppercase font-black tracking-widest">{t.warehouseCheck}</span>

@@ -4,6 +4,8 @@ import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
 import { TRANSLATIONS } from '../data/translations';
 
+const steelPouringBg = 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=1600&q=80';
+
 interface HeroProps {
   onNavigateToCatalog: (category?: string) => void;
   onAddToRFQ: (product: Product) => void;
@@ -74,15 +76,20 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
     <div className="bg-[#F4F4F4] text-gray-900">
       
       {/* Industrial Hero Section with Professional Polish high-contrast styling */}
-      <section className="relative bg-[#00333b] text-white py-20 sm:py-28 overflow-hidden">
+      <section className="relative bg-[#001c20] text-white py-20 sm:py-28 overflow-hidden">
+        {/* Photo background of steel pouring process with luxury low opacity */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-[0.14] bg-no-repeat mix-blend-luminosity"
+          style={{ backgroundImage: `url(${steelPouringBg})` }}
+        />
         {/* Fine engineering grid overlay and orange subtle gradients */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(230,84,16,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(230,84,16,0.12),transparent_40%)] z-0" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px] z-0" />
         
         {/* Solid precision orange line at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#e65410]" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#e65410] z-10" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Main Captions */}

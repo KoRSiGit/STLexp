@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 
+const steelPouringBg = 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=1600&q=80';
+
 interface ProductCatalogProps {
   onAddToRFQ: (product: Product) => void;
   selectedCategory?: string;
@@ -378,9 +380,17 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     <div className="bg-gray-50 min-h-screen">
       
       {/* 1. Industrial Header & Search Banner */}
-      <div className="bg-[#00333b] text-white py-14 border-b border-teal-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+      <div className="bg-[#00171b] text-white py-14 border-b-4 border-[#e65410] relative overflow-hidden">
+        {/* Photo background of steel pouring process with low opacity */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-15 bg-no-repeat mix-blend-luminosity"
+          style={{ backgroundImage: `url(${steelPouringBg})` }}
+        />
+        {/* Soft orange radial heat glow */}
+        <div className="absolute right-0 bottom-0 w-80 h-80 bg-[#e65410]/5 blur-[120px] pointer-events-none z-0 rounded-full" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 animate-fadeIn">
             <div className="max-w-3xl space-y-3">
               <span className="text-xs font-mono uppercase tracking-widest text-[#e65410] font-black flex items-center space-x-2">
                 <Activity className="h-4 w-4 text-[#e65410] animate-pulse" />
@@ -392,7 +402,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   : categories.find(c => c.id === activeCategory)?.label
                 }
               </h1>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-sans max-w-2xl">
+              <p className="text-gray-350 text-sm sm:text-base leading-relaxed font-sans max-w-2xl text-shadow-sm">
                 {activeCategory === 'all'
                   ? (lang === 'en' 
                     ? 'Advanced casting systems matched to certified GOST standards. Full engineering customization, design of technological layouts, and support.' 
@@ -403,7 +413,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
             </div>
             
             {/* Real Search Box */}
-            <div className="w-full lg:max-w-md bg-gray-900 p-5 rounded-lg border border-gray-800 space-y-2 shrink-0">
+            <div className="w-full lg:max-w-md bg-black/70 p-5 rounded-none border border-teal-900/60 space-y-2 shrink-0 backdrop-blur-xs">
               <label className="block text-[10px] font-mono text-gray-400 uppercase tracking-wider font-semibold">
                 {lang === 'en' ? 'Direct database hardware search' : 'Прямой металлургический поиск по ГОСТ/модели'}
               </label>
@@ -416,7 +426,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t.searchPlaceholder}
-                  className="w-full pl-9 pr-4 py-2.5 bg-[#00252b] border border-teal-800 rounded text-sm text-white placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
+                  className="w-full pl-9 pr-4 py-2.5 bg-[#00171b]/95 border border-teal-950 rounded text-sm text-white placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
                 />
               </div>
               <p className="text-[9px] text-gray-500 font-mono italic">
@@ -446,70 +456,72 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
               {sltDivisions.map((div) => {
                 const IconComp = div.icon;
                 const title = lang === 'en' ? div.titleEn : div.titleRu;
                 const desc = lang === 'en' ? div.descEn : div.descRu;
                 const tag = lang === 'en' ? div.tagEn : div.tagRu;
                 const stats = lang === 'en' ? div.statsEn : div.statsRu;
-                const subs = lang === 'en' ? div.subcategoriesEn : div.subcategoriesRu;
+
+                const DIVISION_IMAGES: Record<string, string> = {
+                  'sand-mixers-xtc': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+                  'furnaces': 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=600&q=80',
+                  'green-sand': 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
+                  'core-making': 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
+                  'shot-blast': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
+                  'casting-machines': 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80',
+                  'cooling-systems': 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80',
+                };
+                const cardImage = DIVISION_IMAGES[div.id] || DIVISION_IMAGES['sand-mixers-xtc'];
 
                 return (
                   <div
                     key={div.id}
-                    className={`bg-white border rounded-lg p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer group ${div.color} shadow-xs shadow-gray-100`}
+                    className="group bg-white border border-gray-200 hover:border-[#e65410] p-4 flex flex-col justify-between transition-all duration-350 hover:shadow-xl hover:-translate-y-1.5 cursor-pointer shadow-xs shadow-slate-100/50 select-none relative"
                     onClick={() => handleSelectDivision(div.id)}
                   >
                     <div className="space-y-4">
-                      {/* Header */}
-                      <div className="flex items-center justify-between">
-                        <span className="text-[9px] font-mono font-black tracking-widest uppercase px-2 py-0.5 rounded bg-gray-100 text-gray-650 group-hover:bg-[#e65410] group-hover:text-white transition-colors">
-                          {tag}
-                        </span>
-                        <IconComp className="h-5 w-5 text-gray-400 group-hover:text-[#e65410] transition duration-300" />
+                      {/* Image container conforming to physical aspect ratio with slick hover scale */}
+                      <div className="relative aspect-[4/3] w-full bg-gray-100 overflow-hidden rounded-none border border-gray-200/60 flex items-center justify-center">
+                        <img
+                          src={cardImage}
+                          alt={title}
+                          className="w-full h-full object-cover transition-all duration-500 ease-out filter brightness-95 group-hover:scale-108 group-hover:brightness-105"
+                          referrerPolicy="no-referrer"
+                        />
+                        {/* Elegant mini icon badge floating overlay */}
+                        <div className="absolute top-3 right-3 bg-black/85 p-2 text-[#e65410] border border-teal-900/40 rounded-none transition duration-300 group-hover:bg-[#e65410] group-hover:text-white">
+                          <IconComp className="h-4 w-4 shrink-0" />
+                        </div>
+                        {/* Industrial capacity indicator strip at bottom of photo */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 pt-8 text-[10px] font-mono text-gray-200 font-medium">
+                          {stats}
+                        </div>
                       </div>
 
-                      {/* Meta info */}
-                      <div className="space-y-1.5">
-                        <h4 className="font-extrabold text-sm sm:text-base text-gray-900 group-hover:text-[#e65410] leading-snug transition duration-150 uppercase">
+                      {/* Header tags and Title */}
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-1.5">
+                          <span className="text-[9px] font-mono font-black tracking-widest text-[#e65410] uppercase bg-[#e65410]/5 border border-[#e65410]/15 px-2 py-0.5 rounded-none">
+                            {tag}
+                          </span>
+                        </div>
+                        <h4 className="font-sans font-extrabold text-[#00333b] text-base group-hover:text-[#e65410] transition-colors leading-tight uppercase tracking-tight">
                           {title}
                         </h4>
-                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-4">
+                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-3">
                           {desc}
                         </p>
                       </div>
-
-                      {/* Subcategories bullet links */}
-                      <div className="border-t border-gray-100 pt-3.5 space-y-1.5">
-                        <span className="text-[8px] font-mono uppercase text-gray-400 block tracking-widest font-black">
-                          {lang === 'en' ? 'Models & Sub-units:' : 'Модельный ряд комплексов:'}
-                        </span>
-                        <ul className="space-y-1 text-[11px] text-gray-650 font-medium">
-                          {subs.map((sub, idx) => (
-                            <li 
-                              key={idx} 
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleSelectDivision(div.id, sub.query, sub.subId);
-                              }}
-                              className="flex items-center space-x-1 hover:text-[#e65410] transition-colors cursor-pointer py-0.5"
-                            >
-                              <span className="text-orange-500 font-mono text-[10px]">›</span>
-                              <span className="underline decoration-transparent hover:decoration-[#e65410]">{sub.label}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
                     </div>
 
-                    {/* Footer Stats block */}
-                    <div className="border-t border-gray-100 mt-5 pt-3 flex items-center justify-between text-[10px] font-mono text-gray-400">
-                      <span className="font-semibold">{stats}</span>
-                      <span className="font-bold flex items-center gap-1 text-[#e65410] text-[9px] uppercase tracking-wider">
-                        <span>Перейти</span>
-                        <ArrowRight className="h-3 w-3 shrink-0 transform group-hover:translate-x-1 transition-transform" />
-                      </span>
+                    {/* Simple clear button for opening the division, styled like B&H */}
+                    <div className="border-t border-gray-150 mt-5 pt-4">
+                      <button className="w-full py-2.5 bg-[#00333b] group-hover:bg-[#e65410] text-white font-mono text-xs uppercase font-extrabold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm border-none active:scale-97">
+                        <span>{lang === 'en' ? 'Open Division' : 'Открыть раздел'}</span>
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-250 group-hover:translate-x-1" />
+                      </button>
                     </div>
                   </div>
                 );
