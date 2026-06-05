@@ -470,7 +470,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   'green-sand': 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
                   'core-making': 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
                   'shot-blast': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
-                  'casting-machines': 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80',
+                  'casting-machines': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
                   'cooling-systems': 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80',
                 };
                 const cardImage = DIVISION_IMAGES[div.id] || DIVISION_IMAGES['sand-mixers-xtc'];
@@ -478,35 +478,26 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 return (
                   <div
                     key={div.id}
-                    className="group bg-white border border-gray-200 hover:border-[#e65410] p-4 flex flex-col justify-between transition-all duration-350 hover:shadow-xl hover:-translate-y-1.5 cursor-pointer shadow-xs shadow-slate-100/50 select-none relative"
+                    className="group bg-white rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-350 hover:shadow-xl hover:-translate-y-1 cursor-pointer select-none relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-0"
                     onClick={() => handleSelectDivision(div.id)}
                   >
                     <div className="space-y-4">
-                      {/* Image container conforming to physical aspect ratio with slick hover scale */}
-                      <div className="relative aspect-[4/3] w-full bg-gray-100 overflow-hidden rounded-none border border-gray-200/60 flex items-center justify-center">
+                      {/* Image container conforming to physical aspect ratio with slick hover scale, stretched fully at the top */}
+                      <div className="relative aspect-[4/3] w-full bg-gray-50 overflow-hidden flex items-center justify-center border-b border-gray-100">
                         <img
                           src={cardImage}
                           alt={title}
-                          className="w-full h-full object-cover transition-all duration-500 ease-out filter brightness-95 group-hover:scale-108 group-hover:brightness-105"
+                          className="w-full h-full object-cover transition-all duration-500 ease-out filter brightness-100 group-hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
                         {/* Elegant mini icon badge floating overlay */}
-                        <div className="absolute top-3 right-3 bg-black/85 p-2 text-[#e65410] border border-teal-900/40 rounded-none transition duration-300 group-hover:bg-[#e65410] group-hover:text-white">
+                        <div className="absolute top-3 right-3 bg-black/85 p-2 text-[#e65410] border border-teal-900/10 rounded-lg transition duration-300 group-hover:bg-[#e65410] group-hover:text-white">
                           <IconComp className="h-4 w-4 shrink-0" />
-                        </div>
-                        {/* Industrial capacity indicator strip at bottom of photo */}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 pt-8 text-[10px] font-mono text-gray-200 font-medium">
-                          {stats}
                         </div>
                       </div>
 
-                      {/* Header tags and Title */}
-                      <div className="space-y-2">
-                        <div className="flex items-center space-x-1.5">
-                          <span className="text-[9px] font-mono font-black tracking-widest text-[#e65410] uppercase bg-[#e65410]/5 border border-[#e65410]/15 px-2 py-0.5 rounded-none">
-                            {tag}
-                          </span>
-                        </div>
+                      {/* Title & Description with beautiful padding */}
+                      <div className="px-5 space-y-2">
                         <h4 className="font-sans font-extrabold text-[#00333b] text-base group-hover:text-[#e65410] transition-colors leading-tight uppercase tracking-tight">
                           {title}
                         </h4>
@@ -516,12 +507,12 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                       </div>
                     </div>
 
-                    {/* Simple clear button for opening the division, styled like B&H */}
-                    <div className="border-t border-gray-150 mt-5 pt-4">
-                      <button className="w-full py-2.5 bg-[#00333b] group-hover:bg-[#e65410] text-white font-mono text-xs uppercase font-extrabold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm border-none active:scale-97">
-                        <span>{lang === 'en' ? 'Open Division' : 'Открыть раздел'}</span>
+                    {/* Minimalist interactive link matching standard premium catalog layouts */}
+                    <div className="mt-5 px-5 pb-5 pt-3 border-t border-gray-50 flex items-center justify-end text-xs">
+                      <span className="font-bold text-[#00333b] group-hover:text-[#e65410] flex items-center gap-1 transition-colors">
+                        <span>{lang === 'en' ? 'Learn More' : 'Подробнее'}</span>
                         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-250 group-hover:translate-x-1" />
-                      </button>
+                      </span>
                     </div>
                   </div>
                 );
