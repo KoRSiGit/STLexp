@@ -259,43 +259,39 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       id: 'shot-blast' as ProductCategory,
       titleRu: 'Дробеметное оборудование очистки',
       titleEn: 'Shot Blasting & Decoring Cabinets',
-      descRu: 'Промышленные дробеметные камеры подвесного и барабанного типов для декорки, удаления песчаного пригара и окалины.',
-      descEn: 'Industrial heavy hanger and rubber tumble belt shotblasters for thorough decoring, rust and sand burn-on removal.',
-      icon: Zap,
+      descRu: 'Промышленные дробеметные установки очистки отливок барабанного, подвесного и рольгангового типов.',
+      descEn: 'Industrial shot blasting systems and decoring cabinets of tumble, hanger and conveyor types designed for heavy cast parts.',
+      icon: HardHat,
       color: 'border-yellow-500/20 hover:border-yellow-500',
-      tagRu: 'ФИНИШНАЯ ОЧИСТКА',
-      tagEn: 'FINISHING CLEANING',
-      statsRu: 'Ресурс брони: сталь Mn13',
-      statsEn: 'Lining material: Mn13 Steel',
+      tagRu: 'ДРОБЕМЕТНАЯ ОЧИСТКА',
+      tagEn: 'SHOT BLASTING',
+      statsRu: 'Производительность: до 15 т/ч',
+      statsEn: 'Blast throughput: up to 15 t/h',
       subcategoriesRu: [
-        { label: 'Модели ленточного типа Q32', query: 'Q32', subId: 'shot-blast-machines' },
-        { label: 'Модели барабанного типа Q31', query: 'Q31', subId: 'shot-blast-machines' },
-        { label: 'Подвесные крюковые камеры Q37', query: 'Q37', subId: 'shot-blast-machines' }
+        { label: 'Дробеметы Q32 / Q31 / Q37', query: 'Q', subId: 'shot-blast-machines' }
       ],
       subcategoriesEn: [
-        { label: 'Tumble belt models Q32', query: 'Q32', subId: 'shot-blast-machines' },
-        { label: 'Tumble drum models Q31', query: 'Q31', subId: 'shot-blast-machines' },
-        { label: 'Hanger hook chambers Q37', query: 'Q37', subId: 'shot-blast-machines' }
+        { label: 'Blasters Q32 / Q31 / Q37', query: 'Q', subId: 'shot-blast-machines' }
       ]
     },
     {
       id: 'casting-machines' as ProductCategory,
-      titleRu: 'Литейные машины формования',
-      titleEn: 'Molding & Casting Machinery',
-      descRu: 'Литейные полуавтоматы кокильного литья с регулируемым гидравлическим наклоном, и центробежные литейные установки.',
-      descEn: 'Complex semi-automated gravity die casting systems with flexible tilting angles, and horizontal centrifugal systems.',
-      icon: Cpu,
-      color: 'border-indigo-500/20 hover:border-indigo-500',
-      tagRu: 'ЛИТЬЕ В ФОРМЫ',
-      tagEn: 'CASTING PROCESSES',
-      statsRu: 'Усилия запирания: до 200 кН',
-      statsEn: 'Mould clamping limits: 200 kN',
+      titleRu: 'Литейные машины формовки',
+      titleEn: 'Casting & Die Molding Machinery',
+      descRu: 'Высокоточные гидравлические кокильные станки КМ и центробежные литейные установки ЦЛ для качественных отливок со сложной геометрией.',
+      descEn: 'Precision hydraulic gravity die casting machines KM and centrifugal casting machines CL for defect-free complex geometry parts.',
+      icon: ShieldAlert,
+      color: 'border-blue-500/20 hover:border-blue-500',
+      tagRu: 'ЛИТЕЙНЫЕ СТАНКИ',
+      tagEn: 'GRAVITY CASTING & CENTRIFUGAL',
+      statsRu: 'Масса отливки: до 500 кг',
+      statsEn: 'Max cast weight: up to 500 kg',
       subcategoriesRu: [
-        { label: 'Кокильные машины КМ-Г', query: 'KM', subId: 'molders' },
-        { label: 'Центробежные машины ЦЛ', query: 'CL', subId: 'molders' }
+        { label: 'Кокильные станки КМ', query: 'КМ', subId: 'molders' },
+        { label: 'Центробежные машины ЦЛ', query: 'ЦЛ', subId: 'molders' }
       ],
       subcategoriesEn: [
-        { label: 'Gravity molders KM-G', query: 'KM', subId: 'molders' },
+        { label: 'Tilt gravity molders KM', query: 'KM', subId: 'molders' },
         { label: 'Centrifugal stations CL', query: 'CL', subId: 'molders' }
       ]
     },
@@ -303,67 +299,75 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       id: 'cooling-systems' as ProductCategory,
       titleRu: 'Промышленные градирни и охлаждение',
       titleEn: 'Industrial Cooling & Environment',
-      descRu: 'Замкнутые испарительные градирни ГЗ с чистыми медными теплообменниками для защиты катушек индуктора от сухой накипи.',
-      descEn: 'Closed evaporative water cooling towers GZ protecting induction power systems and cables from chemical calcium scale.',
+      descRu: 'Замкнутые испарительные градирни ГЗ с чистым водоблоком для стабильной плавки индукционных комплексов.',
+      descEn: 'Closed evaporative water cooling towers GZ with high density clean loops for induction power stability.',
       icon: Wind,
-      color: 'border-cyan-500/20 hover:border-cyan-500',
-      tagRu: 'ХЛАДОСНАБЖЕНИЕ',
-      tagEn: 'COOLING INFRASTRUCTURE',
-      statsRu: 'Теплосъем: медный контур T2',
-      statsEn: 'Heat removal: Copper coil T2',
+      color: 'border-teal-500/20 hover:border-teal-500',
+      tagRu: 'ОХЛАЖДЕНИЕ ЦЕХА',
+      tagEn: 'INDUSTRIAL COOLING',
+      statsRu: 'Расход воды: до 150 м³/ч',
+      statsEn: 'Water flow: up to 150 m³/h',
       subcategoriesRu: [
-        { label: 'Закрытые градирни ГЗ', query: 'GZ', subId: 'cooling-towers' }
+        { label: 'Градирни закрытые ГЗ', query: 'ГЗ', subId: 'cooling-towers' }
       ],
       subcategoriesEn: [
-        { label: 'Closed circuit towers GZ', query: 'GZ', subId: 'cooling-towers' }
+        { label: 'Cooling towers GZ', query: 'GZ', subId: 'cooling-towers' }
       ]
     }
   ];
 
-  const filteredProducts = PRODUCTS.filter((product) => {
-    const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
-    const matchesSubcategory = activeSubcategory === 'all' || product.subcategory === activeSubcategory;
-    const matchesSubsubcategory = activeSubsubcategory === 'all' || product.subsubcategory === activeSubsubcategory;
-    const matchesSearch =
-      product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (product.titleEn && product.titleEn.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      product.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (product.descriptionEn && product.descriptionEn.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSubcategory && matchesSubsubcategory && matchesSearch;
-  });
-
-  const toggleSpecs = (id: string) => {
-    setExpandedProductSpecs((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+  const handleSelectDivision = (divisionId: ProductCategory) => {
+    setActiveCategory(divisionId);
+    setActiveSubcategory('all');
+    setSelectedProductId(null);
+    setSearchQuery('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectDivision = (categoryId: ProductCategory, query?: string, subId?: string) => {
-    setActiveCategory(categoryId);
-    if (subId) {
-      setActiveSubcategory(subId);
-    } else {
-      setActiveSubcategory('all');
-    }
-    if (query) {
-      setSearchQuery(query);
-    } else {
-      setSearchQuery('');
-    }
-  };
-
-  const handleAddCustomModel = (baseProduct: Product, specModel: string) => {
-    // Generate a cloned product item with the specific variant mark selected by the user
-    const clonedProduct: Product = {
+  const handleAddCustomModel = (baseProduct: Product, variantModel: string) => {
+    const clonedProduct = {
       ...baseProduct,
-      model: specModel,
-      title: `${baseProduct.title} (${specModel})`,
-      titleEn: baseProduct.titleEn ? `${baseProduct.titleEn} (${specModel})` : undefined
+      id: `${baseProduct.id}-${variantModel}`,
+      model: variantModel,
     };
     onAddToRFQ(clonedProduct);
   };
+
+  const toggleSpecs = (productId: string) => {
+    setExpandedProductSpecs((prev) => ({
+      ...prev,
+      [productId]: !prev[productId]
+    }));
+  };
+
+  const filteredProducts = useMemo(() => {
+    return PRODUCTS.filter((p) => {
+      // 1. Category search / filter
+      if (activeCategory !== 'all' && p.category !== activeCategory) {
+        return false;
+      }
+      // 2. Subcategory check
+      if (activeSubcategory !== 'all' && p.subcategory !== activeSubcategory) {
+        return false;
+      }
+      // 3. Sub-subcategory check
+      if (activeSubsubcategory !== 'all' && p.subsubcategory !== activeSubsubcategory) {
+        return false;
+      }
+      // 4. Case-insensitive search query check
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase().trim();
+        const matchesModel = p.model.toLowerCase().includes(query);
+        const matchesTitle = p.title.toLowerCase().includes(query) || (p.titleEn && p.titleEn.toLowerCase().includes(query));
+        const matchesDesc = p.description.toLowerCase().includes(query) || (p.descriptionEn && p.descriptionEn.toLowerCase().includes(query));
+        const matchesVariants = p.variantModels?.some(v => v.model.toLowerCase().includes(query)) || false;
+        
+        return matchesModel || matchesTitle || matchesDesc || matchesVariants;
+      }
+      
+      return true;
+    });
+  }, [activeCategory, activeSubcategory, activeSubsubcategory, searchQuery]);
 
   const isSelectedVariantInSpecs = (baseProductId: string, variantModel: string): boolean => {
     // Check if specifications contain this specific model mark
@@ -402,7 +406,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   : categories.find(c => c.id === activeCategory)?.label
                 }
               </h1>
-              <p className="text-gray-350 text-sm sm:text-base leading-relaxed font-sans max-w-2xl text-shadow-sm">
+              <p className="text-[#a0aec0] text-sm sm:text-base leading-relaxed font-sans max-w-2xl text-shadow-sm">
                 {activeCategory === 'all'
                   ? (lang === 'en' 
                     ? 'Advanced casting systems matched to certified GOST standards. Full engineering customization, design of technological layouts, and support.' 
@@ -430,7 +434,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 />
               </div>
               <p className="text-[9px] text-gray-500 font-mono italic">
-                {lang === 'en' ? 'e.g., "CX-10", "reclamation", "induction crucible", "water tower"' : 'Например: "СХ-10", "регенерация", "индукционная печь", "ВСФ"'}
+                {lang === 'en' ? 'e.g., "CX-10", "reclamation", "induction crucible", "water tower"' : 'Например: "СХ-10", "регенерация", "индукционный тигель", "водонапорная башня"'}
               </p>
             </div>
           </div>
@@ -449,7 +453,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
               <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 uppercase tracking-tight font-sans mt-1">
                 {lang === 'en' ? 'Browse by Engineering Division' : 'Инжиниринговые разделы каталога'}
               </h3>
-              <p className="text-sm text-gray-500 max-w-2xl mt-1">
+              <p className="text-sm text-gray-550 max-w-2xl mt-1">
                 {lang === 'en'
                   ? 'Select a division category to view its specialized equipment variants, physical models, and capacity marks.'
                   : 'Выберите интересующий вас раздел литейного цеха. Каждый раздел организован отдельной страницей с типами и марками оборудования.'}
@@ -461,14 +465,12 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 const IconComp = div.icon;
                 const title = lang === 'en' ? div.titleEn : div.titleRu;
                 const desc = lang === 'en' ? div.descEn : div.descRu;
-                const tag = lang === 'en' ? div.tagEn : div.tagRu;
-                const stats = lang === 'en' ? div.statsEn : div.statsRu;
 
                 const DIVISION_IMAGES: Record<string, string> = {
                   'sand-mixers-xtc': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
                   'furnaces': 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=600&q=80',
                   'green-sand': 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
-                  'core-making': 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80',
+                  'core-making': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
                   'shot-blast': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
                   'casting-machines': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
                   'cooling-systems': 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80',
@@ -483,7 +485,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   >
                     <div className="space-y-4">
                       {/* Image container conforming to physical aspect ratio with slick hover scale, stretched fully at the top */}
-                      <div className="relative aspect-[4/3] w-full bg-gray-50 overflow-hidden flex items-center justify-center border-b border-gray-100">
+                      <div className="relative aspect-[4/3] w-full bg-gray-55 overflow-hidden flex items-center justify-center border-b border-gray-100">
                         <img
                           src={cardImage}
                           alt={title}
@@ -494,31 +496,28 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                         <div className="absolute top-3 right-3 bg-black/85 p-2 text-[#e65410] border border-teal-900/10 rounded-lg transition duration-300 group-hover:bg-[#e65410] group-hover:text-white">
                           <IconComp className="h-4 w-4 shrink-0" />
                         </div>
+                        {/* Elegant mini "Подробнее" button overlay */}
+                        <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm text-[#00333b] group-hover:bg-[#e65410] group-hover:text-white font-extrabold text-[10px] uppercase px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1 transition-all duration-300">
+                          <span>{lang === 'en' ? 'Learn More' : 'Подробнее'}</span>
+                          <ArrowRight className="h-3 w-3 transition-transform duration-250 group-hover:translate-x-1" />
+                        </div>
                       </div>
 
                       {/* Title & Description with beautiful padding */}
-                      <div className="px-5 space-y-2">
-                        <h4 className="font-sans font-extrabold text-[#00333b] text-base group-hover:text-[#e65410] transition-colors leading-tight uppercase tracking-tight">
+                      <div className="px-5 pb-6 space-y-2">
+                        <h4 className="font-sans font-extrabold text-[#00333b] text-base group-hover:text-[#e65410] transition-colors leading-tight uppercase tracking-tight line-clamp-1">
                           {title}
                         </h4>
-                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-3">
+                        <p className="text-xs text-gray-550 leading-relaxed line-clamp-2">
                           {desc}
                         </p>
                       </div>
-                    </div>
-
-                    {/* Minimalist interactive link matching standard premium catalog layouts */}
-                    <div className="mt-5 px-5 pb-5 pt-3 border-t border-gray-50 flex items-center justify-end text-xs">
-                      <span className="font-bold text-[#00333b] group-hover:text-[#e65410] flex items-center gap-1 transition-colors">
-                        <span>{lang === 'en' ? 'Learn More' : 'Подробнее'}</span>
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-250 group-hover:translate-x-1" />
-                      </span>
                     </div>
                   </div>
                 );
               })}
             </div>
-            
+
             {/* Quick search guide and assistance */}
             <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg flex items-center justify-between flex-col sm:flex-row gap-4">
               <div className="space-y-1">
@@ -535,24 +534,24 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
           </div>
         ) : (
           
-          /* Render Page B: Dedicated Section Page - Clean Full Width Layout without Sidebar and Subcategory filters */
+          /* Render Page B: Dedicated Section Page - Clean Full Width Layout with Interactive Subcategory filtering and Custom stats banners */
           <div className="w-full space-y-6 animate-fade-in">
             {/* Header / Breadcrumb navigation panel with Back button */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-gray-200 p-4 rounded-lg shadow-2xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border border-gray-200 p-4 rounded-xl shadow-2xs">
               {/* Breadcrumb path navigation */}
-              <div className="flex items-center space-x-2 text-xs text-gray-400 font-mono">
+              <div className="flex items-center space-x-2 text-xs text-gray-500 font-mono">
                 <button 
                   onClick={() => {
                     setActiveCategory('all');
                     setActiveSubcategory('all');
                     setSearchQuery('');
                   }}
-                  className="hover:text-gray-900 hover:underline border-none bg-transparent cursor-pointer p-0"
+                  className="hover:text-gray-900 hover:underline border-none bg-transparent cursor-pointer p-0 font-bold"
                 >
                   {lang === 'en' ? 'Catalog' : 'Каталог'}
                 </button>
                 <span>/</span>
-                <span className="text-[#e65410] font-bold">
+                <span className="text-[#e65410] font-bold uppercase">
                   {categories.find(c => c.id === activeCategory)?.label}
                 </span>
                 {searchQuery && (
@@ -569,12 +568,154 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   setActiveSubcategory('all');
                   setSearchQuery('');
                 }}
-                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#00333b] hover:bg-teal-900 text-white font-mono text-[10px] uppercase font-bold rounded shadow-xs transition cursor-pointer self-start sm:self-auto"
+                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#00333b] hover:bg-teal-900 text-white font-mono text-[10px] uppercase font-bold rounded shadow-xs transition cursor-pointer self-start sm:self-auto border-none"
               >
                 <ArrowRight className="h-3.5 w-3.5 transform rotate-180 text-[#e65410]" />
                 <span>{lang === 'en' ? 'Back to Divisions' : 'Назад к разделам'}</span>
               </button>
             </div>
+
+            {/* Premium Division Header Jumbotron Card */}
+            {(() => {
+              const activeDiv = sltDivisions.find(d => d.id === activeCategory);
+              if (!activeDiv) return null;
+              
+              const DivIcon = activeDiv.icon;
+              return (
+                <div className="relative overflow-hidden bg-gradient-to-br from-[#00171b] via-[#00252b] to-[#00333b] text-white p-6 sm:p-8 rounded-2xl border-l-4 border-l-[#e65410] border-y border-r border-teal-900/30 shadow-md">
+                  <div className="absolute right-0 bottom-0 w-96 h-96 bg-[#e65410]/5 blur-[120px] pointer-events-none rounded-full" />
+                  
+                  {/* Floating Division Icon in background */}
+                  <div className="absolute right-8 top-1/2 -translate-y-1/2 text-teal-800/25 pointer-events-none hidden md:block">
+                    <DivIcon className="h-28 w-28 shrink-0 stroke-[1]" />
+                  </div>
+
+                  <div className="relative z-10 space-y-4 max-w-3xl">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-1 bg-orange-600 text-white font-mono text-[9px] font-black uppercase tracking-widest rounded-md">
+                        {lang === 'en' ? activeDiv.tagEn : activeDiv.tagRu}
+                      </span>
+                      <span className="text-xs text-teal-500 font-mono font-bold flex items-center gap-1">
+                        <Activity className="h-3 w-3 animate-pulse text-[#e65410]" />
+                        <span>{lang === 'en' ? 'SIBTEXLIT DIVISION' : 'ИНЖИНИРИНГОВЫЙ ДИВИЗИОН'}</span>
+                      </span>
+                    </div>
+
+                    <h2 className="text-2xl sm:text-3xl font-black uppercase font-sans tracking-tight text-white leading-tight">
+                      {lang === 'en' ? activeDiv.titleEn : activeDiv.titleRu}
+                    </h2>
+
+                    <p className="text-sm text-gray-300 leading-relaxed max-w-2xl">
+                      {lang === 'en' ? activeDiv.descEn : activeDiv.descRu}
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-teal-950/60">
+                      <div className="bg-black/20 p-3 rounded-lg border border-teal-950/40">
+                        <span className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-bold">Параметры серии</span>
+                        <span className="text-xs font-black text-orange-400 block mt-0.5">{lang === 'en' ? activeDiv.statsEn : activeDiv.statsRu}</span>
+                      </div>
+                      <div className="bg-black/20 p-3 rounded-lg border border-teal-950/40">
+                        <span className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-bold">Приемка и контроль</span>
+                        <span className="text-xs font-black text-[#e65410] block mt-0.5">ГОСТ / ISO 9001:2015</span>
+                      </div>
+                      <div className="bg-black/20 p-3 rounded-lg border border-teal-950/40">
+                        <span className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-bold">Индивидуальный заказ</span>
+                        <span className="text-xs font-black text-teal-400 block mt-0.5">3D Компоновка в подарок</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Premium Subcategories Navigation Tabs */}
+            {(() => {
+              const subcategories = SUBCATEGORIES_MAP[activeCategory] || [];
+              if (subcategories.length === 0) return null;
+
+              return (
+                <div className="space-y-4">
+                  <div className="bg-slate-900 text-white p-2 rounded-xl border border-slate-800 flex flex-wrap gap-1.5 shadow-md">
+                    <button
+                      onClick={() => {
+                        setActiveSubcategory('all');
+                        setActiveSubsubcategory('all');
+                        setSelectedProductId(null);
+                      }}
+                      className={`px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded-lg transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
+                        activeSubcategory === 'all'
+                          ? 'bg-[#e65410] text-white shadow-md font-black'
+                          : 'bg-transparent text-gray-400 hover:text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      {lang === 'en' ? 'All Types' : 'Все подкатегории'}
+                    </button>
+                    {subcategories.map((sub) => {
+                      const isSelected = activeSubcategory === sub.id;
+                      return (
+                        <button
+                          key={sub.id}
+                          onClick={() => {
+                            setActiveSubcategory(sub.id);
+                            setActiveSubsubcategory('all');
+                            setSelectedProductId(null);
+                          }}
+                          className={`px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded-lg transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
+                            isSelected
+                              ? 'bg-[#e65410] text-white shadow-md font-black'
+                              : 'bg-transparent text-gray-400 hover:text-white hover:bg-slate-800'
+                          }`}
+                        >
+                          {lang === 'en' ? sub.nameEn : sub.nameRu}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Secondary Line: Sub-subcategories Series (pills) */}
+                  {activeSubcategory !== 'all' && availableSubsubcategories.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-2 bg-slate-100/50 p-2.5 rounded-xl border border-slate-200 animate-slideDown">
+                      <span className="text-[10px] font-mono font-black uppercase text-slate-500 mr-2 flex items-center gap-1 select-none">
+                        <Sliders className="h-3 w-3 text-[#e65410]" />
+                        <span>{lang === 'en' ? 'Model Lineup:' : 'Линейка модификаций:'}</span>
+                      </span>
+                      <button
+                        onClick={() => {
+                          setActiveSubsubcategory('all');
+                          setSelectedProductId(null);
+                        }}
+                        className={`px-3 py-1 text-xs font-mono font-bold uppercase rounded-lg border transition-all cursor-pointer ${
+                          activeSubsubcategory === 'all'
+                            ? 'bg-orange-50 border-orange-200 text-[#e65410]'
+                            : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
+                        }`}
+                      >
+                        {lang === 'en' ? 'All series' : 'Все серии'}
+                      </button>
+                      {availableSubsubcategories.map((subsub) => {
+                        const isSelected = activeSubsubcategory === subsub.id;
+                        return (
+                          <button
+                            key={subsub.id}
+                            onClick={() => {
+                              setActiveSubsubcategory(subsub.id);
+                              setSelectedProductId(null);
+                            }}
+                            className={`px-3 py-1 text-xs font-mono font-bold uppercase rounded-lg border transition-all cursor-pointer ${
+                              isSelected
+                                ? 'bg-orange-50 border-orange-200 text-[#e65410]'
+                                : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
+                            }`}
+                          >
+                            {lang === 'en' ? subsub.nameEn : subsub.nameRu}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* MAIN CATALOG CONTENT ON THE DEDICATED PAGE */}
             <div className="space-y-6">
@@ -582,31 +723,39 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
               {/* Counter and header bar */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-3 gap-3">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-black text-gray-900 uppercase">
-                    {categories.find(c => c.id === activeCategory)?.label}
+                  <h3 className="text-sm font-mono font-black text-gray-400 uppercase tracking-widest">
+                    {lang === 'en' ? 'Available configurations' : 'Инженерные спецификации под задачи'}
                   </h3>
                   <p className="text-xs text-gray-500 font-mono">
-                    {lang === 'en' ? 'Showing custom configurations for:' : 'Доступный номенклатурный перечень по направлению:'} <span className="text-gray-800 font-bold">Сибтехлит</span>
+                    {lang === 'en' ? 'Foundry equipment register by SIBTEXLIT' : 'Официальный номенклатурный перечень оборудования серии «Сибтехлит»'}
                   </p>
                 </div>
-                <span className="self-start sm:self-center bg-orange-500/10 text-[#e65410] text-[10px] font-mono px-2.5 py-1 rounded font-black border border-orange-500/20 shrink-0">
+                <span className="self-start sm:self-center bg-orange-500/10 text-[#e65410] text-[10px] font-mono px-3 py-1 rounded-md font-extrabold border border-orange-500/20 shrink-0">
                   {filteredProducts.length} {lang === 'en' ? 'models matching' : 'позиций в базе'}
                 </span>
               </div>
 
               {/* Products Rendering for separate category page */}
               {filteredProducts.length === 0 ? (
-                <div className="bg-white border border-gray-200 p-12 text-center rounded-lg max-w-lg mx-auto">
-                  <AlertCircle className="h-10 w-10 text-orange-600 mx-auto" />
-                  <h3 className="font-bold text-lg text-gray-900 mt-4">{t.noProductsFound}</h3>
-                  <p className="text-gray-500 text-sm mt-1">
-                    В данной категории нет агрегатов, соответствующих вашему поисковому запросу "{searchQuery}". Попробуйте очистить строку поиска.
-                  </p>
+                <div className="bg-white border border-gray-200 py-16 px-6 text-center rounded-2xl max-w-lg mx-auto shadow-sm space-y-4">
+                  <AlertCircle className="h-12 w-12 text-[#e65410] mx-auto animate-bounce" />
+                  <div className="space-y-2">
+                    <h3 className="font-extrabold text-lg text-gray-900 uppercase tracking-tight">{t.noProductsFound}</h3>
+                    <p className="text-gray-500 text-xs leading-relaxed">
+                      {lang === 'en' 
+                        ? `We could not find units matching search/filter rules in this division. Please clear the parameters to show everything.` 
+                        : `В данной категории нет подходящих агрегатов по заданным параметрам. Попробуйте очистить строку поиска или сбросить фильтры.`}
+                    </p>
+                  </div>
                   <button
-                    onClick={() => setSearchQuery('')}
-                    className="mt-6 px-4 py-2 bg-[#e65410] hover:bg-[#cc4a0c] text-white rounded text-xs font-bold transition cursor-pointer border-none"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setActiveSubcategory('all');
+                      setActiveSubsubcategory('all');
+                    }}
+                    className="px-5 py-2.5 bg-[#e65410] hover:bg-orange-700 text-white rounded-lg text-xs font-mono font-bold uppercase transition duration-200 cursor-pointer border-none"
                   >
-                    Очистить поиск
+                    {lang === 'en' ? 'Reset filters' : 'Сбросить фильтры'}
                   </button>
                 </div>
               ) : selectedProductId && filteredProducts.some((prod) => prod.id === selectedProductId) ? (
@@ -627,71 +776,74 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                       {/* Back to cards listing button */}
                       <button
                         onClick={() => setSelectedProductId(null)}
-                        className="flex items-center space-x-1.5 px-3 py-2 bg-white hover:bg-gray-100 text-gray-705 hover:text-gray-950 font-bold font-sans text-xs rounded border border-gray-200 shadow-2xs transition cursor-pointer"
+                        className="flex items-center space-x-1.5 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 hover:text-gray-950 font-bold font-mono text-[10px] uppercase rounded-lg border border-gray-200 shadow-2xs transition cursor-pointer border-none"
                       >
                         <ArrowRight className="h-4 w-4 transform rotate-180 text-[#e65410]" />
-                        <span>{lang === 'en' ? 'Back to list of models' : 'Назад к выбору моделей'}</span>
+                        <span>{lang === 'en' ? 'Back to series choice' : 'Назад к выбору моделей серии'}</span>
                       </button>
 
-                      <div className="bg-white border border-gray-200 rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-sm">
+                      <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-sm">
                         
                         {/* Column Left (4 units size): Image, Capacity fields and Main spec add button */}
-                        <div className="lg:col-span-4 p-5 sm:p-6 bg-gray-50 border-r border-gray-200 flex flex-col justify-between">
+                        <div className="lg:col-span-4 p-5 sm:p-6 bg-gray-50 border-r border-gray-150 flex flex-col justify-between">
                           <div className="space-y-4">
                             
                             {/* Product Frame Image */}
-                            <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded border border-gray-350">
+                            <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded-xl border border-gray-200">
                               <img
                                 src={p.imageUrl}
                                 alt={pTitle}
-                                className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition duration-300"
+                                className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition duration-300"
                                 referrerPolicy="no-referrer"
                               />
-                              <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-800 text-[#e65410] font-mono text-xs uppercase font-black tracking-widest px-2.5 py-0.5 rounded">
-                                Базовая: {p.model}
+                              <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-800 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2.5 py-1 rounded">
+                                {lang === 'en' ? 'Base Model:' : 'Базовая печь:'} {p.model}
                               </div>
                             </div>
 
                             {/* Capacity ratings */}
-                            <div className="grid grid-cols-2 gap-2 text-[11px] font-mono">
+                            <div className="grid grid-cols-2 gap-2 text-[10px] font-mono">
                               {pCapacity && (
-                                <div className="bg-white border border-gray-200 p-2.5 rounded">
-                                  <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-bold">ЕДИНЩА / ВЕС</span>
-                                  <span className="font-extrabold text-gray-900 block mt-0.5">{pCapacity}</span>
+                                <div className="bg-white border border-gray-200 p-3 rounded-lg shadow-3xs">
+                                  <span className="block text-[8px] text-gray-400 font-extrabold uppercase tracking-wide">ЕДИНЩА / ВЕС</span>
+                                  <span className="font-black text-gray-900 block mt-0.5 text-xs">{pCapacity}</span>
                                 </div>
                               )}
                               {pPower && (
-                                <div className="bg-white border border-gray-200 p-2.5 rounded">
-                                  <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-bold">МОЩНОСТЬ</span>
-                                  <span className="font-extrabold text-gray-900 block mt-0.5">{pPower}</span>
+                                <div className="bg-white border border-gray-200 p-3 rounded-lg shadow-3xs">
+                                  <span className="block text-[8px] text-gray-400 font-extrabold uppercase tracking-wide">МОЩНОСТЬ</span>
+                                  <span className="font-black text-gray-900 block mt-0.5 text-xs">{pPower}</span>
                                 </div>
                               )}
                             </div>
                           </div>
 
                           {/* Base specifications additions */}
-                          <div className="mt-5 pt-4 border-t border-gray-200 space-y-2">
+                          <div className="mt-6 pt-4 border-t border-gray-200 space-y-2">
                             <button
-                              onClick={() => onAddToRFQ(p)}
-                              className={`w-full py-2.5 px-3 font-bold rounded text-xs uppercase tracking-widest flex items-center justify-center space-x-2 transition border-none cursor-pointer outline-none ${
+                              onClick={() => {
+                                onAddToRFQ(p);
+                                window.dispatchEvent(new CustomEvent('rfq-items-updated'));
+                              }}
+                              className={`w-full py-3 px-4 font-mono font-black text-xs uppercase tracking-wider rounded-lg flex items-center justify-center space-x-2 transition border-none cursor-pointer outline-none ${
                                 isAdded
-                                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
-                                  : 'bg-[#e65410] hover:bg-orange-700 text-white font-mono'
+                                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-md'
+                                  : 'bg-[#e65410] hover:bg-orange-700 text-white shadow-sm'
                               }`}
                             >
                               {isAdded ? (
                                 <>
-                                  <Check className="h-3.5 w-3.5 shrink-0" />
+                                  <Check className="h-4 w-4 shrink-0" />
                                   <span>{t.inSpecsBtn} ({p.model})</span>
                                 </>
                               ) : (
                                 <>
-                                  <Plus className="h-3.5 w-3.5 shrink-0" />
-                                  <span>Выбрать базовую Спец</span>
+                                  <Plus className="h-4 w-4 shrink-0 text-white" />
+                                  <span>{lang === 'en' ? 'Add basic configuration' : 'Выбрать базовую Спец'}</span>
                                 </>
                               )}
                             </button>
-                            <p className="text-[9px] text-[#e65410] text-center font-mono">
+                            <p className="text-[9px] text-[#e65410] text-center font-mono font-semibold">
                               *Разработка КД по ТЗ заказчика включена в стоимость.
                             </p>
                           </div>
@@ -700,9 +852,9 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                         {/* Column Right (8 units size): Title, description, features list, specification variants table */}
                         <div className="lg:col-span-8 p-5 sm:p-6 flex flex-col justify-between space-y-5">
                           
-                          <div className="space-y-3">
+                          <div className="space-y-3.5">
                             <div className="flex items-center space-x-1.5 flex-wrap gap-y-1.5">
-                              <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest border border-orange-500/20 text-[#e65410] bg-[#e65410]/5 rounded">
+                              <span className="px-2 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest border border-orange-500/20 text-[#e65410] bg-[#e65410]/5 rounded-md">
                                 {p.category === 'sand-mixers-xtc' && (lang === 'en' ? 'No-Bake System' : 'Система ХТС')}
                                 {p.category === 'furnaces' && (lang === 'en' ? 'Melting Complex' : 'Плавильный комплекс')}
                                 {p.category === 'green-sand' && (lang === 'en' ? 'Green Sand System' : 'Система ПГС')}
@@ -715,7 +867,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                               {p.subcategory && (
                                 <>
                                   <span className="text-gray-300 text-[10px] font-mono select-none">/</span>
-                                  <span className="px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-widest text-slate-500 border border-slate-200 bg-slate-100 rounded">
+                                  <span className="px-2 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest text-slate-500 border border-slate-200 bg-slate-100 rounded-md">
                                     {lang === 'en' ? p.subcategoryEn || p.subcategory : p.subcategoryRu || p.subcategory}
                                   </span>
                                 </>
@@ -724,7 +876,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                               {p.subsubcategory && (
                                 <>
                                   <span className="text-gray-300 text-[10px] font-mono select-none">/</span>
-                                  <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest text-[#e65410] border border-orange-400/30 bg-orange-500/10 rounded animate-fade-in">
+                                  <span className="px-2 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest text-[#e65410] border border-orange-400/30 bg-orange-500/5 rounded-md">
                                     {lang === 'en' ? p.subsubcategoryEn || p.subsubcategory : p.subsubcategoryRu || p.subsubcategory}
                                   </span>
                                 </>
@@ -733,25 +885,25 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                             </div>
 
                             {/* Title heading */}
-                            <h2 className="text-lg sm:text-xl font-extrabold text-gray-950 tracking-tight font-sans uppercase">
+                            <h2 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight font-sans uppercase">
                               {pTitle}
                             </h2>
 
-                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans">
+                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans font-medium font-medium">
                               {pDesc}
                             </p>
 
                             {/* Tech benefits list style */}
-                            <div className="bg-slate-50 border border-slate-200/50 p-4 rounded-lg">
-                              <h4 className="text-[9px] font-mono font-black uppercase text-gray-550 tracking-widest flex items-center space-x-1 mb-2">
-                                <Settings className="h-3 w-3 text-[#e65410]" />
-                                <span>Технологические преимущества серии {p.model}:</span>
+                            <div className="bg-slate-50 border border-slate-200/50 p-4 rounded-xl">
+                              <h4 className="text-[9px] font-mono font-black uppercase text-gray-550 tracking-widest flex items-center space-x-1.5 mb-2.5">
+                                <Settings className="h-3.5 w-3.5 text-[#e65410]" />
+                                <span>{lang === 'en' ? `Technical benefits of series ${p.model}:` : `Технологические преимущества серии ${p.model}:`}</span>
                               </h4>
-                              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-700">
+                              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-xs text-gray-700">
                                 {pFeatures.map((feat, idx) => (
                                   <li key={idx} className="flex items-start">
-                                    <span className="text-[#e65410] mr-1.5 font-bold">✓</span>
-                                    <span className="leading-tight">{feat}</span>
+                                    <span className="text-[#e65410] mr-2 font-bold text-xs">✓</span>
+                                    <span className="leading-tight font-medium">{feat}</span>
                                   </li>
                                 ))}
                               </ul>
@@ -760,56 +912,59 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
                           {/* INTERACTIVE COMPARATIVE SPECIFICATION OPTIONS: MARKS AND AGGREGATE TYPES IN THE SERIES */}
                           {p.variantModels && p.variantModels.length > 0 && (
-                            <div className="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-xs">
-                              <div className="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center justify-between">
-                                <h4 className="text-[10px] font-mono font-black uppercase tracking-wider text-gray-700 flex items-center gap-1.5">
-                                  <Sliders className="h-3 w-3 text-[#e65410]" />
-                                  <span>Типы и марки агрегатов в серии {p.model}:</span>
+                            <div className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-3xs">
+                              <div className="bg-gray-100 px-4 py-2.5 border-b border-gray-200 flex items-center justify-between">
+                                <h4 className="text-[10px] font-mono font-black uppercase tracking-wider text-gray-750 flex items-center gap-1.5">
+                                  <Sliders className="h-3.5 w-3.5 text-[#e65410]" />
+                                  <span>{lang === 'en' ? `Models inside the line ${p.model}:` : `Линейка модификаций серии ${p.model}:`}</span>
                                 </h4>
-                                <span className="text-[9px] font-mono text-gray-500">Сибтехлит оригинал</span>
+                                <span className="text-[8px] font-mono font-bold bg-gray-200 text-gray-650 px-2 py-0.5 rounded uppercase">Сибтехлит оригинал</span>
                               </div>
                               
                               <div className="overflow-x-auto">
                                 <table className="min-w-full divide-y divide-gray-150 text-[11px] font-sans">
                                   <thead className="bg-[#00333b] text-white">
                                     <tr>
-                                      <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Марка</th>
-                                      <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Пр-сть / Емкость</th>
-                                      <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">Мощность</th>
+                                      <th scope="col" className="px-4 py-2.5 text-left font-mono font-black uppercase text-gray-300">Марка</th>
+                                      <th scope="col" className="px-4 py-2.5 text-left font-mono font-black uppercase text-gray-300">Пр-сть / Емкость</th>
+                                      <th scope="col" className="px-4 py-2.5 text-left font-mono font-black uppercase text-gray-300">Мощность</th>
                                       {p.variantModels[0]?.extraField && (
-                                        <th scope="col" className="px-3 py-2 text-left font-mono font-black uppercase text-gray-300">
+                                        <th scope="col" className="px-4 py-2.5 text-left font-mono font-black uppercase text-gray-300">
                                           {p.variantModels[0].extraField}
                                         </th>
                                       )}
-                                      <th scope="col" className="px-3 py-2 text-right font-mono font-black uppercase text-[#e65410]">Выбор</th>
+                                      <th scope="col" className="px-4 py-2.5 text-right font-mono font-black uppercase text-[#e65410]">Выбор</th>
                                     </tr>
                                   </thead>
                                   <tbody className="divide-y divide-gray-100 bg-white">
                                     {p.variantModels.map((variant, vidx) => {
                                       const isVariantSelectedInCart = isSelectedVariantInSpecs(p.id, variant.model);
                                       return (
-                                        <tr key={vidx} className={vidx % 2 === 0 ? 'bg-gray-50/40' : ''}>
-                                          <td className="px-3 py-2 font-mono font-extrabold text-gray-900 border-none">
+                                        <tr key={vidx} className={`transition hover:bg-slate-50/50 ${vidx % 2 === 0 ? 'bg-gray-50/40' : ''}`}>
+                                          <td className="px-4 py-2.5 font-mono font-extrabold text-gray-900 border-none">
                                             {variant.model}
                                           </td>
-                                          <td className="px-3 py-2 text-gray-650 font-medium border-none">
+                                          <td className="px-4 py-2.5 text-gray-650 font-bold border-none">
                                             {lang === 'en' && variant.capacityEn ? variant.capacityEn : variant.capacity}
                                           </td>
-                                          <td className="px-3 py-2 text-gray-650 font-semibold border-none">
+                                          <td className="px-4 py-2.5 text-gray-650 font-semibold border-none">
                                             {variant.power}
                                           </td>
                                           {variant.extraField && (
-                                            <td className="px-3 py-2 text-gray-500 font-mono border-none">
+                                            <td className="px-4 py-2.5 text-gray-500 font-mono border-none font-semibold">
                                               {lang === 'en' && variant.extraFieldValEn ? variant.extraFieldValEn : variant.extraFieldVal}
                                             </td>
                                           )}
-                                          <td className="px-3 py-2 text-right border-none">
+                                          <td className="px-4 py-2.5 text-right border-none">
                                             <button
-                                              onClick={() => handleAddCustomModel(p, variant.model)}
-                                              className={`px-2.5 py-1 rounded text-[10px] font-bold uppercase transition border-none cursor-pointer ${
+                                              onClick={() => {
+                                                handleAddCustomModel(p, variant.model);
+                                                window.dispatchEvent(new CustomEvent('rfq-items-updated'));
+                                              }}
+                                              className={`px-3 py-1 text-[10px] font-mono font-black uppercase tracking-wider rounded transition border duration-150 cursor-pointer ${
                                                 isVariantSelectedInCart
-                                                  ? 'bg-emerald-50 text-emerald-700 font-extrabold border border-emerald-300'
-                                                  : 'bg-orange-50 hover:bg-[#e65410] hover:text-white text-[#e65410] font-black'
+                                                  ? 'bg-emerald-50 text-emerald-700 font-extrabold border-emerald-350'
+                                                  : 'bg-orange-50 hover:bg-[#e65410] hover:text-white border-transparent text-[#e65410] font-black'
                                               }`}
                                             >
                                               {isVariantSelectedInCart ? 'В КП ✓' : '+ Выбрать'}
@@ -825,16 +980,16 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                           )}
 
                           {/* Technical specification details accordion toggle (Old spec tables) */}
-                          <div>
+                          <div className="border border-gray-200 rounded-xl overflow-hidden shadow-3xs">
                             <button
                               onClick={() => toggleSpecs(p.id)}
-                              className="w-full py-2.5 px-3.5 bg-gray-100 hover:bg-gray-150 transition border border-gray-250 flex items-center justify-between text-[11px] font-mono uppercase font-black text-gray-600 cursor-pointer select-none outline-none"
+                              className="w-full py-3 px-4 bg-gray-100 hover:bg-gray-150 transition border-none flex items-center justify-between text-[11px] font-mono uppercase font-black text-gray-750 cursor-pointer select-none outline-none"
                             >
                               <span className="flex items-center space-x-1.5">
-                                <Table className="h-3.5 w-3.5 text-[#e65410] shrink-0" />
-                                <span>Технические габариты и ГОСТ-константы серии {p.model}</span>
+                                <Table className="h-4 w-4 text-[#e65410] shrink-0" />
+                                <span>{lang === 'en' ? `Technical boundaries of series ${p.model}` : `Технические свойства и ГОСТ-константы серии ${p.model}`}</span>
                               </span>
-                              <ChevronDown className={`h-3.5 w-3.5 transform transition-transform text-[#e65410] ${isSpecsExpanded ? 'rotate-180' : ''}`} />
+                              <ChevronDown className={`h-4 w-4 transform transition-transform text-[#e65410] duration-250 ${isSpecsExpanded ? 'rotate-180' : ''}`} />
                             </button>
 
                             {isSpecsExpanded && (
@@ -845,11 +1000,11 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                                       const sName = lang === 'en' && s.nameEn ? s.nameEn : s.name;
                                       const sVal = lang === 'en' && s.valueEn ? s.valueEn : s.value;
                                       return (
-                                        <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50/45' : ''}>
-                                          <td className="px-4 py-2 text-gray-650 font-semibold leading-tight border-none">
+                                        <tr key={idx} className={`transition hover:bg-gray-55 ${idx % 2 === 0 ? 'bg-gray-50/45' : ''}`}>
+                                          <td className="px-4 py-2.5 text-gray-650 font-semibold leading-tight border-none">
                                             {sName}
                                           </td>
-                                          <td className="px-4 py-2 font-mono font-bold text-gray-900 text-right leading-tight border-none">
+                                          <td className="px-4 py-2.5 font-mono font-extrabold text-gray-900 text-right leading-tight border-none">
                                             {sVal}
                                           </td>
                                         </tr>
@@ -868,36 +1023,44 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   );
                 })()
               ) : (
-                /* 2. CARD-BASED GRID VIEW OF CATEGORY PRODUCTS */
+                /* 2. CARD-BASED GRID VIEW OF CATEGORY PRODUCTS - Refined design */
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
                   {filteredProducts.map((p) => {
                     const pTitle = lang === 'en' && p.titleEn ? p.titleEn : p.title;
                     const pDesc = lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description;
                     const pCapacity = lang === 'en' && p.capacityEn ? p.capacityEn : p.capacity;
 
+                    const isAnyVariantInRFQ = rfqItemsKeys.some(key => key === p.id || key.startsWith(`${p.id}-`));
+
                     return (
                       <div
                         key={p.id}
                         onClick={() => setSelectedProductId(p.id)}
-                        className="bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group shadow-xs shadow-gray-100"
+                        className="bg-white border border-gray-200 rounded-2xl overflow-hidden flex flex-col justify-between hover:shadow-lg hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer group shadow-xs relative"
                       >
                         <div className="p-5 space-y-4">
                           {/* Framed image */}
-                          <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded border border-gray-200">
+                          <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded-xl border border-gray-150">
                             <img
                               src={p.imageUrl}
                               alt={pTitle}
-                              className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-all duration-300"
+                              className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-all duration-300 ease-out"
                               referrerPolicy="no-referrer"
                             />
-                            <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-800 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2 py-0.5 rounded">
-                              Серия: {p.model}
+                            <div className="absolute top-2 left-2 bg-slate-900/95 border border-teal-800/10 text-white font-mono text-[9px] uppercase font-black tracking-widest px-2.5 py-1 rounded shadow-md">
+                              {lang === 'en' ? 'Series' : 'Серия'}: {p.model}
                             </div>
+                            {isAnyVariantInRFQ && (
+                              <div className="absolute top-2 right-2 bg-emerald-600 border border-emerald-500 text-white font-mono text-[9px] uppercase font-black px-2 py-1 rounded shadow-md flex items-center gap-1">
+                                <Check className="h-3 w-3 inline text-white" />
+                                <span>{lang === 'en' ? 'Added' : 'Выбрано'}</span>
+                              </div>
+                            )}
                           </div>
 
                           <div className="space-y-2">
                             <div className="flex items-center space-x-1 flex-wrap gap-y-1">
-                              <span className="px-1.5 py-0.5 font-mono text-[8px] font-black uppercase tracking-widest border border-orange-200 text-[#e65410] bg-[#e65410]/5 rounded">
+                              <span className="px-2 py-0.5 font-mono text-[8.5px] font-black uppercase tracking-widest border border-orange-200 text-[#e65410] bg-[#e65410]/5 rounded-md">
                                 {p.category === 'sand-mixers-xtc' && (lang === 'en' ? 'No-Bake' : 'ХТС')}
                                 {p.category === 'furnaces' && (lang === 'en' ? 'Melting' : 'Плавка')}
                                 {p.category === 'green-sand' && (lang === 'en' ? 'Green Sand' : 'ПГС')}
@@ -908,30 +1071,51 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                               </span>
                               
                               {p.subsubcategory && (
-                                <span className="px-1.5 py-0.5 font-mono text-[8px] font-medium uppercase tracking-widest text-slate-500 border border-slate-200 bg-slate-100 rounded">
+                                <span className="px-2 py-0.5 font-mono text-[8.5px] font-black uppercase tracking-widest text-[#00333b] border border-teal-900/10 bg-teal-500/5 rounded-md">
                                   {lang === 'en' ? p.subsubcategoryEn || p.subsubcategory : p.subsubcategoryRu || p.subsubcategory}
                                 </span>
                               )}
                             </div>
 
-                            <h3 className="font-extrabold text-sm text-gray-900 group-hover:text-[#e65410] leading-snug uppercase transition-colors line-clamp-2">
+                            <h3 className="font-sans font-black text-[#00333b] text-base group-hover:text-[#e65410] leading-tight uppercase transition-colors line-clamp-2">
                               {pTitle}
                             </h3>
 
                             <p className="text-xs text-gray-550 leading-relaxed line-clamp-3">
                               {pDesc}
                             </p>
+
+                            {/* Available mini parameters list */}
+                            {p.variantModels && p.variantModels.length > 0 && (
+                              <div className="pt-2">
+                                <span className="text-[9px] font-mono text-gray-400 font-extrabold uppercase block mb-1">
+                                  {lang === 'en' ? 'Models in lineup' : 'Модификации в серии'}:
+                                </span>
+                                <div className="flex flex-wrap gap-1">
+                                  {p.variantModels.slice(0, 4).map((v, sIdx) => (
+                                    <span key={sIdx} className="bg-slate-50 border border-slate-200 text-slate-650 font-mono text-[9px] px-1.5 py-0.5 rounded-md font-bold">
+                                      {v.model}
+                                    </span>
+                                  ))}
+                                  {p.variantModels.length > 4 && (
+                                    <span className="bg-slate-50 border border-slate-200 text-slate-500 font-mono text-[9px] px-1.5 py-0.5 rounded-md font-bold">
+                                      +{p.variantModels.length - 4}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
 
                         {/* Action strip */}
-                        <div className="border-t border-gray-150 p-4 bg-gray-50/60 flex items-center justify-between text-[11px] font-mono">
-                          <span className="text-gray-500 font-medium">
+                        <div className="border-t border-gray-150 p-4 bg-gray-50/60 group-hover:bg-orange-50/10 transition-colors flex items-center justify-between text-[11px] font-mono">
+                          <span className="text-gray-500 font-bold">
                             {pCapacity ? `${lang === 'en' ? 'Cap: ' : 'Пр-сть: '} ${pCapacity}` : ''}
                           </span>
-                          <span className="font-black flex items-center gap-1.5 text-[#e65410] uppercase tracking-wider text-[10px]">
-                            <span>{lang === 'en' ? 'Details' : 'Описание'}</span>
-                            <ArrowRight className="h-3.5 w-3.5 shrink-0 transform group-hover:translate-x-1.5 transition-transform" />
+                          <span className="font-black flex items-center gap-1.5 text-[#e65410] uppercase tracking-wider text-[10px] group-hover:text-orange-700">
+                            <span>{lang === 'en' ? 'Select model' : 'Выбрать марку'}</span>
+                            <ArrowRight className="h-3.5 w-3.5 shrink-0 transform group-hover:translate-x-1 transition-transform" />
                           </span>
                         </div>
                       </div>
@@ -940,7 +1124,6 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 </div>
               )}
             </div>
-            
           </div>
         )}
 

@@ -21,7 +21,9 @@ export default function Header({
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCatalogOpen, setMobileCatalogOpen] = useState(false);
+  const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<'catalog' | 'company' | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const t = TRANSLATIONS[lang];
 
@@ -36,7 +38,7 @@ export default function Header({
   }, []);
 
   const renderMegamenuDropdown = () => {
-    if (!dropdownOpen) return null;
+    if (!dropdownOpen || activeDropdown !== 'catalog') return null;
     return (
       <div className="absolute top-full left-0 right-0 mx-auto w-full max-w-7xl bg-[#00242a] text-white rounded-b-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] border-l border-r border-b border-teal-850 p-7 z-[9999] animate-fadeIn border-t-4 border-t-[#e65410] -mt-1">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-5">
@@ -76,6 +78,240 @@ export default function Header({
             className="bg-[#00171b] hover:bg-[#e65410] border border-[#003d47] hover:border-[#e65410] text-white px-3.5 py-1.5 rounded text-[9.5px] uppercase font-bold transition-all duration-150 cursor-pointer shadow-sm active:scale-95"
           >
             {lang === 'en' ? 'Open Full Catalog' : 'Открыть весь каталог ↗'}
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const handleCompanyClick = (sectionId: string, filter?: string, action?: string) => {
+    if (action === 'contacts') {
+      setCurrentTab('contacts');
+    } else {
+      setCurrentTab('about');
+      (window as any)._pendingAboutSection = sectionId;
+      if (filter) {
+        (window as any)._pendingAboutFilter = filter;
+      }
+      window.dispatchEvent(new CustomEvent('about-nav-sync'));
+    }
+    setDropdownOpen(false);
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+  };
+
+  const renderCompanyDropdown = () => {
+    if (!dropdownOpen || activeDropdown !== 'company') return null;
+    return (
+      <div className="absolute top-full left-0 right-0 mx-auto w-full max-w-7xl bg-[#00242a] text-white rounded-b-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] border-l border-r border-b border-teal-850 p-7 z-[9999] animate-fadeIn border-t-4 border-t-[#e65410] -mt-1">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          
+          {/* Column 1: О предприятии */}
+          <div className="space-y-4">
+            <h5 className="text-[12px] font-black uppercase text-[#e65410] tracking-wider border-b border-[#003d47] pb-2 flex items-center gap-1.5">
+              <Info className="h-3.5 w-3.5 shrink-0 text-[#e65410]" />
+              <span>{lang === 'en' ? 'About Enterprise' : 'О предприятии'}</span>
+            </h5>
+            <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-intro')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Our Mission & Siberian Roots' : 'История, миссия и корни'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? 'Novosibirsk center of metallurgy layouts' : 'Новосибирский центр литейного проектирования'}
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-stats')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Company Key Statistics' : 'Основные показатели'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? '50+ shops upgraded, 15 years history' : '50+ запущенных цехов, 15 лет экспертизы'}
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 2: Направления деятельности */}
+          <div className="space-y-4">
+            <h5 className="text-[12px] font-black uppercase text-[#e65410] tracking-wider border-b border-[#003d47] pb-2 flex items-center gap-1.5">
+              <Wrench className="h-3.5 w-3.5 shrink-0 text-[#e65410]" />
+              <span>{lang === 'en' ? 'Engineering & Services' : 'Инжиниринг и Сервис'}</span>
+            </h5>
+            <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-activities')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? '3D Design & CAD Blueprints' : 'Аудит и Проектирование'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? 'Schemes according to ISO & GOST standards' : 'Компоновки по ГОСТ и техническому ТЗ'}
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-activities')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Assembly & Chemistry' : 'Шеф-монтаж и Технологии'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? 'Optimized chemistry & first melt control' : 'Смеси ХТС/ПГС и запуск первой плавки'}
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-activities')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Mobile Brigade Technical Help' : 'Гарантия и ОТК'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? 'Double inspector quality checks' : 'Двойной контроль качества на заводах'}
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Референц-лист проектов (Multilevel dropdown trigger) */}
+          <div className="space-y-4">
+            <h5 className="text-[12px] font-black uppercase text-[#e65410] tracking-wider border-b border-[#003d47] pb-2 flex items-center gap-1.5">
+              <Award className="h-3.5 w-3.5 shrink-0 text-[#e65410]" />
+              <span>{lang === 'en' ? 'Verifiable references' : 'Референс-лист объектов'}</span>
+            </h5>
+            <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-projects', 'all')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'All commissioning projects' : 'Все запущенные заводы'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? 'Check our references portfolio' : 'Полная карта сданных объектов СНГ'}
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-projects', 'molding')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Resin Sand Continuous (No-Bake)' : 'Формовка смесей ХТС'}
+                  </span>
+                  <span className="text-emerald-400 text-[8px] pl-3 tracking-widest font-mono font-bold block uppercase mt-0.5 text-left">
+                    {lang === 'en' ? '[ ACTIVE NO-BAKE FILTER ]' : '[ ФИЛЬТР: ХТС ФОРМОВКА ]'}
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-projects', 'melting')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Induction Melting layouts' : 'Печи плавки индукции'}
+                  </span>
+                  <span className="text-emerald-400 text-[8px] pl-3 tracking-widest font-mono font-bold block uppercase mt-0.5 text-left">
+                    {lang === 'en' ? '[ ACTIVE MELTING FILTER ]' : '[ ФИЛЬТР: ИНДУКЦИЯ ]'}
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-projects', 'cleaning')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Finished shot blast chambers' : 'Дробеметная очистка'}
+                  </span>
+                  <span className="text-emerald-400 text-[8px] pl-3 tracking-widest font-mono font-bold block uppercase mt-0.5 text-left">
+                    {lang === 'en' ? '[ ACTIVE BLASTING FILTER ]' : '[ ФИЛЬТР: ДРОБЕМЕТЫ ]'}
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Снабжение и Запчасти */}
+          <div className="space-y-4">
+            <h5 className="text-[12px] font-black uppercase text-[#e65410] tracking-wider border-b border-[#003d47] pb-2 flex items-center gap-1.5">
+              <Phone className="h-3.5 w-3.5 shrink-0 text-[#e65410]" />
+              <span>{lang === 'en' ? 'Supply & Support' : 'Логистика и Склад'}</span>
+            </h5>
+            <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-warehouse')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Central Novosibirsk Depots' : 'Склад в г. Новосибирск'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? 'Blades, linings, seals dispatched fast' : 'Лопатки, Mn13 броня и тигли в наличии'}
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleCompanyClick('about-warehouse', undefined, 'contacts')}
+                  className="text-left text-[11px] text-gray-200 hover:text-white transition duration-150 flex flex-col gap-0.5 group border-none bg-transparent p-0 cursor-pointer w-full"
+                >
+                  <span className="font-bold flex items-center gap-1 group-hover:text-[#e65410] group-hover:underline">
+                    <span className="text-[#e65410] font-mono">›</span>
+                    {lang === 'en' ? 'Discuss metallurgy audit' : 'Подать запрос условий КП'}
+                  </span>
+                  <span className="text-[9px] text-gray-400 pl-3 leading-tight font-serif italic">
+                    {lang === 'en' ? 'Get immediate quotation sheets' : 'Расчет за 1 час от технологов'}
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div className="border-t border-[#003d47] pt-4.5 mt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10.5px] text-gray-300 font-mono">
+          <span className="flex items-center gap-2">
+            <Sparkles className="h-3.5 w-3.5 text-[#e65410] animate-pulse" />
+            <span>{lang === 'en' ? 'Siberian Foundry Technologies corporate values' : 'Инженерно-консультационная служба компании ООО «Сибтехлит»'}</span>
+          </span>
+          <button
+            onClick={() => handleCompanyClick('about-intro')}
+            className="bg-[#00171b] hover:bg-[#e65410] border border-[#003d47] hover:border-[#e65410] text-white px-3.5 py-1.5 rounded text-[9.5px] uppercase font-bold transition-all duration-150 cursor-pointer shadow-sm active:scale-95"
+          >
+            {lang === 'en' ? 'View Corporate Intro' : 'Смотреть презентацию компании ↗'}
           </button>
         </div>
       </div>
@@ -158,9 +394,9 @@ export default function Header({
   ];
 
   const navItems = [
-    { id: 'catalog', label: lang === 'en' ? 'Catalog' : 'Каталог', icon: FileText, hasDropdown: true },
+    { id: 'catalog', label: lang === 'en' ? 'Catalog' : 'Каталог', icon: FileText, hasDropdown: true, dropdownType: 'catalog' },
     { id: 'in-stock', label: lang === 'en' ? 'In Stock' : 'Наличие', icon: Award },
-    { id: 'about', label: lang === 'en' ? 'Company' : 'Компания', icon: Info },
+    { id: 'about', label: lang === 'en' ? 'Company' : 'Компания', icon: Info, hasDropdown: true, dropdownType: 'company' },
     { id: 'contacts', label: lang === 'en' ? 'Contacts' : 'Контакты', icon: Phone },
   ];
 
@@ -266,29 +502,41 @@ export default function Header({
               const isActive = currentTab === item.id;
 
               if (item.hasDropdown) {
+                const isThisOpen = dropdownOpen && activeDropdown === item.dropdownType;
                 return (
                   <div
                     key={item.id}
                     className="h-full flex items-center"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
+                    onMouseEnter={() => {
+                      setDropdownOpen(true);
+                      setActiveDropdown(item.dropdownType || null);
+                    }}
+                    onMouseLeave={() => {
+                      setDropdownOpen(false);
+                      setActiveDropdown(null);
+                    }}
                   >
                     <button
                       onClick={() => {
-                        setCurrentTab('catalog');
-                        if (onCategorySelect) onCategorySelect('all');
+                        if (item.dropdownType === 'catalog') {
+                          setCurrentTab('catalog');
+                          if (onCategorySelect) onCategorySelect('all');
+                        } else {
+                          setCurrentTab('about');
+                        }
                       }}
                       className={`flex items-center space-x-1.5 h-full px-2 lg:px-3 text-[10px] sm:text-[11px] font-black uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
-                        isActive || dropdownOpen
+                        isActive || isThisOpen
                           ? 'border-[#e65410] text-[#e65410]'
                           : 'border-transparent text-gray-750 hover:text-[#e65410]'
                       }`}
                     >
                       <IconComp className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                       <span>{item.label}</span>
-                      <ChevronDown className={`h-2.5 w-2.5 sm:h-3 sm:w-3 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`h-2.5 w-2.5 sm:h-3 sm:w-3 transition-transform duration-100 ${isThisOpen ? 'rotate-180 text-[#e65410]' : 'text-gray-400'}`} />
                     </button>
                     {renderMegamenuDropdown()}
+                    {renderCompanyDropdown()}
                   </div>
                 );
               }
@@ -422,29 +670,41 @@ export default function Header({
               const isActive = currentTab === item.id;
 
               if (item.hasDropdown) {
+                const isThisOpen = dropdownOpen && activeDropdown === item.dropdownType;
                 return (
                   <div
                     key={item.id}
                     className="h-full flex items-center"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
+                    onMouseEnter={() => {
+                      setDropdownOpen(true);
+                      setActiveDropdown(item.dropdownType || null);
+                    }}
+                    onMouseLeave={() => {
+                      setDropdownOpen(false);
+                      setActiveDropdown(null);
+                    }}
                   >
                     <button
                       onClick={() => {
-                        setCurrentTab('catalog');
-                        if (onCategorySelect) onCategorySelect('all');
+                        if (item.dropdownType === 'catalog') {
+                          setCurrentTab('catalog');
+                          if (onCategorySelect) onCategorySelect('all');
+                        } else {
+                          setCurrentTab('about');
+                        }
                       }}
                       className={`flex items-center space-x-1.5 h-full px-4 text-[11px] font-black uppercase tracking-wider transition-all duration-150 border-b-2 cursor-pointer ${
-                        isActive || dropdownOpen
+                        isActive || isThisOpen
                           ? 'border-[#e65410] text-[#e65410]'
                           : 'border-transparent text-gray-750 hover:text-[#e65410]'
                       }`}
                     >
                       <IconComp className="h-3.5 w-3.5" />
                       <span>{item.label}</span>
-                      <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`h-3 w-3 transition-transform duration-100 ${isThisOpen ? 'rotate-180 text-[#e65410]' : 'text-gray-400'}`} />
                     </button>
                     {renderMegamenuDropdown()}
+                    {renderCompanyDropdown()}
                   </div>
                 );
               }
@@ -476,10 +736,20 @@ export default function Header({
             const isActive = currentTab === item.id;
 
             if (item.hasDropdown) {
+              const isCatalog = item.dropdownType === 'catalog';
+              const isOpen = isCatalog ? mobileCatalogOpen : mobileCompanyOpen;
+              const toggleOpen = () => {
+                if (isCatalog) {
+                  setMobileCatalogOpen(!mobileCatalogOpen);
+                } else {
+                  setMobileCompanyOpen(!mobileCompanyOpen);
+                }
+              };
+
               return (
                 <div key={item.id} className="w-full">
                   <button
-                    onClick={() => setMobileCatalogOpen(!mobileCatalogOpen)}
+                    onClick={toggleOpen}
                     className={`flex items-center justify-between w-full px-4 py-3 text-sm font-bold uppercase tracking-wider text-left border-l-4 cursor-pointer ${
                       isActive
                         ? 'bg-orange-50 text-[#e65410] border-[#e65410]'
@@ -490,11 +760,11 @@ export default function Header({
                       <IconComp className="h-4 w-4" />
                       <span>{item.label}</span>
                     </div>
-                    <ChevronDown className={`h-4 w-4 transform transition-transform duration-200 ${mobileCatalogOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`h-4 w-4 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                   </button>
 
                   {/* Mobil catalogue list */}
-                  {mobileCatalogOpen && (
+                  {isCatalog && mobileCatalogOpen && (
                     <div className="bg-gray-50 pl-8 pr-4 py-2 space-y-3 border-l-4 border-orange-200">
                       {catalogDropdownCategories.map((cat) => (
                         <div key={cat.id} className="space-y-1">
@@ -526,6 +796,146 @@ export default function Header({
                           {lang === 'en' ? 'All Equipment' : 'Все оборудование'}
                         </button>
                       </div>
+                    </div>
+                  )}
+
+                  {/* Mobile company list */}
+                  {!isCatalog && mobileCompanyOpen && (
+                    <div className="bg-gray-50 pl-8 pr-4 py-3 space-y-4 border-l-4 border-orange-200">
+                      
+                      {/* Section 1: О предприятии */}
+                      <div className="space-y-1.5">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-gray-400 font-bold block">
+                          {lang === 'en' ? 'ABOUT ENTERPRISE' : 'О ПРЕДПРИЯТИИ'}
+                        </span>
+                        <ul className="pl-2 space-y-2">
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-intro')}
+                              className="text-left text-xs font-bold text-gray-700 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Our Mission & Siberian Roots' : 'История, миссия и корни'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-stats')}
+                              className="text-left text-xs font-bold text-gray-770 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Company Key Statistics' : 'Основные показатели'}
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Section 2: Инжиниринг и Сервис */}
+                      <div className="space-y-1.5 pt-1">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-gray-400 font-bold block">
+                          {lang === 'en' ? 'ENGINEERING & SERVICES' : 'ИНЖИНИРИНГ И СЕРВИС'}
+                        </span>
+                        <ul className="pl-2 space-y-2">
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-activities')}
+                              className="text-left text-xs font-bold text-gray-700 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Auditing & Design' : 'Аудит и Проектирование'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-activities')}
+                              className="text-left text-xs font-bold text-gray-700 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Supervision & Commissioning' : 'Шеф-монтаж и Технологии'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-activities')}
+                              className="text-left text-xs font-bold text-gray-700 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Service Support & QC' : 'Гарантия и ОТК'}
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Section 3: Референц-лист проектов */}
+                      <div className="space-y-1.5 pt-1">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-gray-400 font-bold block">
+                          {lang === 'en' ? 'VERIFIABLE REFERENCES' : 'РЕФЕРЕНС-ЛИСТ СДАННЫХ ОБЪЕКТОВ'}
+                        </span>
+                        <ul className="pl-2 space-y-2">
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-projects', 'all')}
+                              className="text-left text-xs font-bold text-gray-700 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'All commissioning projects' : 'Все запущенные заводы'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-projects', 'molding')}
+                              className="text-left text-xs text-gray-600 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Resin Sand Continuous (No-Bake)' : 'Формовка смесей ХТС'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-projects', 'melting')}
+                              className="text-left text-xs text-gray-600 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Induction Melting layouts' : 'Печи плавки индукции'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-projects', 'cleaning')}
+                              className="text-left text-xs text-gray-600 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Finished shot blast chambers' : 'Дробеметная очистка'}
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Section 4: Склад и Связь */}
+                      <div className="space-y-1.5 pt-1">
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-gray-400 font-bold block">
+                          {lang === 'en' ? 'SUPPLY & SUPPORT' : 'ЛОГИСТИКА И СКЛАД'}
+                        </span>
+                        <ul className="pl-2 space-y-2">
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-warehouse')}
+                              className="text-left text-xs font-bold text-gray-700 block py-0.5 border-none bg-transparent cursor-pointer w-full"
+                            >
+                              • {lang === 'en' ? 'Central Novosibirsk Depots' : 'Склад в г. Новосибирск'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleCompanyClick('about-warehouse', undefined, 'contacts')}
+                              className="text-left text-xs font-black text-[#e65410] block py-0.5 border-none bg-transparent cursor-pointer w-full uppercase"
+                            >
+                              • {lang === 'en' ? 'Submit RFQ Inquiry' : 'Подать запрос КП ↗'}
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div className="pt-2 border-t border-gray-200">
+                        <button
+                          onClick={() => handleCompanyClick('about-intro')}
+                          className="w-full py-2 bg-[#e65410] text-white rounded text-xs font-bold uppercase tracking-wide cursor-pointer text-center border-none"
+                        >
+                          {lang === 'en' ? 'Corporate Presentation' : 'Презентация компании'}
+                        </button>
+                      </div>
+
                     </div>
                   )}
                 </div>

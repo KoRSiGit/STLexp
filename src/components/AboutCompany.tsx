@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { 
   Building2, Cpu, Sliders, HardHat, ShieldCheck, History, 
@@ -32,6 +32,43 @@ interface ProjectItem {
 export default function AboutCompany({ lang, onContactRequest }: AboutCompanyProps) {
   const [projectFilter, setProjectFilter] = useState<'all' | 'molding' | 'melting' | 'cleaning'>('all');
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleNavSync = () => {
+      const pendingFilter = (window as any)._pendingAboutFilter;
+      const pendingSection = (window as any)._pendingAboutSection;
+      
+      if (pendingFilter !== undefined) {
+        setProjectFilter(pendingFilter);
+        (window as any)._pendingAboutFilter = undefined;
+      }
+      
+      if (pendingSection) {
+        setTimeout(() => {
+          const el = document.getElementById(pendingSection);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Add a brief subtle visual highlight outline or flash for visual cue
+            el.classList.add('ring-2', 'ring-[#e65410]', 'ring-offset-2', 'duration-500');
+            setTimeout(() => {
+              el.classList.remove('ring-2', 'ring-[#e65410]', 'ring-offset-2');
+            }, 2500);
+          }
+        }, 150);
+        (window as any)._pendingAboutSection = undefined;
+      }
+    };
+
+    window.addEventListener('about-nav-sync', handleNavSync);
+    
+    // Check initially on mount (in case it was set before component was active)
+    handleNavSync();
+
+    return () => {
+      window.removeEventListener('about-nav-sync', handleNavSync);
+    };
+  }, []);
 
   const PROJECTS: ProjectItem[] = [
     {
@@ -193,7 +230,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* TOP INTRO CARD: Styled professionally with Siberian accents */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 sm:p-10 shadow-xs relative overflow-hidden">
+        <div id="about-intro" className="bg-white border border-gray-200 rounded-lg p-6 sm:p-10 shadow-xs relative overflow-hidden transition-all duration-500">
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -256,7 +293,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
         </div>
 
         {/* SECTION 2: METRICS IN NUMBERS */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div id="about-stats" className="grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-500">
           {STATS.map((stat, i) => (
             <div 
               key={i} 
@@ -273,7 +310,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
         </div>
 
         {/* SECTION 3: CORE DIVISIONS & WHAT WE DO (SLT copied structure) */}
-        <div className="space-y-6">
+        <div id="about-activities" className="space-y-6 transition-all duration-500">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <h3 className="text-xs font-mono uppercase tracking-widest text-[#e65410] font-black">
               {lang === 'en' ? 'METALLURGY INTEGRATION STEPS' : 'ОСНОВНЫЕ НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ'}
@@ -334,7 +371,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
         </div>
 
         {/* SECTION 4: INTERACTIVE PROJECTS BROWSER */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 shadow-xs space-y-6">
+        <div id="about-projects" className="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 shadow-xs space-y-6 transition-all duration-500">
           <div className="md:flex md:items-end md:justify-between space-y-4 md:space-y-0 border-b border-gray-100 pb-5">
             <div>
               <span className="font-mono text-[9px] text-[#e65410] uppercase tracking-widest font-bold">
@@ -444,7 +481,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
         </div>
 
         {/* SECTION 5: GEOGRAPHY & TECHNICAL VALUES CARD (Copied from SLT) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div id="about-warehouse" className="grid grid-cols-1 lg:grid-cols-3 gap-6 transition-all duration-500">
           <div className="lg:col-span-2 bg-[#0B0F19] text-white border border-gray-850 rounded-lg p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#e65410]/5 rounded-full blur-2xl pointer-events-none" />
             
