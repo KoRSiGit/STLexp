@@ -152,11 +152,11 @@ export default function Contacts({ lang }: ContactsProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Contact Info Panel */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 space-y-6 shadow-2xs">
+          <div className="bg-white border border-gray-200 rounded-none p-6 sm:p-8 space-y-6 shadow-2xs">
             
             {/* Office Item */}
             <div className="flex gap-4 items-start">
-              <div className="p-3 bg-orange-500/5 text-[#e65410] rounded-lg shrink-0">
+              <div className="p-3 bg-orange-500/5 text-[#e65410] rounded-none shrink-0">
                 <MapPin className="h-5 w-5" />
               </div>
               <div className="space-y-1">
@@ -171,7 +171,7 @@ export default function Contacts({ lang }: ContactsProps) {
 
             {/* Warehouse Item */}
             <div className="flex gap-4 items-start">
-              <div className="p-3 bg-blue-500/5 text-[#00333b] rounded-lg shrink-0">
+              <div className="p-3 bg-blue-500/5 text-[#00333b] rounded-none shrink-0">
                 <Building className="h-5 w-5" />
               </div>
               <div className="space-y-1">
@@ -187,7 +187,7 @@ export default function Contacts({ lang }: ContactsProps) {
             {/* Grid for Quick Contacts */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
               <div className="flex gap-3 items-start">
-                <div className="p-2 bg-slate-100 text-gray-700 rounded-lg shrink-0 mt-1">
+                <div className="p-2 bg-slate-100 text-gray-700 rounded-none shrink-0 mt-1">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div className="space-y-1.5">
@@ -211,7 +211,7 @@ export default function Contacts({ lang }: ContactsProps) {
               </div>
 
               <div className="flex gap-3 items-start">
-                <div className="p-2 bg-slate-100 text-gray-700 rounded-lg shrink-0 mt-1">
+                <div className="p-2 bg-slate-100 text-gray-700 rounded-none shrink-0 mt-1">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
@@ -234,7 +234,7 @@ export default function Contacts({ lang }: ContactsProps) {
           </div>
 
           {/* Legal Details Box */}
-          <div className="bg-[#00333b] text-white border border-teal-800 rounded-xl p-6 sm:p-8 space-y-4">
+          <div className="bg-[#00333b] text-white border border-teal-800 rounded-none p-6 sm:p-8 space-y-4">
             <div className="flex items-center gap-2 border-b border-teal-800 pb-2.5">
               <FileText className="h-4 w-4 text-[#e65410]" />
               <span className="font-mono text-xs text-[#e65410] font-bold uppercase tracking-wider">{t.legalHeader}</span>
@@ -250,18 +250,18 @@ export default function Contacts({ lang }: ContactsProps) {
           </div>
 
           {/* Beautiful styled Minimalist Map graphic / Scheme */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 space-y-4 shadow-2xs">
+          <div className="bg-white border border-gray-200 rounded-none p-6 space-y-4 shadow-2xs">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-bold uppercase tracking-wider font-mono text-gray-800 flex items-center gap-1.5">
                 <Navigation className="h-4 w-4 text-[#e65410]" />
                 {t.mapTitle}
               </h4>
-              <span className="text-[9px] bg-emerald-550/10 text-emerald-600 font-mono font-bold px-2 py-0.5 rounded uppercase">
+              <span className="text-[9px] bg-emerald-555/10 text-emerald-600 font-mono font-bold px-2 py-0.5 rounded-none uppercase">
                 {lang === 'en' ? 'Direct Pickup Ready' : 'Склад отгрузки открыт'}
               </span>
             </div>
             {/* Simulated Clean Blueprint Map Grid showing the Siberian logistics intersection */}
-            <div className="relative h-48 bg-slate-900 rounded-lg overflow-hidden border border-slate-950 flex flex-col justify-between p-4 font-mono select-none">
+            <div className="relative h-48 bg-slate-900 rounded-none overflow-hidden border border-slate-950 flex flex-col justify-between p-4 font-mono select-none">
               <div className="absolute inset-0 opacity-15" style={{ 
                 backgroundImage: 'radial-gradient(circle, #e65410 1px, transparent 1px)', 
                 backgroundSize: '16px 16px' 
@@ -275,19 +275,19 @@ export default function Contacts({ lang }: ContactsProps) {
               </svg>
 
               <div className="relative flex justify-between items-start">
-                <span className="text-[10px] bg-slate-800/80 text-white px-2 py-0.5 rounded border border-gray-750">
+                <span className="text-[10px] bg-slate-800/80 text-white px-2 py-0.5 rounded-none border border-gray-750">
                   {lang === 'en' ? 'Sacco & Vanzetti str.' : 'ул. Сакко и Ванцетти'}
                 </span>
-                <span className="text-[10px] bg-slate-800/80 text-white px-2 py-0.5 rounded border border-gray-750 text-right">
+                <span className="text-[10px] bg-slate-800/80 text-white px-2 py-0.5 rounded-none border border-gray-750 text-right">
                   {lang === 'en' ? 'Arkhonsky lane' : 'Архонский переулок'}
                 </span>
               </div>
 
               {/* Exact point locator */}
               <div className="relative self-center flex flex-col items-center justify-center space-y-1">
-                <div className="h-4 w-4 bg-[#e65410] rounded-full flex items-center justify-center animate-ping absolute" />
-                <div className="h-3 w-3 bg-[#e65410] rounded-full border-2 border-white z-10" />
-                <span className="text-[10px] font-black text-white bg-[#00333b] border border-teal-500 px-2 py-1 rounded shadow-md uppercase">
+                <div className="h-4 w-4 bg-[#e65410] rounded-none flex items-center justify-center animate-ping absolute" />
+                <div className="h-3 w-3 bg-[#e65410] rounded-none border-2 border-white z-10" />
+                <span className="text-[10px] font-black text-white bg-[#00333b] border border-teal-500 px-2 py-1 rounded-none shadow-md uppercase">
                   ООО Сибтехлит
                 </span>
               </div>
@@ -380,7 +380,7 @@ export default function Contacts({ lang }: ContactsProps) {
             </form>
           ) : (
             <div className="text-center py-8 space-y-4">
-              <div className="mx-auto h-12 w-12 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center animate-bounce">
+              <div className="mx-auto h-12 w-12 rounded-none bg-emerald-500/10 text-emerald-600 flex items-center justify-center animate-bounce">
                 <CheckCircle2 className="h-6 w-6" />
               </div>
               <div className="space-y-2">
@@ -425,7 +425,7 @@ export default function Contacts({ lang }: ContactsProps) {
           {offices.map((office) => (
             <div 
               key={office.id} 
-              className="bg-white border border-gray-200 hover:border-slate-350 hover:shadow-xs transition duration-200 p-6 rounded-xl flex flex-col justify-between space-y-4"
+              className="bg-white border border-gray-200 hover:border-slate-350 hover:shadow-xs transition duration-200 p-6 rounded-none flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
                 <div className="flex justify-between items-start">
@@ -437,7 +437,7 @@ export default function Contacts({ lang }: ContactsProps) {
                       {office.region}
                     </span>
                   </div>
-                  <span className="bg-[#e65410]/5 text-[#e65410] border border-[#e65410]/10 text-[10px] font-mono uppercase font-black px-2.5 py-1 rounded">
+                  <span className="bg-[#e65410]/5 text-[#e65410] border border-[#e65410]/10 text-[10px] font-mono uppercase font-black px-2.5 py-1 rounded-none">
                     {office.id === 'msk' || office.id === 'spb' ? (lang === 'en' ? 'OFFICE + STOCK' : 'Офис + Склад') : (lang === 'en' ? 'OFFICE' : 'Офис')}
                   </span>
                 </div>

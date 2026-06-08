@@ -5,7 +5,6 @@ import {
   Users2, Globe, Wrench, CheckCircle2, MapPin, TrendingUp, 
   BarChart3, Sparkles, ChevronRight, PhoneCall, Info
 } from 'lucide-react';
-import TrustBanner from './TrustBanner';
 
 interface AboutCompanyProps {
   lang: 'ru' | 'en';
@@ -231,7 +230,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* TOP INTRO CARD: Styled professionally with Siberian accents */}
-        <div id="about-intro" className="bg-white border border-gray-200 rounded-lg p-6 sm:p-10 shadow-xs relative overflow-hidden transition-all duration-500">
+        <div id="about-intro" className="bg-white border border-gray-200 rounded-none p-6 sm:p-10 shadow-xs relative overflow-hidden transition-all duration-500">
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -267,7 +266,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
 
             {/* Grid display image mockup placeholder */}
             <div className="lg:col-span-5 relative">
-              <div className="bg-[#00333b] text-white rounded-lg p-6 border border-teal-800 font-mono shadow-md overflow-hidden relative">
+              <div className="bg-[#00333b] text-white rounded-none p-6 border border-teal-800 font-mono shadow-md overflow-hidden relative">
                 <span className="absolute top-2 right-2 flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
@@ -298,7 +297,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
           {STATS.map((stat, i) => (
             <div 
               key={i} 
-              className="bg-white border border-gray-200 rounded-lg p-5 text-center shadow-xs hover:border-[#e65410] transition-colors"
+              className="bg-white border border-gray-200 rounded-none p-5 text-center shadow-xs hover:border-[#e65410] transition-colors"
             >
               <div className="text-2xl sm:text-4xl font-extrabold text-[#e65410] font-mono tracking-tight">
                 {stat.num}
@@ -336,14 +335,14 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
                   key={index}
                   onMouseEnter={() => setHoveredSkill(index)}
                   onMouseLeave={() => setHoveredSkill(null)}
-                  className={`bg-white border rounded-xl p-6 transition-all duration-300 relative ${
+                  className={`bg-white border rounded-none p-6 transition-all duration-300 relative ${
                     hoveredSkill === index 
                       ? 'border-[#e65410] shadow-md -translate-y-1' 
                       : 'border-gray-200 shadow-xs'
                   }`}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`p-3 rounded-lg transition-colors ${
+                    <div className={`p-3 rounded-none transition-colors ${
                       hoveredSkill === index ? 'bg-orange-500/10 text-[#e65410]' : 'bg-gray-100 text-gray-600'
                     }`}>
                       <IconComp className="h-6 w-6 shrink-0" />
@@ -372,7 +371,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
         </div>
 
         {/* SECTION 4: INTERACTIVE PROJECTS BROWSER */}
-        <div id="about-projects" className="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 shadow-xs space-y-6 transition-all duration-500">
+        <div id="about-projects" className="bg-white border border-gray-200 rounded-none p-6 sm:p-8 shadow-xs space-y-6 transition-all duration-500">
           <div className="md:flex md:items-end md:justify-between space-y-4 md:space-y-0 border-b border-gray-100 pb-5">
             <div>
               <span className="font-mono text-[9px] text-[#e65410] uppercase tracking-widest font-bold">
@@ -440,7 +439,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
                   </div>
 
                   {/* Machinery Specifications */}
-                  <div className="space-y-1.5 bg-white border border-gray-200/60 rounded-lg p-3 text-xs mt-2">
+                  <div className="space-y-1.5 bg-white border border-gray-200/60 rounded-none p-3 text-xs mt-2">
                     <p className="font-bold text-[10px] text-gray-400 font-mono tracking-wider uppercase">
                       {lang === 'en' ? '[ EQUIPMENT INSTALLED ]' : '[ СОСТАВ ОПИСУЕМОГО КОМПЛЕКСА ]'}
                     </p>
@@ -450,7 +449,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
                   </div>
 
                   {/* Operational Results Achievements */}
-                  <div className="space-y-1.5 bg-emerald-500/5 border border-emerald-500/10 rounded-lg p-3 text-xs">
+                  <div className="space-y-1.5 bg-emerald-500/5 border border-emerald-500/10 rounded-none p-3 text-xs">
                     <p className="font-bold text-[10px] text-emerald-600 font-mono tracking-wider uppercase flex items-center gap-1">
                       <TrendingUp className="h-3 w-3" />
                       {lang === 'en' ? '[ OPERATIONAL RESULT / EFFICIENCY ]' : '[ ДОСТИГНУТЫЙ КД ЭФФЕКТ ]'}
@@ -472,7 +471,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
             ))}
           </div>
 
-          <div className="bg-gray-100 rounded-lg p-4 text-center">
+          <div className="bg-gray-100 rounded-none p-4 text-center">
             <p className="text-xs text-gray-500 font-mono">
               {lang === 'en' 
                 ? 'Looking for historical installation details in your specific town/state? Contact our Новосибирск office for exact reference list sheets.' 
@@ -483,7 +482,7 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
 
         {/* SECTION 5: GEOGRAPHY & TECHNICAL VALUES CARD (Copied from SLT) */}
         <div id="about-warehouse" className="grid grid-cols-1 lg:grid-cols-3 gap-6 transition-all duration-500">
-          <div className="lg:col-span-2 bg-[#0B0F19] text-white border border-gray-850 rounded-lg p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-2 bg-[#0B0F19] text-white border border-gray-850 rounded-none p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#e65410]/5 rounded-full blur-2xl pointer-events-none" />
             
             <div className="space-y-4">
@@ -524,9 +523,9 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col justify-between shadow-xs">
+          <div className="bg-white border border-gray-200 rounded-none p-6 flex flex-col justify-between shadow-xs">
             <div className="space-y-4">
-              <div className="p-3 bg-orange-500/5 text-[#e65410] rounded-lg w-fit">
+              <div className="p-3 bg-orange-500/5 text-[#e65410] rounded-none w-fit">
                 <PhoneCall className="h-6 w-6 shrink-0" />
               </div>
               <h4 className="text-base sm:text-lg font-bold font-sans text-gray-950 uppercase tracking-tight">
@@ -552,11 +551,6 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Separator light banner to split dark cards from the dark footer */}
-        <div className="mt-16">
-          <TrustBanner lang={lang} />
         </div>
 
       </div>

@@ -40,7 +40,7 @@ export default function Header({
   const renderMegamenuDropdown = () => {
     if (!dropdownOpen || activeDropdown !== 'catalog') return null;
     return (
-      <div className="absolute top-full left-0 right-0 mx-auto w-full max-w-7xl bg-[#00242a] text-white rounded-b-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] border-l border-r border-b border-teal-850 p-7 z-[9999] animate-fadeIn border-t-4 border-t-[#e65410] -mt-1">
+      <div className="absolute top-full left-0 right-0 mx-auto w-full max-w-7xl bg-[#00242a] text-white rounded-none shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] border-l border-r border-b border-teal-850 p-7 z-[9999] animate-fadeIn border-t-4 border-t-[#e65410] -mt-1">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-5">
           {catalogDropdownCategories.map((cat) => (
             <div key={cat.id} className="space-y-3.5">
@@ -75,7 +75,7 @@ export default function Header({
           </span>
           <button
             onClick={() => handleCategoryClick('all')}
-            className="bg-[#00171b] hover:bg-[#e65410] border border-[#003d47] hover:border-[#e65410] text-white px-3.5 py-1.5 rounded text-[9.5px] uppercase font-bold transition-all duration-150 cursor-pointer shadow-sm active:scale-95"
+            className="bg-[#00171b] hover:bg-[#e65410] border border-[#003d47] hover:border-[#e65410] text-white px-3.5 py-1.5 rounded-none text-[9.5px] uppercase font-bold transition-all duration-150 cursor-pointer shadow-sm active:scale-95"
           >
             {lang === 'en' ? 'Open Full Catalog' : 'Открыть весь каталог ↗'}
           </button>
@@ -103,7 +103,7 @@ export default function Header({
   const renderCompanyDropdown = () => {
     if (!dropdownOpen || activeDropdown !== 'company') return null;
     return (
-      <div className="absolute top-full left-0 right-0 mx-auto w-full max-w-7xl bg-[#00242a] text-white rounded-b-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] border-l border-r border-b border-teal-850 p-7 z-[9999] animate-fadeIn border-t-4 border-t-[#e65410] -mt-1">
+      <div className="absolute top-full left-0 right-0 mx-auto w-full max-w-7xl bg-[#00242a] text-white rounded-none shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] border-l border-r border-b border-teal-850 p-7 z-[9999] animate-fadeIn border-t-4 border-t-[#e65410] -mt-1">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           
           {/* Column 1: О предприятии */}

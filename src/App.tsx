@@ -9,6 +9,7 @@ import RFQCart from './components/RFQCart';
 import Footer from './components/Footer';
 import Contacts from './components/Contacts';
 import InStockEquipment from './components/InStockEquipment';
+import TrustBanner from './components/TrustBanner';
 import { Product, RFQItem } from './types';
 
 export default function App() {
@@ -155,6 +156,9 @@ export default function App() {
           />
         )}
       </main>
+
+      {/* Global TrustBanner: Separator light block ensures dark footer never neighbors a dark block on any view */}
+      <TrustBanner lang={lang} />
 
       {/* Footer */}
       <Footer

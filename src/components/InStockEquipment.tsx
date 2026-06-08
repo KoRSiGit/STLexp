@@ -1,8 +1,7 @@
 import { ShoppingCart, CheckCircle2, Snowflake, ShieldCheck, ArrowRight, Table } from 'lucide-react';
 import { Product, ProductCategory } from '../types';
-import TrustBanner from './TrustBanner';
 
-const steelPouringBg = 'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=1600&q=80';
+const steelPouringBg = 'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=1600&q=80';
 
 interface InStockEquipmentProps {
   lang: 'ru' | 'en';
@@ -332,7 +331,7 @@ export default function InStockEquipment({
           </ul>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-lg p-5 flex flex-col justify-between max-w-sm space-y-4 relative z-10">
+        <div className="bg-slate-900 border border-slate-800 rounded-none p-5 flex flex-col justify-between max-w-sm space-y-4 relative z-10">
           <div className="flex gap-2">
             <ShieldCheck className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
             <p className="text-[11px] text-gray-400 font-sans leading-relaxed">
@@ -341,16 +340,11 @@ export default function InStockEquipment({
           </div>
           <a
             href="mailto:info@sibtehlit.ru"
-            className="text-[10px] uppercase font-bold font-mono tracking-wider bg-emerald-600/10 hover:bg-emerald-600/20 text-emerald-400 border border-emerald-500/20 py-2 rounded text-center transition"
+            className="text-[10px] uppercase font-bold font-mono tracking-wider bg-emerald-600/10 hover:bg-emerald-600/20 text-emerald-400 border border-emerald-500/20 py-2 rounded-none text-center transition"
           >
             {lang === 'en' ? 'Email Spare Dept info@sibtehlit.ru' : 'Запрос запчастей: info@sibtehlit.ru'}
           </a>
         </div>
-      </div>
-
-      {/* Light separator block before dark footer */}
-      <div className="mt-16">
-        <TrustBanner lang={lang} />
       </div>
 
     </div>
