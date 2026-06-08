@@ -23,8 +23,9 @@ import {
   Sliders
 } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
+import TrustBanner from './TrustBanner';
 
-const steelPouringBg = 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=1600&q=80';
+const steelPouringBg = 'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=1600&q=80';
 
 interface ProductCatalogProps {
   onAddToRFQ: (product: Product) => void;
@@ -468,7 +469,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
                 const DIVISION_IMAGES: Record<string, string> = {
                   'sand-mixers-xtc': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-                  'furnaces': 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=600&q=80',
+                  'furnaces': 'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=600&q=80',
                   'green-sand': 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
                   'core-making': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
                   'shot-blast': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
@@ -1151,6 +1152,11 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
               {lang === 'en' ? 'Bespoke layouts calculated in 3D' : 'Проектирование в AutoCAD/КОМПАС 3D'}
             </span>
           </div>
+        </div>
+
+        {/* Separator block before footer */}
+        <div className="mt-16">
+          <TrustBanner lang={lang} />
         </div>
 
       </div>

@@ -5,6 +5,7 @@ import {
   Users2, Globe, Wrench, CheckCircle2, MapPin, TrendingUp, 
   BarChart3, Sparkles, ChevronRight, PhoneCall, Info
 } from 'lucide-react';
+import TrustBanner from './TrustBanner';
 
 interface AboutCompanyProps {
   lang: 'ru' | 'en';
@@ -551,6 +552,11 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Separator light banner to split dark cards from the dark footer */}
+        <div className="mt-16">
+          <TrustBanner lang={lang} />
         </div>
 
       </div>

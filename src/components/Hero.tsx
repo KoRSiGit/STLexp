@@ -3,8 +3,9 @@ import { ArrowRight, Hammer, Settings, Flame, ShieldCheck, Zap, Layers, RefreshC
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
 import { TRANSLATIONS } from '../data/translations';
+import TrustBanner from './TrustBanner';
 
-const steelPouringBg = 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=1600&q=80';
+const steelPouringBg = 'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=1600&q=80';
 
 interface HeroProps {
   onNavigateToCatalog: (category?: string) => void;
@@ -495,6 +496,9 @@ export default function Hero({ onNavigateToCatalog, onAddToRFQ, lang }: HeroProp
 
         </div>
       </section>
+
+      {/* Trust and Quality Standards light block to separate dark sections from the footer */}
+      <TrustBanner lang={lang} />
 
     </div>
   );

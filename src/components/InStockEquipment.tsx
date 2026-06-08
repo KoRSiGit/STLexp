@@ -1,7 +1,8 @@
 import { ShoppingCart, CheckCircle2, Snowflake, ShieldCheck, ArrowRight, Table } from 'lucide-react';
 import { Product, ProductCategory } from '../types';
+import TrustBanner from './TrustBanner';
 
-const steelPouringBg = 'https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=1600&q=80';
+const steelPouringBg = 'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=1600&q=80';
 
 interface InStockEquipmentProps {
   lang: 'ru' | 'en';
@@ -345,6 +346,11 @@ export default function InStockEquipment({
             {lang === 'en' ? 'Email Spare Dept info@sibtehlit.ru' : 'Запрос запчастей: info@sibtehlit.ru'}
           </a>
         </div>
+      </div>
+
+      {/* Light separator block before dark footer */}
+      <div className="mt-16">
+        <TrustBanner lang={lang} />
       </div>
 
     </div>
