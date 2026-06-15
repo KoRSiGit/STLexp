@@ -927,5 +927,228 @@ export const PRODUCTS: Product[] = [
       { model: 'ГЗ-150', capacity: 'Расход 150 м³/час', capacityEn: 'Flow 150 m³/h', power: '22.0 кВт', powerEn: '22.0 kW', extraField: 'Мощность рассеивания', extraFieldVal: '1300 кВт', extraFieldValEn: '1300 kW' },
       { model: 'ГЗ-200', capacity: 'Расход 200 м³/час', capacityEn: 'Flow 200 m³/h', power: '37.0 кВт', powerEn: '37.0 kW', extraField: 'Мощность рассеивания', extraFieldVal: '1740 кВт', extraFieldValEn: '1740 kW' }
     ]
+  },
+  {
+    id: 'casting-gravity-kmv',
+    category: 'casting-machines',
+    subcategory: 'molders',
+    subcategoryRu: 'Литейные формообразующие машины',
+    subcategoryEn: 'Molding & Casting Machinery',
+    subsubcategory: 'gravity-die-vertical',
+    subsubcategoryRu: 'Кокильные станки КМ-В',
+    subsubcategoryEn: 'Gravity die systems KM-V (vertical)',
+    title: 'Кокильная машина с вертикальным разъемом кокиля',
+    titleEn: 'Vertical parting gravity die casting machine',
+    model: 'КМ-600-В',
+    description: 'Универсальный полуавтоматический кокильный станок с вертикальной плоскостью разъема металлических форм. Обеспечивает высокоточное литье деталей со сложной внешней конфигурацией и развитыми стержневыми полостями. Конструкция гарантирует жесткую центровку и исключает деформацию плит при заливке.',
+    descriptionEn: 'Heavy duty semi-automatic vertical parting line permanent mold casting machine. Designed for casting pieces requiring complex core pull systems and multiple slide cylinders.',
+    imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
+    capacity: 'Кокиль до 1000х600 мм',
+    capacityEn: 'Mold size up to 1000x600',
+    power: '7.5 кВт',
+    powerEn: '7.5 kW',
+    features: [
+      'Вертикальное гидравлическое смыкание и размыкание полуформ с высокой надежностью',
+      'Система программируемых стержневыталкивателей для извлечения отливок с любой глубины',
+      'Усиленная сварная рама с термообработкой для долголетней работы в агрессивной среде',
+      'Возможность работы со стержнями сложной пространственной конфигурации и стержневыми песчаными блоками'
+    ],
+    featuresEn: [
+      'Rigid vertical hydraulic mold lock and split mechanisms preventing mold shifts',
+      'Programmable integrated hydralic core ejector pins with adjustable stroke depths',
+      'Heat-treated heavy steel frame resisting extreme cyclic thermal and stress loads',
+      'Equipped to integrate complex sand cores or automated multi-axis side slides'
+    ],
+    specs: [
+      { name: 'Размер опорных плит кокиля', value: '1000 х 600 мм', nameEn: 'Mounting plate size', valueEn: '1000 x 600 mm' },
+      { name: 'Размер хода размыкания', value: '500 мм', nameEn: 'Die opening stroke', valueEn: '500 mm' },
+      { name: 'Максимальный вес полуформы кокиля', value: '600 кг', nameEn: 'Max mold weight', valueEn: '600 kg' },
+      { name: 'Сила гидрозажима плит', value: '120 кН', nameEn: 'Hydraulic clamping force', valueEn: '120 kN' },
+      { name: 'Номинальное гидравлическое давление', value: '8 МПа', nameEn: 'Hydraulic system pressure', valueEn: '8 MPa' }
+    ],
+    variantModels: [
+      { model: 'КМ-400-В', capacity: 'Кокиль 600х400 мм', capacityEn: 'Die 600x400 mm', power: '5.5 кВт', powerEn: '5.5 kW', extraField: 'Усилие прижима', extraFieldVal: '80 кН', extraFieldValEn: '80 kN' },
+      { model: 'КМ-600-В', capacity: 'Кокиль 1000х600 мм', capacityEn: 'Die 1000x600 mm', power: '7.5 кВт', powerEn: '7.5 kW', extraField: 'Усилие прижима', extraFieldVal: '120 кН', extraFieldValEn: '120 kN' },
+      { model: 'КМ-800-В', capacity: 'Кокиль 1200х800 мм', capacityEn: 'Die 1200x800 mm', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Усилие прижима', extraFieldVal: '150 кН', extraFieldValEn: '150 kN' }
+    ]
+  },
+  {
+    id: 'ladle-kb-drum',
+    category: 'furnaces',
+    subcategory: 'ladles',
+    subcategoryRu: 'Заливочные ковши',
+    subcategoryEn: 'Pouring Ladles',
+    subsubcategory: 'drum',
+    subsubcategoryRu: 'Барабанные ковши серии КБ',
+    subsubcategoryEn: 'Drum type series KB',
+    title: 'Ковш заливочный барабанного типа с редуктором',
+    titleEn: 'Foundry drum-type pouring ladle with gearbox',
+    model: 'КБ-1.5',
+    description: 'Литейный ковш барабанного типа закрытой конструкции. Обладает превосходной теплоемкостью со сниженными потерями тепла от зеркала расплава, что делает его незаменимым при транспортировке на средние и дальние расстояния в крупных цехах. Подача расплава из узкого горлышка гарантирует спокойное заполнение.',
+    descriptionEn: 'High capacity insulated drum-type pouring ladle designed to maintain molten metal temperature during long shop transfers. Enclosed shell limits radiant dissipation.',
+    imageUrl: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80',
+    capacity: '1.5 тонны расплава',
+    capacityEn: '1.5 tons capacity',
+    power: 'Червячный редуктор 1:120',
+    powerEn: 'Worm gear ratio 1:120',
+    features: [
+      'Закрытая барабанная конфигурация сводит суточные излучаемые теплопотери электропечи к минимуму',
+      'Высоконадежный самозапирающийся косозубый червячный редуктор для точной фиксации наклона',
+      'Термостойкие стальные опорные подшипники цапф для плавного качания ковша на траверсе',
+      'Фальцевые зазоры корпуса обеспечивают безопасный выход остаточных газов при сушке футеровки'
+    ],
+    featuresEn: [
+      'Enclosed barrel geometry limits heat dissipation from molten metal surface up to 60%',
+      'Heavy-duty self-locking worm gearbox enabling micrometric hand-wheel tilting angle precision',
+      'High-temperature structural support bearings for ultra-smooth ladle rotation',
+      'Safe exhaust relief vents built into the shell to vent core gases during drying'
+    ],
+    specs: [
+      { name: 'Номинальная емкость по стали', value: '1500 кг', nameEn: 'Nominal steel capacity', valueEn: '1500 kg' },
+      { name: 'Длина корпуса барабана', value: '1250 мм', nameEn: 'Ladle drum shell length', valueEn: '1250 mm' },
+      { name: 'Толщина термоизоляционной футеровки', value: '110 мм', nameEn: 'Refractory insulation thickness', valueEn: '110 mm' },
+      { name: 'Передаточное отношение редуктора', value: '1:120', nameEn: 'Gearbox output speed ratio', valueEn: '1:120' },
+      { name: 'Сухой пустой вес ковша', value: '680 кг', nameEn: 'Dry empty weight', valueEn: '680 kg' }
+    ],
+    variantModels: [
+      { model: 'КБ-0.5', capacity: 'Емкость 500 кг', capacityEn: 'Capacity 500 kg', power: 'Червячный редуктор 1:80', powerEn: 'Worm 1:80', extraField: 'Тип', extraFieldVal: 'Барабанный', extraFieldValEn: 'Drum' },
+      { model: 'КБ-1.0', capacity: 'Емкость 1000 кг', capacityEn: 'Capacity 1000 kg', power: 'Червячный редуктор 1:100', powerEn: 'Worm 1:100', extraField: 'Тип', extraFieldVal: 'Барабанный', extraFieldValEn: 'Drum' },
+      { model: 'КБ-1.5', capacity: 'Емкость 1500 кг', capacityEn: 'Capacity 1500 kg', power: 'Червячный редуктор 1:120', powerEn: 'Worm 1:120', extraField: 'Тип', extraFieldVal: 'Барабанный', extraFieldValEn: 'Drum' },
+      { model: 'КБ-2.0', capacity: 'Емкость 2000 кг', capacityEn: 'Capacity 2000 kg', power: 'Червячный редуктор 1:120', powerEn: 'Worm 1:120', extraField: 'Тип', extraFieldVal: 'Барабанный', extraFieldValEn: 'Drum' }
+    ]
+  },
+  {
+    id: 'shot-blast-q35-table',
+    category: 'shot-blast',
+    subcategory: 'shot-blast-machines',
+    subcategoryRu: 'Дробемётное оборудование',
+    subcategoryEn: 'Shot blasting units',
+    subsubcategory: 'rotary-table',
+    subsubcategoryRu: 'С поворотным столом серии Q35',
+    subsubcategoryEn: 'Rotary table series Q35',
+    title: 'Дробеметная установка с поворотным столом',
+    titleEn: 'Rotary table type shot blasting machine',
+    model: 'Q3512',
+    description: 'Специализированная промышленная установка для поверхностной дробеметной очистки деталей, критичных к взаимному соударению (например, шестерни, тонкостенные картеры, лопатки турбин, крышки). Детали укладываются на вращающийся горизонтальный поворотный стол, который подставляет их под мощные факелы дробеструйных турбин.',
+    descriptionEn: 'Specialized industrial flat-table shot blast machine designed to clean flat, thin-walled, or friction-susceptible components (gears, structural lids, impellers) without tumbling collision.',
+    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+    capacity: 'Стол Ø1200 мм, нагрузка до 1.5 т',
+    capacityEn: 'Table Ø1200, up to 1500 kg',
+    power: '29.5 кВт',
+    powerEn: '29.5 kW',
+    features: [
+      'Горизонтальный наклонный поворотный стол из легированной марганцевой стали для идеального охвата',
+      'Одна или две мощные высокооборотные турбины, расположенные под рассчитанными углами',
+      'Защитная резиновая завеса и глухая бронировка камеры стальными пластинами толщиной 12 мм',
+      'Автоматический шкаф управления с регулировкой частоты вращения стола для деликатной очистки'
+    ],
+    featuresEn: [
+      'Synchronized flat rotating table constructed from Mn13 alloy plates for maximum impact protection',
+      'One or two precision direct-drive balance blasting turbines delivering dense flow profiles',
+      'Heavy double-layered protective rubber curtain coupled with chromium lining scales',
+      'Smart VFD cabinet allowing custom table spin acceleration for high-finish jobs'
+    ],
+    specs: [
+      { name: 'Диаметр поворотного стола', value: 'Ø1200 мм', nameEn: 'Rotary table diameter', valueEn: 'Ø1200 mm' },
+      { name: 'Максимальная высота заготовок', value: '600 мм', nameEn: 'Max workpiece height', valueEn: '600 mm' },
+      { name: 'Максимальная грузоподъемность стола', value: '1500 кг', nameEn: 'Max table loading capacity', valueEn: '1500 kg' },
+      { name: 'Количество турбин', value: '1 шт (22 кВт)', nameEn: 'Blasting wheel engines count', valueEn: '1 unit (22 kW)' },
+      { name: 'Производительность подачи дроби', value: '150 кг/мин', nameEn: 'Blasting discharge rate', valueEn: '150 kg/min' }
+    ],
+    variantModels: [
+      { model: 'Q3510', capacity: 'Стол Ø1000 мм', capacityEn: 'Table Ø1000 mm', power: '15.0 кВт', powerEn: '15.0 kW', extraField: 'Нагрузка стола', extraFieldVal: '1000 кг', extraFieldValEn: '1000 kg' },
+      { model: 'Q3512', capacity: 'Стол Ø1200 мм', capacityEn: 'Table Ø1200 mm', power: '29.5 кВт', powerEn: '29.5 kW', extraField: 'Нагрузка стола', extraFieldVal: '1500 кг', extraFieldValEn: '1500 kg' },
+      { model: 'Q3515', capacity: 'Стол Ø1500 мм', capacityEn: 'Table Ø1500 mm', power: '37.0 кВт', powerEn: '37.0 kW', extraField: 'Нагрузка стола', extraFieldVal: '2000 кг', extraFieldValEn: '2000 kg' }
+    ]
+  },
+  {
+    id: 'shot-blast-q69-profile',
+    category: 'shot-blast',
+    subcategory: 'shot-blast-machines',
+    subcategoryRu: 'Дробемётное оборудование',
+    subcategoryEn: 'Shot blasting units',
+    subsubcategory: 'roller-conveyor',
+    subsubcategoryRu: 'Проходного типа серии Q69',
+    subsubcategoryEn: 'Roller conveyor series Q69',
+    title: 'Дробеметная установка проходного рольгангового типа',
+    titleEn: 'Roller conveyor-type plate and beam shot blaster',
+    model: 'Q6910',
+    description: 'Высокомощный автоматизированный дробеметный комплекс непрерывного проходного действия. Предназначен для скоростной очистки стального листа, двутавра, швеллера, профильных труб и заварных металлоконструкций от ржавчины и окалины перед сваркой или покраской. Рольганговый транспортер проводит профиль насквозь через камеру под факелами 4-8 турбин.',
+    descriptionEn: 'High productivity automatic continuous pass-through system. Transports structural beams, pipes, and metal plates on durable roller beds beneath multi-turbine configurations.',
+    imageUrl: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+    capacity: 'Ширина проема 1000 мм',
+    capacityEn: 'Passage width 1000 mm',
+    power: '75.0 кВт',
+    powerEn: '75.0 kW',
+    features: [
+      'Высокопрочный стальной рольганг непрерывного сквозного контроля с регулировкой скорости хода',
+      'Система из 4 или 6 центробежных турбоголовок высокой мощности, расположенных крест-накрест',
+      'Сверхэффективный узел сдува дроби со встроенной нейлоновой щеткой и воздушной пушкой',
+      'Интегрированный каскадный воздушный сепаратор, самоочищающийся импульсный рукавный фильтр'
+    ],
+    featuresEn: [
+      'Durable continuous heavy loading conveyor rollers with adjustable variable speed line inverter',
+      '4 or 6 advanced crosswise turbine layouts covering total top and bottom profiles in one sweep',
+      'High-pressure air blow-off and nylon sweep brushes removing abrasive carry-over on parts',
+      'Cascade air separator separating reuseable steel shots from dust and rust flakes'
+    ],
+    specs: [
+      { name: 'Ширина загружаемого листа', value: '1000 мм', nameEn: 'Maximum sheet feeding width', valueEn: '1000 mm' },
+      { name: 'Высота проходного проема', value: '600 мм', nameEn: 'Maximum bundle height', valueEn: '600 mm' },
+      { name: 'Скорость рольганга прохода', value: '0.5 - 4.5 м/мин', nameEn: 'Conveyor feeding rate limits', valueEn: '0.5 - 4.5 m/min' },
+      { name: 'Количество мощных турбин', value: '4 шт. х 11 кВт', nameEn: 'Turbine wheels count', valueEn: '4 units x 11 kW' },
+      { name: 'Общая установленная мощность установки', value: '75.0 кВт', nameEn: 'Total system dynamic power', valueEn: '75.0 kW' }
+    ],
+    variantModels: [
+      { model: 'Q698', capacity: 'Ширина листа 800 мм', capacityEn: 'Sheet 800 mm', power: '55.0 кВт', powerEn: '55.0 kW', extraField: 'Турбины', extraFieldVal: '4 шт.', extraFieldValEn: '4 units' },
+      { model: 'Q6910', capacity: 'Ширина листа 1000 мм', capacityEn: 'Sheet 1000 mm', power: '75.0 кВт', powerEn: '75.0 kW', extraField: 'Турбины', extraFieldVal: '4 шт.', extraFieldValEn: '4 units' },
+      { model: 'Q6915', capacity: 'Ширина листа 1500 мм', capacityEn: 'Sheet 1500 mm', power: '110.0 кВт', powerEn: '110.0 kW', extraField: 'Турбины', extraFieldVal: '6 шт.', extraFieldValEn: '6 units' },
+      { model: 'Q6920', capacity: 'Ширина листа 2000 мм', capacityEn: 'Sheet 2000 mm', power: '145.0 кВт', powerEn: '145.0 kW', extraField: 'Турбины', extraFieldVal: '8 шт.', extraFieldValEn: '8 units' }
+    ]
+  },
+  {
+    id: 'green-sand-vibro-screen',
+    category: 'green-sand',
+    subcategory: 'green-coolers',
+    subcategoryRu: 'Охладители оборотной смеси',
+    subcategoryEn: 'Spent Sand Coolers',
+    subsubcategory: 'vibroscreens',
+    subsubcategoryRu: 'Вибросита формовочной земли ВС',
+    subsubcategoryEn: 'Vibrating screens VS',
+    title: 'Вибросито для очистки сухого песка и формовочной смеси',
+    titleEn: 'Vibrating screen for foundry sand classification',
+    model: 'ВС-15',
+    description: 'Специализированное механическое сито вибрационного типа для разделения сухого песка и песчано-бентонитовых формовочных смесей. Идеально очищает исходный или регенерированный песок от кусков глины, спекшихся металлических корок, шлаковых гранул и посторонних примесей перед подачей в смеситель.',
+    descriptionEn: 'Electric vibrating screen engineered for classifying spent sand. Removes agglomerated lumps, iron bits, and foreign items from the molding material recycle loops.',
+    imageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+    capacity: '15 тонн/час',
+    capacityEn: '15 tons/hour',
+    power: '4.0 кВт',
+    powerEn: '4.0 kW',
+    features: [
+      'Два оппозитно расположенных пылезащищенных вибродвигателя с регулировкой частоты',
+      'Быстросменные натяжные металлические сетки со сменяемой ячейкой от 1.5 до 8 мм',
+      'Полностью закрытый пылезащитный металлический кожух со штуцером под аспирацию',
+      'Закаленная опорная подвеска на витых спиральных стальных пружинах круглого сечения'
+    ],
+    featuresEn: [
+      'Two opposing dust-proof vibration motors with manually tunable force counterweights',
+      'Tensioned quick-release mesh panels with variable hole grids from 1.5mm up to 8mm',
+      'Sealed steel container structure complete with active vacuum aspiration connection',
+      'Pre-compressed heavy duty helical suspension springs absorbing 95% foundation load'
+    ],
+    specs: [
+      { name: 'Производительность сита', value: '15 тонн/час', nameEn: 'Sifting output capacity', valueEn: '15 tons/hour' },
+      { name: 'Размеры рабочего сита плиты', value: '1800 х 900 мм', nameEn: 'Screen deck screen sizing', valueEn: '1800 x 900 mm' },
+      { name: 'Амплитуда колебаний сита', value: '1.0 - 2.5 мм', nameEn: 'Vibratory amplitude limits', valueEn: '1.0 - 2.5 mm' },
+      { name: 'Статическая нагрузка виброприводов', value: '16 кН', nameEn: 'Stator exciting force', valueEn: '16 kN' },
+      { name: 'Потребляемая установленная мощность', value: '4.0 кВт', nameEn: 'Installed electrical motor rating', valueEn: '4.0 kW' }
+    ],
+    variantModels: [
+      { model: 'ВС-5', capacity: '5 тонн/час', capacityEn: '5 t/h', power: '2.2 кВт', powerEn: '2.2 kW', extraField: 'Сетка', extraFieldVal: '1200х600 мм', extraFieldValEn: '1200x600 mm' },
+      { model: 'ВС-10', capacity: '10 тонн/час', capacityEn: '10 t/h', power: '3.0 кВт', powerEn: '3.0 kW', extraField: 'Сетка', extraFieldVal: '1500х750 мм', extraFieldValEn: '1500x750 mm' },
+      { model: 'ВС-15', capacity: '15 тонн/час', capacityEn: '15 t/h', power: '4.0 кВт', powerEn: '4.0 kW', extraField: 'Сетка', extraFieldVal: '1800х900 мм', extraFieldValEn: '1800x900 mm' },
+      { model: 'ВС-25', capacity: '25 тонн/час', capacityEn: '25 t/h', power: '7.5 кВт', powerEn: '7.5 kW', extraField: 'Сетка', extraFieldVal: '2000х1200 мм', extraFieldValEn: '2000x1200 mm' }
+    ]
   }
 ];
