@@ -1,7 +1,6 @@
 import { ShoppingCart, CheckCircle2, Snowflake, ShieldCheck, ArrowRight, Table } from 'lucide-react';
 import { Product, ProductCategory } from '../types';
-
-const steelPouringBg = 'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=1600&q=80';
+import steelPouringBg from '../assets/images/foundry_hero_bg_1781504494705.jpg';
 
 interface InStockEquipmentProps {
   lang: 'ru' | 'en';

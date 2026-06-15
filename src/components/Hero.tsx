@@ -3,8 +3,7 @@ import { ArrowRight, Hammer, Settings, Flame, ShieldCheck, Zap, Layers, RefreshC
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
 import { TRANSLATIONS } from '../data/translations';
-
-const steelPouringBg = 'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=1600&q=80';
+import steelPouringBg from '../assets/images/foundry_hero_bg_1781504494705.jpg';
 
 interface HeroProps {
   onNavigateToCatalog: (category?: string) => void;

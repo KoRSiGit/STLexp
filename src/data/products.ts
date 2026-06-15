@@ -1,4 +1,7 @@
 import { Product } from '../types';
+import sandMixerXTC from '../assets/images/sand_mixer_xtc_1781504511099.jpg';
+import inductionFurnaceImg from '../assets/images/induction_furnace_1781504526346.jpg';
+import shotBlasterImg from '../assets/images/shot_blaster_1781504543211.jpg';
 
 export const PRODUCTS: Product[] = [
   // SECTION 1: NO-BAKE MOLDING (ХТС)
@@ -16,7 +19,7 @@ export const PRODUCTS: Product[] = [
     model: 'СХ-10',
     description: 'Высокопроизводственный однорукавный смеситель для формовки по ХТС-процессу (холоднотвердеющие смеси). Обеспечивает высокоточное дозирование связующего (смолы) и катализатора с мгновенным прекращением подачи, предотвращая появление брака смеси.',
     descriptionEn: 'High-performance single-arm mixer for cold-recovering sand casting processes (no-bake/XTC). Features high-precision dosing of resin binder and catalyst with instant shut-off, preventing sand mix wastage.',
-    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    imageUrl: sandMixerXTC,
     capacity: '10 тонн/час',
     capacityEn: '10 tons/hour',
     power: '7.5 кВт',
@@ -65,7 +68,7 @@ export const PRODUCTS: Product[] = [
     model: 'СХФ-15',
     description: 'Поворотный двухсекционный лопастной смеситель непрерывного действия. Предназначен для заполнения крупных заливочных форм и средних опок в пределах большого технологического радиуса действия рукавов (до 4.5 метров). Обеспечивает гибкий охват формовочной зоны.',
     descriptionEn: 'Double-arm articulating continuous resin-sand mixer with secondary slewing swivel arm. Designed to fill massive foundry flasks across a large operating radius (up to 4.5 meters). Increases molding flexibility.',
-    imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    imageUrl: sandMixerXTC,
     capacity: '15 тонн/час',
     capacityEn: '15 tons/hour',
     power: '15.0 кВт',
@@ -250,7 +253,7 @@ export const PRODUCTS: Product[] = [
     model: 'GW-1.0-800S',
     description: 'Индукционная печь высокой жесткости в стальном сварном исполнении с тяжелыми защитными магнитными ярлыками и вибропоглощающими плитами под гидравлическим управлением. Оптимальный выбор для сибирских условий выплавки сталей черной металлургии.',
     descriptionEn: 'Super heavy duty coreless induction furnace encased in computer-modeled steel shell with back yokes. Guarantees long lining lifetime and minimized electromagnetic flux leakages.',
-    imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+    imageUrl: inductionFurnaceImg,
     capacity: '1.0 тонна стали',
     capacityEn: '1.0 ton of steel',
     power: '800 кВт',
@@ -296,7 +299,7 @@ export const PRODUCTS: Product[] = [
     model: 'GW-0.5-350A',
     description: 'Экономичная плавильная тигельная печь в прочном литом под давлением алюминиевом каркасе. Обладает компактной конструкцией, малым весом пустого агрегата и легким доступом к внутреннему трубчатому змеевику индуктора. Прекрасно подходит для небольших фасонных плавок цветных сплавов.',
     descriptionEn: 'Economic induction heating crucible furnace housed in a high-grade cast aluminum frame. Features lighter empty weight and rapid side maintenance access to induction water coil pipe.',
-    imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+    imageUrl: inductionFurnaceImg,
     capacity: '0.5 тонн стали/бронзы',
     capacityEn: '0.5 tons capacity',
     power: '350 кВт',
@@ -662,7 +665,7 @@ export const PRODUCTS: Product[] = [
     model: 'Q3210',
     description: 'Высокопроизводственное дробеметное оборудование периодического действия. Внутри камеры детали бережно перекатываются на бесконечной толстой резиновой ленте-транспортере (ленточное исполнение) под направленным центробежным факелом абразива высокой плотности. Позволяет полностью автоматизировать разгрузку путем реверсивного движения ленты наружу.',
     descriptionEn: 'High-power batch tumble belt mechanical shotblast system. Features a thick protective rubber belt conveyor supporting and continuous turning of small-to-medium castings under a powerful directed abrasive stream. Reversing the belt direction unloads parts automatically.',
-    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
+    imageUrl: shotBlasterImg,
     capacity: 'Загрузка до 1000 кг',
     capacityEn: 'Batch limit up to 1000 kg',
     power: '22.0 кВт',
