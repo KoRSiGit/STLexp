@@ -41,6 +41,10 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
   const [expandedProductSpecs, setExpandedProductSpecs] = useState<Record<string, boolean>>({});
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   
+  // Photo Gallery State
+  const [galleryIndex, setGalleryIndex] = useState<number>(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
+  
   // Interactive Catalog Revision & Audit report states
   const [showAuditReport, setShowAuditReport] = useState(false);
   const [auditActiveTab, setAuditActiveTab] = useState<'summary' | 'breakdown' | 'integrity'>('summary');
@@ -88,6 +92,12 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     setSelectedProductId(null);
   }, [activeCategory, activeSubcategory]);
 
+  // Reset gallery when active product changes
+  useEffect(() => {
+    setGalleryIndex(0);
+    setIsLightboxOpen(false);
+  }, [selectedProductId]);
+
   // Compute sub-subcategories available dynamically from physical products data for active choice
   const availableSubsubcategories = useMemo(() => {
     if (activeCategory === 'all' || activeSubcategory === 'all') return [];
@@ -112,6 +122,77 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     
     return list;
   }, [activeCategory, activeSubcategory]);
+
+  // Compute photo gallery images depending on the selected product
+  const galleryImages = useMemo(() => {
+    if (!selectedProductId) return [];
+    const p = PRODUCTS.find(prod => prod.id === selectedProductId);
+    if (!p) return [];
+    
+    const list = [p.imageUrl];
+    const fallbackImagesByCat: Record<string, string[]> = {
+      'sand-mixers-xtc': [
+        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1558158872-b1b4fa4f39e1?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80'
+      ],
+      'furnaces': [
+        'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1542156822-6924d1a71aba?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=800&q=80'
+      ],
+      'green-sand': [
+        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80'
+      ],
+      'core-making': [
+        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80'
+      ],
+      'shot-blast': [
+        'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80'
+      ],
+      'casting-machines': [
+        'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1542156822-6924d1a71aba?auto=format&fit=crop&w=800&q=80'
+      ],
+      'cooling-systems': [
+        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80'
+      ]
+    };
+    
+    const catExtras = fallbackImagesByCat[p.category] || [];
+    catExtras.forEach(img => {
+      if (!list.includes(img) && list.length < 4) {
+        list.push(img);
+      }
+    });
+    return list;
+  }, [selectedProductId]);
+
+  // Handle keyboard listener for Lightbox navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isLightboxOpen || galleryImages.length === 0) return;
+      if (e.key === 'Escape') {
+        setIsLightboxOpen(false);
+      } else if (e.key === 'ArrowRight') {
+        setGalleryIndex((prev) => (prev + 1) % galleryImages.length);
+      } else if (e.key === 'ArrowLeft') {
+        setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isLightboxOpen, galleryImages]);
 
   // Sync selectedCategory from parent component and handle custom event triggers
   useEffect(() => {
@@ -435,11 +516,40 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t.searchPlaceholder}
-                  className="w-full pl-9 pr-4 py-2.5 bg-[#00171b]/95 border border-teal-950 rounded text-sm text-white placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
+                  className="w-full pl-9 pr-8 py-2.5 bg-[#00171b]/95 border border-teal-950 rounded text-sm text-white placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
                 />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white bg-transparent border-none cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                )}
               </div>
-              <p className="text-[9px] text-gray-500 font-mono italic">
-                {lang === 'en' ? 'e.g., "CX-10", "reclamation", "induction crucible", "water tower"' : 'Например: "СХ-10", "регенерация", "индукционный тигель", "водонапорная башня"'}
+              <p className="text-[9px] text-gray-450 font-mono select-none">
+                {lang === 'en' ? 'Suggested: ' : 'Популярное: '}
+                {[
+                  { en: 'CX-10', ru: 'СХ-10', query: 'СХ-10' },
+                  { en: 'Reclamation', ru: 'Регенерация', query: 'регенерация' },
+                  { en: 'Crucible', ru: 'Тигель', query: 'GW' },
+                  { en: 'Ladle', ru: 'Ковш', query: 'КЛ' },
+                  { en: 'Blaster', ru: 'Дробемет', query: 'Q37' },
+                ].map((tag, idx, arr) => (
+                  <span key={idx}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSearchQuery(tag.query);
+                        setActiveCategory('all');
+                      }}
+                      className="text-[#e65410] hover:underline hover:text-orange-400 bg-transparent border-none p-0 cursor-pointer italic font-bold inline text-[10px]"
+                    >
+                      {lang === 'en' ? tag.en : tag.ru}
+                    </button>
+                    {idx < arr.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
               </p>
             </div>
           </div>
@@ -882,8 +992,9 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
                return (
                  <div className="space-y-4">
-                   {/* Rebuilt flat design second level menu with 0 rounding and thin borders */}
-                   <div className="bg-white border border-gray-200 flex flex-wrap divide-x divide-gray-200 rounded-none shadow-xs">
+                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+                     {/* Rebuilt flat design second level menu with 0 rounding and thin borders */}
+                     <div className="lg:col-span-8 bg-white border border-gray-200 flex flex-wrap divide-x divide-gray-200 rounded-none shadow-xs">
                      <button
                        onClick={() => {
                          setActiveSubcategory('all');
@@ -920,6 +1031,69 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                        );
                      })}
                    </div>
+
+                    {/* Division search box */}
+                    <div className="lg:col-span-4 select-none">
+                      <div className="relative">
+                        <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <Search className="h-4 w-4 text-[#e65410]" />
+                        </span>
+                        <input
+                          type="text"
+                          value={searchQuery}
+                          onChange={(e) => {
+                            setSearchQuery(e.target.value);
+                            setSelectedProductId(null);
+                          }}
+                          placeholder={lang === 'en' ? 'Search in this section...' : 'Поиск в этом разделе...'}
+                          className="w-full pl-9 pr-8 py-3.5 bg-white border border-gray-200 rounded-none text-xs text-slate-800 placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
+                        />
+                        {searchQuery && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSearchQuery('');
+                              setSelectedProductId(null);
+                            }}
+                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-405 hover:text-gray-700 bg-transparent border-none cursor-pointer"
+                          >
+                            ✕
+                          </button>
+                        )}
+                      </div>
+                      {(() => {
+                        const qTags: Record<string, string[]> = {
+                          'sand-mixers-xtc': ['СХ-10', 'РП', 'ВСФ'],
+                          'furnaces': ['GW', 'КЛ', 'КБ'],
+                          'green-sand': ['СТ', 'АФЛ', 'ФМ', 'ОС'],
+                          'core-making': ['СА-12', 'СА-400'],
+                          'shot-blast': ['Q32', 'Q37', 'Q69'],
+                          'casting-machines': ['КМ', 'ЦЛ'],
+                          'cooling-systems': ['ГЗ']
+                        };
+                        const tags = qTags[activeCategory] || [];
+                        if (tags.length === 0) return null;
+                        return (
+                          <p className="text-[9px] text-gray-500 font-mono mt-1 pl-1 select-none">
+                            {lang === 'en' ? 'Quick text: ' : 'Теги: '}
+                            {tags.map((tg, idx) => (
+                              <button
+                                key={idx}
+                                type="button"
+                                onClick={() => {
+                                  setSearchQuery(tg);
+                                  setSelectedProductId(null);
+                                }}
+                                className="text-[#e65410] hover:underline bg-transparent border-none p-0 cursor-pointer font-bold mx-1 text-[9px]"
+                              >
+                                #{tg}
+                              </button>
+                            ))}
+                          </p>
+                        );
+                      })()}
+                    </div>
+                  </div>
 
                    {/* Secondary Line: Sub-subcategories Series (pills) with 0 rounding and thin borders */}
                    {activeSubcategory !== 'all' && availableSubsubcategories.length > 0 && (
@@ -999,18 +1173,73 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                         <div className="lg:col-span-4 p-5 sm:p-6 bg-gray-50 lg:border-r-2 lg:border-gray-200 flex flex-col justify-between">
                           <div className="space-y-4">
                             
-                            {/* Product Frame Image */}
-                            <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded-none border-b-2 border-gray-200">
-                              <img
-                                src={p.imageUrl}
-                                alt={pTitle}
-                                className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition duration-305"
-                                referrerPolicy="no-referrer"
-                              />
-                              <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-850 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2.5 py-1 rounded-none">
-                                {lang === 'en' ? 'Base Model:' : 'Базовая печь:'} {p.model}
-                              </div>
-                            </div>
+                             {/* Interactive Industrial Photo Gallery */}
+                             <div className="space-y-3 select-none">
+                               {/* Main image card */}
+                               <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded-none border border-gray-200 group">
+                                 <img
+                                   src={galleryImages[galleryIndex] || p.imageUrl}
+                                   alt={pTitle}
+                                   onClick={() => setIsLightboxOpen(true)}
+                                   className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition duration-300 cursor-zoom-in"
+                                   referrerPolicy="no-referrer"
+                                 />
+                                 
+                                 {galleryImages.length > 1 && (
+                                   <>
+                                     <button
+                                       type="button"
+                                       onClick={() => setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
+                                       className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-[#e65410] text-white transition rounded-none border border-white/10 hidden group-hover:flex items-center justify-center cursor-pointer font-black z-10"
+                                       id="gallery-prev-btn"
+                                     >
+                                       ◀
+                                     </button>
+                                     <button
+                                       type="button"
+                                       onClick={() => setGalleryIndex((prev) => (prev + 1) % galleryImages.length)}
+                                       className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-[#e65410] text-white transition rounded-none border border-white/10 hidden group-hover:flex items-center justify-center cursor-pointer font-black z-10"
+                                       id="gallery-next-btn"
+                                     >
+                                       ▶
+                                     </button>
+                                   </>
+                                 )}
+ 
+                                 <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-850 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2.5 py-1 rounded-none">
+                                   {lang === 'en' ? 'Base Model:' : 'Базовая модель:'} {p.model}
+                                 </div>
+ 
+                                 <div className="absolute bottom-2 right-2 bg-black/80 text-[9px] font-mono font-bold text-white px-2 py-0.5 rounded-none border border-white/10 select-none">
+                                   {galleryIndex + 1} / {galleryImages.length}
+                                 </div>
+                               </div>
+ 
+                               {/* Gallery thumbnails */}
+                               {galleryImages.length > 1 && (
+                                 <div className="grid grid-cols-4 gap-2">
+                                   {galleryImages.map((imgUrl, idx) => (
+                                     <button
+                                       key={idx}
+                                       type="button"
+                                       onClick={() => setGalleryIndex(idx)}
+                                       className={`relative aspect-video bg-gray-100 border transition overflow-hidden rounded-none p-0 cursor-pointer ${
+                                         galleryIndex === idx
+                                           ? 'border-[#e65410] ring-1 ring-[#e65410]'
+                                           : 'border-transparent hover:border-gray-400'
+                                       }`}
+                                     >
+                                       <img
+                                         src={imgUrl}
+                                         alt={`${pTitle} gallery ${idx + 1}`}
+                                         className="w-full h-full object-cover filter brightness-90 hover:brightness-100"
+                                         referrerPolicy="no-referrer"
+                                       />
+                                     </button>
+                                   ))}
+                                 </div>
+                               )}
+                             </div>
 
                             {/* Capacity ratings */}
                             <div className="grid grid-cols-2 gap-2 text-[10px] font-mono">
@@ -1234,7 +1463,56 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 })()
               ) : (
                 /* 2. CARD-BASED GRID VIEW OF CATEGORY PRODUCTS - Balanced simplicity matching Level 1 cards! */
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in animate-duration-250">
+                <div className="space-y-4">
+                  {searchQuery && (
+                    <div className="bg-slate-100 border-l-4 border-[#e65410] px-4 py-3 flex items-center justify-between font-mono text-[11px] text-gray-650 animate-fadeIn rounded-none">
+                      <div className="flex items-center space-x-2">
+                        <Check className="h-4 w-4 text-emerald-600 shrink-0" />
+                        <span>
+                          {lang === 'en' 
+                            ? `Found ${filteredProducts.length} items matching "${searchQuery}"` 
+                            : `Найдено позиций: ${filteredProducts.length} по вашему запросу "${searchQuery}"`}
+                        </span>
+                      </div>
+                      <button
+                        onClick={() => {
+                          setSearchQuery('');
+                          setSelectedProductId(null);
+                        }}
+                        className="text-xs text-[#e65410] hover:underline hover:text-orange-700 border-none bg-transparent cursor-pointer font-bold uppercase font-mono"
+                      >
+                        {lang === 'en' ? 'Reset' : 'Сбросить'}
+                      </button>
+                    </div>
+                  )}
+
+                  {filteredProducts.length === 0 ? (
+                    <div className="bg-white border-2 border-dashed border-gray-200 py-16 px-4 text-center space-y-4 rounded-none animate-fadeIn">
+                      <div className="inline-flex p-4 bg-orange-50 text-[#e65410] rounded-none">
+                        <Search className="h-8 w-8" />
+                      </div>
+                      <h4 className="text-sm font-extrabold text-gray-900 uppercase font-mono">
+                        {lang === 'en' ? 'No equipment matched your criteria' : 'Оборудование не найдено'}
+                      </h4>
+                      <p className="text-xs text-gray-500 max-w-sm mx-auto">
+                        {lang === 'en'
+                          ? `We found no results for "${searchQuery}". Try refining spelling or typing general series indices like "CX" or "GW".`
+                          : `Ничего не найдено по вашему запросу "${searchQuery}". Попробуйте ввести общие индексы, например "СХ", "GW", "АФЛ" или "КЛ".`}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSearchQuery('');
+                          setActiveSubcategory('all');
+                          setActiveSubsubcategory('all');
+                        }}
+                        className="px-4 py-2 bg-[#e65410] text-white text-xs font-mono font-black uppercase rounded-none border-none hover:bg-orange-700 cursor-pointer text-center text-xs"
+                      >
+                        {lang === 'en' ? 'Reset search filters' : 'Сбросить фильтры поиска'}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in animate-duration-250">
                   {filteredProducts.map((p) => {
                     const pTitle = lang === 'en' && p.titleEn ? p.titleEn : p.title;
                     const pDesc = lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description;
@@ -1336,6 +1614,8 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                       </div>
                     );
                   })}
+                </div>
+                )}
                 </div>
               )}
             </div>
