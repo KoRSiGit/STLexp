@@ -24,6 +24,9 @@ import {
 } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 import steelPouringBg from '../assets/images/foundry_hero_bg_1781504494705.jpg';
+import sandMixerXTC from '../assets/images/sand_mixer_xtc_1781504511099.jpg';
+import inductionFurnaceImg from '../assets/images/induction_furnace_1781504526346.jpg';
+import shotBlasterImg from '../assets/images/shot_blaster_1781504543211.jpg';
 
 interface ProductCatalogProps {
   onAddToRFQ: (product: Product) => void;
@@ -131,39 +134,39 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     const list = [p.imageUrl];
     const fallbackImagesByCat: Record<string, string[]> = {
       'sand-mixers-xtc': [
-        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1558158872-b1b4fa4f39e1?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80'
+        sandMixerXTC,
+        sandMixerXTC,
+        sandMixerXTC
       ],
       'furnaces': [
-        'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1542156822-6924d1a71aba?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=800&q=80'
+        inductionFurnaceImg,
+        inductionFurnaceImg,
+        inductionFurnaceImg
       ],
       'green-sand': [
-        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80'
+        sandMixerXTC,
+        sandMixerXTC,
+        sandMixerXTC
       ],
       'core-making': [
-        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80'
+        sandMixerXTC,
+        sandMixerXTC,
+        sandMixerXTC
       ],
       'shot-blast': [
-        'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80'
+        shotBlasterImg,
+        shotBlasterImg,
+        shotBlasterImg
       ],
       'casting-machines': [
-        'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1542156822-6924d1a71aba?auto=format&fit=crop&w=800&q=80'
+        inductionFurnaceImg,
+        inductionFurnaceImg,
+        inductionFurnaceImg
       ],
       'cooling-systems': [
-        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80'
+        inductionFurnaceImg,
+        inductionFurnaceImg,
+        inductionFurnaceImg
       ]
     };
     
@@ -823,13 +826,13 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                 const desc = lang === 'en' ? div.descEn : div.descRu;
 
                 const DIVISION_IMAGES: Record<string, string> = {
-                  'sand-mixers-xtc': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-                  'furnaces': 'https://images.unsplash.com/photo-1605336306054-06f120fc69cf?auto=format&fit=crop&w=600&q=80',
-                  'green-sand': 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80',
-                  'core-making': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-                  'shot-blast': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
-                  'casting-machines': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80',
-                  'cooling-systems': 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80',
+                  'sand-mixers-xtc': sandMixerXTC,
+                  'furnaces': inductionFurnaceImg,
+                  'green-sand': sandMixerXTC,
+                  'core-making': sandMixerXTC,
+                  'shot-blast': shotBlasterImg,
+                  'casting-machines': inductionFurnaceImg,
+                  'cooling-systems': inductionFurnaceImg,
                 };
                 const cardImage = DIVISION_IMAGES[div.id] || DIVISION_IMAGES['sand-mixers-xtc'];
 

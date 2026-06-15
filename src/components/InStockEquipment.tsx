@@ -1,6 +1,9 @@
 import { ShoppingCart, CheckCircle2, Snowflake, ShieldCheck, ArrowRight, Table } from 'lucide-react';
 import { Product, ProductCategory } from '../types';
 import steelPouringBg from '../assets/images/foundry_hero_bg_1781504494705.jpg';
+import sandMixerXTC from '../assets/images/sand_mixer_xtc_1781504511099.jpg';
+import inductionFurnaceImg from '../assets/images/induction_furnace_1781504526346.jpg';
+import shotBlasterImg from '../assets/images/shot_blaster_1781504543211.jpg';
 
 interface InStockEquipmentProps {
   lang: 'ru' | 'en';
@@ -24,7 +27,7 @@ export default function InStockEquipment({
       titleEn: 'No-Bake Continuous Mixer S2403 (In Stock)',
       description: 'Однорукавный лопастной смеситель ХТС серии S24 производительностью 3 т/ч. Оборудован частотным приводом и программируемым реле Delta. Находится в заводской консервационной упаковке на складе.',
       descriptionEn: 'Single-arm high-precision resin-sand continuous mixer S2403. Capacity 3 t/h. Complete with brand-new Delta PLC system. Physically stored in original packaging in Novosibirsk.',
-      imageUrl: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sandMixerXTC,
       specsList: lang === 'en' ? [
         { name: 'Capacity', value: '3.0 tons/hour' },
         { name: 'Arm Operating Radius', value: '1800 mm' },
@@ -47,7 +50,7 @@ export default function InStockEquipment({
       titleEn: 'No-Bake Continuous Mixer S2405 (In Stock)',
       description: 'Высокопроизводительный однорукавный смеситель серии S24 производительностью 5 т/ч. В комплекте идет современный выносной пульт управления.',
       descriptionEn: 'Single-arm continuous resin-sand mixer S2405. Throughput 5 tons/hour. Outer chemical pump board with digital control. High wear-resistant mixing chamber.',
-      imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sandMixerXTC,
       specsList: lang === 'en' ? [
         { name: 'Capacity', value: '5.0 tons/hour' },
         { name: 'Operating Radius', value: '2200 mm' },
@@ -70,7 +73,7 @@ export default function InStockEquipment({
       titleEn: 'XTC Vibration Compaction Table S2312 (In Stock)',
       description: 'Предназначен для высокочастотного маятникового уплотнения жидкоподвижного формовочного песка в опоке. Гарантирует превосходную проработку сложных граней отливки.',
       descriptionEn: 'Designed for high frequency pneumatic pendulum vibration compaction of resin sand in casting flasks. Prevents voids and micro-pockets in complex geometries.',
-      imageUrl: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+      imageUrl: sandMixerXTC,
       specsList: lang === 'en' ? [
         { name: 'Max Flask Load Size', value: '1200 x 1200 mm' },
         { name: 'Maximum Load', value: '1500 kg' },
@@ -93,7 +96,7 @@ export default function InStockEquipment({
       titleEn: 'Teapot Pouring Ladle with Gearbox KL-0.5 (In Stock)',
       description: 'Чайниковый заливочный ковш конической формы емкостью 500 кг по жидкому металлу. Обеспечивает забор чистого расплава снизу слоя флюса, снижая количество шлаковых включений.',
       descriptionEn: 'Teapot shape pouring ladle with premium self-locking gear system. Capacity 500 kg. Extracts clean molten metal from below the active slag layer to minimize impurities.',
-      imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
+      imageUrl: inductionFurnaceImg,
       specsList: lang === 'en' ? [
         { name: 'Liquid Metal Capacity', value: '500 kg (Steel / Iron)' },
         { name: 'Pouring Mechanism', value: 'Self-locking warm reducer' },
@@ -116,7 +119,7 @@ export default function InStockEquipment({
       titleEn: 'Tumble Belt Shot Blaster with Rubber Apron Q325 (In Stock)',
       description: 'Компактная автоматическая дробеметная установка барабанного типа с износостойким резиновым кольцевым ремнем. Идеально очищает детали от пригара песчаной смеси.',
       descriptionEn: 'Heavy duty modular tumbling belt shot blaster with premium rubber apron and integrated dust-collector. Perfect for clearing sand residue from batch cast items.',
-      imageUrl: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+      imageUrl: shotBlasterImg,
       specsList: lang === 'en' ? [
         { name: 'Max Single Load Weight', value: '150 kg' },
         { name: 'Total Batch Basket Capacity', value: '0.15 cubic meters' },
