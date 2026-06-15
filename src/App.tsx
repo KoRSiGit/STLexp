@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Contacts from './components/Contacts';
 import InStockEquipment from './components/InStockEquipment';
 import TrustBanner from './components/TrustBanner';
+import ProjectGallery from './components/ProjectGallery';
 import { Product, RFQItem } from './types';
 
 export default function App() {
@@ -126,6 +127,10 @@ export default function App() {
               setCurrentTab('rfq');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
+            onViewGallery={() => {
+              setCurrentTab('gallery');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
 
@@ -138,6 +143,10 @@ export default function App() {
             }}
             rfqItemsKeys={rfqItemsKeys}
           />
+        )}
+
+        {currentTab === 'gallery' && (
+          <ProjectGallery lang={lang} />
         )}
 
         {currentTab === 'contacts' && (

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info, Phone, Flame, Layers, Snowflake, Wrench, Settings, Activity } from 'lucide-react';
+import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info, Phone, Flame, Layers, Snowflake, Wrench, Settings, Activity, Camera } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
@@ -433,6 +433,7 @@ export default function Header({
   const navItems = [
     { id: 'catalog', label: lang === 'en' ? 'Catalog' : 'Каталог', icon: FileText, hasDropdown: true, dropdownType: 'catalog' },
     { id: 'in-stock', label: lang === 'en' ? 'In Stock' : 'Наличие', icon: Award },
+    { id: 'gallery', label: lang === 'en' ? 'Photo Reports' : 'Фотоотчеты', icon: Camera },
     { id: 'about', label: lang === 'en' ? 'Company' : 'Компания', icon: Info, hasDropdown: true, dropdownType: 'company' },
     { id: 'contacts', label: lang === 'en' ? 'Contacts' : 'Контакты', icon: Phone },
   ];

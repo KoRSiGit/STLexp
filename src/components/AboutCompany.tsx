@@ -3,12 +3,13 @@ import { motion } from 'motion/react';
 import { 
   Building2, Cpu, Sliders, HardHat, ShieldCheck, History, 
   Users2, Globe, Wrench, CheckCircle2, MapPin, TrendingUp, 
-  BarChart3, Sparkles, ChevronRight, PhoneCall, Info
+  BarChart3, Sparkles, ChevronRight, PhoneCall, Info, Camera
 } from 'lucide-react';
 
 interface AboutCompanyProps {
   lang: 'ru' | 'en';
   onContactRequest?: () => void;
+  onViewGallery?: () => void;
 }
 
 interface ProjectItem {
@@ -29,7 +30,7 @@ interface ProjectItem {
   badgeEn: string;
 }
 
-export default function AboutCompany({ lang, onContactRequest }: AboutCompanyProps) {
+export default function AboutCompany({ lang, onContactRequest, onViewGallery }: AboutCompanyProps) {
   const [projectFilter, setProjectFilter] = useState<'all' | 'molding' | 'melting' | 'cleaning'>('all');
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
 
@@ -461,9 +462,19 @@ export default function AboutCompany({ lang, onContactRequest }: AboutCompanyPro
                 </div>
 
                 <div className="mt-4 pt-4 border-t border-gray-200/60 flex items-center justify-between text-[10px] font-mono text-gray-400">
-                  <span>ID: {proj.id.toUpperCase()}</span>
-                  <span className="text-emerald-500 font-bold flex items-center gap-1">
-                    <CheckCircle2 className="h-3 w-3" />
+                  {onViewGallery ? (
+                    <button
+                      onClick={() => onViewGallery()}
+                      className="text-[#e65410] hover:text-orange-600 font-extrabold uppercase tracking-wider text-[10px] bg-transparent border-none p-0 cursor-pointer flex items-center gap-1 transition"
+                    >
+                      <Camera className="h-3 w-3" />
+                      <span>{lang === 'en' ? 'View Photos' : 'Смотреть фотоотчёт ↗'}</span>
+                    </button>
+                  ) : (
+                    <span>ID: {proj.id.toUpperCase()}</span>
+                  )}
+                  <span className="text-emerald-500 font-bold flex items-center gap-1 font-mono">
+                    <CheckCircle2 className="h-3 w-3 text-emerald-500" />
                     {lang === 'en' ? 'Commissioned' : 'Сдан в эксплуатацию'}
                   </span>
                 </div>
