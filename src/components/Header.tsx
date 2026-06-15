@@ -535,8 +535,8 @@ export default function Header({
                       <span>{item.label}</span>
                       <ChevronDown className={`h-2.5 w-2.5 sm:h-3 sm:w-3 transition-transform duration-100 ${isThisOpen ? 'rotate-180 text-[#e65410]' : 'text-gray-400'}`} />
                     </button>
-                    {renderMegamenuDropdown()}
-                    {renderCompanyDropdown()}
+                    {item.dropdownType === 'catalog' && renderMegamenuDropdown()}
+                    {item.dropdownType === 'company' && renderCompanyDropdown()}
                   </div>
                 );
               }
@@ -703,8 +703,8 @@ export default function Header({
                       <span>{item.label}</span>
                       <ChevronDown className={`h-3 w-3 transition-transform duration-100 ${isThisOpen ? 'rotate-180 text-[#e65410]' : 'text-gray-400'}`} />
                     </button>
-                    {renderMegamenuDropdown()}
-                    {renderCompanyDropdown()}
+                    {item.dropdownType === 'catalog' && renderMegamenuDropdown()}
+                    {item.dropdownType === 'company' && renderCompanyDropdown()}
                   </div>
                 );
               }
