@@ -1153,5 +1153,226 @@ export const PRODUCTS: Product[] = [
       { model: 'ВС-15', capacity: '15 тонн/час', capacityEn: '15 t/h', power: '4.0 кВт', powerEn: '4.0 kW', extraField: 'Сетка', extraFieldVal: '1800х900 мм', extraFieldValEn: '1800x900 mm' },
       { model: 'ВС-25', capacity: '25 тонн/час', capacityEn: '25 t/h', power: '7.5 кВт', powerEn: '7.5 kW', extraField: 'Сетка', extraFieldVal: '2000х1200 мм', extraFieldValEn: '2000x1200 mm' }
     ]
+  },
+  // SECTION 8: LGM EQUIPMENT (ОБОРУДОВАНИЕ ЛГМ)
+  {
+    id: 'lgm-predvspenivatel',
+    category: 'lgm-equipment',
+    subcategory: 'pre-expanders',
+    subcategoryRu: 'Предвспениватели ЛГМ',
+    subcategoryEn: 'LGM Pre-Expanders',
+    subsubcategory: 'batch',
+    subsubcategoryRu: 'Циклического действия',
+    subsubcategoryEn: 'Batch Process',
+    title: 'Предвспениватель полистирола циклического действия',
+    titleEn: 'Batch polystyrene pre-expander machine',
+    model: 'ПВ-1200',
+    description: 'Предназначен для первичного и вторичного вспенивания гранул полистирола под воздействием водяного пара с последующей сушкой в кипящем слое. Обеспечивает точный контроль плотности вспенивания (от 12 до 35 г/л), что критически важно для качества выжигаемых моделей ЛГМ.',
+    descriptionEn: 'Designed for primary and secondary pre-foaming of expandable polystyrene (EPS) beads via steam circulation, followed by fluid-bed drying. Delivers ultra-precise density control (12 to 35 g/L) critical for LGM casting surface quality.',
+    imageUrl: '/img/katalog/lgm/predvspenivatel-s.png',
+    capacity: '120 кг/час',
+    capacityEn: '120 kg/hour',
+    power: '7.5 кВт',
+    powerEn: '7.5 kW',
+    features: [
+      'Автоматический весовой дозатор сырья с тензодатчиками высокой точности',
+      'Пропорциональный клапан подачи пара с ЧПУ для стабильного давления',
+      'Встроенная сушильная кровать кипящего слоя с подогревом воздуха',
+      'Система пневматической подачи вспененного материала в бункеры вылеживания'
+    ],
+    featuresEn: [
+      'Fully automated raw material gravimetric weight dosing with precision load cells',
+      'Proportional digital steam inlet regulation valve maintaining stable pressure',
+      'Built-in heated fluid bed drying station preventing moisture entrapment',
+      'Pneumatic transfer blower conveying pre-foamed beads directly to aging silos'
+    ],
+    specs: [
+      { name: 'Объем вспенивающей камеры', value: '0.8 м³', nameEn: 'Chamber expander volume', valueEn: '0.8 m³' },
+      { name: 'Диапазон плотности вспенивания', value: '12 - 35 г/л', nameEn: 'Produced density range', valueEn: '12 - 35 g/L' },
+      { name: 'Расход пара (давление 0.6 МПа)', value: '180 кг/час', nameEn: 'Steam consumption rate', valueEn: '180 kg/h' },
+      { name: 'Погрешность плотности', value: '≤ ±0.3 г/л', nameEn: 'Density discrepancy variance', valueEn: '≤ ±0.3 g/L' },
+      { name: 'Установленная мощность приводов', value: '7.5 кВт', nameEn: 'Installed motor power', valueEn: '7.5 kW' }
+    ],
+    variantModels: [
+      { model: 'ПВ-800', capacity: '80 кг/час', capacityEn: '80 kg/h', power: '5.5 кВт', powerEn: '5.5 kW', extraField: 'Объем камеры', extraFieldVal: '0.5 м³', extraFieldValEn: '0.5 m³' },
+      { model: 'ПВ-1200', capacity: '120 кг/час', capacityEn: '120 kg/h', power: '7.5 кВт', powerEn: '7.5 kW', extraField: 'Объем камеры', extraFieldVal: '0.8 м³', extraFieldValEn: '0.8 m³' }
+    ]
+  },
+  {
+    id: 'lgm-modelavtomat',
+    category: 'lgm-equipment',
+    subcategory: 'model-molders',
+    subcategoryRu: 'Модельные автоматы',
+    subcategoryEn: 'Model Molding Machines',
+    subsubcategory: 'pneumatic',
+    subsubcategoryRu: 'Пневмогидравлические',
+    subsubcategoryEn: 'Pneumohydraulic',
+    title: 'Автоматический формовочный автомат пеномоделей ЛГМ',
+    titleEn: 'Automatic lost foam pattern molding machine',
+    model: 'ФА-1080',
+    description: 'Высокоавтоматизированный формовочный пресс для спекания модельных плит из вспененного полистирола. Оборудован раздельными вакуумной и паровой рубашками, плитой выталкивателей пневмопривода и контуром водяного охлаждения для быстрого цикла отверждения.',
+    descriptionEn: 'High-efficiency pattern sintering press compiling fine-grade expandable polystyrene pattern blocks. Outfitted with dual vacuum/steam chambers, pneumatic pin ejectors, and high-velocity cooling sprays.',
+    imageUrl: '/img/katalog/lgm/modelavtomat-s.png',
+    capacity: 'Плита 1000х800 мм',
+    capacityEn: 'Plate 1000x800 mm',
+    power: '11 кВт',
+    powerEn: '11 kW',
+    features: [
+      'Система быстрого гидравлического смыкания полуформ с механическим запиранием',
+      'Индивидуальные клапаны парового спекания для каждой стороны пресс-формы',
+      'Эффективная вакуумная система для мгновенного удаления влаги и быстрого охлаждения',
+      'Контроллер ПЛК Siemens с возможностью сохранения до 100 рецептов спекания'
+    ],
+    featuresEn: [
+      'High-speed hydraulic mold clamping system with mechanical safety locks',
+      'Individual steam sintering valves dedicated to each pattern side plate',
+      'Advanced vacuum exhaust unit for rapid moisture drying and cooling cycles',
+      'Programmable Siemens PLC holding up to 100 sintering recipe configurations'
+    ],
+    specs: [
+      { name: 'Размер формовочной плиты', value: '1000 х 800 мм', nameEn: 'Clamping platter size', valueEn: '1000 x 800 mm' },
+      { name: 'Максимальная высота модели', value: '350 мм', nameEn: 'Maximum pattern depth', valueEn: '350 mm' },
+      { name: 'Ход подвижной плиты', value: '450 мм', nameEn: 'Movable stroke length', valueEn: '450 mm' },
+      { name: 'Давление пара в рубашке', value: '0.15 - 0.25 МПа', nameEn: 'Steam chest pressure', valueEn: '0.15 - 0.25 MPa' },
+      { name: 'Производительный цикл формовки', value: '60 - 150 сек/корпус', nameEn: 'Typical production cycle time', valueEn: '60 - 150 sec' }
+    ],
+    variantModels: [
+      { model: 'ФА-860', capacity: 'Плита 800х600 мм', capacityEn: 'Plate 800x600 mm', power: '7.5 кВт', powerEn: '7.5 kW', extraField: 'Давление гидр.', extraFieldVal: '12 МПа', extraFieldValEn: '12 MPa' },
+      { model: 'ФА-1080', capacity: 'Плита 1000х800 мм', capacityEn: 'Plate 1000x800 mm', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Давление гидр.', extraFieldVal: '15 МПа', extraFieldValEn: '15 MPa' }
+    ]
+  },
+  // SECTION 9: LVM INVESTMENT CASTING (ОБОРУДОВАНИЕ ЛВМ)
+  {
+    id: 'lvm-boilerclave',
+    category: 'lvm-equipment',
+    subcategory: 'boilers',
+    subcategoryRu: 'Бойлерклавы депарафинизации',
+    subcategoryEn: 'Dewaxing Boilerclaves',
+    subsubcategory: 'steam',
+    subsubcategoryRu: 'Паровые инжекционные',
+    subsubcategoryEn: 'Steam Injection',
+    title: 'Бойлерклав автоматического удаления воска водяным паром',
+    titleEn: 'Automated steam dewaxing autoclave (Boilerclave)',
+    model: 'БК-900',
+    description: 'Установка премиум-класса для удаления легкоплавких модельных составов (воска) из керамических оболочковых форм ЛВМ. Нагнетание пара высокого давления происходит за 1-2 секунды, предотвращая растрескивание хрупкой керамической корки за счет моментального оплавления внешнего слоя.',
+    descriptionEn: 'High-grade autoclave vessel for rapid removal of fusible wax models from shell molds. Elevates steam pressure in under 2 seconds, guaranteeing crack-free dewaxing via instant outer layer clearance.',
+    imageUrl: '/img/katalog/lgm/autoklav-s.png',
+    capacity: 'Диаметр 900 мм',
+    capacityEn: 'Diameter 900 mm',
+    power: '45 кВт',
+    powerEn: '45 kW',
+    features: [
+      'Сверхбыстрый впуск пара высокого давления через систему клапанов с большим проходным сечением',
+      'Пневматический затвор байонетного типа двери автоклава с тройной ступенью безопасности',
+      'Внутренний наклонный конусный лоток с подогреваемым сепаратором для сбора воска',
+      'Полная запись графиков температуры, давления взрыва по стандартам ISO'
+    ],
+    featuresEn: [
+      'Ultra-fast high volume steam inlet valve injecting thermal energy in 1.5 seconds',
+      'Pneumatic bayonet lock mechanism door with triple mechanical safety interlocks',
+      'Inclined heating reservoir basin delivering clean wax recovery directly to storage',
+      'Advanced data logging records charts of temp/pressure curves per ISO standards'
+    ],
+    specs: [
+      { name: 'Диапазон диаметров камеры', value: '900 мм', nameEn: 'Vessel inner diameter', valueEn: '900 mm' },
+      { name: 'Глубина рабочей камеры', value: '1100 мм', nameEn: 'Vessel working depth', valueEn: '1100 mm' },
+      { name: 'Рабочее давление пара', value: '0.6 - 0.8 МПа', nameEn: 'Operating steam pressure', valueEn: '0.6 - 0.8 MPa' },
+      { name: 'Время набора полного давления', value: '≤ 1.8 сек', nameEn: 'Full pressurization time', valueEn: '≤ 1.8 sec' },
+      { name: 'Температура стерилизации пара', value: '160 - 180 °C', nameEn: 'Saturated steam temperature', valueEn: '160 - 180 °C' }
+    ],
+    variantModels: [
+      { model: 'БК-700', capacity: 'Диаметр 700 мм', capacityEn: 'Diameter 700 mm', power: '30 кВт', powerEn: '30 kW', extraField: 'Объем камеры', extraFieldVal: '350 л', extraFieldValEn: '350 L' },
+      { model: 'БК-900', capacity: 'Диаметр 900 мм', capacityEn: 'Diameter 900 mm', power: '45 кВт', powerEn: '45 kW', extraField: 'Объем камеры', extraFieldVal: '700 л', extraFieldValEn: '700 L' }
+    ]
+  },
+  // SECTION 10: HEAT TREATMENT FURNACES (ТЕРМИЧЕСКИЕ ПЕЧИ)
+  {
+    id: 'thermal-furnace-slide',
+    category: 'thermal-furnaces',
+    subcategory: 'treatment-chambers',
+    subcategoryRu: 'Камерные термопечи',
+    subcategoryEn: 'Chamber Thermal Kilns',
+    subsubcategory: 'car-bottom',
+    subsubcategoryRu: 'С выдвижным подом печи',
+    subsubcategoryEn: 'Car-Bottom Furnaces',
+    title: 'Камерная термическая печь с выдвижным подом',
+    titleEn: 'Industrial car-bottom heat treatment furnace',
+    model: 'СДО-15',
+    description: 'Электрическая или газовая промышленная печь с выдвижной рельсовой платформой (подом). Предназначена для нормализации, закалки, отпуска и отжига массивных стальных и чугунных отливок. Надежная волокнистая термоизоляция на основе силиката алюминия обеспечивает высокую энергоэффективность.',
+    descriptionEn: 'Electric or gas industrial car-bottom furnace equipped with a motorized rolling railway flatcar. Purpose-built for normalizing, quenching, tempering, and annealing large-tonnage iron and steel castings.',
+    imageUrl: '/img/katalog/term/trm-s.png',
+    capacity: '15 тонн деталей',
+    capacityEn: '15 tons parts',
+    power: '240 кВт',
+    powerEn: '240 kW',
+    features: [
+      'Моторизованный привод выдвижения пода с частотной регулировкой плавности хода',
+      'Многозонный цифровой ПИД-контроль нагрева по спиральным фехралевым элементам',
+      'Экологическая уплотнительная юбка с песочным или пневматическим затвором',
+      'Корпус повышенной жесткости со сварной рамой из швеллеров и Mn-бронированных накладок'
+    ],
+    featuresEn: [
+      'Motorized rack-and-pinion roll-out car movement supported by frequency drives',
+      'Multi-zone digital PID thermo-control powering spiral Fe-Cr-Al alloy elements',
+      'Environmental sealing skirt with high-temperature sand or pneumatic seal block',
+      'Reinforced rigid steel enclosure built of thick hot-rolled structural channels'
+    ],
+    specs: [
+      { name: 'Максимальная рабочая температура', value: '1100 °C', nameEn: 'Max operating temperature', valueEn: '1100 °C' },
+      { name: 'Размеры рабочего пространства (ДхШхВ)', value: '4500 х 2200 х 1800 мм', nameEn: 'Effective workspace size (LxWxH)', valueEn: '4500 x 2200 x 1800 mm' },
+      { name: 'Номинальная тепловая мощность', value: '240 кВт', nameEn: 'Rated heating capacity', valueEn: '240 kW' },
+      { name: 'Неравномерность нагрева в камере', value: '≤ ±5 °C', nameEn: 'Temperature uniformity delta', valueEn: '≤ ±5 °C' },
+      { name: 'Время выдвижения пода', value: '2.5 мин', nameEn: 'Flatcar rollout travel time', valueEn: '2.5 min' }
+    ],
+    variantModels: [
+      { model: 'СДО-5', capacity: '5 тонн деталей', capacityEn: '5 tons parts', power: '120 кВт', powerEn: '120 kW', extraField: 'Длина пода', extraFieldVal: '2500 мм', extraFieldValEn: '2500 mm' },
+      { model: 'СДО-10', capacity: '10 тонн деталей', capacityEn: '10 tons parts', power: '180 кВт', powerEn: '180 kW', extraField: 'Длина пода', extraFieldVal: '3500 мм', extraFieldValEn: '3500 mm' },
+      { model: 'СДО-15', capacity: '15 тонн деталей', capacityEn: '15 tons parts', power: '240 кВт', powerEn: '240 kW', extraField: 'Длина пода', extraFieldVal: '4500 мм', extraFieldValEn: '4500 mm' }
+    ]
+  },
+  // SECTION 11: FINISHING & MACHINING (ОБРУБНОЕ И ВСПОМОГАТЕЛЬНОЕ ОБОРУДОВАНИЕ)
+  {
+    id: 'obrubka-wedge',
+    category: 'obrubka-stanki',
+    subcategory: 'fettling-tools',
+    subcategoryRu: 'Обрубной инструмент',
+    subcategoryEn: 'Fettling Tools',
+    subsubcategory: 'wedges',
+    subsubcategoryRu: 'Литейные гидроклинья',
+    subsubcategoryEn: 'Hydraulic wedges',
+    title: 'Гидравлический литейный клин для удаления литников',
+    titleEn: 'Hydraulic fettling wedge for riser removal',
+    model: 'ГК-25',
+    description: 'Компактное гидравлическое устройство для бескомпромиссного отделения литниковых систем, выпоров и питателей от чугунных отливок. Исключает ручную кувалдовую рубку отливок, кардинально снижая трудозатраты и предотвращая микротрещины в металле.',
+    descriptionEn: 'Compact hydraulic tool for separation of feeders and risers from grey and ductile iron castings. Eliminates manual sledgehammer operations, reducing labor risk and preventing microcracks.',
+    imageUrl: '/img/katalog/lgm/vibrostol-s.png',
+    capacity: 'Сила 25 тонн',
+    capacityEn: 'Splitting force 25t',
+    power: '4.0 кВт',
+    powerEn: '4.0 kW',
+    features: [
+      'Мгновенное раскалывание перемычек чугуна одним нажатием кнопки на рукоятке',
+      'Высокопрочные кованые разжимные щеки с титановым износостойким азотированием',
+      'Портативная гидростанция повышенного давления (до 70 МПа) на колесном шасси',
+      'Удобный эргономичный подвес на тросовом балансире с вращением на 360°'
+    ],
+    featuresEn: [
+      'Instant splitting of target iron risers via a single trigger button on the handle',
+      'Ultra-hard forged splitting jaws hardened with titanium nitride wear coatings',
+      'Mobile hydraulic power pack delivering extreme pressure (70 MPa) on roll wheels',
+      'Ergonomic overhead steel rope spring balancer with universal 360 rotation'
+    ],
+    specs: [
+      { name: 'Максимальное усилие раскалывания', value: '250 кН (25 т)', nameEn: 'Maximum splitting expand force', valueEn: '250 kN (25 t)' },
+      { name: 'Ширина зева (разжим щек)', value: '35 мм', nameEn: 'Maximum jaw separation span', valueEn: '35 mm' },
+      { name: 'Длина захода щеки в зазор', value: '60 мм', nameEn: 'Blade insertion depth', valueEn: '60 mm' },
+      { name: 'Рабочее гидравлическое давление', value: '70 МПа (700 бар)', nameEn: 'Rated hydraulic pack pressure', valueEn: '70 MPa (700 bar)' },
+      { name: 'Потребляемая мощность маслостанции', value: '4.0 кВт', nameEn: 'E-motor oil station power', valueEn: '4.0 kW' }
+    ],
+    variantModels: [
+      { model: 'ГК-15', capacity: 'Сила 15 тонн', capacityEn: 'Force 15 t', power: '3.0 кВт', powerEn: '3.0 kW', extraField: 'Разжим щек', extraFieldVal: '25 мм', extraFieldValEn: '25 mm' },
+      { model: 'ГК-25', capacity: 'Сила 25 тонн', capacityEn: 'Force 25 t', power: '4.0 кВт', powerEn: '4.0 kW', extraField: 'Разжим щек', extraFieldVal: '35 мм', extraFieldValEn: '35 mm' },
+      { model: 'ГК-40', capacity: 'Сила 40 тонн', capacityEn: 'Force 40 t', power: '5.5 кВт', powerEn: '5.5 kW', extraField: 'Разжим щек', extraFieldVal: '45 мм', extraFieldValEn: '45 mm' }
+    ]
   }
 ];

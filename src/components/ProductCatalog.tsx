@@ -81,6 +81,19 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     ],
     'cooling-systems': [
       { id: 'cooling-towers', nameRu: 'Охладительное оборудование', nameEn: 'Cooling Equipment', descRu: 'Закрытые кулеры и испарительные градирни серии ГЗ', descEn: 'Closed evaporative water cooling towers GZ' }
+    ],
+    'lgm-equipment': [
+      { id: 'pre-expanders', nameRu: 'Предвспениватели ЛГМ', nameEn: 'LGM Pre-Expanders', descRu: 'Предвспениватели ЛГМ циклического действия', descEn: 'Batch Process EPS Expanders' },
+      { id: 'model-molders', nameRu: 'Модельные автоматы', nameEn: 'Model Molders', descRu: 'Формовочные автоматы пеномоделей ФА', descEn: 'Pattern sintering press FA' }
+    ],
+    'lvm-equipment': [
+      { id: 'boilers', nameRu: 'Бойлерклавы ЛВМ', nameEn: 'Dewaxing Boilerclaves', descRu: 'Бойлерклавы депарафинизации БК удаления воска', descEn: 'Steam dewaxing autocontrol БК' }
+    ],
+    'thermal-furnaces': [
+      { id: 'treatment-chambers', nameRu: 'Камерные термопечи', nameEn: 'Chamber Thermal Kilns', descRu: 'Камерные печи с выдвижным подом СДО', descEn: 'Car-bottom heat treatment series' }
+    ],
+    'obrubka-stanki': [
+      { id: 'fettling-tools', nameRu: 'Обрубной инструмент', nameEn: 'Fettling Tools', descRu: 'Гидроклинья ГК удаления литников и прессы', descEn: 'Hydraulic fettling lifters GK' }
     ]
   };
 
@@ -167,6 +180,21 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
         inductionFurnaceImg,
         inductionFurnaceImg,
         inductionFurnaceImg
+      ],
+      'lgm-equipment': [
+        '/img/katalog/lgm/predvspenivatel-s.png',
+        '/img/katalog/lgm/modelavtomat-s.png',
+        '/img/katalog/lgm/autoklav-s.png'
+      ],
+      'lvm-equipment': [
+        '/img/katalog/lgm/autoklav-s.png'
+      ],
+      'thermal-furnaces': [
+        '/img/katalog/term/trm-s.png',
+        '/img/katalog/term/shaht-s.png'
+      ],
+      'obrubka-stanki': [
+        '/img/katalog/lgm/vibrostol-s.png'
       ]
     };
     
@@ -251,6 +279,10 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     { id: 'shot-blast', label: t.catShotBlast, descRu: 'Установки подвесного, барабанного и рольгангового типов', descEn: 'Hanger, rubber tumble belt and conveyor blast systems' },
     { id: 'casting-machines', label: t.catCasting, descRu: 'Полуавтоматы кокильного литья и центробежная формовка', descEn: 'Tilting gravity die systems and centrifugal molding' },
     { id: 'cooling-systems', label: t.catCooling, descRu: 'Закрытые герметичные градирни испарительного класса', descEn: 'Closed loop clean copper evaporative cool towers' },
+    { id: 'lgm-equipment', label: t.catLgm, descRu: 'Производство отливок методом литья по газифицируемым моделям (ЛГМ)', descEn: 'Lost Foam Casting lines and expandable polystyrene processing machinery' },
+    { id: 'lvm-equipment', label: t.catLvm, descRu: 'Литье по выплавляемым моделям (ЛВМ) и бойлерклавы высокой точности', descEn: 'Investment casting and high precision automated steam dewaxing' },
+    { id: 'thermal-furnaces', label: t.catThermal, descRu: 'Промышленные термические печи с выдвижным подом, шахтные печи СШЗ', descEn: 'Industrial car-bottom and shaft furnaces for heat treatment' },
+    { id: 'obrubka-stanki', label: t.catObrubka, descRu: 'Гидравлические литейные клинья для отделения литниковых систем', descEn: 'Hydraulic fettling and riser splitting machinery' },
   ];
 
   // Information details corresponding exactly to https://www.sltgroup.ru/catalog/ divisions
@@ -400,6 +432,84 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
       ],
       subcategoriesEn: [
         { label: 'Cooling towers GZ', query: 'GZ', subId: 'cooling-towers' }
+      ]
+    },
+    {
+      id: 'lgm-equipment' as ProductCategory,
+      titleRu: 'Оборудование ЛГМ (Литье по газифицируемым моделям)',
+      titleEn: 'Lost Foam Casting Equipment (LGM)',
+      descRu: 'Предвспениватели циклического действия, автоматические формовочные прессы для пенополистирола ФА.',
+      descEn: 'EPS batch pre-expanders, pattern shape sintering press machinery, and complete modular lost foam setups.',
+      icon: Cpu,
+      color: 'border-[#10b981]/20 hover:border-[#10b981]',
+      tagRu: 'ЛИНИИ ЛГМ',
+      tagEn: 'LOST FOAM CASTING',
+      statsRu: 'Производство: до 120 кг/ч',
+      statsEn: 'Throughput limit: 120 kg/h',
+      subcategoriesRu: [
+        { label: 'Предвспениватели ПВ-1200', query: 'ПВ', subId: 'pre-expanders' },
+        { label: 'Модельные автоматы ФА-1080', query: 'ФА', subId: 'model-molders' }
+      ],
+      subcategoriesEn: [
+        { label: 'Batch pre-expanders PV', query: 'PV', subId: 'pre-expanders' },
+        { label: 'Pattern molders FA', query: 'FA', subId: 'model-molders' }
+      ]
+    },
+    {
+      id: 'lvm-equipment' as ProductCategory,
+      titleRu: 'Оборудование ЛВМ (Литье по выплавляемым моделям)',
+      titleEn: 'Investment Casting Equipment (LVM)',
+      descRu: 'Высокоавтоматизированные бойлерклавы БК для безопасного и сверхбыстрого удаления воска паром высокого давления.',
+      descEn: 'Digital hot steam dewaxing boilerclaves BK delivering crack-free removal in custom investment casting lines.',
+      icon: Settings,
+      color: 'border-cyan-500/20 hover:border-cyan-500',
+      tagRu: 'ЛВМ КЕРАМИКА',
+      tagEn: 'INVESTMENT CASTING',
+      statsRu: 'БК Давление: до 0.8 МПа',
+      statsEn: 'Autoclave press: up to 0.8 MPa',
+      subcategoriesRu: [
+        { label: 'Бойлерклавы БК-900', query: 'БК', subId: 'boilers' }
+      ],
+      subcategoriesEn: [
+        { label: 'Boilerclaves BK-900', query: 'BK', subId: 'boilers' }
+      ]
+    },
+    {
+      id: 'thermal-furnaces' as ProductCategory,
+      titleRu: 'Промышленные термические печи',
+      titleEn: 'Heat Treatment Furnaces',
+      descRu: 'Энергосберегающие камерные печи с выдвижным подом СДО для старения, цементации, закалки литейных заготовок.',
+      descEn: 'Car-bottom and vertical shaft heat treatment kilns providing precision multi-zone thermocontrol.',
+      icon: Zap,
+      color: 'border-yellow-500/20 hover:border-yellow-500',
+      tagRu: 'ТЕРМООБРАБОТКА',
+      tagEn: 'HEAT TREATMENT',
+      statsRu: 'Загрузка: до 15 тонн деталей',
+      statsEn: 'Batch weight: up to 15 tons',
+      subcategoriesRu: [
+        { label: 'Печи с выдвижным подом СДО', query: 'СДО', subId: 'treatment-chambers' }
+      ],
+      subcategoriesEn: [
+        { label: 'Car-bottom furnaces SDO', query: 'SDO', subId: 'treatment-chambers' }
+      ]
+    },
+    {
+      id: 'obrubka-stanki' as ProductCategory,
+      titleRu: 'Обрубной инструмент и обработка',
+      titleEn: 'Fettling & Finishing Equipment',
+      descRu: 'Профессиональные гидравлические клинья ГК для бесшумного мгновенного отделения литников от заготовок.',
+      descEn: 'High capacity hydraulic fettling wedges GK for silent and risk-free separation of metal gating channels.',
+      icon: Activity,
+      color: 'border-red-500/20 hover:border-red-500',
+      tagRu: 'ОБРУБКА ЛИТНИКОВ',
+      tagEn: 'FETTLING & SEPARATION',
+      statsRu: 'Усилие клина: 25 тонн',
+      statsEn: 'Splitting force: 25 tons',
+      subcategoriesRu: [
+        { label: 'Гидроклинья ГК-25', query: 'ГК', subId: 'fettling-tools' }
+      ],
+      subcategoriesEn: [
+        { label: 'Hydraulic wedges GK-25', query: 'GK', subId: 'fettling-tools' }
       ]
     }
   ];

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info, Phone, Flame, Layers, Snowflake, Wrench } from 'lucide-react';
+import { ShoppingCart, HardHat, ShieldAlert, Cpu, FileText, ChevronDown, Award, Sparkles, Sliders, Info, Phone, Flame, Layers, Snowflake, Wrench, Settings, Activity } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 
 interface HeaderProps {
@@ -389,6 +389,43 @@ export default function Header({
       icon: Snowflake,
       items: [
         { labelRu: 'Испарительные градирни ГЗ', labelEn: 'Closed cooling towers GZ', query: 'ГЗ', subId: 'towers' },
+      ],
+    },
+    {
+      id: 'lgm-equipment',
+      labelRu: 'Оборудование ЛГМ',
+      labelEn: 'Lost Foam LGM',
+      icon: Cpu,
+      items: [
+        { labelRu: 'Предвспениватели ПВ', labelEn: 'Pre-expanders PV', query: 'ПВ', subId: 'pre-expanders' },
+        { labelRu: 'Модельные автоматы ФА', labelEn: 'Model molders FA', query: 'ФА', subId: 'model-molders' },
+      ],
+    },
+    {
+      id: 'lvm-equipment',
+      labelRu: 'Оборудование ЛВМ',
+      labelEn: 'Investment LVM',
+      icon: Settings,
+      items: [
+        { labelRu: 'Бойлерклавы депарафинизации БК', labelEn: 'Dewaxing Boilerclaves BK', query: 'БК', subId: 'boilers' },
+      ],
+    },
+    {
+      id: 'thermal-furnaces',
+      labelRu: 'Термические печи',
+      labelEn: 'Thermal Furnaces',
+      icon: Flame,
+      items: [
+        { labelRu: 'Камерные печи СДО', labelEn: 'Car-bottom Kilns SDO', query: 'СДО', subId: 'treatment-chambers' },
+      ],
+    },
+    {
+      id: 'obrubka-stanki',
+      labelRu: 'Обрубной клин/прессы',
+      labelEn: 'Fettling Jaws',
+      icon: Activity,
+      items: [
+        { labelRu: 'Гидроклинья ГК', labelEn: 'Hydraulic splitting GK', query: 'ГК', subId: 'fettling-tools' },
       ],
     }
   ];

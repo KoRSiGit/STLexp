@@ -5,7 +5,11 @@ export type ProductCategory =
   | 'casting-machines'
   | 'cooling-systems'
   | 'green-sand'
-  | 'core-making';
+  | 'core-making'
+  | 'lgm-equipment'
+  | 'lvm-equipment'
+  | 'thermal-furnaces'
+  | 'obrubka-stanki';
 
 export interface ProductSpec {
   name: string;
