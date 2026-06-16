@@ -1,0 +1,32 @@
+#content-wrapp {
+    line-height: 1.6;
+}
+
+#content-wrapp img {
+    max-width: 100%;
+    height: auto;
+}
+
+#content-wrapp p {
+    margin: 0 0 10px 0;
+}
+
+#content-wrapp ul {
+    margin: 0 0 20px 0;
+}
+
+@media only screen and (max-width: 649px) {
+    #content-wrapp p {
+        text-align: left !important;
+    }
+    #content-wrapp img {
+        float: none !important;
+        width: 100%;
+        margin: 0 auto 30px auto;
+    }
+    #content-wrapp p {
+        width: 100%;
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
+}
