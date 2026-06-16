@@ -182,19 +182,21 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
         inductionFurnaceImg
       ],
       'lgm-equipment': [
-        '/img/katalog/lgm/predvspenivatel-s.png',
-        '/img/katalog/lgm/modelavtomat-s.png',
-        '/img/katalog/lgm/autoklav-s.png'
+        sandMixerXTC,
+        inductionFurnaceImg,
+        shotBlasterImg
       ],
       'lvm-equipment': [
-        '/img/katalog/lgm/autoklav-s.png'
+        inductionFurnaceImg,
+        sandMixerXTC
       ],
       'thermal-furnaces': [
-        '/img/katalog/term/trm-s.png',
-        '/img/katalog/term/shaht-s.png'
+        inductionFurnaceImg,
+        shotBlasterImg
       ],
       'obrubka-stanki': [
-        '/img/katalog/lgm/vibrostol-s.png'
+        sandMixerXTC,
+        shotBlasterImg
       ]
     };
     
@@ -957,6 +959,9 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                       <div className="relative aspect-[4/3] w-full bg-gray-55 overflow-hidden flex items-center justify-center border-b border-gray-100">
                         <img
                           src={cardImage}
+                          onError={(e) => {
+                            e.currentTarget.src = sandMixerXTC;
+                          }}
                           alt={title}
                           className="w-full h-full object-cover transition-all duration-500 ease-out filter brightness-100 group-hover:scale-105"
                           referrerPolicy="no-referrer"
@@ -1291,6 +1296,9 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                                <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded-none border border-gray-200 group">
                                  <img
                                    src={galleryImages[galleryIndex] || p.imageUrl}
+                                   onError={(e) => {
+                                     e.currentTarget.src = sandMixerXTC;
+                                   }}
                                    alt={pTitle}
                                    onClick={() => setIsLightboxOpen(true)}
                                    className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition duration-300 cursor-zoom-in"
@@ -1343,6 +1351,9 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                                      >
                                        <img
                                          src={imgUrl}
+                                         onError={(e) => {
+                                           e.currentTarget.src = sandMixerXTC;
+                                         }}
                                          alt={`${pTitle} gallery ${idx + 1}`}
                                          className="w-full h-full object-cover filter brightness-90 hover:brightness-100"
                                          referrerPolicy="no-referrer"
@@ -1642,6 +1653,9 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                         <div className="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-gray-150">
                           <img
                             src={p.imageUrl}
+                            onError={(e) => {
+                              e.currentTarget.src = sandMixerXTC;
+                            }}
                             alt={pTitle}
                             className="w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-all duration-500 ease-out"
                             referrerPolicy="no-referrer"

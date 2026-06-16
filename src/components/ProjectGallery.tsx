@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Camera, Calendar, MapPin, Sliders, ChevronLeft, ChevronRight, X, ZoomIn, Info } from 'lucide-react';
+import sandMixerXTC from '../assets/images/sand_mixer_xtc_1781504511099.jpg';
+import inductionFurnaceImg from '../assets/images/induction_furnace_1781504526346.jpg';
+import shotBlasterImg from '../assets/images/shot_blaster_1781504543211.jpg';
 
 interface GalleryImage {
   url: string;
@@ -427,6 +430,10 @@ export default function ProjectGallery({ lang }: { lang: 'ru' | 'en' }) {
               >
                 <img 
                   src={img.url} 
+                  onError={(e) => {
+                    const fallbackList = [sandMixerXTC, inductionFurnaceImg, shotBlasterImg];
+                    e.currentTarget.src = fallbackList[i % fallbackList.length];
+                  }}
                   alt={lang === 'en' ? img.titleEn : img.titleRu}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -473,6 +480,9 @@ export default function ProjectGallery({ lang }: { lang: 'ru' | 'en' }) {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
               src={zoomImage}
+              onError={(e) => {
+                e.currentTarget.src = sandMixerXTC;
+              }}
               alt="High-resolution deployment photo"
               referrerPolicy="no-referrer"
               className="max-w-full max-h-[85vh] object-contain border border-white/10 shadow-2xl"
