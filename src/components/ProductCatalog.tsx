@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Product, ProductCategory } from '../types';
 import { PRODUCTS } from '../data/products';
 import { 
@@ -20,7 +21,10 @@ import {
   Activity, 
   Settings,
   Table,
-  Sliders
+  Sliders,
+  ChevronRight,
+  Home,
+  X
 } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
 import steelPouringBg from '../assets/images/foundry_hero_bg_1781504494705.jpg';
@@ -47,10 +51,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
   const [galleryIndex, setGalleryIndex] = useState<number>(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
   
-  // Interactive Catalog Revision & Audit report states
-  const [showAuditReport, setShowAuditReport] = useState(false);
-  const [auditActiveTab, setAuditActiveTab] = useState<'summary' | 'breakdown' | 'integrity'>('summary');
-  const [auditSectionSel, setAuditSectionSel] = useState<string>('all');
+
   
   const catalogListSectionRef = useRef<HTMLDivElement>(null);
 
@@ -286,6 +287,132 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     { id: 'thermal-furnaces', label: t.catThermal, descRu: 'Промышленные термические печи с выдвижным подом, шахтные печи СШЗ', descEn: 'Industrial car-bottom and shaft furnaces for heat treatment' },
     { id: 'obrubka-stanki', label: t.catObrubka, descRu: 'Гидравлические литейные клинья для отделения литниковых систем', descEn: 'Hydraulic fettling and riser splitting machinery' },
   ];
+
+  const breadcrumbItems = useMemo(() => {
+    const isEn = lang === 'en';
+    const items: { label: string; active: boolean; onClick?: () => void }[] = [];
+
+    // Level 0: Главная
+    items.push({
+      label: isEn ? 'Home' : 'Главная',
+      active: activeCategory === 'all' && activeSubcategory === 'all' && activeSubsubcategory === 'all' && !selectedProductId,
+      onClick: () => {
+        setActiveCategory('all');
+        setActiveSubcategory('all');
+        setActiveSubsubcategory('all');
+        setSelectedProductId(null);
+        setSearchQuery('');
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+      }
+    });
+
+    // Level 1: Каталог оборудования
+    items.push({
+      label: isEn ? 'Equipment Catalog' : 'Каталог оборудования',
+      active: activeCategory === 'all' && activeSubcategory === 'all' && activeSubsubcategory === 'all' && !selectedProductId,
+      onClick: () => {
+        setActiveCategory('all');
+        setActiveSubcategory('all');
+        setActiveSubsubcategory('all');
+        setSelectedProductId(null);
+        setSearchQuery('');
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+      }
+    });
+
+    // Level 2: Category
+    if (activeCategory !== 'all') {
+      const catObj = categories.find(c => c.id === activeCategory);
+      let catLabel = '';
+      if (activeCategory === 'furnaces') {
+        catLabel = isEn ? 'Melting Furnaces' : 'Плавильные печи';
+      } else {
+        catLabel = catObj ? catObj.label : activeCategory;
+      }
+
+      items.push({
+        label: catLabel,
+        active: activeSubcategory === 'all' && !selectedProductId,
+        onClick: () => {
+          setActiveSubcategory('all');
+          setActiveSubsubcategory('all');
+          setSelectedProductId(null);
+          setSearchQuery('');
+        }
+      });
+    }
+
+    // Level 3: Subcategory
+    if (activeCategory !== 'all' && activeSubcategory !== 'all') {
+      let subLabel = '';
+      if (activeCategory === 'furnaces' && activeSubcategory === 'induction') {
+        subLabel = isEn 
+          ? 'Induction melting furnaces for ferrous & non-ferrous alloys' 
+          : 'Индукционные плавильные печи для плавки черных и цветных металлов';
+      } else {
+        const subList = SUBCATEGORIES_MAP[activeCategory] || [];
+        const subObj = subList.find(s => s.id === activeSubcategory);
+        subLabel = subObj ? (isEn ? subObj.nameEn : subObj.nameRu) : activeSubcategory;
+      }
+
+      items.push({
+        label: subLabel,
+        active: activeSubsubcategory === 'all' && !selectedProductId,
+        onClick: () => {
+          setActiveSubsubcategory('all');
+          setSelectedProductId(null);
+          setSearchQuery('');
+        }
+      });
+    }
+
+    // Level 4: Sub-subcategory
+    if (activeCategory !== 'all' && activeSubcategory !== 'all' && activeSubsubcategory !== 'all') {
+      let subsubLabel = '';
+      if (activeCategory === 'furnaces' && activeSubcategory === 'induction' && activeSubsubcategory === 'aluminum-frame') {
+        subsubLabel = isEn 
+          ? 'Melting furnaces in aluminum casing on gear' 
+          : 'Плавильные печи в алюминиевом корпусе на редукторе';
+      } else if (activeCategory === 'furnaces' && activeSubcategory === 'induction' && activeSubsubcategory === 'steel-frame') {
+        subsubLabel = isEn 
+          ? 'Melting furnaces in strong steel shell frame on hydraulics' 
+          : 'Плавильные печи в стальном каркасе на гидравлике';
+      } else {
+        const p = PRODUCTS.find(
+          (prod) => prod.category === activeCategory && 
+                    prod.subcategory === activeSubcategory && 
+                    prod.subsubcategory === activeSubsubcategory
+        );
+        if (p) {
+          subsubLabel = isEn ? p.subsubcategoryEn || activeSubsubcategory : p.subsubcategoryRu || activeSubsubcategory;
+        } else {
+          subsubLabel = activeSubsubcategory;
+        }
+      }
+
+      items.push({
+        label: subsubLabel,
+        active: !selectedProductId,
+        onClick: () => {
+          setSelectedProductId(null);
+          setSearchQuery('');
+        }
+      });
+    }
+
+    // Level 5: Product Model (Selected Product)
+    if (selectedProductId) {
+      const p = PRODUCTS.find((prod) => prod.id === selectedProductId);
+      if (p) {
+        items.push({
+          label: isEn ? `Model ${p.model}` : `Модель ${p.model}`,
+          active: true
+        });
+      }
+    }
+
+    return items;
+  }, [lang, activeCategory, activeSubcategory, activeSubsubcategory, selectedProductId, categories]);
 
   // Information details corresponding exactly to https://www.sltgroup.ru/catalog/ divisions
   const sltDivisions = [
@@ -672,264 +799,199 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         
-        {/* Render Page A: Main Catalog Categories Index Page (When Category === 'all') */}
-        {activeCategory === 'all' ? (
-          <div className="space-y-12">
-            <div className="border-l-4 border-[#e65410] pl-4">
-              <h2 className="text-xs font-mono uppercase tracking-widest text-gray-500 font-bold">
-                {lang === 'en' ? 'Industrial Departments' : 'Официальные направления поставок'}
-              </h2>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 uppercase tracking-tight font-sans mt-1">
-                {lang === 'en' ? 'Browse by Engineering Division' : 'Инжиниринговые разделы каталога'}
+        {/* Dynamic Multi-level Engineering Breadcrumbs */}
+        <div id="catalog-breadcrumb" className="bg-white border-2 border-gray-200 px-5 py-3.5 mb-6 shadow-xs flex flex-wrap items-center gap-1.5 text-xs font-mono select-none">
+          {breadcrumbItems.map((item, index) => {
+            const isLast = index === breadcrumbItems.length - 1;
+            return (
+              <div key={index} className="flex items-center space-x-1.5">
+                {index > 0 && <ChevronRight className="h-3 w-3 text-gray-400 shrink-0" />}
+                {item.onClick && !isLast ? (
+                  <button
+                    type="button"
+                    onClick={item.onClick}
+                    className="flex items-center space-x-1 text-[#00333b] hover:text-[#e65410] hover:underline bg-transparent border-none p-0 cursor-pointer text-left font-semibold"
+                  >
+                    {index === 0 && <Home className="h-3.5 w-3.5 text-[#e65410] shrink-0" />}
+                    <span>{item.label}</span>
+                  </button>
+                ) : (
+                  <span className={`flex items-center space-x-1 font-bold ${isLast ? 'text-[#e65410] font-black' : 'text-gray-400'}`}>
+                    {index === 0 && <Home className="h-3.5 w-3.5 text-gray-400 shrink-0" />}
+                    <span>{item.label}</span>
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Layout containing left sidebar navigation and right content area */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Navigation Sidebar */}
+          <div className="lg:col-span-3 space-y-4 lg:sticky lg:top-[120px] z-20">
+            <div className="bg-white border-2 border-gray-200 p-5 rounded-none shadow-xs space-y-4">
+              <h3 className="text-[10px] font-mono font-black uppercase text-gray-400 tracking-wider flex items-center gap-1.5 select-none">
+                <Sliders className="h-4 w-4 text-[#e65410]" />
+                <span>{lang === 'en' ? 'Catalog Divisions' : 'Разделы каталога'}</span>
               </h3>
-              <p className="text-sm text-gray-550 max-w-2xl mt-1">
-                {lang === 'en'
-                  ? 'Select a division category to view its specialized equipment variants, physical models, and capacity marks.'
-                  : 'Выберите интересующий вас раздел литейного цеха. Каждый раздел организован отдельной страницей с типами и марками оборудования.'}
-              </p>
+              
+              <div className="space-y-1 flex flex-col">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory('all');
+                    setActiveSubcategory('all');
+                    setActiveSubsubcategory('all');
+                    setSearchQuery('');
+                    setSelectedProductId(null);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`w-full text-left px-3 py-2.5 text-xs font-black uppercase transition-all duration-150 rounded-none flex items-center justify-between cursor-pointer border ${
+                    activeCategory === 'all'
+                      ? 'bg-[#e65410] border-[#e65410] text-white font-black'
+                      : 'bg-transparent border-transparent text-[#00333b] hover:bg-slate-50 hover:text-[#e65410]'
+                  }`}
+                >
+                  <span>{lang === 'en' ? 'All Divisions' : 'Все направления'}</span>
+                  <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${activeCategory === 'all' ? 'translate-x-0.5 text-white' : 'text-gray-300'}`} />
+                </button>
+                {categories.filter(cat => cat.id !== 'all').map((cat) => {
+                  const isSelected = activeCategory === cat.id;
+                  const catSubcategories = SUBCATEGORIES_MAP[cat.id] || [];
+                  return (
+                    <div key={cat.id} className="flex flex-col group/item">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveCategory(cat.id);
+                          setActiveSubcategory('all');
+                          setActiveSubsubcategory('all');
+                          setSelectedProductId(null);
+                          setSearchQuery('');
+                          window.scrollTo({ top: 300, behavior: 'smooth' });
+                        }}
+                        className={`w-full text-left px-3 py-2.5 text-xs font-black uppercase transition-all duration-150 rounded-none flex items-center justify-between cursor-pointer border ${
+                          isSelected
+                            ? 'bg-[#e65410] border-[#e65410] text-white font-black'
+                            : 'bg-transparent border-transparent text-[#00333b] hover:bg-slate-50 hover:text-[#e65410]'
+                        }`}
+                      >
+                        <span className="truncate leading-tight whitespace-normal pr-1">{cat.label}</span>
+                        <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${isSelected ? 'rotate-90 text-white' : 'text-gray-300'}`} />
+                      </button>
+
+                      {/* Level 3: Nested Subcategories */}
+                      {isSelected && catSubcategories.length > 0 && (
+                        <div className="pl-3.5 pr-1 py-1.5 bg-slate-50 border-l border-r border-b border-gray-200 flex flex-col space-y-1 animate-slideDown">
+                          {catSubcategories.map((sub) => {
+                            const isSubSelected = activeSubcategory === sub.id;
+                            
+                            // Get nested sub-subcategories dynamically from PRODUCTS data
+                            const subsubcats = PRODUCTS.filter(
+                              (p) => p.category === cat.id && p.subcategory === sub.id
+                            ).reduce((acc, p) => {
+                              if (p.subsubcategory && !acc.some((x) => x.id === p.subsubcategory)) {
+                                acc.push({
+                                  id: p.subsubcategory,
+                                  nameRu: p.subsubcategoryRu || p.subsubcategory,
+                                  nameEn: p.subsubcategoryEn || p.subsubcategory,
+                                });
+                              }
+                              return acc;
+                            }, [] as { id: string; nameRu: string; nameEn: string }[]);
+
+                            return (
+                              <div key={sub.id} className="flex flex-col">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setActiveSubcategory(sub.id);
+                                    setActiveSubsubcategory('all');
+                                    setSelectedProductId(null);
+                                    setSearchQuery('');
+                                  }}
+                                  className={`w-full text-left px-2 py-1.5 text-[10px] font-bold uppercase transition-all duration-150 rounded-none flex items-center justify-between cursor-pointer border-none bg-transparent ${
+                                    isSubSelected
+                                      ? 'text-[#e65410] font-black'
+                                      : 'text-slate-650 hover:text-[#e65410] hover:bg-slate-100'
+                                  }`}
+                                >
+                                  <span className="leading-tight whitespace-normal pr-1 text-[10px]">{lang === 'en' ? sub.nameEn : sub.nameRu}</span>
+                                  <ChevronRight className={`h-3 w-3 shrink-0 transition-transform ${isSubSelected ? 'rotate-90 text-[#e65410]' : 'text-gray-400'}`} />
+                                </button>
+
+                                {/* Level 4: Nested Sub-subcategories */}
+                                {isSubSelected && subsubcats.length > 0 && (
+                                  <div className="pl-3 py-1 border-l-2 border-orange-500/30 flex flex-col space-y-1">
+                                    {subsubcats.map((subsub) => {
+                                      const isSubSubSelected = activeSubsubcategory === subsub.id;
+                                      return (
+                                        <button
+                                          key={subsub.id}
+                                          type="button"
+                                          onClick={() => {
+                                            setActiveSubsubcategory(subsub.id);
+                                            setSelectedProductId(null);
+                                            setSearchQuery('');
+                                          }}
+                                          className={`w-full text-left px-2 py-1 text-[9px] font-bold transition-all duration-150 rounded-none cursor-pointer border-none bg-transparent leading-tight whitespace-normal ${
+                                            isSubSubSelected
+                                              ? 'text-[#e65410] font-black underline'
+                                              : 'text-slate-500 hover:text-[#e65410] hover:bg-slate-100'
+                                          }`}
+                                        >
+                                          • {lang === 'en' ? subsub.nameEn : subsub.nameRu}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Catalog 100% Import, Revision & Complete Audit Report System - Dynamic Calculations */}
-            {(() => {
-              const totalProds = PRODUCTS.length;
-              const totalMods = PRODUCTS.reduce((sum, p) => sum + (p.variantModels ? p.variantModels.length : 1), 0);
-              const uniqueCategoriesCount = new Set(PRODUCTS.map(p => p.category)).size;
-              
-              return (
-                <div id="catalog-audit-panel" className="bg-gradient-to-r from-[#00171b] to-[#002e35] text-white p-6 rounded-none border border-teal-850 shadow-md space-y-4 relative overflow-hidden animate-fadeIn">
-                  <div className="absolute right-0 top-0 w-80 h-full bg-[#e65410]/5 blur-[70px] pointer-events-none rounded-full" />
-                  
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
-                    <div className="space-y-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="px-2 py-0.5 bg-emerald-600 text-white font-mono text-[8px] font-black uppercase tracking-widest rounded-none flex items-center gap-1">
-                          <Check className="h-2.5 w-2.5 stroke-[3]" />
-                          <span>Sibtehlit.ru 100% COMPLETE</span>
-                        </span>
-                        <span className="text-[10px] font-mono text-[#e65410] uppercase tracking-widest font-black flex items-center gap-1.5">
-                          <Table className="h-3.5 w-3.5 text-[#e65410]" />
-                          <span>{lang === 'en' ? 'REVISION REPORT' : 'РЕВИЗИОННАЯ ВЕДОМОСТЬ'}</span>
-                        </span>
-                      </div>
-                      <h4 className="text-base sm:text-lg font-black uppercase font-sans tracking-tight text-white mt-1">
-                        {lang === 'en' 
-                          ? 'Product Catalog Revision against Sibtehlit.ru Completed' 
-                          : 'Инвентаризация и ревизия каталога оборудования «Сибтехлит»'}
-                      </h4>
-                      <p className="text-xs text-gray-300 max-w-3xl leading-relaxed">
-                        {lang === 'en'
-                          ? `We have completed a 100% audit of the equipment catalog. All 7 departments and support systems are mapped. Currently indexing ${totalProds} equipment classes and ${totalMods} customized casting model modifications.`
-                          : `Проведен полный технический аудит номенклатурного перечня. Синхронизировано 100% разделов со старой версии сайта sibtehlit.ru. В цифровой базе размещено ${totalProds} основных типов оборудования и ${totalMods} литейных марок/модификаций.`}
-                      </p>
-                    </div>
-                    
-                    <button
-                      id="toggle-audit-btn"
-                      onClick={() => setShowAuditReport(!showAuditReport)}
-                      className={`shrink-0 px-4 py-2.5 font-mono text-xs uppercase font-extrabold rounded-none transition duration-150 cursor-pointer border flex items-center gap-1.5 ${
-                        showAuditReport 
-                          ? 'bg-transparent text-white border-teal-800 hover:bg-white/5' 
-                          : 'bg-[#e65410] hover:bg-orange-700 text-white border-none'
-                      }`}
-                    >
-                      <span>{showAuditReport ? (lang === 'en' ? 'Close Report' : 'Скрыть отчет ревизии') : (lang === 'en' ? 'View Live Audit Sheet' : 'Открыть живой отчет аудита')}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showAuditReport ? 'transform rotate-180' : ''}`} />
-                    </button>
-                  </div>
+            {/* Industrial info card */}
+            <div className="bg-[#00252b] text-white p-5 border border-teal-850 rounded-none shadow-xs space-y-3 select-none">
+              <span className="text-[9px] font-mono font-black text-[#e65410] uppercase tracking-wider block">ИНЖИНИРИНГ «СИБТЕХЛИТ»</span>
+              <h4 className="text-xs font-black uppercase tracking-tight text-white leading-tight">
+                {lang === 'en' ? 'Custom dimensions are available' : 'Изготовление под индивидуальные условия'}
+              </h4>
+              <p className="text-[10px] text-gray-400 leading-relaxed">
+                {lang === 'en' 
+                  ? 'We can adapt layout footprints, loader arms, output slopes, and thermal controls to match your factory setup.'
+                  : 'Изменим контур фундаментов, вылеты лопастей, высоту завала расплава и температурный режим под параметры вашего цеха.'}
+              </p>
+            </div>
+          </div>
 
-                  {/* Complete Interactive Expandable Audit Dashboard with beautiful metrics, bento layouts, and tables */}
-                  {showAuditReport && (
-                    <div id="audit-details-dashboard" className="border-t border-[#003d47] pt-5 mt-5 space-y-6 animate-slideDown relative z-10">
-                      
-                      {/* Navigation tabs for the Audit panel */}
-                      <div className="flex border-b border-[#003d47] gap-3">
-                        <button
-                          id="btn-tab-summary"
-                          onClick={() => setAuditActiveTab('summary')}
-                          className={`pb-2.5 text-xs font-mono font-bold uppercase border-b-2 bg-transparent cursor-pointer transition ${
-                            auditActiveTab === 'summary' 
-                              ? 'border-[#e65410] text-[#e65410]' 
-                              : 'border-transparent text-gray-400 hover:text-white'
-                          }`}
-                        >
-                          {lang === 'en' ? 'General Summary' : 'Общая сводка'}
-                        </button>
-                        <button
-                          id="btn-tab-breakdown"
-                          onClick={() => setAuditActiveTab('breakdown')}
-                          className={`pb-2.5 text-xs font-mono font-bold uppercase border-b-2 bg-transparent cursor-pointer transition ${
-                            auditActiveTab === 'breakdown' 
-                              ? 'border-[#e65410] text-[#e65410]' 
-                              : 'border-transparent text-gray-400 hover:text-white'
-                          }`}
-                        >
-                          {lang === 'en' ? 'Verification Sheet' : 'Ревизионная ведомость'}
-                        </button>
-                        <button
-                          id="btn-tab-integrity"
-                          onClick={() => setAuditActiveTab('integrity')}
-                          className={`pb-2.5 text-xs font-mono font-bold uppercase border-b-2 bg-transparent cursor-pointer transition ${
-                            auditActiveTab === 'integrity' 
-                              ? 'border-[#e65410] text-[#e65410]' 
-                              : 'border-transparent text-gray-400 hover:text-white'
-                          }`}
-                        >
-                          {lang === 'en' ? 'Data Integrity Report' : 'Проверка полноты спецификаций'}
-                        </button>
-                      </div>
-
-                      {/* Content Tab A: SUMMARY */}
-                      {auditActiveTab === 'summary' && (
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                          
-                          {/* KPI Metric cards */}
-                          <div className="bg-[#00242a] p-4 border border-teal-850">
-                            <span className="block text-[9px] font-mono text-gray-400 uppercase tracking-widest font-bold">Охвачено Разделов</span>
-                            <span className="text-2xl font-black text-orange-400 block mt-1">7 / 7 (100%)</span>
-                            <span className="text-[9px] text-teal-400 font-mono block mt-1">Полный спектр литейного цеха</span>
-                          </div>
-                          
-                          <div className="bg-[#00242a] p-4 border border-teal-850">
-                            <span className="block text-[9px] font-mono text-gray-400 uppercase tracking-widest font-bold">Классов Оборудования</span>
-                            <span className="text-2xl font-black text-white block mt-1">{totalProds} ед.</span>
-                            <span className="text-[9px] text-gray-400 font-mono block mt-1">Смесители, печи, формовка, ковши, дробемёты</span>
-                          </div>
-                          
-                          <div className="bg-[#00242a] p-4 border border-teal-850">
-                            <span className="block text-[9px] font-mono text-gray-400 uppercase tracking-widest font-bold font-black">Модификаций в базе</span>
-                            <span className="text-2xl font-black text-teal-400 block mt-1">{totalMods} моделей</span>
-                            <span className="text-[9px] text-emerald-400 font-mono block mt-1">Сертифицированные габариты</span>
-                          </div>
-
-                          <div className="bg-[#00242a] p-4 border border-teal-850">
-                            <span className="block text-[9px] font-mono text-gray-400 uppercase tracking-widest font-bold">Статус старого Sibtehlit.ru</span>
-                            <span className="text-2xl font-black text-emerald-500 block mt-1">100% ПАРИТЕТ</span>
-                            <span className="text-[9px] text-[#e65410] font-mono block mt-1">Полный перенос данных</span>
-                          </div>
-
-                          <div className="md:col-span-4 bg-[#001f24] p-5 border border-teal-900/40 space-y-3 font-sans">
-                            <h5 className="text-xs font-black uppercase text-white font-mono flex items-center gap-1.5">
-                              <AlertCircle className="h-4 w-4 text-[#e65410]" />
-                              <span>Выводы ревизионной комиссии и инженеров-проектировщиков Сибтехлит:</span>
-                            </h5>
-                            <div className="text-xs text-justify text-gray-300 leading-relaxed space-y-2">
-                              <p>
-                                1. <strong>Полнота охвата:</strong> При ревизии структуры старого сайта <code>sibtehlit.ru</code> подтверждено сопоставление всех технологических цепочек. Добавлены критически важные типы, включая тяжелую кокильную формовку с вертикальным разъемом (серия <strong>КМ-В</strong>), закрытые высокоизолированные заливочные ковши барабанного типа (серия <strong>КБ</strong>), дробеметные установки с поворотным столом плоских заготовок (серия <strong>Q35</strong>), рольганговые туннельные дробеметы для балок и листов (серия <strong>Q69</strong>), а также роторных просеивателей-вибросит сухого песка (серия <strong>ВС</strong>).
-                              </p>
-                              <p>
-                                2. <strong>Двуязычная локализация:</strong> Для каждой номенклатурной позиции и описания модификации в коде подготовлены стопроцентно симметричные переводы. Это исключает путаницу при составлении внешнеторговых заказов на инжиниринговое проектирование.
-                              </p>
-                              <p>
-                                3. <strong>Показатели масштабируемости:</strong> Внедрение динамического реактивного вычисления на основе базы данных <code>products.ts</code> позволило вывести и обработать {totalMods} самостоятельные номенклатурные спецификации без потери отзывчивости пользовательского интерфейса.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Content Tab B: BREAKDOWN */}
-                      {auditActiveTab === 'breakdown' && (
-                        <div className="space-y-4">
-                          <div className="overflow-x-auto">
-                            <table className="w-full text-left text-xs font-mono border-collapse border border-teal-950/60">
-                              <thead>
-                                <tr className="bg-[#00242a] text-[#e65410] uppercase tracking-wider font-extrabold border-b border-teal-950/80">
-                                  <th className="p-3 border-r border-[#003d47]">Технический раздел</th>
-                                  <th className="p-3 border-r border-[#003d47]">Имя подкатегорий</th>
-                                  <th className="p-3 border-r border-[#003d47]">Контролируемые позиции</th>
-                                  <th className="p-3 border-r border-[#003d47] text-center">Конструкторские модели</th>
-                                  <th className="p-3 text-center">Статус аудита старого сайта</th>
-                                </tr>
-                              </thead>
-                              <tbody className="divide-y divide-[#00323a]">
-                                {[
-                                  { cat: 'sand-mixers-xtc', nameRu: 'Смесители ХТС, Регенерация, Вибростолы', count: 5, specs: 22, oldSite: 'Элементы ХТС СХ, РП, ВСФ перенесены' },
-                                  { cat: 'furnaces', nameRu: 'Индукционные плавильные печи и Литейные ковши КЛ/КБ', count: 3, specs: 15, oldSite: 'Индукторы GW, ковши чайниковые КЛ, барабанные КБ' },
-                                  { cat: 'green-sand', nameRu: 'Смесители ПГС СТ, формовка АФЛ/ФМ, Охладители ОС, Вибросита ВС', count: 5, specs: 18, oldSite: 'Добавлены ВС сита сухого сырья' },
-                                  { cat: 'core-making', nameRu: 'Пескострельные стержневые автоматы Cold-Box-Amine СА', count: 2, specs: 6, oldSite: 'Автоматическая линейка СА-12..80 портирована' },
-                                  { cat: 'shot-blast', nameRu: 'Дробеметные установки (барабан, лента, подвес Q32/31/37/35/69)', count: 4, specs: 16, oldSite: 'Добавлены плоскостоловые Q35 и рольганги Q69' },
-                                  { cat: 'casting-machines', nameRu: 'Литейная оснастка, Кокили КМ-Г/КМ-В, Центрифуги ЦЛ', count: 2, specs: 11, oldSite: 'Добавлена кокильная линия смыкания КМ-В' },
-                                  { cat: 'cooling-systems', nameRu: 'Закрытые градирни ГЗ и охлаждающие коллекторы', count: 1, specs: 5, oldSite: 'Градирни водоподготовки 25-200 м3/ч перенесены' }
-                                ].map((row, idx) => (
-                                  <tr key={idx} className="hover:bg-teal-950/20 transition-all">
-                                    <td className="p-3 font-bold border-r border-[#003038] text-white uppercase text-[10.5px]">
-                                      {row.cat === 'sand-mixers-xtc' && 'ХТС Молдинг'}
-                                      {row.cat === 'furnaces' && 'Плавильные индукторы'}
-                                      {row.cat === 'green-sand' && 'ПГС Смесеприготовление'}
-                                      {row.cat === 'core-making' && 'Стержневые цеха'}
-                                      {row.cat === 'shot-blast' && 'Дробемётная зачистка'}
-                                      {row.cat === 'casting-machines' && 'Машинное кокильное литье'}
-                                      {row.cat === 'cooling-systems' && 'Водоохлаждение'}
-                                    </td>
-                                    <td className="p-3 text-gray-300 border-r border-[#003038] max-w-xs truncate">{row.nameRu}</td>
-                                    <td className="p-3 text-center border-r border-[#003038] font-bold text-teal-400">{row.count} классов</td>
-                                    <td className="p-3 text-center border-r border-[#003038] font-bold text-orange-400">{row.specs} моделей</td>
-                                    <td className="p-3 text-emerald-400 font-semibold text-[11px] flex items-center justify-center gap-1">
-                                      <Check className="h-3 w-3 shrink-0 stroke-[3]" />
-                                      <span>{row.oldSite}</span>
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                          
-                          <div className="bg-black/40 p-4 border border-teal-850 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs font-mono text-gray-400">
-                            <span>* Оборудование извлечено из архивных технологических спецификаций «Сибтехлит» 2020-2026.</span>
-                            <span className="text-[#e65410] font-bold uppercase">Сводная подпись ревизии: ПОДТВЕРЖДЕНО 100%</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Content Tab C: INTEGRITY */}
-                      {auditActiveTab === 'integrity' && (
-                        <div className="space-y-4">
-                          <h5 className="text-xs font-mono uppercase text-white font-black">Проверка полноты технических данных по ГОСТ:</h5>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            
-                            <div className="bg-[#00242a] p-4 border border-teal-850 space-y-3 font-sans">
-                              <span className="text-[10px] font-mono font-bold text-orange-400 uppercase tracking-widest block">Обязательные поля характеристик (100% Заполнение)</span>
-                              <ul className="text-xs space-y-2 list-none p-0 text-gray-300 font-sans">
-                                <li className="flex items-center gap-2">
-                                  <span className="text-emerald-500 font-bold font-mono">✔</span>
-                                  <span>Электрическое питание и общая мощность двигателей (кВт)</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                  <span className="text-emerald-500 font-bold font-mono">✔</span>
-                                  <span>Номинальная производительность или габариты рабочих лопастей</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                  <span className="text-emerald-500 font-bold font-mono">✔</span>
-                                  <span>Двуязычные английские технические соответствия моделей</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                  <span className="text-emerald-500 font-bold font-mono">✔</span>
-                                  <span>Уникальные системные индексы номенклатуры в корзине RFQ</span>
-                                </li>
-                              </ul>
-                            </div>
-
-                            <div className="bg-[#00242a] p-4 border border-teal-850 space-y-3 font-sans">
-                              <span className="text-[10px] font-mono font-bold text-teal-400 uppercase tracking-widest block">Проверка соответствия изображений Unsplash</span>
-                              <p className="text-xs text-gray-300 leading-relaxed">
-                                Для каждой категории подобраны профессиональные высококачественные заставки металлургического оборудования: литейные ковши, расплавленный жидкий металл, индукционные тигли, автоматизированные роботы и дробеструйные сопла. Никаких пустых ссылок или плейсхолдеров.
-                              </p>
-                              <div className="pt-1">
-                                <span className="bg-emerald-950/60 border border-emerald-900 text-emerald-400 font-mono text-[9px] px-2 py-0.5 rounded-none uppercase font-bold">
-                                  Все изображения валидны, referrerPolicy="no-referrer" включен
-                                </span>
-                              </div>
-                            </div>
-
-                          </div>
-                        </div>
-                      )}
-
-                    </div>
-                  )}
+          {/* Right Main Content Area */}
+          <div className="lg:col-span-9 space-y-8 min-w-0">
+            
+            {/* Render Page A: Main Catalog Categories Index Page (When Category === 'all') */}
+            {activeCategory === 'all' && !searchQuery.trim() ? (
+              <div className="space-y-12">
+                <div className="border-l-4 border-[#e65410] pl-4">
+                  <h2 className="text-xs font-mono uppercase tracking-widest text-[#00333b] font-bold">
+                    {lang === 'en' ? 'Industrial Departments' : 'Официальные направления поставок'}
+                  </h2>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 uppercase tracking-tight font-sans mt-1">
+                    {lang === 'en' ? 'Browse by Engineering Division' : 'Инжиниринговые разделы каталога'}
+                  </h3>
+                  <p className="text-sm text-gray-550 max-w-2xl mt-1">
+                    {lang === 'en'
+                      ? 'Select a division category to view its specialized equipment variants, physical models, and capacity marks.'
+                      : 'Выберите интересующий вас раздел литейного цеха. Каждый раздел организован отдельной страницей с типами и марками оборудования.'}
+                  </p>
                 </div>
-              );
-            })()}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
               {sltDivisions.map((div) => {
@@ -966,10 +1028,6 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                           className="w-full h-full object-cover transition-all duration-500 ease-out filter brightness-100 group-hover:scale-105"
                           referrerPolicy="no-referrer"
                         />
-                        {/* Elegant mini icon badge floating overlay */}
-                        <div className="absolute top-3 right-3 bg-black/85 p-2 text-[#e65410] border border-teal-900/10 rounded-lg transition duration-300 group-hover:bg-[#e65410] group-hover:text-white">
-                          <IconComp className="h-4 w-4 shrink-0" />
-                        </div>
                         {/* Elegant mini "Подробнее" button overlay */}
                         <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm text-[#00333b] group-hover:bg-[#e65410] group-hover:text-white font-extrabold text-[10px] uppercase px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1 transition-all duration-300">
                           <span>{lang === 'en' ? 'Learn More' : 'Подробнее'}</span>
@@ -1010,97 +1068,24 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
           
           /* Render Page B: Dedicated Section Page - Clean Full Width Layout with Interactive Subcategory filtering and Custom stats banners */
           <div className="w-full space-y-6 animate-fade-in">
-            {/* Header / Breadcrumb navigation panel with Back button and zero rounding */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border-b border-gray-200/85 p-4 rounded-none">
-              {/* Breadcrumb path navigation */}
-              <div className="flex items-center space-x-2 text-xs text-gray-500 font-mono">
-                <button 
-                  onClick={() => {
-                    setActiveCategory('all');
-                    setActiveSubcategory('all');
-                    setSearchQuery('');
-                  }}
-                  className="hover:text-gray-900 hover:underline border-none bg-transparent cursor-pointer p-0 font-bold"
-                >
-                  {lang === 'en' ? 'Catalog' : 'Каталог'}
-                </button>
-                <span>/</span>
-                <span className="text-[#e65410] font-bold uppercase">
-                  {categories.find(c => c.id === activeCategory)?.label}
-                </span>
-                {searchQuery && (
-                  <>
-                    <span>/</span>
-                    <span className="text-gray-600 italic">Поиск: "{searchQuery}"</span>
-                  </>
-                )}
-              </div>
-
+            {/* Header / Back button panel with zero rounding */}
+            <div className="flex flex-row items-center justify-between gap-3 bg-white border-b border-gray-200/85 p-4 rounded-none">
+              <span className="text-xs font-mono font-bold text-[#00333b] uppercase">
+                {lang === 'en' ? 'Section navigation' : 'Навигация по разделу'}
+              </span>
               <button
                 onClick={() => {
                   setActiveCategory('all');
                   setActiveSubcategory('all');
                   setSearchQuery('');
                 }}
-                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#00333b] hover:bg-[#e65410] text-white font-mono text-[10px] uppercase font-bold rounded-none shadow-none transition cursor-pointer self-start sm:self-auto border-none"
+                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#00333b] hover:bg-[#e65410] text-white font-mono text-[10px] uppercase font-bold rounded-none shadow-none transition cursor-pointer border-none"
               >
-                <ArrowRight className="h-3.5 w-3.5 transform rotate-180 text-white group-hover:text-white" />
+                <ArrowRight className="h-3.5 w-3.5 transform rotate-180 text-white" />
                 <span>{lang === 'en' ? 'Back to Divisions' : 'Назад к разделам'}</span>
               </button>
             </div>
-
-            {/* Premium Division Header Jumbotron Card - Flat Strict design with zero rounding */}
-            {(() => {
-               const activeDiv = sltDivisions.find(d => d.id === activeCategory);
-               if (!activeDiv) return null;
-               
-               const DivIcon = activeDiv.icon;
-               return (
-                 <div className="relative overflow-hidden bg-[#00171b] text-white p-6 sm:p-8 rounded-none border-l-4 border-l-[#e65410]">
-                   <div className="absolute right-0 bottom-0 w-96 h-96 bg-[#e65410]/5 blur-[120px] pointer-events-none rounded-full" />
-                   
-                   {/* Floating Division Icon in background */}
-                   <div className="absolute right-8 top-1/2 -translate-y-1/2 text-teal-800/15 pointer-events-none hidden md:block">
-                     <DivIcon className="h-28 w-28 shrink-0 stroke-[1]" />
-                   </div>
-
-                   <div className="relative z-10 space-y-4 max-w-3xl">
-                     <div className="flex items-center gap-2">
-                       <span className="px-2.5 py-1 bg-orange-600 text-white font-mono text-[9px] font-black uppercase tracking-widest rounded-none">
-                         {lang === 'en' ? activeDiv.tagEn : activeDiv.tagRu}
-                       </span>
-                       <span className="text-xs text-teal-500 font-mono font-bold flex items-center gap-1">
-                         <Activity className="h-3 w-3 animate-pulse text-[#e65410]" />
-                         <span>{lang === 'en' ? 'SIBTEXLIT DIVISION' : 'ИНЖИНИРИНГОВЫЙ ДИВИЗИОН'}</span>
-                       </span>
-                     </div>
-
-                     <h2 className="text-2xl sm:text-3xl font-black uppercase font-sans tracking-tight text-white leading-tight">
-                       {lang === 'en' ? activeDiv.titleEn : activeDiv.titleRu}
-                     </h2>
-
-                     <p className="text-sm text-gray-300 leading-relaxed max-w-2xl">
-                       {lang === 'en' ? activeDiv.descEn : activeDiv.descRu}
-                     </p>
-
-                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-teal-950/60">
-                       <div className="bg-black/20 p-3 rounded-none border border-teal-950/40">
-                         <span className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-bold">Параметры серии</span>
-                         <span className="text-xs font-black text-orange-400 block mt-0.5">{lang === 'en' ? activeDiv.statsEn : activeDiv.statsRu}</span>
-                       </div>
-                       <div className="bg-black/20 p-3 rounded-none border border-teal-950/40">
-                         <span className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-bold">Приемка и контроль</span>
-                         <span className="text-xs font-black text-[#e65410] block mt-0.5 font-bold">ГОСТ / ISO 9001:2015</span>
-                       </div>
-                       <div className="bg-black/20 p-3 rounded-none border border-teal-950/40">
-                         <span className="block text-[8px] font-mono text-gray-500 uppercase tracking-widest font-bold">Индивидуальный заказ</span>
-                         <span className="text-xs font-black text-teal-400 block mt-0.5">3D Компоновка в подарок</span>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               );
-            })()}
+            
 
             {/* Premium Subcategories Navigation Tabs with zero rounding and thin strict gray border */}
             {(() => {
@@ -1109,110 +1094,109 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
                return (
                  <div className="space-y-4">
-                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
                      {/* Rebuilt flat design second level menu with 0 rounding and thin borders */}
                      <div className="lg:col-span-8 bg-white border border-gray-200 flex flex-wrap divide-x divide-gray-200 rounded-none shadow-xs">
-                     <button
-                       onClick={() => {
-                         setActiveSubcategory('all');
-                         setActiveSubsubcategory('all');
-                         setSelectedProductId(null);
-                       }}
-                       className={`px-5 py-3.5 text-xs font-mono font-black uppercase tracking-wider transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
-                         activeSubcategory === 'all'
-                           ? 'bg-[#e65410] text-white font-black'
-                           : 'bg-transparent text-[#00333b] hover:text-[#e65410] hover:bg-slate-50'
-                       }`}
-                     >
-                       {lang === 'en' ? 'All Types' : 'Все подкатегории'}
-                     </button>
-                     {subcategories.map((sub) => {
-                       const isSelected = activeSubcategory === sub.id;
-                       return (
-                         <button
-                           key={sub.id}
-                           onClick={() => {
-                             setActiveSubcategory(sub.id);
-                             setActiveSubcategory(sub.id);
-                             setActiveSubsubcategory('all');
+                       <button
+                         onClick={() => {
+                           setActiveSubcategory('all');
+                           setActiveSubsubcategory('all');
+                           setSelectedProductId(null);
+                         }}
+                         className={`px-5 py-3.5 text-xs font-mono font-black uppercase tracking-wider transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
+                           activeSubcategory === 'all'
+                             ? 'bg-[#e65410] text-white font-black'
+                             : 'bg-transparent text-[#00333b] hover:text-[#e65410] hover:bg-slate-50'
+                         }`}
+                       >
+                         {lang === 'en' ? 'All Types' : 'Все подкатегории'}
+                       </button>
+                       {subcategories.map((sub) => {
+                         const isSelected = activeSubcategory === sub.id;
+                         return (
+                           <button
+                             key={sub.id}
+                             onClick={() => {
+                               setActiveSubcategory(sub.id);
+                               setActiveSubsubcategory('all');
+                               setSelectedProductId(null);
+                             }}
+                             className={`px-5 py-3.5 text-xs font-mono font-black uppercase tracking-wider transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
+                               isSelected
+                                 ? 'bg-[#e65410] text-white font-black'
+                                 : 'bg-transparent text-[#00333b] hover:text-[#e65410] hover:bg-slate-50'
+                             }`}
+                           >
+                             {lang === 'en' ? sub.nameEn : sub.nameRu}
+                           </button>
+                         );
+                       })}
+                     </div>
+
+                     {/* Division search box */}
+                     <div className="lg:col-span-4 select-none">
+                       <div className="relative">
+                         <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                           <Search className="h-4 w-4 text-[#e65410]" />
+                         </span>
+                         <input
+                           type="text"
+                           value={searchQuery}
+                           onChange={(e) => {
+                             setSearchQuery(e.target.value);
                              setSelectedProductId(null);
                            }}
-                           className={`px-5 py-3.5 text-xs font-mono font-black uppercase tracking-wider transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
-                             isSelected
-                               ? 'bg-[#e65410] text-white font-black'
-                               : 'bg-transparent text-[#00333b] hover:text-[#e65410] hover:bg-slate-50'
-                           }`}
-                         >
-                           {lang === 'en' ? sub.nameEn : sub.nameRu}
-                         </button>
-                       );
-                     })}
+                           placeholder={lang === 'en' ? 'Search in this section...' : 'Поиск в этом разделе...'}
+                           className="w-full pl-9 pr-8 py-3.5 bg-white border border-gray-200 rounded-none text-xs text-slate-800 placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
+                         />
+                         {searchQuery && (
+                           <button
+                             type="button"
+                             onClick={() => {
+                               setSearchQuery('');
+                               setSelectedProductId(null);
+                             }}
+                             className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-405 hover:text-gray-700 bg-transparent border-none cursor-pointer"
+                           >
+                             ✕
+                           </button>
+                         )}
+                       </div>
+                       {(() => {
+                         const qTags: Record<string, string[]> = {
+                           'sand-mixers-xtc': ['СХ-10', 'РП', 'ВСФ'],
+                           'furnaces': ['GW', 'КЛ', 'КБ'],
+                           'green-sand': ['СТ', 'АФЛ', 'ФМ', 'ОС'],
+                           'core-making': ['СА-12', 'СА-400'],
+                           'shot-blast': ['Q32', 'Q37', 'Q69'],
+                           'casting-machines': ['КМ', 'ЦЛ'],
+                           'cooling-systems': ['ГЗ']
+                         };
+                         const tags = qTags[activeCategory] || [];
+                         if (tags.length === 0) return null;
+                         return (
+                           <p className="text-[9px] text-gray-500 font-mono mt-1 pl-1 select-none">
+                             {lang === 'en' ? 'Quick text: ' : 'Теги: '}
+                             {tags.map((tg, idx) => (
+                               <button
+                                 key={idx}
+                                 type="button"
+                                 onClick={() => {
+                                   setSearchQuery(tg);
+                                   setSelectedProductId(null);
+                                 }}
+                                 className="text-[#e65410] hover:underline bg-transparent border-none p-0 cursor-pointer font-bold mx-1 text-[9px]"
+                               >
+                                 #{tg}
+                               </button>
+                             ))}
+                           </p>
+                         );
+                       })()}
+                     </div>
                    </div>
 
-                    {/* Division search box */}
-                    <div className="lg:col-span-4 select-none">
-                      <div className="relative">
-                        <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <Search className="h-4 w-4 text-[#e65410]" />
-                        </span>
-                        <input
-                          type="text"
-                          value={searchQuery}
-                          onChange={(e) => {
-                            setSearchQuery(e.target.value);
-                            setSelectedProductId(null);
-                          }}
-                          placeholder={lang === 'en' ? 'Search in this section...' : 'Поиск в этом разделе...'}
-                          className="w-full pl-9 pr-8 py-3.5 bg-white border border-gray-200 rounded-none text-xs text-slate-800 placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
-                        />
-                        {searchQuery && (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setSearchQuery('');
-                              setSelectedProductId(null);
-                            }}
-                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-405 hover:text-gray-700 bg-transparent border-none cursor-pointer"
-                          >
-                            ✕
-                          </button>
-                        )}
-                      </div>
-                      {(() => {
-                        const qTags: Record<string, string[]> = {
-                          'sand-mixers-xtc': ['СХ-10', 'РП', 'ВСФ'],
-                          'furnaces': ['GW', 'КЛ', 'КБ'],
-                          'green-sand': ['СТ', 'АФЛ', 'ФМ', 'ОС'],
-                          'core-making': ['СА-12', 'СА-400'],
-                          'shot-blast': ['Q32', 'Q37', 'Q69'],
-                          'casting-machines': ['КМ', 'ЦЛ'],
-                          'cooling-systems': ['ГЗ']
-                        };
-                        const tags = qTags[activeCategory] || [];
-                        if (tags.length === 0) return null;
-                        return (
-                          <p className="text-[9px] text-gray-500 font-mono mt-1 pl-1 select-none">
-                            {lang === 'en' ? 'Quick text: ' : 'Теги: '}
-                            {tags.map((tg, idx) => (
-                              <button
-                                key={idx}
-                                type="button"
-                                onClick={() => {
-                                  setSearchQuery(tg);
-                                  setSelectedProductId(null);
-                                }}
-                                className="text-[#e65410] hover:underline bg-transparent border-none p-0 cursor-pointer font-bold mx-1 text-[9px]"
-                              >
-                                #{tg}
-                              </button>
-                            ))}
-                          </p>
-                        );
-                      })()}
-                    </div>
-                  </div>
-
-                   {/* Secondary Line: Sub-subcategories Series (pills) with 0 rounding and thin borders */}
+{/* Secondary Line: Sub-subcategories Series (pills) with 0 rounding and thin borders */}
                    {activeSubcategory !== 'all' && availableSubsubcategories.length > 0 && (
                      <div className="flex flex-wrap items-center gap-2 bg-slate-50 p-2.5 rounded-none border border-slate-200 animate-slideDown">
                        <span className="text-[10px] font-mono font-black uppercase text-slate-500 mr-2 flex items-center gap-1 select-none">
@@ -1284,136 +1268,139 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                         <span>{lang === 'en' ? 'Back to series choice' : 'Назад к выбору моделей серии'}</span>
                       </button>
 
-                      <div className="bg-white border-2 border-gray-200 rounded-none overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-sm">
+                      <div className="bg-white border border-gray-200 rounded-none overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-none">
                         
                         {/* Column Left (4 units size): Image, Capacity fields and Main spec add button */}
-                        <div className="lg:col-span-4 p-5 sm:p-6 bg-gray-50 lg:border-r-2 lg:border-gray-200 flex flex-col justify-between">
-                          <div className="space-y-4">
-                            
-                             {/* Interactive Industrial Photo Gallery */}
-                             <div className="space-y-3 select-none">
-                               {/* Main image card */}
-                               <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded-none border border-gray-200 group">
-                                 <img
-                                   src={galleryImages[galleryIndex] || p.imageUrl}
-                                   onError={(e) => {
-                                     e.currentTarget.src = sandMixerXTC;
-                                   }}
-                                   alt={pTitle}
-                                   onClick={() => setIsLightboxOpen(true)}
-                                   className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition duration-300 cursor-zoom-in"
-                                   referrerPolicy="no-referrer"
-                                 />
-                                 
-                                 {galleryImages.length > 1 && (
-                                   <>
-                                     <button
-                                       type="button"
-                                       onClick={() => setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
-                                       className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-[#e65410] text-white transition rounded-none border border-white/10 hidden group-hover:flex items-center justify-center cursor-pointer font-black z-10"
-                                       id="gallery-prev-btn"
-                                     >
-                                       ◀
-                                     </button>
-                                     <button
-                                       type="button"
-                                       onClick={() => setGalleryIndex((prev) => (prev + 1) % galleryImages.length)}
-                                       className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-[#e65410] text-white transition rounded-none border border-white/10 hidden group-hover:flex items-center justify-center cursor-pointer font-black z-10"
-                                       id="gallery-next-btn"
-                                     >
-                                       ▶
-                                     </button>
-                                   </>
-                                 )}
- 
-                                 <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-850 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2.5 py-1 rounded-none">
-                                   {lang === 'en' ? 'Base Model:' : 'Базовая модель:'} {p.model}
-                                 </div>
- 
-                                 <div className="absolute bottom-2 right-2 bg-black/80 text-[9px] font-mono font-bold text-white px-2 py-0.5 rounded-none border border-white/10 select-none">
-                                   {galleryIndex + 1} / {galleryImages.length}
-                                 </div>
-                               </div>
- 
-                               {/* Gallery thumbnails */}
-                               {galleryImages.length > 1 && (
-                                 <div className="grid grid-cols-4 gap-2">
-                                   {galleryImages.map((imgUrl, idx) => (
-                                     <button
-                                       key={idx}
-                                       type="button"
-                                       onClick={() => setGalleryIndex(idx)}
-                                       className={`relative aspect-video bg-gray-100 border transition overflow-hidden rounded-none p-0 cursor-pointer ${
-                                         galleryIndex === idx
-                                           ? 'border-[#e65410] ring-1 ring-[#e65410]'
-                                           : 'border-transparent hover:border-gray-400'
-                                       }`}
-                                     >
-                                       <img
-                                         src={imgUrl}
-                                         onError={(e) => {
-                                           e.currentTarget.src = sandMixerXTC;
-                                         }}
-                                         alt={`${pTitle} gallery ${idx + 1}`}
-                                         className="w-full h-full object-cover filter brightness-90 hover:brightness-100"
-                                         referrerPolicy="no-referrer"
-                                       />
-                                     </button>
-                                   ))}
-                                 </div>
-                               )}
-                             </div>
+                        <div className="lg:col-span-4 bg-white lg:border-r lg:border-gray-150 flex flex-col justify-between">
+                          <div className="flex flex-col h-full justify-between">
+                            <div className="space-y-0">
+                              {/* Main image card (No padding, occupies 100% width of Column Left) */}
+                              <div className="relative aspect-video w-full bg-slate-950 overflow-hidden rounded-none border-b border-gray-100 group">
+                                <img
+                                  src={galleryImages[galleryIndex] || p.imageUrl}
+                                  onError={(e) => {
+                                    e.currentTarget.src = sandMixerXTC;
+                                  }}
+                                  alt={pTitle}
+                                  onClick={() => setIsLightboxOpen(true)}
+                                  className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition duration-300 cursor-zoom-in"
+                                  referrerPolicy="no-referrer"
+                                />
+                                
+                                {galleryImages.length > 1 && (
+                                  <>
+                                    <button
+                                      type="button"
+                                      onClick={() => setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
+                                      className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-[#e65410] text-white transition rounded-none border border-white/10 hidden group-hover:flex items-center justify-center cursor-pointer font-black z-10"
+                                      id="gallery-prev-btn"
+                                    >
+                                      ◀
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => setGalleryIndex((prev) => (prev + 1) % galleryImages.length)}
+                                      className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-[#e65410] text-white transition rounded-none border border-white/10 hidden group-hover:flex items-center justify-center cursor-pointer font-black z-10"
+                                      id="gallery-next-btn"
+                                    >
+                                      ▶
+                                    </button>
+                                  </>
+                                )}
 
-                            {/* Capacity ratings */}
-                            <div className="grid grid-cols-2 gap-2 text-[10px] font-mono">
-                              {pCapacity && (
-                                <div className="bg-slate-200/50 p-3 rounded-none">
-                                  <span className="block text-[8px] text-gray-500 font-extrabold uppercase tracking-wide">ЕДИНЩА / ВЕС</span>
-                                  <span className="font-black text-gray-900 block mt-0.5 text-xs">{pCapacity}</span>
+                                <div className="absolute top-2 left-2 bg-[#00333b]/90 border border-teal-850 text-[#e65410] font-mono text-[9px] uppercase font-black tracking-widest px-2.5 py-1 rounded-none">
+                                  {lang === 'en' ? 'Base Model:' : 'Базовая модель:'} {p.model}
                                 </div>
-                              )}
-                              {pPower && (
-                                <div className="bg-slate-200/50 p-3 rounded-none">
-                                  <span className="block text-[8px] text-gray-500 font-extrabold uppercase tracking-wide">МОЩНОСТЬ</span>
-                                  <span className="font-black text-gray-900 block mt-0.5 text-xs">{pPower}</span>
+
+                                <div className="absolute bottom-2 right-2 bg-black/80 text-[9px] font-mono font-bold text-white px-2 py-0.5 rounded-none border border-white/10 select-none">
+                                  {galleryIndex + 1} / {galleryImages.length}
                                 </div>
-                              )}
+                              </div>
+
+                              {/* Padded inner content: thumbnails, specifications, buttons */}
+                              <div className="p-4 space-y-4">
+                                {/* Gallery thumbnails */}
+                                {galleryImages.length > 1 && (
+                                  <div className="grid grid-cols-4 gap-2">
+                                    {galleryImages.map((imgUrl, idx) => (
+                                      <button
+                                        key={idx}
+                                        type="button"
+                                        onClick={() => setGalleryIndex(idx)}
+                                        className={`relative aspect-video bg-gray-100 border transition overflow-hidden rounded-none p-0 cursor-pointer ${
+                                          galleryIndex === idx
+                                            ? 'border-[#e65410] ring-1 ring-[#e65410]'
+                                            : 'border-transparent hover:border-gray-400'
+                                        }`}
+                                      >
+                                        <img
+                                          src={imgUrl}
+                                          onError={(e) => {
+                                            e.currentTarget.src = sandMixerXTC;
+                                          }}
+                                          alt={`${pTitle} gallery ${idx + 1}`}
+                                          className="w-full h-full object-cover filter brightness-90 hover:brightness-100"
+                                          referrerPolicy="no-referrer"
+                                        />
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+
+                                {/* Capacity & Power specs stack vertically, extra dividers completely removed */}
+                                {(pCapacity || pPower) && (
+                                  <div className="space-y-4 pt-1 font-mono text-[10px]">
+                                    {pCapacity && (
+                                      <div>
+                                        <span className="block text-[8px] text-gray-400 font-bold uppercase tracking-wider">ЕМКОСТЬ / ВЕС</span>
+                                        <span className="font-mono font-black text-[#00333b] block mt-0.5 text-[11px] leading-tight">{pCapacity}</span>
+                                      </div>
+                                    )}
+                                    {pPower && (
+                                      <div>
+                                        <span className="block text-[8px] text-gray-400 font-bold uppercase tracking-wider">МОЩНОСТЬ</span>
+                                        <span className="font-mono font-black text-[#00333b] block mt-0.5 text-[11px] leading-tight">{pPower}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
                             </div>
-                          </div>
 
-                          {/* Base specifications additions */}
-                          <div className="mt-6 space-y-2">
-                            <button
-                              onClick={() => {
-                                onAddToRFQ(p);
-                                window.dispatchEvent(new CustomEvent('rfq-items-updated'));
-                              }}
-                              className={`w-full py-3.5 px-4 font-mono font-black text-xs uppercase tracking-wider rounded-none flex items-center justify-center space-x-2 transition border-none cursor-pointer outline-none ${
-                                isAdded
-                                  ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-md'
-                                  : 'bg-[#e65410] hover:bg-orange-700 text-white shadow-sm'
-                              }`}
-                            >
-                              {isAdded ? (
-                                <>
-                                  <Check className="h-4 w-4 shrink-0" />
-                                  <span>{t.inSpecsBtn} ({p.model})</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Plus className="h-4 w-4 shrink-0 text-white" />
-                                  <span>{lang === 'en' ? 'Add basic configuration' : 'Выбрать базовую Спец'}</span>
-                                </>
-                              )}
-                            </button>
-                            <p className="text-[9px] text-[#e65410] text-center font-mono font-semibold">
-                              *Разработка КД по ТЗ заказчика включена в стоимость.
-                            </p>
+                            {/* Base specifications additions - padded bottom */}
+                            <div className="px-4 pb-4 mt-auto space-y-1.5">
+                              <button
+                                onClick={() => {
+                                  onAddToRFQ(p);
+                                  window.dispatchEvent(new CustomEvent('rfq-items-updated'));
+                                }}
+                                className={`w-full py-2.5 px-3 font-mono font-black text-[11px] uppercase tracking-wider rounded-none flex items-center justify-center space-x-2 transition cursor-pointer outline-none ${
+                                  isAdded
+                                    ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                    : 'bg-[#e65410] hover:bg-orange-700 text-white'
+                                }`}
+                              >
+                                {isAdded ? (
+                                  <>
+                                    <Check className="h-3.5 w-3.5 shrink-0" />
+                                    <span>{t.inSpecsBtn} ({p.model})</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Plus className="h-3.5 w-3.5 shrink-0 text-white" />
+                                    <span>{lang === 'en' ? 'Add basic configuration' : 'Выбрать базовую Спец'}</span>
+                                  </>
+                                )}
+                              </button>
+                              <p className="text-[8px] text-gray-500 text-center font-mono font-bold leading-normal">
+                                *Разработка КД по ТЗ заказчика включена в стоимость.
+                              </p>
+                            </div>
                           </div>
                         </div>
 
                         {/* Column Right (8 units size): Title, description, features list, specification variants table */}
-                        <div className="lg:col-span-8 p-5 sm:p-6 flex flex-col justify-between space-y-5">
+                        <div className="lg:col-span-8 p-4 sm:p-5 flex flex-col justify-between space-y-4">
                           
                           <div className="space-y-3.5">
                             <div className="flex items-center space-x-1.5 flex-wrap gap-y-1.5">
@@ -1452,17 +1439,17 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                               {pTitle}
                             </h2>
 
-                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans font-medium font-medium">
+                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans font-medium">
                               {pDesc}
                             </p>
 
                             {/* Tech benefits list style */}
-                            <div className="bg-slate-100/50 p-5 rounded-none">
-                              <h4 className="text-[9px] font-mono font-black uppercase text-gray-550 tracking-widest flex items-center space-x-1.5 mb-2.5">
+                            <div className="bg-[#00333b]/5 border-y border-[#00333b]/10 p-4 rounded-none">
+                              <h4 className="text-[9px] font-mono font-black uppercase text-gray-550 tracking-widest flex items-center space-x-1.5 mb-2">
                                 <Settings className="h-3.5 w-3.5 text-[#e65410]" />
                                 <span>{lang === 'en' ? `Technical benefits of series ${p.model}:` : `Технологические преимущества серии ${p.model}:`}</span>
                               </h4>
-                              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-xs text-gray-700">
+                              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-gray-700">
                                 {pFeatures.map((feat, idx) => (
                                   <li key={idx} className="flex items-start">
                                     <span className="text-[#e65410] mr-2 font-bold text-xs">✓</span>
@@ -1747,6 +1734,8 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
             </div>
           </div>
         )}
+          </div>
+        </div>
         <div className="bg-gradient-to-r from-[#00252b] to-[#00333b] text-white p-8 rounded-none border border-teal-800 space-y-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6 mt-16">
           <div className="space-y-2">
             <span className="text-[10px] font-mono text-[#e65410] uppercase tracking-widest font-black flex items-center space-x-1.5">
@@ -1771,6 +1760,133 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
             </span>
           </div>
         </div>
+
+        {/* Dynamic Fullscreen Lightbox Image Viewer */}
+        <AnimatePresence>
+          {isLightboxOpen && galleryImages.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[100] flex flex-col items-center justify-between bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-8 select-none"
+              role="dialog"
+              aria-modal="true"
+            >
+              {/* Top Bar with actions */}
+              <div className="w-full max-w-5xl flex items-center justify-between text-white border-b border-white/10 pb-4">
+                <div className="space-y-1">
+                  <span className="text-[10px] font-mono tracking-widest text-[#e65410] uppercase font-black">
+                    {lang === 'en' ? 'Siberian Foundry Technologies photo viewer' : 'ПРОСМОТР ФОТОГРАФИЙ — СИБТЕХЛИТ'}
+                  </span>
+                  <div className="text-xs font-bold text-gray-300">
+                    {galleryIndex + 1} / {galleryImages.length}
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setIsLightboxOpen(false)}
+                  className="p-2 sm:p-3 bg-white/5 hover:bg-[#e65410]/20 hover:text-[#e65410] border border-white/10 text-white transition rounded-none flex items-center gap-1.5 cursor-pointer text-xs uppercase font-mono font-black"
+                  aria-label="Close viewer"
+                >
+                  <X className="h-4 w-4" />
+                  <span className="hidden sm:inline">{lang === 'en' ? 'Close' : 'Закрыть (ESC)'}</span>
+                </button>
+              </div>
+
+              {/* Main Content Area: Large Image & Nav buttons */}
+              <div className="relative w-full max-w-5xl flex-1 flex items-center justify-center my-6">
+                
+                {/* Backdrop Click Dismiss Wrapper */}
+                <div 
+                  className="absolute inset-0 cursor-zoom-out" 
+                  onClick={() => setIsLightboxOpen(false)} 
+                />
+
+                {/* Left navigation arrow */}
+                {galleryImages.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+                    }}
+                    className="absolute left-1 sm:left-4 z-40 p-3 sm:p-4 bg-black/80 hover:bg-[#e65410] text-white transition-all rounded-none border border-white/10 flex items-center justify-center cursor-pointer font-black"
+                    id="lightbox-prev-btn"
+                  >
+                    ◀
+                  </button>
+                )}
+
+                {/* Large responsive high-res image */}
+                <motion.div
+                  initial={{ scale: 0.95, y: 10 }}
+                  animate={{ scale: 1, y: 0 }}
+                  exit={{ scale: 0.95, y: 10 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  className="relative max-h-[65vh] md:max-h-[70vh] max-w-full z-10 overflow-hidden bg-slate-900 border-2 border-white/10 shadow-2xl"
+                >
+                  <img
+                    src={galleryImages[galleryIndex]}
+                    alt="Equipment high resolution review"
+                    className="object-contain max-h-[65vh] md:max-h-[70vh] w-auto h-auto mx-auto select-none"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = sandMixerXTC;
+                    }}
+                  />
+                </motion.div>
+
+                {/* Right navigation arrow */}
+                {galleryImages.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setGalleryIndex((prev) => (prev + 1) % galleryImages.length);
+                    }}
+                    className="absolute right-1 sm:right-4 z-40 p-3 sm:p-4 bg-black/80 hover:bg-[#e65410] text-white transition-all rounded-none border border-white/10 flex items-center justify-center cursor-pointer font-black"
+                    id="lightbox-next-btn"
+                  >
+                    ▶
+                  </button>
+                )}
+              </div>
+
+              {/* Bottom Thumbnail Strip for instant swap */}
+              {galleryImages.length > 1 && (
+                <div className="w-full max-w-xl bg-white/5 border border-white/10 p-3 sm:p-4 rounded-none z-10">
+                  <div className="flex items-center justify-center gap-3">
+                    {galleryImages.map((img, idx) => {
+                      const isActive = idx === galleryIndex;
+                      return (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setGalleryIndex(idx)}
+                          className={`relative aspect-video w-16 sm:w-20 overflow-hidden border-2 cursor-pointer transition-all duration-150 ${
+                            isActive ? 'border-[#e65410] scale-105 shadow-md' : 'border-white/20 opacity-75 hover:opacity-100'
+                          }`}
+                        >
+                          <img
+                            src={img}
+                            alt="Mini preview"
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                            onError={(e) => {
+                              e.currentTarget.src = sandMixerXTC;
+                            }}
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </div>
