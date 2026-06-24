@@ -85,7 +85,8 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     ],
     'lgm-equipment': [
       { id: 'pre-expanders', nameRu: 'Предвспениватели ЛГМ', nameEn: 'LGM Pre-Expanders', descRu: 'Предвспениватели ЛГМ циклического действия', descEn: 'Batch Process EPS Expanders' },
-      { id: 'model-molders', nameRu: 'Модельные автоматы', nameEn: 'Model Molders', descRu: 'Формовочные автоматы пеномоделей ФА', descEn: 'Pattern sintering press FA' }
+      { id: 'model-molders', nameRu: 'Модельные автоматы', nameEn: 'Model Molders', descRu: 'Формовочные автоматы пеномоделей ФА', descEn: 'Pattern sintering press FA' },
+      { id: 'liquidation', nameRu: 'Ликвидация комплекса ЛГМ', nameEn: 'LGM Complex Liquidation', descRu: 'Ликвидация комплекса ЛГМ с индукционной печью и дробемётом', descEn: 'Full Lost Foam casting complex line liquidation offer' }
     ],
     'lvm-equipment': [
       { id: 'boilers', nameRu: 'Бойлерклавы ЛВМ', nameEn: 'Dewaxing Boilerclaves', descRu: 'Бойлерклавы депарафинизации БК удаления воска', descEn: 'Steam dewaxing autocontrol БК' }

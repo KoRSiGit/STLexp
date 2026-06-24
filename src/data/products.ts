@@ -238,91 +238,229 @@ export const PRODUCTS: Product[] = [
 
   // SECTION 2: MELTING FURNACES (ПЛАВКА)
   {
-    id: 'furnace-induction-steel-frame',
+    id: 'furnace-induction-aluminum-reducer',
     category: 'furnaces',
     subcategory: 'induction',
     subcategoryRu: 'Индукционные печи',
     subcategoryEn: 'Induction Furnaces',
-    subsubcategory: 'steel-frame',
-    subsubcategoryRu: 'Стальной каркас серия GW-S',
-    subsubcategoryEn: 'Steel frame series GW-S',
-    title: 'Индукционная плавильная печь в прочном стальном каркасе',
-    titleEn: 'High capacity steel shell induction melting furnace',
-    model: 'GW-1.0-800S',
-    description: 'Индукционная печь высокой жесткости в стальном сварном исполнении с тяжелыми защитными магнитными ярлыками и вибропоглощающими плитами под гидравлическим управлением. Оптимальный выбор для сибирских условий выплавки сталей черной металлургии.',
-    descriptionEn: 'Super heavy duty coreless induction furnace encased in computer-modeled steel shell with back yokes. Guarantees long lining lifetime and minimized electromagnetic flux leakages.',
+    subsubcategory: 'aluminum-reducer',
+    subsubcategoryRu: 'В алюминиевом корпусе на редукторе (до 1т)',
+    subsubcategoryEn: 'Aluminum shell on reducer (up to 1t)',
+    title: 'Индукционные плавильные печи в алюминиевом корпусе на редукторе',
+    titleEn: 'Aluminum shell crucible induction furnaces on electromechanical tilting reducer',
+    model: 'GW 0.5-350-1',
+    description: 'Индукционная тигельная плавильная печь в корпусе из прочного алюминиевого сплава емкостью тигля до 1 тонны на червячном редукторе наклона. Корпус электропечи выполнен из алюминиевого сплава и состоит из двух симметричных половин, соединенных через электроизоляцию для предотвращения короткозамкнутых вихревых контуров. Простая, легкая и ремонтопригодная конструкция идеально подходит как крупным литейным заводам, так и малым предприятиям фасонного литья.',
+    descriptionEn: 'Thyristor coreless induction smelting furnace in a lightweight aluminum alloy split shell with crucible capacity up to 1 ton on a mechanical reduction gear. Divided into two insulated matching symmetrical frames to prevent hot parasitic loops. An extremely maintainable, compact, and economical design perfectly fitting both small workshops and big foundries.',
     imageUrl: inductionFurnaceImg,
-    capacity: '1.0 тонна стали',
-    capacityEn: '1.0 ton of steel',
-    power: '800 кВт',
-    powerEn: '800 kW',
-    features: [
-      'Тяжелый сварной стальной корпус печи с гидравлическим подъемом плиты',
-      'Защитные ферромагнитные пакеты ярлыков (магнитные шунты) экранируют 95% потока индуктора',
-      'Микропроцессорные тиристорные инверторы с автосенсорным ведением плавки',
-      'Система непрерывного автоматического контроля целостности футеровки и прорыва ванны'
-    ],
-    featuresEn: [
-      'Rigid welded steel structure of the furnace frame with secure magnetic yokes',
-      '95% flux shielding magnetic noise bypass packages guarding the cylinder frame',
-      'HMI touch inverter with automatic resonance tracking and active melting programs',
-      'Continuous lining decay leak-detection safety interface protecting from runout'
-    ],
-    specs: [
-      { name: 'Номинальная емкость печи', value: '1.0 тонна по стали / чугуну', nameEn: 'Nominal furnace capacity', valueEn: '1.0 ton of steel / iron' },
-      { name: 'Мощность источника питания', value: '800 кВт', nameEn: 'Inverter power supply', valueEn: '800 kW' },
-      { name: 'Рабочая частота индуктора', value: '1000 Гц', nameEn: 'Operating frequency', valueEn: '1000 Hz' },
-      { name: 'Скорость плавления (до 1600 °C)', value: '1.6 тонны/час', nameEn: 'Melting rate (to 1600 °C)', valueEn: '1.6 tons/hour' },
-      { name: 'Удельный расход электроэнергии', value: '550 - 620 кВт·ч/т (при жидком старте)', nameEn: 'Specific energy usage', valueEn: '550 - 620 kWh/t (molten start)' },
-      { name: 'Расход охлаждающей воды контура', value: '40 м³/час', nameEn: 'Water cooling loop requirement', valueEn: '40 m³/hour' }
-    ],
-    variantModels: [
-      { model: 'GW-1.0-800S', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '800 кВт', powerEn: '800 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
-      { model: 'GW-2.0-1500S', capacity: '2.00 тонны', capacityEn: '2.00 tons', power: '1500 кВт', powerEn: '1500 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
-      { model: 'GW-3.0-2500S', capacity: '3.00 тонны', capacityEn: '3.00 tons', power: '2500 кВт', powerEn: '2500 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
-      { model: 'GW-5.0-3750S', capacity: '5.00 тонн', capacityEn: '5.00 tons', power: '3750 кВт', powerEn: '3750 kW', extraField: 'Магнитный шунт', extraFieldVal: 'Да', extraFieldValEn: 'Yes' }
-    ]
-  },
-  {
-    id: 'furnace-induction-aluminum-frame',
-    category: 'furnaces',
-    subcategory: 'induction',
-    subcategoryRu: 'Индукционные печи',
-    subcategoryEn: 'Induction Furnaces',
-    subsubcategory: 'aluminum-frame',
-    subsubcategoryRu: 'Алюминиевый каркас серия GW-A',
-    subsubcategoryEn: 'Aluminum frame series GW-A',
-    title: 'Индукционная плавильная печь в экономичном алюминиевом каркасе',
-    titleEn: 'Aluminum shell compact induction melting furnace',
-    model: 'GW-0.5-350A',
-    description: 'Экономичная плавильная тигельная печь в прочном литом под давлением алюминиевом каркасе. Обладает компактной конструкцией, малым весом пустого агрегата и легким доступом к внутреннему трубчатому змеевику индуктора. Прекрасно подходит для небольших фасонных плавок цветных сплавов.',
-    descriptionEn: 'Economic induction heating crucible furnace housed in a high-grade cast aluminum frame. Features lighter empty weight and rapid side maintenance access to induction water coil pipe.',
-    imageUrl: inductionFurnaceImg,
-    capacity: '0.5 тонн стали/бронзы',
-    capacityEn: '0.5 tons capacity',
+    capacity: '0.50 тонн стали',
+    capacityEn: '0.50 tons of steel',
     power: '350 кВт',
     powerEn: '350 kW',
     features: [
-      'Высокопрочный литой алюминиевый вентилируемый корпус',
-      'Прогрессивные индукционные катушки из профильной бескислородной меди высокой очистки',
-      'Защитная откидная двухстворчатая крышка тигля для снижения лучистых теплопотерь',
-      'Безопасный ручной или цепной привод наклона для компактных установок'
+      'Два плавильных узла (посты), работающие попеременно от одного ТПЧ',
+      'Корпус из высокоуглеродистого алюминиевого сплава с надежной изоляцией',
+      'Электромеханический редуктор с плавным червячным приводом наклона тигля',
+      'Индукционные катушки из толстостенной медной трубки высокой проводимости',
+      'Удобный пульт дистанционного управления наклоном печей в ручном режиме',
+      'Минимальные габариты для экономии полезной площади литейного участка'
     ],
     featuresEn: [
-      'Corrosion resistant structural aluminum split shell casing with natural ventilation slots',
-      'High grade oxygen-free copper profile tubing coils ensuring maximum coil electrical efficiency',
-      'Integrated manual exhaust dust flap screen cover blocks saving heater losses',
-      'Compact footprint layout for workshops having restricted space and overhead clear limits'
+      'Twin melting posts operating alternately powered by a highly reliable thyristor frequency inverter',
+      'High-grade cast aluminum alloy housing with comprehensive joint-point isolation',
+      'Electromechanical drive reducer for fine-flow slow pouring manipulation',
+      'Inductor coils crafted of thick-walled high-purity electrolytic oxygen-free copper profile tubing',
+      'Responsive local control panel regulating the rotation speed of the crucible',
+      'Reduced overall dimensions saving premium industrial floor and ceiling clearances'
     ],
     specs: [
-      { name: 'Номинальная емкость печи', value: '0.5 тонны по чугуну/бронзе', nameEn: 'Nominal furnace capacity', valueEn: '0.5 ton of iron / bronze' },
-      { name: 'Номинальная мощность силовой части', value: '350 кВт', nameEn: 'Inverter power supply', valueEn: '350 kW' },
-      { name: 'Рабочая частота тока', value: '1000 Гц', nameEn: 'Electrical frequency', valueEn: '1000 Hz' },
-      { name: 'Скорость наклона плиты слива', value: 'Регулируется гидравликой', nameEn: 'Tilting discharge flow speed', valueEn: 'Hydraulic cylinders regulated' }
+      { name: 'Номинальная емкость печи по чугуну', value: '500 кг', nameEn: 'Nominal raw capacity (cast iron)', valueEn: '500 kg' },
+      { name: 'Мощность тиристорного преобразователя', value: '350 кВт', nameEn: 'Inverter rated power', valueEn: '350 kW' },
+      { name: 'Номинальная рабочая частота тока', value: '1.0 кГц', nameEn: 'Resonant operational frequency', valueEn: '1.0 kHz' },
+      { name: 'Напряжение сети плавильного контура', value: '3 фазы, 380В, 50 Гц', nameEn: 'Substation input grid voltage', valueEn: '3 phases, 380V, 50 Hz' },
+      { name: 'Скорость плавления стали (до 1650°С)', value: '0.54 тонн/час', nameEn: 'Steel melting rate (to 1650°C)', valueEn: '0.54 tons/hour' },
+      { name: 'Скорость плавления чугуна (до 1450°С)', value: '0.60 тонн/час', nameEn: 'Iron melting rate (to 1450°C)', valueEn: '0.60 tons/hour' }
     ],
     variantModels: [
-      { model: 'GW-0.25-160A', capacity: '0.25 тонны', capacityEn: '0.25 tons', power: '160 кВт', powerEn: '160 kW', extraField: 'Каркас', extraFieldVal: 'Алюминиевый', extraFieldValEn: 'Aluminum' },
-      { model: 'GW-0.5-350A', capacity: '0.50 тонны', capacityEn: '0.50 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Каркас', extraFieldVal: 'Алюминиевый', extraFieldValEn: 'Aluminum' }
+      { model: 'GW 0.1-100-1', capacity: '0.10 тонн', capacityEn: '0.10 tons', power: '100 кВт', powerEn: '100 kW', extraField: 'Плавление стали', extraFieldVal: '0.11 тонн/час', extraFieldValEn: '0.11 t/h' },
+      { model: 'GW 0.1-160-1', capacity: '0.10 тонн', capacityEn: '0.10 tons', power: '160 кВт', powerEn: '160 kW', extraField: 'Плавление стали', extraFieldVal: '0.18 тонн/час', extraFieldValEn: '0.18 t/h' },
+      { model: 'GW 0.15-100-1', capacity: '0.15 тонн', capacityEn: '0.15 tons', power: '100 кВт', powerEn: '100 kW', extraField: 'Плавление стали', extraFieldVal: '0.10 тонн/час', extraFieldValEn: '0.10 t/h' },
+      { model: 'GW 0.15-160-1', capacity: '0.15 тонн', capacityEn: '0.15 tons', power: '160 кВт', powerEn: '160 kW', extraField: 'Плавление стали', extraFieldVal: '0.20 тонн/час', extraFieldValEn: '0.20 t/h' },
+      { model: 'GW 0.25-160-1', capacity: '0.25 тонн', capacityEn: '0.25 tons', power: '160 кВт', powerEn: '160 kW', extraField: 'Плавление стали', extraFieldVal: '0.19 тонн/час', extraFieldValEn: '0.19 t/h' },
+      { model: 'GW 0.25-250-1', capacity: '0.25 тонн', capacityEn: '0.25 tons', power: '250 кВт', powerEn: '250 kW', extraField: 'Плавление стали', extraFieldVal: '0.37 тонн/час', extraFieldValEn: '0.37 t/h' },
+      { model: 'GW 0.5-250-1', capacity: '0.50 тонн', capacityEn: '0.50 tons', power: '250 кВт', powerEn: '250 kW', extraField: 'Плавление стали', extraFieldVal: '0.31 тонн/час', extraFieldValEn: '0.31 t/h' },
+      { model: 'GW 0.5-350-1', capacity: '0.50 тонн', capacityEn: '0.50 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Плавление стали', extraFieldVal: '0.54 тонн/час', extraFieldValEn: '0.54 t/h' },
+      { model: 'GW 0.5-500-1', capacity: '0.50 тонн', capacityEn: '0.50 tons', power: '500 кВт', powerEn: '500 kW', extraField: 'Плавление стали', extraFieldVal: '0.84 тонн/час', extraFieldValEn: '0.84 t/h' },
+      { model: 'GW 0.75-350-1', capacity: '0.75 тонн', capacityEn: '0.75 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Плавление стали', extraFieldVal: '0.54 тонн/час', extraFieldValEn: '0.54 t/h' },
+      { model: 'GW 0.75-500-1', capacity: '0.75 тонн', capacityEn: '0.75 tons', power: '500 кВт', powerEn: '500 kW', extraField: 'Плавление стали', extraFieldVal: '0.69 тонн/час', extraFieldValEn: '0.69 t/h' },
+      { model: 'GW 1-500-0.5', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '500 кВт', powerEn: '500 kW', extraField: 'Плавление стали', extraFieldVal: '0.76 тонн/час', extraFieldValEn: '0.76 t/h' },
+      { model: 'GW 1-750-0.5', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '750 кВт', powerEn: '750 kW', extraField: 'Плавление стали', extraFieldVal: '1.27 тонн/час', extraFieldValEn: '1.27 t/h' }
+    ]
+  },
+  {
+    id: 'furnace-induction-steel-reducer',
+    category: 'furnaces',
+    subcategory: 'induction',
+    subcategoryRu: 'Индукционные печи',
+    subcategoryEn: 'Induction Furnaces',
+    subsubcategory: 'steel-reducer',
+    subsubcategoryRu: 'В стальном корпусе на редукторе (до 1т)',
+    subsubcategoryEn: 'Steel shell on reducer (up to 1t)',
+    title: 'Индукционные плавильные печи на редукторе в стальном корпусе',
+    titleEn: 'Steel shell crucible induction furnaces on electromechanical tilting reducer',
+    model: 'GW 0.5-350S-R',
+    description: 'Специальные индукционные плавильные печи емкостью тигля до 1 тонны, выполненные в виде жесткого сварного стального защитного кожуха на мотор-редукторе наклона. В отличие от алюминиевых корпусов, стальная конструкция обеспечивает непревзойденную форму жесткости и оборудуется магнитными шунтами (магнитопроводами из электротехнической кремниевой стали), которые направляют магнитный поток внутрь тигля и экранируют наружное излучение. Жесткий щит предотвращает термические перекосы и существенно увеличивает эксплуатационный ресурс футеровочной массы.',
+    descriptionEn: 'Highly reliable steel structure induction melting furnaces with capacities up to 1 ton on mechanical worm gearbox rotators. Crafted with rigid heavy plates and padded with back yokes (magnetic sheaths made of silicon transformer steel laminations). This shields the outer control board, guards against heat displacement distortions, keeps stray EM fields low, and extends the furnace refractory lining lifespan.',
+    imageUrl: inductionFurnaceImg,
+    capacity: '0.50 тонн стали',
+    capacityEn: '0.50 tons of steel',
+    power: '350 кВт',
+    powerEn: '350 kW',
+    features: [
+      'Стальные магнитные ярлыки (шунты) исключают вихревой нагрев элементов рамы печи',
+      'Минимальное внешнее электромагнитное излучение, безопасное для персонала цеха',
+      'Мощная антивибрационная сварная стальная конструкция опор',
+      'Защитная теплоизоляционная откидная крышка тигля в базовом комплекте',
+      'Контроль заземления расплава и сканирование пробоя изоляции индуктора',
+      'Самоблокирующийся редуктор наклона для удержания тигля в любом полупозиционном состоянии'
+    ],
+    featuresEn: [
+      'High-performance packet magnetic yokes focus lines directly inside keeping steel frame cold',
+      'Symmetric ground-fault and coil insulating relays maintaining operator safety standards',
+      'Rugged structural welded beams resisting heavy loads and thermal shocks',
+      'Durable hinged furnace thermal lid covers decreasing convective radiation loss',
+      'Automatic lining wear leakage and ground loop scanner diagnostics included',
+      'Self-locking gear system ensuring positive locking at any tilting discharge angle'
+    ],
+    specs: [
+      { name: 'Предельная вместимость жидкой стали', value: '500 кг', nameEn: 'Max molten steel capacity', valueEn: '500 kg' },
+      { name: 'Система экранирования корпуса', value: 'Ферромагнитные ярлыки-шунты', nameEn: 'EM Screening method', valueEn: 'Laminated magnetic back yokes' },
+      { name: 'Угол аварийного наклона тигля', value: 'до 95 градусов', nameEn: 'Max total tilting degree', valueEn: 'Up to 95 degrees' },
+      { name: 'Питание тиристорного инвертора', value: '3 фазы, 380В, 50 Гц', nameEn: 'Inverter connection voltage', valueEn: '3 phases, 380V, 50 Hz' },
+      { name: 'Период чистой плавки со стали', value: '50-60 минут', nameEn: 'Full steel cycle time', valueEn: '50-60 minutes' }
+    ],
+    variantModels: [
+      { model: 'GW 0.1-100-1', capacity: '0.10 тонн', capacityEn: '0.10 tons', power: '100 кВт', powerEn: '100 kW', extraField: 'Плавление стали', extraFieldVal: '0.11 тонн/час', extraFieldValEn: '0.11 t/h' },
+      { model: 'GW 0.15-160-1', capacity: '0.15 тонн', capacityEn: '0.15 tons', power: '160 кВт', powerEn: '160 kW', extraField: 'Плавление стали', extraFieldVal: '0.20 тонн/час', extraFieldValEn: '0.20 t/h' },
+      { model: 'GW 0.25-250-1', capacity: '0.25 тонн', capacityEn: '0.25 tons', power: '250 кВт', powerEn: '250 kW', extraField: 'Плавление стали', extraFieldVal: '0.37 тонн/час', extraFieldValEn: '0.37 t/h' },
+      { model: 'GW 0.5-350-1', capacity: '0.50 тонн', capacityEn: '0.50 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Плавление стали', extraFieldVal: '0.54 тонн/час', extraFieldValEn: '0.54 t/h' },
+      { model: 'GW 0.75-500-1', capacity: '0.75 тонн', capacityEn: '0.75 tons', power: '500 кВт', powerEn: '500 kW', extraField: 'Плавление стали', extraFieldVal: '0.69 тонн/час', extraFieldValEn: '0.69 t/h' },
+      { model: 'GW 1-500-0.5', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '500 кВт', powerEn: '500 kW', extraField: 'Плавление стали', extraFieldVal: '0.76 тонн/час', extraFieldValEn: '0.76 t/h' },
+      { model: 'GW 1-750-0.5', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '750 кВт', powerEn: '750 kW', extraField: 'Плавление стали', extraFieldVal: '1.27 тонн/час', extraFieldValEn: '1.27 t/h' }
+    ]
+  },
+  {
+    id: 'furnace-induction-steel-hydraulic',
+    category: 'furnaces',
+    subcategory: 'induction',
+    subcategoryRu: 'Индукционные печи',
+    subcategoryEn: 'Induction Furnaces',
+    subsubcategory: 'steel-hydraulic',
+    subsubcategoryRu: 'В стальном корпусе на гидравлике (до 20т)',
+    subsubcategoryEn: 'Steel shell on hydraulics (up to 20t)',
+    title: 'Индукционные плавильные печи на гидравлике в стальном корпусе',
+    titleEn: 'Heavy duty steel shell induction melting furnaces on hydraulic tilting cylinders',
+    model: 'GW 3-2000-0.5',
+    description: 'Массивные промышленные плавильные комплексы емкостью от 1 до 20 тонн под гидравлическим управлением наклона ванны. Конструкция выполнена в виде единой несущей стальной чаши с защитными шунтами из электротехнической стали, полностью перекрывающими внешнюю сторону катушек медного индуктора. Полнофункциональная гидравлическая насосная станция оснащена дублированными телескопическими цилиндрами, предохранительными клапанами удержания от падения давления и обеспечивает прецизионно плавный наклон тяжелых тиглей для безопасного слива в ковши.',
+    descriptionEn: 'High capacity heavy-duty metallurgical melting installations ranging from 1 to 20 tons raw payloads, powered by bilateral double-acting hydraulic cylinders. Features computer-modeled structural steel shell shielding and deep back yokes encompassing over 95% of active magnetic flux lines. The professional hydraulic pump station is furnished with pilot locks, accumulator systems, and speed throttles ensuring extremely smooth material transfers even at critical max tilts.',
+    imageUrl: inductionFurnaceImg,
+    capacity: '3.00 тонн стали',
+    capacityEn: '3.00 tons of steel',
+    power: '2000 кВт',
+    powerEn: '2000 kW',
+    features: [
+      'Двухцилиндровый гидравлический подъем со скоростными дросселями контроля потока',
+      'Сплошной пояс ярлыков-шунтов экранирует электромагнитное излучение от рамы печи',
+      'Защитное водяное охлаждение балок верхнего фланцевого кольца и опорных стоек',
+      'Усиленный сварной металлический каркас защищает индуктор от механических деформаций',
+      'Профессиональная аналого-цифровая система ЧПУ на процессоре Siemens с мониторингом датчиков',
+      'Выталкиватель изношенного тигля (гидравлический плунжер выталкивания футеровки) — опция'
+    ],
+    featuresEn: [
+      'Twin hydraulic tilting rams operating with load holding check safety valves',
+      'Dense heavy magnetic plate armor shields up to 95% of inductive stray stray losses',
+      'Water-cooled top flange ring blocks and copper busbar terminals protecting auxiliary details',
+      'Ultra-thick structural sheet-steel body shell completely safe to thermal stresses',
+      'Active HMI computer screen controlling water parameters, load factor and faults',
+      'Hydraulic bottom refractory lining ejector piston for fast crucible cleanup (optional)'
+    ],
+    specs: [
+      { name: 'Предельная плавильная вместимость', value: '3000 кг жидкой стали', nameEn: 'Crucible liquid capacity', valueEn: '3000 kg molten steel' },
+      { name: 'Потребляемая мощность инвертора ТПЧ', value: '2000 кВт', nameEn: 'Thyristor inverter maximum power', valueEn: '2000 kW' },
+      { name: 'Средняя частота плавильного тока', value: '500 Гц', nameEn: 'Generator current frequency', valueEn: '500 Hz' },
+      { name: 'Производительность плавки стали 1550°С', value: '3.58 тонн/час', nameEn: 'Steel melting throughput (1550°C)', valueEn: '3.58 tons/hour' },
+      { name: 'Удельный расход энергии при плавке', value: '600 кВт·ч/тонну', nameEn: 'Specific electricity usage', valueEn: '600 kWh/ton' },
+      { name: 'Серийное гидроуправление', value: 'Два плунжера, рабочее давление 14 МПа', nameEn: 'Standard hydraulic pack data', valueEn: 'Dual rams, working pressure 14 MPa' }
+    ],
+    variantModels: [
+      { model: 'GW 0.5-350-1', capacity: '0.50 тонн', capacityEn: '0.50 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Производительность', extraFieldVal: '0.57 т/ч', extraFieldValEn: '0.57 t/h' },
+      { model: 'GW 0.5-500-0.5', capacity: '0.50 тонн', capacityEn: '0.50 tons', power: '500 кВт', powerEn: '500 kW', extraField: 'Производительность', extraFieldVal: '0.87 т/ч', extraFieldValEn: '0.87 t/h' },
+      { model: 'GW 0.75-350-1', capacity: '0.75 тонн', capacityEn: '0.75 tons', power: '350 кВт', powerEn: '350 kW', extraField: 'Производительность', extraFieldVal: '0.60 т/ч', extraFieldValEn: '0.60 t/h' },
+      { model: 'GW 0.75-500-1', capacity: '0.75 тонн', capacityEn: '0.75 tons', power: '500 кВт', powerEn: '500 kW', extraField: 'Производительность', extraFieldVal: '0.70 т/ч', extraFieldValEn: '0.70 t/h' },
+      { model: 'GW 1-500-0.5', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '500 кВт', powerEn: '500 kW', extraField: 'Производительность', extraFieldVal: '0.78 т/ч', extraFieldValEn: '0.78 t/h' },
+      { model: 'GW 1-600-0.5', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '600 кВт', powerEn: '600 kW', extraField: 'Производительность', extraFieldVal: '0.94 т/ч', extraFieldValEn: '0.94 t/h' },
+      { model: 'GW 1-750-0.5', capacity: '1.00 тонна', capacityEn: '1.00 ton', power: '750 кВт', powerEn: '750 kW', extraField: 'Производительность', extraFieldVal: '1.29 т/ч', extraFieldValEn: '1.29 t/h' },
+      { model: 'GW 1.5-750-0.5', capacity: '1.50 тонн', capacityEn: '1.50 tons', power: '750 кВт', powerEn: '750 kW', extraField: 'Производительность', extraFieldVal: '1.21 т/ч', extraFieldValEn: '1.21 t/h' },
+      { model: 'GW 1.5-1000-0.5', capacity: '1.50 тонн', capacityEn: '1.50 tons', power: '1000 кВт', powerEn: '1000 kW', extraField: 'Производительность', extraFieldVal: '1.62 т/ч', extraFieldValEn: '1.62 t/h' },
+      { model: 'GW 2-1000-0.5', capacity: '2.00 тонн', capacityEn: '2.00 tons', power: '1000 кВт', powerEn: '1000 kW', extraField: 'Производительность', extraFieldVal: '1.59 т/ч', extraFieldValEn: '1.59 t/h' },
+      { model: 'GW 2-1500-0.5', capacity: '2.00 тонн', capacityEn: '2.00 tons', power: '1500 кВт', powerEn: '1500 kW', extraField: 'Производительность', extraFieldVal: '2.72 т/ч', extraFieldValEn: '2.72 t/h' },
+      { model: 'GW 3-1500-0.5', capacity: '3.00 тонн', capacityEn: '3.00 tons', power: '1500 кВт', powerEn: '1500 kW', extraField: 'Производительность', extraFieldVal: '2.59 т/ч', extraFieldValEn: '2.59 t/h' },
+      { model: 'GW 3-2000-0.5', capacity: '3.00 тонн', capacityEn: '3.00 tons', power: '2000 кВт', powerEn: '2000 kW', extraField: 'Производительность', extraFieldVal: '3.58 т/ч', extraFieldValEn: '3.58 t/h' },
+      { model: 'GW 3-2500-0.5', capacity: '3.00 тонн', capacityEn: '3.00 tons', power: '2500 кВт', powerEn: '2500 kW', extraField: 'Производительность', extraFieldVal: '4.63 т/ч', extraFieldValEn: '4.63 t/h' },
+      { model: 'GW 5-2500-0.5', capacity: '5.00 тонн', capacityEn: '5.00 tons', power: '2500 кВт', powerEn: '2500 kW', extraField: 'Производительность', extraFieldVal: '4.48 т/ч', extraFieldValEn: '4.48 t/h' }
+    ]
+  },
+  {
+    id: 'furnace-induction-non-ferrous',
+    category: 'furnaces',
+    subcategory: 'induction',
+    subcategoryRu: 'Индукционные печи',
+    subcategoryEn: 'Induction Furnaces',
+    subsubcategory: 'non-ferrous',
+    subsubcategoryRu: 'Для цветных металлов',
+    subsubcategoryEn: 'For non-ferrous metals',
+    title: 'Индукционные плавильные печи для цветных металлов (серии GWT и GWL)',
+    titleEn: 'Coreless induction smelting furnaces for non-ferrous metals (GWT & GWL)',
+    model: 'GWT 0.3-160-1',
+    description: 'Индукционные тигельные плавильные тиристорные печи серии GWT (для меди, бронзы, латуни, никеля) и серии GWL (для алюминия, цинка, магния, силумина). Окончательные характеристики индуктора и теплового экрана подобраны специально для цветных сплавов: медь плавится при температуре до 1200 °С, алюминий — при низкой температуре 700 °С с регулируемым циклическим индукционным перемешиванием. Это препятствует выделению водорода, удаляет окислы из поддонной зоны ванны, выжигает вредные включения и выдает идеально однородную структуру сплава высокой прочности без пористости.',
+    descriptionEn: 'Specialized high-frequency crucible induction smelting complexes comprising series GWT (engineered for copper, bronzes, brasses, and nickel with melt temp to 1200°C) and series GWL (made for aluminum alloys, silumins, zinc, and magnesium with melt temp up to 700°C). Inductor coil pitches and inverter properties are tailored to optimize electro-dynamic bath scrubbing. This drives fast micro-degassification, gathers oxide films, avoids hot spots, and outputs pore-free homogeneous foundry castings.',
+    imageUrl: inductionFurnaceImg,
+    capacity: '0.30 тонн меди',
+    capacityEn: '0.30 tons of copper',
+    power: '160 кВт',
+    powerEn: '160 kW',
+    features: [
+      'Повышенный выход годного за счет регулирования электродинамического перемешивания',
+      'Высокая частота ТПЧ гарантирует быстрый нагрев цветных сплавов без перегрузок',
+      'Минимальный угар дорогостоящих легирующих добавок (цинк, олово, кремний, никель)',
+      'Специальная термоизоляционная крышка тигля высокой теплопроводности',
+      'Попеременный нагрев в двух плавильных постах от одиночного инвертора питания',
+      'Датчик контроля точной температуры ванны и режим автоматического поддержания расплава'
+    ],
+    featuresEn: [
+      'Controlled electromagnetic bath stirring eliminating alloy separation and gas inclusions',
+      'Specifically customized frequencies perfectly matching aluminum/copper material resistivities',
+      'Drastically reduced oxidation loss of expensive alloying additives like tin, zinc and nickel',
+      'Graphite or silicon insulated crucible lid caps for sustained high thermal barriers',
+      'Shared generator setup allowing alternative operations on twin crucible installations',
+      'Direct pyrometer monitoring system and automated thermal stabilization programs'
+    ],
+    specs: [
+      { name: 'Емкость тигля по меди (серия GWT)', value: '300 кг', nameEn: 'Crucible capacity (copper, GWT)', valueEn: '300 kg' },
+      { name: 'Номинальная мощность нагревателя ТПЧ', value: '160 кВт', nameEn: 'Thyristor generator output power', valueEn: '160 kW' },
+      { name: 'Диапазон частот индукционного нагрева', value: '1.0 кГц', nameEn: 'Operating coil current frequency', valueEn: '1.0 kHz' },
+      { name: 'Напряжение силовой части комплекса', value: '3 фазы, 380В, 50 Гц', nameEn: 'Power cabinet connection volts', valueEn: '3 phases, 380V, 50 Hz' },
+      { name: 'Рабочая производительность плавки меди', value: '0.30 тонн/час', nameEn: 'Copper melting throughput GWT', valueEn: '0.30 tons/hour' },
+      { name: 'Удельный расход электроэнергии меди', value: '540 кВт·ч/тонну', nameEn: 'Specific electricity usage (copper)', valueEn: '540 kWh/ton' }
+    ],
+    variantModels: [
+      { model: 'GWT 0.18-100-1', capacity: '0.18 тонн меди', capacityEn: '0.18 tons copper', power: '100 кВт', powerEn: '100 kW', extraField: 'Плавка меди', extraFieldVal: '0.17 тонн/час', extraFieldValEn: '0.17 t/h' },
+      { model: 'GWT 0.3-160-1', capacity: '0.30 тонн меди', capacityEn: '0.30 tons copper', power: '160 кВт', powerEn: '160 kW', extraField: 'Плавка меди', extraFieldVal: '0.30 тонн/час', extraFieldValEn: '0.30 t/h' },
+      { model: 'GWT 1.8-500-0.5', capacity: '1.80 тонн меди', capacityEn: '1.80 tons copper', power: '500 кВт', powerEn: '500 kW', extraField: 'Плавка меди', extraFieldVal: '1.08 тонн/час', extraFieldValEn: '1.08 t/h' },
+      { model: 'GWT 2.4-600-0.5', capacity: '2.40 тонн меди', capacityEn: '2.40 tons copper', power: '600 кВт', powerEn: '600 kW', extraField: 'Плавка меди', extraFieldVal: '1.33 тонн/час', extraFieldValEn: '1.33 t/h' },
+      { model: 'GWL 0.05-50-1', capacity: '0.05 тонн алюм.', capacityEn: '0.05 tons alum.', power: '50 кВт', powerEn: '50 kW', extraField: 'Плавка алюминия', extraFieldVal: '0.07 тонн/час', extraFieldValEn: '0.07 t/h' },
+      { model: 'GWL 0.15-100-1', capacity: '0.15 тонн алюм.', capacityEn: '0.15 tons alum.', power: '100 кВт', powerEn: '100 kW', extraField: 'Плавка алюминия', extraFieldVal: '0.15 тонн/час', extraFieldValEn: '0.15 t/h' },
+      { model: 'GWL 0.50-250-1', capacity: '0.50 тонн алюм.', capacityEn: '0.50 tons alum.', power: '250 кВт', powerEn: '250 kW', extraField: 'Плавка алюминия', extraFieldVal: '0.40 тонн/час', extraFieldValEn: '0.40 t/h' },
+      { model: 'GWL 1-350-1', capacity: '1.00 тонна алюм.', capacityEn: '1.00 ton alum.', power: '350 кВт', powerEn: '350 kW', extraField: 'Плавка алюминия', extraFieldVal: '0.58 тонн/час', extraFieldValEn: '0.58 t/h' }
     ]
   },
   {
@@ -1237,6 +1375,59 @@ export const PRODUCTS: Product[] = [
     variantModels: [
       { model: 'ФА-860', capacity: 'Плита 800х600 мм', capacityEn: 'Plate 800x600 mm', power: '7.5 кВт', powerEn: '7.5 kW', extraField: 'Давление гидр.', extraFieldVal: '12 МПа', extraFieldValEn: '12 MPa' },
       { model: 'ФА-1080', capacity: 'Плита 1000х800 мм', capacityEn: 'Plate 1000x800 mm', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Давление гидр.', extraFieldVal: '15 МПа', extraFieldValEn: '15 MPa' }
+    ]
+  },
+  {
+    id: 'lgm-liquidation-complex',
+    category: 'lgm-equipment',
+    subcategory: 'liquidation',
+    subcategoryRu: 'Ликвидация комплекса ЛГМ',
+    subcategoryEn: 'LGM Complex Liquidation',
+    subsubcategory: 'liquidation-complex',
+    subsubcategoryRu: 'Полный комплекс ЛГМ',
+    subsubcategoryEn: 'Full LGM Complex',
+    title: 'Ликвидация полного литейного комплекса ЛГМ по сниженной цене',
+    titleEn: 'Liquidation of entire Lost Foam (LGM) casting complex at a reduced price',
+    model: 'Комплекс ЛГМ-300',
+    description: 'Уникальное предложение по комплектной ликвидации литейного цеха ЛГМ (литьё по газифицируемым моделям). Комплекс включает в себя оборудование «Черного цеха» (формовка, вакуумная система, 3D вибростолы, контейнеры, кантователи, транспортные эстакады, выбивные узлы, системы регенерации и пескооборота с охлаждением) и «Белого цеха» (изготовление пенополистирольных моделей, предвспениватели, автоклавы спекания, склеечные станки). Прекрасный шанс запустить современное литейное производство со скидкой более 50% от стоимости нового аналогичного оборудования.',
+    descriptionEn: 'An exceptional, fully-integrated, complete liquidation offer for an active Lost Foam (LGM) casting workshop. The package covers the complete sequence of advanced molding, vacuum systems, 3D compaction tables, flask transporters, heavy flask hydraulic turnover device, vibrating sand shakeout grid L251, spent sand fluid-bed coolers, and pneumatic sand loop conveyance ("Black Shop"), alongside EPS batch pre-expanders, pattern sintering presses, and steam boilers ("White Shop"). Offered at more than 50% discount compared to brand new machinery.',
+    imageUrl: sandMixerXTC,
+    capacity: 'Линия до 1000 т/год',
+    capacityEn: 'Up to 1000 t/year',
+    power: 'Регулируемая по участкам',
+    powerEn: 'Area regulated',
+    features: [
+      'Вибростол с регулируемой 3D частотой вибрации и пневматическими захватами опок (грузоподъемность 3 тонны)',
+      'Узел гидравлического переворачивания (кантователь) опок с углом 126 градусов',
+      'Выбивная решетка L122/L251 массой загрузки до 1 тонны для мягкого удаления песка',
+      'Охладитель кипящего слоя песка производительностью 10 т/ч со шкафом управления',
+      'Камерный пневмонасос объемом 200 литров для передачи оборотного песка',
+      'Уникальный шанс укомплектовать предприятие оригинальным б/у оборудованием за половину цены'
+    ],
+    featuresEn: [
+      'Pneumoid 3D compaction table with instant active clamps (3 ton maximum layout capacity)',
+      'High-capacity hydraulic flask turnover tilter yielding 126-degree rotational flips',
+      'Gentle sand shakeout vibrating grid panel L122 / L251 protecting thin finished castings',
+      'Spent sand fluidized-bed cooler unit with twin fans moving up to 10 tons of sand per hour',
+      'High-pressure dense-phase pneumatic conveyor pump with 200-liter chamber volume',
+      'A true golden opportunity to build high-capacity Lost Foam casting facilities at fraction of new cost'
+    ],
+    specs: [
+      { name: 'Грузоподъемность вибростола с пневмозахватом', value: '3.0 тонны', nameEn: 'Compaction table load capacity', valueEn: '3.0 tons' },
+      { name: 'Габариты плиты стола формовки', value: '1700 х 1000 х 750 мм', nameEn: 'Compaction table platter sizing', valueEn: '1700 x 1000 x 750 mm' },
+      { name: 'Угол кантования гидропереворачивателя', value: '126 градусов', nameEn: 'Flask turner maximum tilt angle', valueEn: '126 degrees' },
+      { name: 'Установленная мощность кантователя', value: '15 кВт', nameEn: 'Flask turner motor horsepower', valueEn: '15 kW' },
+      { name: 'Длина и ширина полотна выбивной решетки', value: '4000 х 900 мм', nameEn: 'Shakeout panel grid dimensions', valueEn: '4000 x 900 mm' },
+      { name: 'Производительность охлаждения сухого песка', value: '10 тонн/час', nameEn: 'Sand cooler throughput capacity', valueEn: '10 tons/hour' },
+      { name: 'Объем пневмокамерного насоса подачи песка', value: '200 литров', nameEn: 'Pneumatic vessel transport volume', valueEn: '200 liters' }
+    ],
+    variantModels: [
+      { model: 'Вибростол ЛГМ', capacity: 'Грузоподъемность 3.0 т', capacityEn: 'Capacity 3.0 tons', power: 'Мощность захвата', powerEn: 'Clamping power', extraField: 'Количество в комплексе', extraFieldVal: '1 шт.', extraFieldValEn: '1 unit' },
+      { model: 'Гидрокантователь', capacity: 'Поворот на 126°', capacityEn: 'Tilt 126°', power: 'Гидростанция 15 кВт', powerEn: 'Hydraulic 15 kW', extraField: 'Количество в комплексе', extraFieldVal: '1 шт.', extraFieldValEn: '1 unit' },
+      { model: 'Выбивная решетка L251', capacity: 'Грузоподъемность 1.0 т', capacityEn: 'Capacity 1.0 ton', power: 'Длина 4000 мм', powerEn: 'Length 4000 mm', extraField: 'Количество в комплексе', extraFieldVal: '1 шт.', extraFieldValEn: '1 unit' },
+      { model: 'Виброгрохот L122', capacity: 'Полотно 1500х1500 мм', capacityEn: 'Size 1500x1500 mm', power: 'Мощность 13.2 кВт', powerEn: 'Power 13.2 kW', extraField: 'Количество в комплексе', extraFieldVal: '1 шт.', extraFieldValEn: '1 unit' },
+      { model: 'Охладитель песка (кипящий слой)', capacity: 'Производительность 10 т/ч', capacityEn: 'Throughput 10 t/h', power: 'Воздуходувка 22 кВт', powerEn: 'Blower 22 kW', extraField: 'Количество в комплексе', extraFieldVal: '1 шт.', extraFieldValEn: '1 unit' },
+      { model: 'Пневмокамерный насос Р200', capacity: 'Вместимость 200 л', capacityEn: 'Volume 200 L', power: 'Производительность 10 т/ч', powerEn: 'Throughput 10 t/h', extraField: 'Количество в комплексе', extraFieldVal: '1 шт.', extraFieldValEn: '1 unit' }
     ]
   },
   // SECTION 9: LVM INVESTMENT CASTING (ОБОРУДОВАНИЕ ЛВМ)
