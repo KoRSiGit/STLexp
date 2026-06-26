@@ -32,6 +32,377 @@ import sandMixerXTC from '../assets/images/sand_mixer_xtc_1781504511099.jpg';
 import inductionFurnaceImg from '../assets/images/induction_furnace_1781504526346.jpg';
 import shotBlasterImg from '../assets/images/shot_blaster_1781504543211.jpg';
 
+interface MaterialItem {
+  id: string;
+  titleRu: string;
+  titleEn: string;
+  model: string;
+  descRu: string;
+  descEn: string;
+  packRu: string;
+  packEn: string;
+}
+
+const RELATED_EQUIPMENT_MAP: Record<string, string[]> = {
+  'furnace-induction-aluminum-reducer': ['cooling-tower-wt100', 'ladle-kl-teapot', 'green-sand-mixer-st1500'],
+  'furnace-induction-steel-reducer': ['cooling-tower-wt100', 'ladle-kl-teapot', 'xtc-mixer-single-arm'],
+  'furnace-induction-steel-hydraulic': ['cooling-tower-wt100', 'ladle-kb-drum', 'xtc-mixer-single-arm'],
+  'furnace-induction-non-ferrous': ['cooling-tower-wt100', 'ladle-kl-teapot', 'casting-gravity-k800'],
+  'ladle-kl-teapot': ['furnace-induction-steel-reducer', 'green-sand-line-afl6080', 'xtc-mixer-single-arm'],
+  'ladle-kb-drum': ['furnace-induction-steel-hydraulic', 'green-sand-line-afl6080', 'xtc-mixer-double-arm'],
+  'xtc-mixer-single-arm': ['xtc-reclamation-mechanical', 'xtc-vibro-tables', 'furnace-induction-steel-reducer'],
+  'xtc-mixer-double-arm': ['xtc-reclamation-mechanical', 'xtc-vibro-tables', 'furnace-induction-steel-hydraulic'],
+  'xtc-reclamation-mechanical': ['xtc-mixer-single-arm', 'xtc-reclamation-thermal', 'cooling-tower-wt100'],
+  'xtc-reclamation-thermal': ['xtc-reclamation-mechanical', 'xtc-mixer-double-arm', 'cooling-tower-wt100'],
+  'xtc-vibro-tables': ['xtc-mixer-single-arm', 'xtc-reclamation-mechanical', 'obrubka-wedge'],
+  'green-sand-mixer-st1500': ['green-sand-cooler-os60', 'green-sand-vibro-screen', 'green-sand-line-afl6080'],
+  'green-sand-cooler-os60': ['green-sand-mixer-st1500', 'green-sand-vibro-screen', 'green-sand-line-afl6080'],
+  'green-sand-line-afl6080': ['green-sand-mixer-st1500', 'green-sand-cooler-os60', 'ladle-kl-teapot'],
+  'green-sand-machine-fm20': ['green-sand-mixer-st1500', 'green-sand-vibro-screen', 'ladle-kl-teapot'],
+  'green-sand-vibro-screen': ['green-sand-mixer-st1500', 'green-sand-cooler-os60', 'green-sand-line-afl6080'],
+  'core-shooter-sa400': ['core-scrubber', 'green-sand-mixer-st1500', 'xtc-mixer-single-arm'],
+  'core-shooter-hot-box': ['core-scrubber', 'green-sand-mixer-st1500', 'xtc-mixer-single-arm'],
+  'core-scrubber': ['core-shooter-sa400', 'core-shooter-hot-box', 'green-sand-mixer-st1500'],
+  'shot-blast-q32-rubber': ['obrubka-wedge', 'thermal-furnace-chamber', 'shot-blast-q37-hanger'],
+  'shot-blast-q31-drum': ['obrubka-wedge', 'thermal-furnace-chamber', 'shot-blast-q32-rubber'],
+  'shot-blast-q37-hanger': ['obrubka-wedge', 'thermal-furnace-chamber', 'obrubka-core-shakeout'],
+  'shot-blast-q35-table': ['obrubka-wedge', 'thermal-furnace-chamber', 'obrubka-core-shakeout'],
+  'shot-blast-q69-profile': ['obrubka-wedge', 'thermal-furnace-chamber', 'shot-blast-q37-hanger'],
+  'casting-gravity-k800': ['furnace-induction-non-ferrous', 'cooling-tower-wt100', 'obrubka-wedge'],
+  'casting-centrifugal-cl400': ['furnace-induction-non-ferrous', 'cooling-tower-wt100', 'obrubka-wedge'],
+  'casting-gravity-kmv': ['furnace-induction-non-ferrous', 'cooling-tower-wt100', 'obrubka-wedge'],
+  'cooling-tower-wt100': ['furnace-induction-steel-reducer', 'furnace-induction-steel-hydraulic', 'xtc-reclamation-mechanical'],
+  'lgm-predvspenivatel': ['lgm-modelavtomat', 'lgm-liquidation-complex', 'furnace-induction-non-ferrous'],
+  'lgm-modelavtomat': ['lgm-predvspenivatel', 'lgm-liquidation-complex', 'shot-blast-q37-hanger'],
+  'lgm-liquidation-complex': ['lgm-predvspenivatel', 'lgm-modelavtomat', 'shot-blast-q37-hanger'],
+  'lvm-boilerclave': ['lvm-suspension-mixer', 'lvm-fluidized-bed', 'lvm-robot-manipulator'],
+  'lvm-robot-manipulator': ['lvm-boilerclave', 'lvm-suspension-mixer', 'lvm-fluidized-bed'],
+  'lvm-fluidized-bed': ['lvm-boilerclave', 'lvm-suspension-mixer', 'lvm-robot-manipulator'],
+  'lvm-suspension-mixer': ['lvm-boilerclave', 'lvm-fluidized-bed', 'lvm-robot-manipulator'],
+  'thermal-furnace-slide': ['obrubka-wedge', 'shot-blast-q37-hanger', 'furnace-induction-steel-hydraulic'],
+  'thermal-furnace-chamber': ['obrubka-wedge', 'shot-blast-q37-hanger', 'furnace-induction-steel-reducer'],
+  'obrubka-wedge': ['shot-blast-q37-hanger', 'thermal-furnace-chamber', 'obrubka-core-shakeout'],
+  'obrubka-core-shakeout': ['obrubka-wedge', 'shot-blast-q37-hanger', 'thermal-furnace-chamber'],
+};
+
+const RELATED_CATEGORY_FALLBACK_MAP: Record<string, string[]> = {
+  'sand-mixers-xtc': ['xtc-reclamation-mechanical', 'xtc-vibro-tables', 'furnace-induction-steel-reducer'],
+  'furnaces': ['cooling-tower-wt100', 'ladle-kl-teapot', 'xtc-mixer-single-arm'],
+  'green-sand': ['green-sand-mixer-st1500', 'green-sand-cooler-os60', 'green-sand-line-afl6080'],
+  'core-making': ['core-scrubber', 'green-sand-mixer-st1500', 'xtc-mixer-single-arm'],
+  'shot-blast': ['obrubka-wedge', 'thermal-furnace-chamber', 'shot-blast-q37-hanger'],
+  'casting-machines': ['furnace-induction-non-ferrous', 'cooling-tower-wt100', 'obrubka-wedge'],
+  'cooling-systems': ['furnace-induction-steel-reducer', 'furnace-induction-steel-hydraulic', 'xtc-reclamation-mechanical'],
+  'lgm-equipment': ['lgm-modelavtomat', 'lgm-predvspenivatel', 'shot-blast-q37-hanger'],
+  'lvm-equipment': ['lvm-boilerclave', 'lvm-suspension-mixer', 'lvm-fluidized-bed'],
+  'thermal-furnaces': ['obrubka-wedge', 'shot-blast-q37-hanger', 'furnace-induction-steel-reducer'],
+  'obrubka-stanki': ['shot-blast-q37-hanger', 'thermal-furnace-chamber', 'obrubka-wedge'],
+};
+
+const MATERIALS_MAP: Record<string, MaterialItem[]> = {
+  'furnaces': [
+    {
+      id: 'quartzite',
+      titleRu: 'Кварцит футеровочный кислый',
+      titleEn: 'Acidic lining quartzite',
+      model: 'Q-98',
+      descRu: 'Высокочистый кристаллический кварцит для футеровки тиглей плавки чугуна и стали в индукционных печах.',
+      descEn: 'High-purity crystalline quartzite for lining induction furnace crucibles during iron and steel melting.',
+      packRu: 'МКР по 1000 кг',
+      packEn: '1000 kg big bags'
+    },
+    {
+      id: 'recarburizer',
+      titleRu: 'Науглероживатель (синтетический графит)',
+      titleEn: 'Recarburizer (synthetic graphite)',
+      model: 'УП-99',
+      descRu: 'Используется для корректировки содержания углерода в расплаве. Низкое содержание серы и азота.',
+      descEn: 'Used to adjust carbon content in the melt. Features ultra-low sulfur and nitrogen content.',
+      packRu: 'Бумажные мешки по 25 кг',
+      packEn: '25 kg paper bags'
+    },
+    {
+      id: 'modificator',
+      titleRu: 'Модификатор ФС65Ба4 (ФСП-Барий)',
+      titleEn: 'FS65Ba4 inoculant (FeSiBa)',
+      model: 'ФС65Ба4',
+      descRu: 'Для графитизирующего модифицирования серого и высокопрочного чугуна перед заливкой.',
+      descEn: 'For inoculating treatment of gray and ductile iron to prevent chill and improve graphite structure.',
+      packRu: 'Мешки по 25 кг',
+      packEn: '25 kg bags'
+    }
+  ],
+  'shot-blast': [
+    {
+      id: 'steel-shot-cast',
+      titleRu: 'Дробь стальная литая улучшенная',
+      titleEn: 'Steel shot cast improved',
+      model: 'ДСЛ (0.8 - 1.2 мм)',
+      descRu: 'Для высокоэффективной очистки отливок от пригара, окалины и ржавчины в дробеметных камерах.',
+      descEn: 'For highly efficient removal of burn-on sand, oxide scale, and rust in shot blasting chambers.',
+      packRu: 'ПЭ мешки по 25 кг на паллете',
+      packEn: '25 kg bags on pallets'
+    },
+    {
+      id: 'steel-shot-grit',
+      titleRu: 'Дробь стальная колотая',
+      titleEn: 'Steel grit angular',
+      model: 'ДСК (1.0 - 1.6 мм)',
+      descRu: 'Обеспечивает высокую шероховатость поверхности для подготовки под покраску и металлизацию.',
+      descEn: 'Provides optimal surface roughness for post-treatment painting, coating, and metallization.',
+      packRu: 'ПЭ мешки по 25 кг',
+      packEn: '25 kg bags'
+    },
+    {
+      id: 'blade-high-mn',
+      titleRu: 'Комплект лопаток дробеметного колеса',
+      titleEn: 'Shot blast wheel blade kit',
+      model: 'КЛ-Q37',
+      descRu: 'Запасные быстроизнашиваемые лопатки из высокохромистого чугуна Cr20-Cr26 для высокой стойкости.',
+      descEn: 'Replacement wear-resistant blades made of high-chromium cast iron Cr20-Cr26 for extreme lifecycle.',
+      packRu: 'Комплект 8 шт.',
+      packEn: 'Set of 8 pcs'
+    }
+  ],
+  'sand-mixers-xtc': [
+    {
+      id: 'furan-resin',
+      titleRu: 'Смола фурановая связующая для ХТС',
+      titleEn: 'Furan resin binder for no-bake process',
+      model: 'FuraBind-120',
+      descRu: 'Высококачественное органическое связующее для приготовления ХТС смесей. Обладает малой токсичностью.',
+      descEn: 'Premium organic binder for preparing no-bake resin-sand mixes. Features low gas emission and smell.',
+      packRu: 'Бочки 220 кг / IBC куб 1000 кг',
+      packEn: '220 kg drums / 1000 kg IBC'
+    },
+    {
+      id: 'acid-catalyst',
+      titleRu: 'Катализатор кислотный (отвердитель)',
+      titleEn: 'Acid catalyst (hardener)',
+      model: 'Cat-Active-P',
+      descRu: 'Раствор сульфокислот разной концентрации для регулирования времени затвердевания смеси.',
+      descEn: 'Sulfonic acid solution of varied activity to adjust and control resin-sand mixture cure time.',
+      packRu: 'Канистры 30 кг / IBC куб 1100 кг',
+      packEn: '30 kg canisters / 1100 kg IBC'
+    },
+    {
+      id: 'refractory-coating',
+      titleRu: 'Противопригарная циркониевая краска',
+      titleEn: 'Refractory zirconium alcohol-based coating',
+      model: 'ZircoPaint-S',
+      descRu: 'Спиртовая циркониевая краска для защиты песчаных форм и стержней от теплового воздействия металла.',
+      descEn: 'Alcohol-based high-purity zirconium wash to safeguard moulds and cores against thermal shock.',
+      packRu: 'Ведра металлические по 40 кг',
+      packEn: '40 kg metallic buckets'
+    }
+  ],
+  'green-sand': [
+    {
+      id: 'bentonite',
+      titleRu: 'Бентонит порошкообразный формовочный',
+      titleEn: 'Powdered molding bentonite',
+      model: 'Б-ПБ',
+      descRu: 'Связующая глина высокой термостойкости для приготовления песчано-глинистых формовочных смесей ПГС.',
+      descEn: 'High thermal durability binding clay for preparing classic green sand molding mixtures.',
+      packRu: 'МКР по 1000 кг',
+      packEn: '1000 kg big bags'
+    },
+    {
+      id: 'coal-dust',
+      titleRu: 'Уголь каменный пылевидный формовочный',
+      titleEn: 'Powdered coal dust additive',
+      model: 'УК-Ф',
+      descRu: 'Противопригарная добавка в ПГС смесь для получения гладкой поверхности чугунных отливок.',
+      descEn: 'Anti-burnout carbonaceous additive to green sand to ensure smooth surfaces on cast iron parts.',
+      packRu: 'Мешки по 40 кг / МКР 800 кг',
+      packEn: '40 kg bags / 800 kg big bags'
+    },
+    {
+      id: 'release-agent',
+      titleRu: 'Смазка разделительная модельная ПГС',
+      titleEn: 'Molding model release agent',
+      model: 'Mould-Release-GS',
+      descRu: 'Препятствует прилипанию сырой песчано-глинистой смеси к металлическим и деревянным моделям.',
+      descEn: 'Prevents damp green sand mixture from adhering to metal and wood patterns/flasks.',
+      packRu: 'Канистры по 20 литров',
+      packEn: '20L canisters'
+    }
+  ],
+  'core-making': [
+    {
+      id: 'coldbox-resin-a',
+      titleRu: 'Смола Cold-Box-Amine Часть 1',
+      titleEn: 'Cold-Box-Amine Resin Part 1',
+      model: 'CB-PartA',
+      descRu: 'Фенолоформальдегидная основа двухкомпонентной системы связующего для стержневых автоматов.',
+      descEn: 'Phenol-formaldehyde component of the two-part binder system for high-speed core shooters.',
+      packRu: 'Бочки 220 кг / IBC куб 1000 кг',
+      packEn: '220 kg drums / 1000 kg IBC'
+    },
+    {
+      id: 'coldbox-resin-b',
+      titleRu: 'Смола Cold-Box-Amine Часть 2',
+      titleEn: 'Cold-Box-Amine Resin Part 2',
+      model: 'CB-PartB',
+      descRu: 'Полиизоцианатный компонент двухкомпонентного связующего холодного отверждения.',
+      descEn: 'Polyisocyanate component of the dual cold-setting resin core binder system.',
+      packRu: 'Бочки 220 кг / IBC куб 1000 кг',
+      packEn: '220 kg drums / 1000 kg IBC'
+    },
+    {
+      id: 'core-vents',
+      titleRu: 'Венты латунные сетчатые для стержней',
+      titleEn: 'Brass mesh core box air vents',
+      model: 'ВЛ-08 (Ø8 мм)',
+      descRu: 'Сетчатые венты для отвода воздуха из стержневого ящика в процессе надува песка.',
+      descEn: 'Slotted or mesh type vents to evacuate excess air from core boxes during sand blowing.',
+      packRu: 'Упаковки по 100 шт.',
+      packEn: 'Packages of 100 pcs'
+    }
+  ],
+  'lgm-equipment': [
+    {
+      id: 'eps-raw-material',
+      titleRu: 'Полистирол вспенивающийся суспензионный',
+      titleEn: 'Expandable Polystyrene (EPS) beads',
+      model: 'EPS-F-0.5',
+      descRu: 'Специальное сырье с узким фракционным составом (0.4-0.6 мм) для производства качественных пеномоделей.',
+      descEn: 'Special graded raw material with narrow beads size (0.4-0.6 mm) for thin-wall high density lost foam patterns.',
+      packRu: 'Мешки по 25 кг с влагозащитой',
+      packEn: '25 kg airtight bags'
+    },
+    {
+      id: 'lgm-coating',
+      titleRu: 'Покрытие противопригарное для ЛГМ моделей',
+      titleEn: 'Lost foam pattern special water coating',
+      model: 'LGM-Paint-W',
+      descRu: 'Сухая смесь или паста на водной основе с высокой газопроницаемостью для окраски моделей.',
+      descEn: 'High-permeability water-based refractory slurry to coat assembled Lost Foam polystyrene block patterns.',
+      packRu: 'Мешки по 25 кг / Ведра 40 кг',
+      packEn: '25 kg paper bags / 40 kg buckets'
+    },
+    {
+      id: 'block-glue',
+      titleRu: 'Клей для сборки и склеивания моделей',
+      titleEn: 'Polystyrene blocks hot-melt glue',
+      model: 'GlueStick-LGM',
+      descRu: 'Низкозольный термоплавкий клей в стержнях, не оставляющий кокса и дефектов при выжигании модели.',
+      descEn: 'Low-ash hot melt sticks leaving zero carbon residues or defects during casting vaporisation.',
+      packRu: 'Коробка 10 кг',
+      packEn: '10 kg box'
+    }
+  ],
+  'lvm-equipment': [
+    {
+      id: 'model-wax',
+      titleRu: 'Модельный состав для ЛВМ (воск)',
+      titleEn: 'Investment casting model pattern wax',
+      model: 'МВ-Р-3',
+      descRu: 'Высокоточный восковый модельный состав с минимальной усадкой и чистой поверхностью выплавления.',
+      descEn: 'High dimensional precision pattern wax compound featuring low shrink rate and ultra-clean burnout.',
+      packRu: 'Чешуйки в мешках по 20 кг',
+      packEn: 'Flakes in 20 kg bags'
+    },
+    {
+      id: 'refractory-flour',
+      titleRu: 'Огнеупорная мука (дистен-силлиманит)',
+      titleEn: 'Disthene-Sillimanite refractory flour',
+      model: 'КДСП',
+      descRu: 'Огнеупорная составляющая для приготовления суспензии первого и последующих слоев керамической оболочки.',
+      descEn: 'Refractory dusting flour for preparing investment casting ceramic shell slurry coats.',
+      packRu: 'МКР по 1000 кг',
+      packEn: '1000 kg big bags'
+    },
+    {
+      id: 'colloidal-silica',
+      titleRu: 'Золь кремниевой кислоты (связующее)',
+      titleEn: 'Colloidal silica binder (Silbond)',
+      model: 'Col-Sil-30',
+      descRu: 'Стабильный водный раствор нанокремнезема для формирования прочной керамической корки.',
+      descEn: 'Stable nano-silicon aqueous binder used to form highly structural investment casting shells.',
+      packRu: 'IBC пластиковый куб 1100 кг',
+      packEn: '1100 kg plastic IBC'
+    }
+  ],
+  'thermal-furnaces': [
+    {
+      id: 'fiber-insulation',
+      titleRu: 'Огнеупорное муллитокремнеземистое волокно',
+      titleEn: 'Mullite-silica refractory wool roll',
+      model: 'МКРР-130',
+      descRu: 'Теплоизоляционный рулонный материал для футеровки стен и сводов термических печей до 1250 °C.',
+      descEn: 'High temperature insulation wool blanket to line furnace walls up to 1250 °C.',
+      packRu: 'Рулоны по 15 кг в коробке',
+      packEn: '15 kg rolls inside cardboard box'
+    },
+    {
+      id: 'heating-elements',
+      titleRu: 'Спиральные нагреватели из супер-фехраля',
+      titleEn: 'Super-fechral helical heater elements',
+      model: 'Х23Ю5Т (Ø 4-6 мм)',
+      descRu: 'Высокотемпературный нагревательный провод в спиралях для электрических печей сопротивления.',
+      descEn: 'Alloy resistance heating coils wound from premium fechral wires for electric chamber furnaces.',
+      packRu: 'По ТЗ согласно раскладке фаз печи',
+      packEn: 'Tailored phase matching wire kits'
+    }
+  ],
+  'obrubka-stanki': [
+    {
+      id: 'hydraulic-oil',
+      titleRu: 'Масло гидравлическое всесезонное',
+      titleEn: 'All-season premium hydraulic oil',
+      model: 'HVLP-46',
+      descRu: 'Высокоиндексное гидравлическое масло для стабильной работы обрубных клиньев при давлении до 70 МПа.',
+      descEn: 'High-viscosity index mineral fluid for reliable fettling wedge operation at pressures up to 70 MPa.',
+      packRu: 'Бочка металл 205 литров',
+      packEn: '205L steel drum'
+    },
+    {
+      id: 'wedge-blade',
+      titleRu: 'Сменные разжимные щеки для клина',
+      titleEn: 'Spare expandable splitting insert cheeks',
+      model: 'ЩК-25',
+      descRu: 'Запасные твердосплавные щеки из высокоуглеродистой стали для гидроклина ГК-25.',
+      descEn: 'Highly tempered spare wedge splitting cheeks matching standard GK-25 fettling units.',
+      packRu: 'Комплект из 2 шт.',
+      packEn: 'Set of 2 pcs'
+    }
+  ]
+};
+
+const GENERAL_MATERIALS: MaterialItem[] = [
+  {
+    id: 'casting-gloves',
+    titleRu: 'Краги литейщика кожаные термостойкие',
+    titleEn: 'Heavy duty leather heat resistant casting gloves',
+    model: 'Краги-Литейщик-350',
+    descRu: 'Удлиненные спилковые перчатки с подкладкой из кевлара для защиты рук от брызг металла и искр до 500 °C.',
+    descEn: 'Extended leather split-cowhide gloves with Kevlar inner weave to protect against metal spatters up to 500 °C.',
+    packRu: 'Пара перчаток',
+    packEn: '1 pair pack'
+  },
+  {
+    id: 'high-temp-suit',
+    titleRu: 'Костюм литейщика металлизированный суконный',
+    titleEn: 'Aluminised heat reflective foundry protection suit',
+    model: 'Костюм-AL-1000',
+    descRu: 'Профессиональный защитный костюм с металлизированным алюминизированным слоем для работы вблизи плавильных печей.',
+    descEn: 'Aluminised glass-fibre coat and pants reflecting up to 95% of radiant hot melt wave heats.',
+    packRu: 'Комплект (куртка, полукомбинезон)',
+    packEn: 'Set of jacket and trousers'
+  },
+  {
+    id: 'ceramic-filter',
+    titleRu: 'Фильтры пенокерамические литейные',
+    titleEn: 'Foundry foam ceramic molten metal filters',
+    model: 'ФПК-10 (10 ppi)',
+    descRu: 'Пенокерамические фильтры для тонкой фильтрации чугуна, стали и цветных металлов от неметаллических включений.',
+    descEn: 'Foam ceramic high temp structures to filter out non-metallic sand and slag impurities from liquid alloys.',
+    packRu: 'Коробка 50 шт.',
+    packEn: 'Cardboard box of 50 pcs'
+  }
+];
+
 interface ProductCatalogProps {
   onAddToRFQ: (product: Product) => void;
   selectedCategory?: string;
@@ -1567,6 +1938,205 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                             )}
                           </div>
 
+                        </div>
+                      </div>
+
+                      {/* SECTION 1.3: RELATED EQUIPMENT & MATERIALS */}
+                      <div className="mt-8 border-t border-gray-200 pt-8 space-y-6">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                          <div className="space-y-1">
+                            <h3 className="text-lg sm:text-xl font-black text-gray-950 tracking-tight font-sans uppercase flex items-center gap-2">
+                              <Layers className="h-5 w-5 text-[#e65410]" />
+                              <span>
+                                {lang === 'en' ? 'Related Equipment & Materials' : 'Связанное оборудование и материалы'}
+                              </span>
+                            </h3>
+                            <p className="text-xs text-gray-550 font-sans font-medium">
+                              {lang === 'en' 
+                                ? 'Recommended combinations and consumables for optimal foundry production' 
+                                : 'Рекомендуемые комплексы и сопутствующие материалы для организации эффективного литейного процесса'}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                          {/* Left Column: Related Equipment */}
+                          <div className="space-y-4">
+                            <h4 className="text-[10px] font-mono font-black uppercase tracking-widest text-gray-500 flex items-center gap-2 border-b border-gray-150 pb-2">
+                              <Cpu className="h-4 w-4 text-[#e65410]" />
+                              <span>{lang === 'en' ? 'RELATED MACHINERY & UNITS' : 'СВЯЗАННОЕ ТЕХНОЛОГИЧЕСКОЕ ОБОРУДОВАНИЕ'}</span>
+                            </h4>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              {(() => {
+                                let relatedIds = RELATED_EQUIPMENT_MAP[p.id] || RELATED_CATEGORY_FALLBACK_MAP[p.category] || [];
+                                let relatedProds = PRODUCTS.filter(prod => relatedIds.includes(prod.id));
+                                
+                                if (relatedProds.length === 0) {
+                                  relatedProds = PRODUCTS.filter(prod => prod.id !== p.id).slice(0, 2);
+                                }
+
+                                return relatedProds.map((relatedProd) => {
+                                  const relTitle = lang === 'en' && relatedProd.titleEn ? relatedProd.titleEn : relatedProd.title;
+                                  const isAddedRel = rfqItemsKeys.includes(relatedProd.id);
+
+                                  return (
+                                    <div 
+                                      key={relatedProd.id}
+                                      className="bg-white border border-gray-200 hover:border-[#e65410] transition duration-200 flex flex-col justify-between group p-3.5 relative shadow-xs"
+                                    >
+                                      <div className="space-y-2 cursor-pointer h-full" onClick={() => {
+                                        setSelectedProductId(relatedProd.id);
+                                        window.scrollTo({ top: 350, behavior: 'smooth' });
+                                      }}>
+                                        <div className="aspect-video w-full bg-slate-900 overflow-hidden relative">
+                                          <img 
+                                            src={relatedProd.imageUrl} 
+                                            alt={relTitle} 
+                                            className="w-full h-full object-cover filter brightness-90 group-hover:brightness-100 transition duration-300"
+                                          />
+                                          <div className="absolute top-1.5 left-1.5 bg-[#00333b]/90 border border-teal-850 text-white font-mono text-[8px] uppercase font-black tracking-wider px-1.5 py-0.5">
+                                            {relatedProd.model}
+                                          </div>
+                                        </div>
+                                        
+                                        <div className="space-y-1">
+                                          <span className="text-[7.5px] font-mono font-black text-gray-400 uppercase tracking-widest block">
+                                            {relatedProd.category === 'sand-mixers-xtc' && (lang === 'en' ? 'No-Bake System' : 'Смесеприготовление ХТС')}
+                                            {relatedProd.category === 'furnaces' && (lang === 'en' ? 'Melting Complex' : 'Плавильный участок')}
+                                            {relatedProd.category === 'green-sand' && (lang === 'en' ? 'Green Sand' : 'Формовка ПГС')}
+                                            {relatedProd.category === 'core-making' && (lang === 'en' ? 'Core Shooters' : 'Стержневое оборуд.')}
+                                            {relatedProd.category === 'shot-blast' && (lang === 'en' ? 'Shot Blasting' : 'Дробеметная очистка')}
+                                            {relatedProd.category === 'casting-machines' && (lang === 'en' ? 'Casting / Molding' : 'Литейные машины')}
+                                            {relatedProd.category === 'cooling-systems' && (lang === 'en' ? 'Cooling' : 'Градирни / Системы охлажд.')}
+                                            {relatedProd.category === 'lgm-equipment' && (lang === 'en' ? 'LGM/Lost Foam' : 'Оборудование ЛГМ')}
+                                            {relatedProd.category === 'lvm-equipment' && (lang === 'en' ? 'LVM/Investment' : 'Оборудование ЛВМ')}
+                                            {relatedProd.category === 'thermal-furnaces' && (lang === 'en' ? 'Heat Treatment' : 'Термообработка')}
+                                            {relatedProd.category === 'obrubka-stanki' && (lang === 'en' ? 'Fettling tools' : 'Обрубной клин/прессы')}
+                                          </span>
+                                          <h5 className="font-sans font-black text-[10px] sm:text-[11px] leading-tight text-gray-900 group-hover:text-[#e65410] transition uppercase tracking-tight">
+                                            {relTitle}
+                                          </h5>
+                                        </div>
+                                      </div>
+
+                                      <div className="mt-3 pt-2 border-t border-gray-100">
+                                        <button
+                                          onClick={() => {
+                                            onAddToRFQ(relatedProd);
+                                            window.dispatchEvent(new CustomEvent('rfq-items-updated'));
+                                          }}
+                                          className={`w-full py-1.5 px-2 font-mono font-black text-[8px] uppercase tracking-wider rounded-none flex items-center justify-center space-x-1 transition cursor-pointer ${
+                                            isAddedRel
+                                              ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                              : 'bg-orange-50 hover:bg-[#e65410] hover:text-white text-[#e65410]'
+                                          }`}
+                                        >
+                                          {isAddedRel ? (
+                                            <>
+                                              <Check className="h-3 w-3 shrink-0" />
+                                              <span>{lang === 'en' ? 'ADDED TO RFQ' : 'В ЗАПРОСЕ ✓'}</span>
+                                            </>
+                                          ) : (
+                                            <>
+                                              <Plus className="h-3 w-3 shrink-0" />
+                                              <span>{lang === 'en' ? 'ADD TO INQUIRY' : 'ДОБАВИТЬ В ЗАПРОС'}</span>
+                                            </>
+                                          )}
+                                        </button>
+                                      </div>
+                                    </div>
+                                  );
+                                });
+                              })()}
+                            </div>
+                          </div>
+
+                          {/* Right Column: Materials and Consumables */}
+                          <div className="space-y-4">
+                            <h4 className="text-[10px] font-mono font-black uppercase tracking-widest text-gray-550 flex items-center gap-2 border-b border-gray-150 pb-2">
+                              <HardHat className="h-4 w-4 text-[#e65410]" />
+                              <span>{lang === 'en' ? 'CONSUMABLES & RAW MATERIALS' : 'РАСХОДНЫЕ МАТЕРИАЛЫ И СЫРЬЕ'}</span>
+                            </h4>
+
+                            <div className="space-y-3">
+                              {(() => {
+                                const categoryMaterials = MATERIALS_MAP[p.category] || [];
+                                const list = [...categoryMaterials, ...GENERAL_MATERIALS].slice(0, 3);
+
+                                return list.map((mat) => {
+                                  const matTitle = lang === 'en' ? mat.titleEn : mat.titleRu;
+                                  const matDesc = lang === 'en' ? mat.descEn : mat.descRu;
+                                  const matPack = lang === 'en' ? mat.packEn : mat.packRu;
+                                  
+                                  const matId = `material-${mat.id}`;
+                                  const isAddedMat = rfqItemsKeys.includes(matId);
+
+                                  return (
+                                    <div 
+                                      key={mat.id}
+                                      className="bg-gray-50/50 border border-gray-200/80 p-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 hover:bg-white hover:border-[#e65410] transition duration-200"
+                                    >
+                                      <div className="space-y-1.5 max-w-full sm:max-w-[70%]">
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                          <span className="bg-[#00333b] text-white font-mono text-[8px] uppercase font-black tracking-widest px-1.5 py-0.5 rounded-none">
+                                            {mat.model}
+                                          </span>
+                                          <span className="text-[8px] font-mono font-bold text-gray-400 uppercase tracking-widest">
+                                            {lang === 'en' ? 'Packing: ' : 'Тара: '}{matPack}
+                                          </span>
+                                        </div>
+                                        <h5 className="font-sans font-black text-[11px] leading-tight text-gray-900 uppercase">
+                                          {matTitle}
+                                        </h5>
+                                        <p className="text-[10px] text-gray-500 leading-snug font-sans font-medium">
+                                          {matDesc}
+                                        </p>
+                                      </div>
+
+                                      <button
+                                        onClick={() => {
+                                          const virtualProduct: Product = {
+                                            id: matId,
+                                            category: p.category,
+                                            title: matTitle,
+                                            titleEn: mat.titleEn,
+                                            model: mat.model,
+                                            description: matDesc,
+                                            descriptionEn: mat.descEn,
+                                            features: [],
+                                            specs: [],
+                                            imageUrl: p.imageUrl,
+                                            capacity: matPack,
+                                            capacityEn: mat.packEn
+                                          };
+                                          onAddToRFQ(virtualProduct);
+                                          window.dispatchEvent(new CustomEvent('rfq-items-updated'));
+                                        }}
+                                        className={`w-full sm:w-auto py-1.5 px-3 font-mono font-black text-[8px] uppercase tracking-wider rounded-none shrink-0 flex items-center justify-center space-x-1.5 transition cursor-pointer ${
+                                          isAddedMat
+                                            ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                            : 'bg-[#e65410] hover:bg-orange-700 text-white'
+                                        }`}
+                                      >
+                                        {isAddedMat ? (
+                                          <>
+                                            <Check className="h-3 w-3 shrink-0" />
+                                            <span>{lang === 'en' ? 'ADDED' : 'ВЫБРАНО ✓'}</span>
+                                          </>
+                                        ) : (
+                                          <>
+                                            <Plus className="h-3 w-3 shrink-0 text-white" />
+                                            <span>{lang === 'en' ? 'ADD TO RFQ' : 'В ЗАПРОС'}</span>
+                                          </>
+                                        )}
+                                      </button>
+                                    </div>
+                                  );
+                                });
+                              })()}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

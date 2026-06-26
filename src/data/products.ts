@@ -785,6 +785,49 @@ export const PRODUCTS: Product[] = [
       { model: 'СТ-20H', capacity: 'Ящик до 20л', capacityEn: 'Up to 20L', power: '45 кВт', powerEn: '45 kW', extraField: 'Плита нагрева', extraFieldVal: '500х400 мм', extraFieldValEn: '500x400 mm' }
     ]
   },
+  {
+    id: 'core-scrubber',
+    category: 'core-making',
+    subcategory: 'shooters',
+    subcategoryRu: 'Стержневые автоматы',
+    subcategoryEn: 'Core Shooters',
+    subsubcategory: 'scrubbers',
+    subsubcategoryRu: 'Системы нейтрализации газов',
+    subsubcategoryEn: 'Gas Scrubbers',
+    title: 'Система нейтрализации аминовых газов (Скруббер)',
+    titleEn: 'Amine gas scrubber and chemical neutralization system',
+    model: 'СНГ-12',
+    description: 'Промышленная скрубберная система для экологически безопасного улавливания и химической нейтрализации паров амина, образующихся при отверждении стержней по Cold-Box-Amine процессу. Включает рециркуляцию нейтрализующего водного раствора ортофосфорной кислоты H3PO4.',
+    descriptionEn: 'Heavy-duty wet scrubber designed to capture and neutralize toxic amine fumes escaping from Cold-Box-Amine core molding processes. Features integrated acid spray system circulating phosphoric acid H3PO4 solution.',
+    imageUrl: shotBlasterImg,
+    capacity: 'Вытяжка 12 м³/мин',
+    capacityEn: 'Exhaust rate 12 m³/min',
+    power: '11 кВт',
+    powerEn: '11 kW',
+    features: [
+      'Комплексная башня очистки со встроенной трубкой Вентури для высокой эффективности абсорбции',
+      'Рециркуляционная система подачи реагентов из нержавеющей стали с химстойким насосом',
+      'Интегрированный каплеуловитель (туманоуловитель) для предотвращения уноса раствора',
+      'Единый ПЛК-пульт управления, синхронизированный с рабочими циклами стержневого автомата'
+    ],
+    featuresEn: [
+      'Comprehensive packing absorption column combined with high-flow Venturi tubes',
+      'Acid-proof stainless steel circuit plumbing including chemical circulation pump',
+      'Heavy mist eliminator layer blocks liquid carryover into the clean stack exhaust',
+      'Master PLC box synchronized with the core blowing machine sequences'
+    ],
+    specs: [
+      { name: 'Производительность вентилятора', value: '12 м³/мин (720 м³/час)', nameEn: 'Exhaust fan capacity', valueEn: '12 m³/min (720 m³/h)' },
+      { name: 'Потребляемая мощность', value: '11.0 кВт', nameEn: 'Total electrical power', valueEn: '11.0 kW' },
+      { name: 'Нейтрализующий реагент', value: 'Водный раствор H3PO4 (фосфорная кислота)', nameEn: 'Neutralizing chemical agent', valueEn: 'Aqueous solution H3PO4 (phosphoric acid)' },
+      { name: 'Материал бака и башни', value: 'Нержавеющая сталь AISI 316L / AISI 304', nameEn: 'Structural raw materials', valueEn: 'Acid-resistant steel AISI 316L / AISI 304' },
+      { name: 'Объем бака реагента', value: '200 л', nameEn: 'Sump chemical volume', valueEn: '200 L' }
+    ],
+    variantModels: [
+      { model: 'СНГ-12', capacity: 'Вытяжка 12 м³/мин', capacityEn: 'Flow 12 m³/min', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Объем бака', extraFieldVal: '200 л', extraFieldValEn: '200 L' },
+      { model: 'СНГ-24', capacity: 'Вытяжка 24 м³/мин', capacityEn: 'Flow 24 m³/min', power: '18.5 кВт', powerEn: '18.5 kW', extraField: 'Объем бака', extraFieldVal: '350 л', extraFieldValEn: '350 L' }
+    ]
+  },
 
   // SECTION 5: SHOT BLAST DIVISION (ДРОБЕМЁТЫ - THE USER'S DIRECT FOCUS EXAMPLE)
   {
@@ -1471,7 +1514,140 @@ export const PRODUCTS: Product[] = [
     ],
     variantModels: [
       { model: 'БК-700', capacity: 'Диаметр 700 мм', capacityEn: 'Diameter 700 mm', power: '30 кВт', powerEn: '30 kW', extraField: 'Объем камеры', extraFieldVal: '350 л', extraFieldValEn: '350 L' },
-      { model: 'БК-900', capacity: 'Диаметр 900 мм', capacityEn: 'Diameter 900 mm', power: '45 кВт', powerEn: '45 kW', extraField: 'Объем камеры', extraFieldVal: '700 л', extraFieldValEn: '700 L' }
+      { model: 'БК-900', capacity: 'Диаметр 900 мм', capacityEn: 'Diameter 900 мм', power: '45 кВт', powerEn: '45 kW', extraField: 'Объем камеры', extraFieldVal: '700 л', extraFieldValEn: '700 L' }
+    ]
+  },
+  {
+    id: 'lvm-robot-manipulator',
+    category: 'lvm-equipment',
+    subcategory: 'shell-making',
+    subcategoryRu: 'Изготовление керамических оболочек',
+    subcategoryEn: 'Ceramic Shell Making',
+    subsubcategory: 'robots',
+    subsubcategoryRu: 'Роботы-манипуляторы',
+    subsubcategoryEn: 'Robot Manipulators',
+    title: 'Робот-манипулятор для изготовления керамической оболочки',
+    titleEn: 'Industrial ceramic shell robotic manipulator',
+    model: 'TRA-30-3',
+    description: 'Робот-манипулятор для автоматизации процесса послойного нанесения суспензии и обсыпки песком при изготовлении керамических оболочковых форм ЛВМ. Оборудован многопозиционной вращающейся стойкой на 3-4 станции с двухпозиционными захватами, что позволяет одновременно обрабатывать несколько блоков и обеспечивает максимальную производительность.',
+    descriptionEn: 'Automated multi-station robotic manipulator for precision ceramic shell building in investment casting. Equipped with a rotary post holding 3 to 4 stations with dual-grippers, enabling simultaneous coating of multiple mold assemblies for unmatched output.',
+    imageUrl: inductionFurnaceImg,
+    capacity: 'Допустимый вес блока до 40 кг',
+    capacityEn: 'Block weight load up to 40 kg',
+    power: 'До 15 кВт',
+    powerEn: 'Up to 15 kW',
+    features: [
+      'Полная автоматизация циклов погружения, стекания суспензии и обсыпки песком',
+      'Каждая станция оснащена двумя вращающимися на 360 градусов захватными устройствами',
+      'Равномерное дождевое нанесение песка в устройстве обсыпки (пескосыпе)',
+      'Интуитивная настройка рабочих параметров через сенсорную панель управления HMI'
+    ],
+    featuresEn: [
+      'Fully automated programmed cycles for slurry dipping, draining, and sand stuccoing',
+      'Each processing station features dual independent 360-degree rotating grippers',
+      'Uniform rain-type sand coating in specialized fluidized stuccoing chambers',
+      'Operator-friendly parameters setup via intuitive touch-screen HMI control panel'
+    ],
+    specs: [
+      { name: 'Максимальный габарит модельного блока (ØхН)', value: '550х600 мм', nameEn: 'Max block envelope dimensions (DxH)', valueEn: '550x600 mm' },
+      { name: 'Максимальный допустимый вес модельного блока', value: '40 кг', nameEn: 'Maximum allowed mold block weight', valueEn: '40 kg' },
+      { name: 'Межосевое расстояние захватов', value: '600 мм', nameEn: 'Inter-axis distance of grippers', valueEn: '600 mm' },
+      { name: 'Количество рабочих станций', value: '4 шт.', nameEn: 'Number of active stations', valueEn: '4 units' },
+      { name: 'Производительность', value: '4 блок/мин', nameEn: 'Throughput productivity rate', valueEn: '4 blocks/min' },
+      { name: 'Диапазон движения по вертикали', value: '820 мм', nameEn: 'Vertical stroke range', valueEn: '820 mm' }
+    ],
+    variantModels: [
+      { model: 'TRA-30-3', capacity: 'Блок до 30 кг, 3 станции', capacityEn: 'Block 30 kg, 3 stations', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Размер блока', extraFieldVal: '450х500 мм', extraFieldValEn: '450x500 mm' },
+      { model: 'TRA-40-3', capacity: 'Блок до 40 кг, 3 станции', capacityEn: 'Block 40 kg, 3 stations', power: '15.0 кВт', powerEn: '15.0 kW', extraField: 'Размер блока', extraFieldVal: '550х600 мм', extraFieldValEn: '550x600 mm' },
+      { model: 'TRA-30-4', capacity: 'Блок до 30 кг, 4 станции', capacityEn: 'Block 30 kg, 4 stations', power: '11.0 кВт', powerEn: '11.0 kW', extraField: 'Размер блока', extraFieldVal: '450х500 мм', extraFieldValEn: '450x500 mm' },
+      { model: 'TRA-40-4', capacity: 'Блок до 40 кг, 4 станции', capacityEn: 'Block 40 kg, 4 stations', power: '15.0 кВт', powerEn: '15.0 kW', extraField: 'Размер блока', extraFieldVal: '550х600 мм', extraFieldValEn: '550x600 mm' }
+    ]
+  },
+  {
+    id: 'lvm-fluidized-bed',
+    category: 'lvm-equipment',
+    subcategory: 'shell-making',
+    subcategoryRu: 'Изготовление керамических оболочек',
+    subcategoryEn: 'Ceramic Shell Making',
+    subsubcategory: 'fluidized-bed',
+    subsubcategoryRu: 'Установки "кипящий слой"',
+    subsubcategoryEn: 'Fluidized Bed Coaters',
+    title: 'Установка обсыпки модельных блоков "кипящий слой"',
+    titleEn: 'Fluidized bed sand stuccoing machine',
+    model: 'MFS 60',
+    description: 'Установка обсыпки "кипящий слой" предназначена для равномерного нанесения огнеупорного песка на покрытые связующим модельные блоки ЛВМ. Создает псевдоожиженный слой песка путем подачи воздуха высокого давления через нижнюю диффузорную мембрану, что позволяет погружать сложные блоки как в жидкость.',
+    descriptionEn: 'Fluidized bed sand coater designed for smooth and highly uniform application of refractory sand to slurry-dipped wax trees. Generates a dense fluidized air-sand suspension via bottom diffusion membrane, allowing blocks to sink freely like liquid.',
+    imageUrl: sandMixerXTC,
+    capacity: 'Диаметр бака 600 мм',
+    capacityEn: 'Vessel diameter 600 mm',
+    power: '3 кВт',
+    powerEn: '3 kW',
+    features: [
+      'Идеально равномерное покрытие песком сложных геометрических поверхностей модельных блоков',
+      'Бережный режим псевдоожижения исключает механическое повреждение хрупких восковых моделей',
+      'Дополнительная комплектация вытяжным колпаком-пылеуловителем картриджного типа',
+      'Простая и прочная промышленная конструкция бака с мембранной аэрацией'
+    ],
+    featuresEn: [
+      'Perfect sand distribution over highly complex geometric recesses of wax trees',
+      'Gentle fluidization process prevents any structural impact on delicate patterns',
+      'Can be equipped with optional cartridge filter dust collection exhaust canopy',
+      'Robust and durable tank assembly with long-life low-maintenance bottom membrane'
+    ],
+    specs: [
+      { name: 'Диаметр бака', value: 'Ø 600 мм', nameEn: 'Tank diameter', valueEn: 'Ø 600 mm' },
+      { name: 'Внутренняя высота бака', value: '650 мм', nameEn: 'Internal vessel height', valueEn: '650 mm' },
+      { name: 'Давление воздушного потока', value: '≤ 2.0 кПа', nameEn: 'Required air fluidization pressure', valueEn: '≤ 2.0 kPa' },
+      { name: 'Номинальная мощность вентилятора', value: '3.0 кВт', nameEn: 'Blower rated power', valueEn: '3.0 kW' },
+      { name: 'Габаритные размеры', value: '1460 х 700 х 930 мм', nameEn: 'Overall dimensions', valueEn: '1460 x 700 x 930 mm' }
+    ],
+    variantModels: [
+      { model: 'MFS 60', capacity: 'Бак Ø600 мм', capacityEn: 'Vessel Ø600 mm', power: '3.0 кВт', powerEn: '3.0 kW', extraField: 'Высота бака', extraFieldVal: '650 мм', extraFieldValEn: '650 mm' },
+      { model: 'MFS 80', capacity: 'Бак Ø800 мм', capacityEn: 'Vessel Ø800 mm', power: '5.5 кВт', powerEn: '5.5 kW', extraField: 'Высота бака', extraFieldVal: '650 мм', extraFieldValEn: '650 mm' },
+      { model: 'MFS 83', capacity: 'Бак Ø830 мм', capacityEn: 'Vessel Ø830 mm', power: '7.5 кВт', powerEn: '7.5 kW', extraField: 'Высота бака', extraFieldVal: '800 мм', extraFieldValEn: '800 mm' }
+    ]
+  },
+  {
+    id: 'lvm-suspension-mixer',
+    category: 'lvm-equipment',
+    subcategory: 'suspension-prep',
+    subcategoryRu: 'Приготовление огнеупорной суспензии',
+    subcategoryEn: 'Refractory Slurry Preparation',
+    subsubcategory: 'mixers',
+    subsubcategoryRu: 'Смесители суспензии L-типа',
+    subsubcategoryEn: 'L-Type Slurry Mixers',
+    title: 'Смеситель L-типа для приготовления огнеупорной суспензии',
+    titleEn: 'L-Type rotating vessel slurry mixer',
+    model: 'MZJ 100',
+    description: 'Специализированный смеситель барабанного типа с L-образной лопастью для приготовления и непрерывного поддержания однородности огнеупорной суспензии при изготовлении форм ЛВМ. Конструкция предотвращает оседание тяжелых огнеупорных порошков (дистиллированного циркона, кварца) на дно емкости.',
+    descriptionEn: 'Industrial slurry mixer with L-shaped mixing blades and rotating container for preparing and continuously homogenizing refractory coatings in shell-making. Prevents heavy fillers (zircon, silica flour) from settling at the bottom.',
+    imageUrl: sandMixerXTC,
+    capacity: 'Емкость 100 л',
+    capacityEn: 'Capacity 100 L',
+    power: '0.75 кВт',
+    powerEn: '0.75 kW',
+    features: [
+      'Наклонная вращающаяся емкость обеспечивает постоянное взвешенное состояние суспензии',
+      'Бак и лопатка из пищевой нержавеющей стали AISI 304 для исключения загрязнений',
+      'Плавная регулировка скорости перемешивания для адаптации под разную вязкость',
+      'Идеальное решение для ручных и роботизированных участков нанесения оболочек ЛВМ'
+    ],
+    featuresEn: [
+      'Slanted rotating vessel ensures constant active suspension of heavy particulate agents',
+      'Tank interior and blades fabricated from AISI 304 stainless steel to ensure zero contamination',
+      'Continuously adjustable speed limits to support various binder and viscosity profiles',
+      'Optimal integration element for both manual and robotic investment casting cells'
+    ],
+    specs: [
+      { name: 'Емкость бака', value: '100 л', nameEn: 'Tank liquid volume', valueEn: '100 liters' },
+      { name: 'Диаметр бака', value: '500 мм', nameEn: 'Vessel diameter', valueEn: '500 mm' },
+      { name: 'Номинальная мощность привода', value: '0.75 кВт', nameEn: 'Electric motor rating', valueEn: '0.75 kW' },
+      { name: 'Частота вращения бака', value: '26 об/мин', nameEn: 'Vessel rotation speed', valueEn: '26 rpm' }
+    ],
+    variantModels: [
+      { model: 'MZJ 100', capacity: 'Емкость 100 л', capacityEn: 'Capacity 100 L', power: '0.75 кВт', powerEn: '0.75 kW', extraField: 'Диаметр бака', extraFieldVal: '500 мм', extraFieldValEn: '500 mm' },
+      { model: 'MZJ 150', capacity: 'Емкость 150 л', capacityEn: 'Capacity 150 L', power: '1.5 кВт', powerEn: '1.5 kW', extraField: 'Диаметр бака', extraFieldVal: '600 мм', extraFieldValEn: '600 mm' },
+      { model: 'MZJ 200', capacity: 'Емкость 200 л', capacityEn: 'Capacity 200 L', power: '2.2 кВт', powerEn: '2.2 kW', extraField: 'Диаметр бака', extraFieldVal: '700 мм', extraFieldValEn: '700 mm' }
     ]
   },
   // SECTION 10: HEAT TREATMENT FURNACES (ТЕРМИЧЕСКИЕ ПЕЧИ)
@@ -1518,6 +1694,54 @@ export const PRODUCTS: Product[] = [
       { model: 'СДО-15', capacity: '15 тонн деталей', capacityEn: '15 tons parts', power: '240 кВт', powerEn: '240 kW', extraField: 'Длина пода', extraFieldVal: '4500 мм', extraFieldValEn: '4500 mm' }
     ]
   },
+  {
+    id: 'thermal-furnace-chamber',
+    category: 'thermal-furnaces',
+    subcategory: 'treatment-chambers',
+    subcategoryRu: 'Камерные термопечи',
+    subcategoryEn: 'Chamber Thermal Kilns',
+    subsubcategory: 'chamber',
+    subsubcategoryRu: 'Камерные стационарные печи',
+    subsubcategoryEn: 'Chamber Stationary Furnaces',
+    title: 'Камерная термическая печь серии RT3',
+    titleEn: 'Stationary chamber heat treatment kiln RT3',
+    model: 'RT3-95-12',
+    description: 'Высокоэффективная стационарная электропечь камерного типа для нормализации, отжига, отпуска и закалки отливок из сталей, чугунов и цветных металлов. Внутренняя футеровка из легковесного ультраволокнистого силиката алюминия гарантирует минимальную теплоаккумуляцию и экономию электричества до 40%.',
+    descriptionEn: 'High-efficiency stationary box/chamber electric kiln designed for tempering, annealing, normalizing and hardening of iron, steel or alloy castings. Uses premium refractory aluminum silicate fiber linings which reduce heat absorption and save up to 40% energy.',
+    imageUrl: inductionFurnaceImg,
+    capacity: 'Масса садки до 3000 кг',
+    capacityEn: 'Batch load capacity up to 3000 kg',
+    power: '95 кВт',
+    powerEn: '95 kW',
+    features: [
+      'Многозонный нагрев спиральными ленточными суперфехралевыми нагревателями',
+      'Сварной жесткий корпус из прокатных швеллеров с долговечным волокнистым уплотнением',
+      'Автоматический контроль рабочих циклов нагрева и выдержки по ПИД-программам на PLC',
+      'Блокировка включения нагрева при открывании автоматизированной двери печи'
+    ],
+    featuresEn: [
+      'Multi-zone balance heating layout using high-resistance ribbon superfechral elements',
+      'Heavy-duty welded frame of hot-rolled channel profiles lined with durable fiber gaskets',
+      'Fully automated heat ramping, soaking and cooling curves configured on advanced PLC',
+      'Integrated safety limit switches power off heaters instantly upon door opening'
+    ],
+    specs: [
+      { name: 'Номинальная температура', value: '1200 °C', nameEn: 'Max rated temperature', valueEn: '1200 °C' },
+      { name: 'Масса загружаемой садки', value: '3000 кг', nameEn: 'Maximum batch weight', valueEn: '3000 kg' },
+      { name: 'Размеры рабочей камеры (ДхШхВ)', value: '1600 х 780 х 780 мм', nameEn: 'Working chamber size (LxWxH)', valueEn: '1600 x 780 x 780 mm' },
+      { name: 'Установленная мощность нагрева', value: '95 кВт', nameEn: 'Installed heating power', valueEn: '95 kW' },
+      { name: 'Зоны контроля температуры', value: '1', nameEn: 'Thermo-control zones count', valueEn: '1' }
+    ],
+    variantModels: [
+      { model: 'RT3-45-12', capacity: 'Садка 1000 кг', capacityEn: 'Batch 1000 kg', power: '45 кВт', powerEn: '45 kW', extraField: 'Размер камеры', extraFieldVal: '1100х660х400 мм', extraFieldValEn: '1100x660x400 mm' },
+      { model: 'RT3-65-12', capacity: 'Садка 1300 кг', capacityEn: 'Batch 1300 kg', power: '65 кВт', powerEn: '65 kW', extraField: 'Размер камеры', extraFieldVal: '1100х660х800 мм', extraFieldValEn: '1100x660x800 mm' },
+      { model: 'RT3-95-12', capacity: 'Садка 3000 кг', capacityEn: 'Batch 3000 kg', power: '95 кВт', powerEn: '95 kW', extraField: 'Размер камеры', extraFieldVal: '1600х780х780 мм', extraFieldValEn: '1600x780x780 mm' },
+      { model: 'RT3-150-12', capacity: 'Садка 8500 кг', capacityEn: 'Batch 8500 kg', power: '150 кВт', powerEn: '150 kW', extraField: 'Размер камеры', extraFieldVal: '2000х1000х1000 мм', extraFieldValEn: '2000x1000x1000 mm' },
+      { model: 'RT3-210-12', capacity: 'Садка 10000 кг', capacityEn: 'Batch 10000 kg', power: '210 кВт', powerEn: '210 kW', extraField: 'Размер камеры', extraFieldVal: '2000х1500х1000 мм', extraFieldValEn: '2000x1500x1000 mm' },
+      { model: 'RT3-270-12', capacity: 'Садка 13000 кг', capacityEn: 'Batch 13000 kg', power: '270 кВт', powerEn: '270 kW', extraField: 'Размер камеры', extraFieldVal: '3000х1500х1000 мм', extraFieldValEn: '3000x1500x1000 mm' },
+      { model: 'RT3-290-12', capacity: 'Садка 15000 кг', capacityEn: 'Batch 15000 kg', power: '290 кВт', powerEn: '290 kW', extraField: 'Размер камеры', extraFieldVal: '3500х1200х1200 мм', extraFieldValEn: '3500x1200x1200 mm' }
+    ]
+  },
   // SECTION 11: FINISHING & MACHINING (ОБРУБНОЕ И ВСПОМОГАТЕЛЬНОЕ ОБОРУДОВАНИЕ)
   {
     id: 'obrubka-wedge',
@@ -1561,6 +1785,52 @@ export const PRODUCTS: Product[] = [
       { model: 'ГК-15', capacity: 'Сила 15 тонн', capacityEn: 'Force 15 t', power: '3.0 кВт', powerEn: '3.0 kW', extraField: 'Разжим щек', extraFieldVal: '25 мм', extraFieldValEn: '25 mm' },
       { model: 'ГК-25', capacity: 'Сила 25 тонн', capacityEn: 'Force 25 t', power: '4.0 кВт', powerEn: '4.0 kW', extraField: 'Разжим щек', extraFieldVal: '35 мм', extraFieldValEn: '35 mm' },
       { model: 'ГК-40', capacity: 'Сила 40 тонн', capacityEn: 'Force 40 t', power: '5.5 кВт', powerEn: '5.5 kW', extraField: 'Разжим щек', extraFieldVal: '45 мм', extraFieldValEn: '45 mm' }
+    ]
+  },
+  {
+    id: 'obrubka-core-shakeout',
+    category: 'obrubka-stanki',
+    subcategory: 'fettling-tools',
+    subcategoryRu: 'Обрубной инструмент',
+    subcategoryEn: 'Fettling Tools',
+    subsubcategory: 'vibratory-shakeout',
+    subsubcategoryRu: 'Вибрационная выбивка стержней',
+    subsubcategoryEn: 'Vibratory Core Knockout',
+    title: 'Вибрационная машина для выбивки песчаных стержней',
+    titleEn: 'High frequency vibratory core knockout machine',
+    model: 'L415C',
+    description: 'Специализированная машина для контролируемого высокочастотного вибрационного удаления отработанных песчаных стержней из внутренних каналов прецизионных алюминиевых отливок (после кокиля и ЛНД). Предотвращает микродеформации тонких стенок отливки и полностью автоматизирует процесс выбивки.',
+    descriptionEn: 'Specialized industrial machine designed for rapid high frequency vibratory removal of bound sand cores from internal hollow passageways of aluminum alloy parts. Ensures damage-free treatment of complex and thin-walled parts.',
+    imageUrl: shotBlasterImg,
+    capacity: 'Производительность до 120 шт/ч',
+    capacityEn: 'Output rate up to 120 pcs/h',
+    power: 'Потребление воздуха 4 м³/мин',
+    powerEn: 'Compressed air flow 4 m³/min',
+    features: [
+      'Высокочастотные пневматические вибраторы обеспечивают быструю деструкцию песчаного стержня',
+      'Автоматический поворот рабочей платформы (до 270°) для полного высыпания песка',
+      'Опциональное исполнение в звукоизолирующей герметичной камере пылезащиты',
+      'Программируемый цикл вибрации с ПЛК-контроллером для деликатной очистки деталей'
+    ],
+    featuresEn: [
+      'High-rate pneumatic vibration drives deliver rapid structural collapse of bound cores',
+      'Motorized platform tilting (up to 270°) guarantees complete gravity removal of sand particles',
+      'Optional fully enclosed heavy acoustic cabin featuring custom dust collecting system',
+      'PLC programmable multi-step vibration speed, clamp pressure and process timers'
+    ],
+    specs: [
+      { name: 'Максимальная производительность', value: '120 шт/час', nameEn: 'Maximum production output', valueEn: '120 parts/hour' },
+      { name: 'Максимальное расстояние зажимов', value: '500 мм', nameEn: 'Max clamping distance', valueEn: '500 mm' },
+      { name: 'Ход прижима зажима', value: '250 мм', nameEn: 'Clamping cylinder stroke', valueEn: '250 mm' },
+      { name: 'Усилие фиксации зажима', value: '9 кН (900 кг)', nameEn: 'Max holding clamp force', valueEn: '9 kN (900 kg)' },
+      { name: 'Расход сжатого воздуха', value: '4.0 м³/мин', nameEn: 'Air consumption', valueEn: '4.0 m³/min' },
+      { name: 'Рабочее давление воздуха', value: '0.5 - 0.6 МПа', nameEn: 'Required air line pressure', valueEn: '0.5 - 0.6 MPa' }
+    ],
+    variantModels: [
+      { model: 'L415C', capacity: 'До 120 шт/ч, зажим 500 мм', capacityEn: 'Up to 120 pcs/h, clamp 500 mm', power: '4.0 м³/мин', powerEn: '4.0 m³/min', extraField: 'Поворот платформы', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
+      { model: 'LF415C', capacity: 'С конвейером, зажим 500 мм', capacityEn: 'Conveyor fed, clamp 500 mm', power: '4.0 м³/мин', powerEn: '4.0 m³/min', extraField: 'Поворот платформы', extraFieldVal: 'Да', extraFieldValEn: 'Yes' },
+      { model: 'LFH427', capacity: 'До 100 ДВС блоков/ч, зажим 650 мм', capacityEn: '100 engine blocks/h, clamp 650 mm', power: '6.0 м³/мин', powerEn: '6.0 m³/min', extraField: 'Поворот платформы', extraFieldVal: 'до 240°', extraFieldValEn: 'up to 240°' },
+      { model: 'LFZ445', capacity: 'До 80 шт/ч, поворот 270°', capacityEn: 'Up to 80 pcs/h, 270° flip', power: '5.0 м³/мин', powerEn: '5.0 m³/min', extraField: 'Поворот платформы', extraFieldVal: 'до 270°', extraFieldValEn: 'up to 270°' }
     ]
   }
 ];

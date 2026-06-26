@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск</title>
+        <base href="index.html" />
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+        <meta name="keywords" content="Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск" />
+        <meta name="description" content="Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск" />
+        <meta name='yandex-verification' content='48fef8b332dacbc3' />
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <link rel="stylesheet" media="only screen and (min-width: 320px)" type="text/css" href="main/inslnd320.6c6c8b0382.css" />
+        <link rel="stylesheet" media="only screen and (min-width: 650px)" type="text/css" href="main/inslnd999.css" />
+        <link rel="stylesheet" media="only screen and (min-width: 1000px)" type="text/css" href="main/inslnd1200.css" />
+        <link rel="stylesheet" media="only screen and (min-width: 1300px)" type="text/css" href="main/inslnd.css" />
+        <link rel="stylesheet" media="only screen and (min-width: 1350px)" type="text/css" href='main/crsl/stylecrsl.css'>
+        <link rel="stylesheet" media="screen" type="text/css" href="app/css/app.css" />
+        <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+        <link rel="stylesheet" href="main/fancybox/jquery.fancybox.8cbb184864.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="main/jquery-1.7.0.min.js"></script>
+        <script type="text/javascript" src="main/jquery.form.js"></script>
+        <script type="text/javascript" src="main/fancybox/jquery.fancybox.pack.8cbb184864.js"></script>
+        <script type="text/javascript" src="main/fancybox/helpers/jquery.fancybox-media.c924d93fdf.js"></script>
+        <script type="text/javascript" src="main/fancybox/helpers/jquery.fancybox-thumbs.f2adbaf0e1.js"></script>
+        <script type="text/javascript" src="app/vendor/garand/sticky/1.0.4_/jquery.sticky.js"></script>
+        <script type="text/javascript" src="app/js/app.7e0c63a412.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $('.fancybox').fancybox();
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+            	$('.fancybox-media').fancybox({
+            		openEffect  : 'none',
+            		closeEffect : 'none',
+            		helpers : {
+            			media : {}
+            		}
+            	});
+            });
+        </script>
+        <script type="text/javascript" src="main/crsl/jquery.jcarousel.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+            	jQuery('.d5-carousel .carousel').jcarousel({
+                    scroll: 1,
+                    wrap: 'circular'
+                });
+            });
+        </script>
+        <script type="text/javascript" src="main/modal.js"></script>
+        <script type="text/javascript" src="main/modal3.js"></script>
+        <link rel="stylesheet" href="main/custom.2787a78181.css">
+    <link rel="stylesheet" href="assets/components/ajaxform/css/default.css" type="text/css" />
+<style>
+.siteone-crawler-bg {
+background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAkCAMAAAAO0sygAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAMlQTFRFFxcXwMDA////1NTU5+fnpaWl0tLSIyMj5ubmlJSUxcXF29vbz8/P9PT01tbWxMTE8fHxaWlp39/f9fX1yMjI3NzciYmJeXl5Gxsb2dnZNTU18/PzXFxc5eXlJycnysrKZGRk6enp3d3dW1tbsrKyWFhYIiIi19fXvLy8w8PDuLi47e3tzMzM0dHRx8fH09PTHR0dzs7OLy8vwcHB0NDQSEhIqamp4uLiHh4eOzs74ODg3t7ewsLCISEhJCQkaGhoy8vLzc3N2NjYEPdgjAAAAaRJREFUeJzdlWlTgzAQhiGlWlsCCHog9vAWpalavK3X//9RJptACoEwTp1x9MPOht19k+VJCIZhIvNXzVh1DmPVHowfe5cOsrpr5dh6D1kb/VJs0LWQ3cAAO7gyp0tjXinGavBmPQOf5gaVvgIaC5eet5jeceoZbNPcjhjvcu9GGHl7sjYGfbXP3HyaG/Dx/pD7UYDwOFT0ThuDSYwOahgcCn0rgyNWZykMQNtpYXBM9+wkhtreKZ8zZ8D52RoGEeT6E9EntTPmzxP5/mEIXscAX8SF/hL6TSEHc6VTRGbNDMyrYaElRPRxncr1bVpzEzczyHugNjeIGHO9ydbNMjomGgbUUq5PlDMzp3p5FpoYmLei77sERUJ//yBy0wy8lkFf8s/XV/rVMXjk9VahnYF/KvWrY/AMuZdFrvdQCHtPSnVt52BOfa/YP6LcBzoGfj73K1s/q70PtAzYt/DGx8P3Dx6r3Ad6Br6ce2GLmLwPknGAgigAPfNBFDffB6WzKRiMvGJfK/urMlgyycBV9FjDoLAlBl5V/9nwPXzb/tO/8e8y+AJh0S3ETlwQiAAAAABJRU5ErkJggg==");
+background-repeat: repeat;
+opacity: 0.15;
+}
+</style><script>var _SiteOneUrlDepth = 0;</script></head>
+    <body>
+          <!-- <div class="linetop"></div> -->
+        <div class="headcontainer">
+            <div class="headmin_width">
+                <div class="headmax_width">
+                    <div class="cblk">
+                        <header>
+                            <div class="hd1">
+                                
+                                <div class="cnts">
+                                    <a class="ml" href="mailto:info@sibtehlit.ru">info@sibtehlit.ru</a>
+                                    <p class="tl">&nbsp;&nbsp;8 800 550-60-54</p>
+                                    <p class="tl">+7 383 335-40-54</p>
+                                    <a class="btl modal" href="forma-obratnoj-svyazi.html">Отправить запрос</a>
+                                </div>
+                                <div class="lg1"><a href="index.html"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Сибтехлит"></a></div>
+                                <p class="zag1">Литейное оборудование <br/>Поставка и обслуживание</p>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clr"></div>
+        <div class="container">
+            <div class="min_width">
+                <div class="max_width">
+                    <div id="navbar" class="mm1">
+                        <ul class="V2mm1">
+    <li id="mobhide"><a href="index.html">Главная</a></li>
+    <li><a href="katalog-oborudovanie/index.html">Каталог</a>
+        <ul><li ><a href="likvidacziya-kompleksa-lgm-po-snizhennoj-czene!.html" title="Ликвидация комплекса ЛГМ с индукционной печью и дробеметом по сниженной цене!" >Ликвидация комплекса ЛГМ с индукционной печью и дробеметом по сниженной цене!</a></li>
+<li ><a href="plavilnoe-oborudovanie/index.html" title="Плавильные печи" >Плавильные печи</a><ul><li ><a href="inductsionnyie-plavilnyie-pechi/index.html" title="Индукционные плавильные печи для плавки черных и цветных металлов" >Индукционные плавильные печи для плавки черных и цветных металлов</a><ul><li ><a href="plavilnyie-pechi-do-1-tonnyi-v-alyuminievom-korpuse-na-reduktore.html" title="Плавильные печи в алюминиевом корпусе на редукторе" >Плавильные печи в алюминиевом корпусе на редукторе</a></li>
+<li ><a href="pplavilnyie-pechi-do-1-tonnyi-na-reduktore-v-stalnom-korpuse.html" title="Плавильные печи на редукторе в стальном корпусе" >Плавильные печи на редукторе в стальном корпусе</a></li>
+<li ><a href="pavilnyie-pechi-do-20-tonn-na-gidravlike-v-stalnom-korpuse.html" title="Плавильные печи на гидравлике в стальном корпусе" >Плавильные печи на гидравлике в стальном корпусе</a></li>
+<li ><a href="plavilnyie-pechi-dlya-czvetnyix-metallov.html" title="Плавильные печи для цветных металлов" >Плавильные печи для цветных металлов</a></li>
+</ul></li>
+<li ><a href="mobilnyie-plavilnyie-tranzistornyie-pechi-s-emkostyu-tiglya-do-100-kg.html" title="Мобильные плавильные печи с емкостью тигля до 100 кг" >Мобильные плавильные печи с емкостью тигля до 100 кг</a></li>
+<li ><a href="dugovyie-pechi-peremennogo-toka.html" title="Дуговые сталеплавильные печи " >Дуговые сталеплавильные печи </a></li>
+<li ><a href="indukczionnyie-mikseryi.html" title="Индукционные миксеры" >Индукционные миксеры</a></li>
+<li ><a href="vakuumnyie-indukczionnyie-pechi.html" title="Вакуумные индукционные печи" >Вакуумные индукционные печи</a></li>
+<li ><a href="pechi-soprotivleniya-plavilnyie.html" title="Печи сопротивления плавильные" >Печи сопротивления плавильные</a></li>
+<li ><a href="kovshi-litejnyie/index.html" title="Ковши литейные" >Ковши литейные</a><ul><li ><a href="litejnyie-kovshi-dlya-razlivki-stali.html" title="Литейные ковши для разливки стали" >Литейные ковши для разливки стали</a></li>
+<li ><a href="litejnyie-kovshi-dlya-razlivki-chuguna.html" title="Литейные ковши для разливки чугуна" >Литейные ковши для разливки чугуна</a></li>
+<li ><a href="litejnyie-stopornyie-kovshi.html" title="Литейные стопорные ковши" >Литейные стопорные ковши</a></li>
+<li ><a href="kovshi-chajnikovogo-tipa.html" title="Ковши чайникового типа" >Ковши чайникового типа</a></li>
+</ul></li>
+<li ><a href="stend-sushki-kovshej.html" title="Стенд для сушки и разогрева разливочного ковша" >Стенд для сушки и разогрева разливочного ковша</a></li>
+<li ><a href="dopolnitelnoe-oborudovanie.html" title="Дополнительное оборудование к индукционным плавильным печам" >Дополнительное оборудование к индукционным плавильным печам</a></li>
+</ul></li>
+<li ><a href="sistemyi-oxlazhdeniya.html" title="Станции охлаждения закрытого типа" >Станции охлаждения закрытого типа</a></li>
+<li ><a href="drobemetyi/index.html" title="Дробеметы" >Дробеметы</a><ul><li ><a href="drobemetyi-barabannogo-tipa.html" title="Дробеметы барабанного типа" >Дробеметы барабанного типа</a></li>
+<li ><a href="drobemetyi-barabannogo-tipa-s-lentochnyim-transporterom.html" title="Дробеметы барабанного типа с ленточным транспортером" >Дробеметы барабанного типа с ленточным транспортером</a></li>
+<li ><a href="drobemetyi-podvesnogo-tipa.html" title="Дробеметы подвесного типа" >Дробеметы подвесного типа</a></li>
+<li ><a href="drobemet-proxodnogo-tipa.html" title="Дробеметы проходные барабанного типа" >Дробеметы проходные барабанного типа</a></li>
+<li ><a href="drobemetyi-proxodnyie-podvesnogo-tipa-taktovogo-i-nepreryivnogo-dejstviya.html" title="Дробеметы проходные подвесного типа тактового и непрерывного действия" >Дробеметы проходные подвесного типа тактового и непрерывного действия</a></li>
+<li ><a href="drobemetyi-s-povorotnyim-stolom.html" title="Дробеметы с поворотным столом" >Дробеметы с поворотным столом</a></li>
+<li ><a href="drobemetnyie-ustanovki-dlya-vnutrennej-i-vneshnej-ochistki-trub.html" title="Дробеметные установки для внутренней и внешней очистки труб" >Дробеметные установки для внутренней и внешней очистки труб</a></li>
+</ul></li>
+<li ><a href="peskostrui/index.html" title="Установки пескоструйной обработки" >Установки пескоструйной обработки</a><ul><li ><a href="portative-peskostrui.html" title="Портативная пескоструйная камера эжекторного типа" >Портативная пескоструйная камера эжекторного типа</a></li>
+<li ><a href="peskostrui-s-povorot-stolom.html" title="Пескоструйная камера с поворотным столом" >Пескоструйная камера с поворотным столом</a></li>
+<li ><a href="peskostryi-prohodnoi.html" title="Проходная пескоструйная камера с конвейером" >Проходная пескоструйная камера с конвейером</a></li>
+</ul></li>
+<li ><a href="oborudovanie-lgm/index.html" title="Оборудование ЛГМ" >Оборудование ЛГМ</a><ul><li ><a href="oborudovaie-lgm-belyiy-czex/index.html" title="«Белый» цех " >«Белый» цех </a><ul><li ><a href="oborudovaie-lgm-predvspenivatel.html" title="Предвспениватель" >Предвспениватель</a></li>
+<li ><a href="oborudovaie-lgm-blok-forma.html" title=" Блок-форма" > Блок-форма</a></li>
+<li ><a href="oborudovaie-lgm-modelnyij-avtomat.html" title="Модельный автомат" >Модельный автомат</a></li>
+<li ><a href="oborudovaie-lgm-avtoklav.html" title="Автоклав" >Автоклав</a></li>
+<li ><a href="oborudovaie-lgm-kraskomeshalki.html" title="Краскомешалка" >Краскомешалка</a></li>
+</ul></li>
+<li ><a href="oborudovaie-lgm-chyornyij-czex/index.html" title="«Чёрный» цех" >«Чёрный» цех</a><ul><li ><a href="oborudovaie-lgm-vibrostol.html" title="Вибростол" >Вибростол</a></li>
+<li ><a href="oborudovaie-lgm-vakuumnaya-opoka.html" title="Вакуумная опока" >Вакуумная опока</a></li>
+<li ><a href="oborudovaie-lgm-vakuumnaya-sistema.html" title="Вакуумная система" >Вакуумная система</a></li>
+<li ><a href="oborudovanie-peskooborota.html" title="Оборудование пескооборота ЛГМ" >Оборудование пескооборота ЛГМ</a></li>
+</ul></li>
+</ul></li>
+<li ><a href="oborudovanie-xts/index.html" title="Оборудование ХТС" >Оборудование ХТС</a><ul><li ><a href="smesiteli-periodicheskogo-i-nepreryivnogo-dejstviya.html" title="Смеситель непрерывного и периодического действия" >Смеситель непрерывного и периодического действия</a></li>
+<li ><a href="oborudovanie-xts-vibrostol.html" title="Вибростол ХТС" >Вибростол ХТС</a></li>
+<li ><a href="oborudovanie-xts-peredatochnaya-telezhka.html" title="Передаточная тележка" >Передаточная тележка</a></li>
+<li ><a href="manipulyatoryi-dlya-sborki-form.html" title="Манипулятор для сборки форм" >Манипулятор для сборки форм</a></li>
+<li ><a href="kantovateli/index.html" title="Кантователь" >Кантователь</a></li>
+<li ><a href="okrasochnyie-stanczii.html" title="Окрасочная станция" >Окрасочная станция</a></li>
+<li ><a href="vyibivnyie-reshetki-xts.html" title="Выбивная решетка" >Выбивная решетка</a></li>
+<li ><a href="oborudovanie-regeneraczii-otrabotannyix-smesej-xts/index.html" title="Оборудование регенерации отработанных смесей ХТС" >Оборудование регенерации отработанных смесей ХТС</a><ul><li ><a href="mobilnyij-kompleks-mexanicheskoj-regeneraczii-smesi.html" title=" Компактный комплекс механической регенерации смеси ХТС" > Компактный комплекс механической регенерации смеси ХТС</a></li>
+<li ><a href="oborudovanie-regeneraczii-otrabotannyix-smesej-xts-magnitnyij-separator.html" title="Магнитный сепаратор" >Магнитный сепаратор</a></li>
+<li ><a href="oborudovanie-regeneraczii-otrabotannyix-smesej-xts-vibroottirochnaya-mashina.html" title="Виброоттирочная машина" >Виброоттирочная машина</a></li>
+<li ><a href="oborudovanie-regeneraczii-otrabotannyix-smesej-xts-gorizontalnaya-ottirochnaya-mashina.html" title="Горизонтальная оттирочная машина" >Горизонтальная оттирочная машина</a></li>
+<li ><a href="oborudovanie-regeneraczii-otrabotannyix-smesej-xts-czentrobezhnaya-ottirochnaya-mashina.html" title="Центробежная оттирочная машина" >Центробежная оттирочная машина</a></li>
+<li ><a href="oborudovanie-regeneraczii-otrabotannyix-smesej-xts-regulyator-temperaturyi-peska.html" title="Шкаф охлаждения (кипящий слой)" >Шкаф охлаждения (кипящий слой)</a></li>
+<li ><a href="pnevmotransport.html" title="Пневмотранспорт" >Пневмотранспорт</a></li>
+<li ><a href="sistemyi-pyileulavlivaniya.html" title="Системы пылеулавливания" >Системы пылеулавливания</a></li>
+</ul></li>
+</ul></li>
+<li ><a href="oborudovanie-pgs/index.html" title="Оборудование ПГС" >Оборудование ПГС</a><ul><li ><a href="oborudovanie-pgs-smeseprigotovitelnoe/index.html" title="Смесеприготовительное" >Смесеприготовительное</a><ul><li ><a href="oborudovanie-pgs-smesiteli-litejnyie-chashechnyie-begunyi.html" title="Смеситель литейный чашечный (бегуны)" >Смеситель литейный чашечный (бегуны)</a></li>
+<li ><a href="oborudovanie-pgs-smesiteli-litejnyie-chashechnyie-s-vixrevoj-golovkoj-turbinnyie.html" title="Смеситель литейный чашечный с вихревой головкой (турбинные)" >Смеситель литейный чашечный с вихревой головкой (турбинные)</a></li>
+<li ><a href="oborudovanie-pgs-smesiteli-vixrevyie.html" title="Смеситель вихревой" >Смеситель вихревой</a></li>
+</ul></li>
+<li ><a href="formovochnoe/index.html" title="Формовочное" >Формовочное</a><ul><li ><a href="linii-vertikalno-stopochnoj-formovki.html" title="Линии вертикально-стопочной формовки" >Линии вертикально-стопочной формовки</a></li>
+</ul></li>
+<li ><a href="oborudovanie-dlya-otrabotannoj-smesi-pgs/index.html" title="Оборудование для отработанной смеси ПГС" >Оборудование для отработанной смеси ПГС</a><ul><li ><a href="vyibivnyie-reshetki.html" title="Выбивные решетки " >Выбивные решетки </a></li>
+<li ><a href="magnitnyij-separator-pgs.html" title="Магнитный железоотделитель" >Магнитный железоотделитель</a></li>
+<li ><a href="lentochnyij-elevator.html" title="Ленточный элеватор" >Ленточный элеватор</a></li>
+<li ><a href="poligonalnoe-sito.html" title="Полигональное сито" >Полигональное сито</a></li>
+<li ><a href="vozdushnyij-oxladitel.html" title="Воздушный охладитель" >Воздушный охладитель</a></li>
+</ul></li>
+</ul></li>
+<li ><a href="termicheskie-pechi/index.html" title="Термические печи" >Термические печи</a><ul><li ><a href="termicheskie-pechi-s-vyidvizhnyim-podom.html" title="Термические печи с выдвижным подом" >Термические печи с выдвижным подом</a></li>
+<li ><a href="shaxtnyie-pechi.html" title="Шахтные печи" >Шахтные печи</a></li>
+<li ><a href="termicheskie-kamernyie-pechi.html" title="Термические камерные печи" >Термические камерные печи</a></li>
+<li ><a href="gazovyie-termicheskie-pechi.html" title="Газовые термические печи" >Газовые термические печи</a></li>
+<li ><a href="vakuumnyie-pechi.html" title="Вакуумные печи" >Вакуумные печи</a></li>
+<li ><a href="pechi-ionnogo-azotirovaniya.html" title="Печи ионного азотирования" >Печи ионного азотирования</a></li>
+</ul></li>
+<li ><a href="oborudovanie-lvm/index.html" title="Оборудование ЛВМ" >Оборудование ЛВМ</a><ul><li ><a href="bojlerklav.html" title="Бойлерклав для вытопки модельной массы" >Бойлерклав для вытопки модельной массы</a></li>
+<li ><a href="ustanovka-kipyashhego-sloya.html" title="Установка обсыпки модельных блоков кипящий слой" >Установка обсыпки модельных блоков кипящий слой</a></li>
+<li ><a href="smesitel-l-dlya-suspenzii.html" title="Смеситель L-типа для приготовления огнеупорной суспензии" >Смеситель L-типа для приготовления огнеупорной суспензии</a></li>
+<li ><a href="ustanovka-ochistki-modelnogo-sostava-(regeneraczii).html" title="Установка очистки модельного состава (регенерации)" >Установка очистки модельного состава (регенерации)</a></li>
+<li ><a href="ustanovka-obsyipki-modelnyix-blokov-elevatornogo-tipa.html" title="Установка обсыпки модельных блоков элеваторного типа" >Установка обсыпки модельных блоков элеваторного типа</a></li>
+<li ><a href="robot-manipulyator-dlya-izgotovleniya-keramicheskoj-obolochki.html" title="Робот-манипулятор для изготовления керамической оболочки" >Робот-манипулятор для изготовления керамической оболочки</a></li>
+<li ><a href="plavilnyi-bak.html" title="Плавильный бак" >Плавильный бак</a></li>
+<li ><a href="workn-table-v.html" title="Рабочий стол с вытяжкой" >Рабочий стол с вытяжкой</a></li>
+<li ><a href="kopiya-kraskomeshalka-smesitel-dlya-protivoprigarnogo-pokryitiya-lgm.html" title="Смеситель для модельной массы" >Смеситель для модельной массы</a></li>
+<li ><a href="dvuhpozitcionnaya-shpric-mashina.html" title="Автоматизированная шприц-машина" >Автоматизированная шприц-машина</a></li>
+<li ><a href="shpricz-mashina-dlya-ruchnoj-inzhekczii-voska.html" title="Шприц-машина для ручной инжекции воска" >Шприц-машина для ручной инжекции воска</a></li>
+<li ><a href="kopiya-predvspenivatel-oborudovanie-dlya-litya-po-gazificziruemyim-modelyam.html" title="Вибростенд" >Вибростенд</a></li>
+<li ><a href="kopiya-avtoklav-oborudovanie-dlya-litya-po-gazificziruemyim-modelyam-lgm.html" title="Отрезной станок" >Отрезной станок</a></li>
+<li ><a href="shlifovalnyij-obdirochno-shlifovalnyij-stanok.html" title="Шлифовальный (обдирочно-шлифовальный) станок" >Шлифовальный (обдирочно-шлифовальный) станок</a></li>
+</ul></li>
+<li ><a href="mashinyi-dlya-czentrobezhnogo-litya/index.html" title="Машины для центробежного литья" >Машины для центробежного литья</a><ul><li ><a href="konsolnyie-czentrobezhnyie-mashinyi-s-gorizontalnoj-osyu.html" title="Консольная центробежная машина с горизонтальной осью" >Консольная центробежная машина с горизонтальной осью</a></li>
+<li ><a href="mashinyi-czentrobezhnogo-litya-s-vertikalnoj-osyu.html" title="Машины центробежного литья с вертикальной осью" >Машины центробежного литья с вертикальной осью</a></li>
+<li ><a href="rolikovyie-mashinyi-dlya-trubnyix-otlivok.html" title="Роликовые машины для трубных отливок" >Роликовые машины для трубных отливок</a></li>
+</ul></li>
+<li ><a href="mashinyi-dlya-litya-pod-nizkim-davleniem.html" title="Машины для литья под низким давлением" >Машины для литья под низким давлением</a></li>
+<li ><a href="mashinyi-dlya-litya-pod-vyisokim-davleniem/index.html" title="Машины для литья под высоким давлением" >Машины для литья под высоким давлением</a><ul><li ><a href="mashinyi-dlya-litya-pod-vyisokim-davleniem-s-xolodnoj-kameroj-pressovaniya.html" title="Машина для литья под высоким давлением с холодной камерой прессования" >Машина для литья под высоким давлением с холодной камерой прессования</a></li>
+<li ><a href="manipulyator-zalivshhik-dlya-litya-metallov.html" title="Манипулятор-заливщик для литья металлов" >Манипулятор-заливщик для литья металлов</a></li>
+</ul></li>
+<li ><a href="mashinyi-dlya-litya-v-kokil/index.html" title="Машины для литья в кокиль" >Машины для литья в кокиль</a><ul><li ><a href="mashinyi-dlya-litya-v-kokil-naklonyaemyie.html" title="Наклоняемая машина для литья в кокиль" >Наклоняемая машина для литья в кокиль</a></li>
+</ul></li>
+<li ><a href="vybivka-sterzhnei.html" title="Вибрационная машина для выбивки стержней" >Вибрационная машина для выбивки стержней</a></li>
+<li ><a href="oborudovanie-pgs-formovochnyie-mashinyi.html" title="Формовочные машины" >Формовочные машины</a></li>
+<li ><a href="avtomat-dlya-bezopochnoj-formovki-s-gorizontalnyim-razemom.html" title="Автоматы для безопочных форм с горизонтальным разъемом" >Автоматы для безопочных форм с горизонтальным разъемом</a></li>
+<li ><a href="sterzhnevoe-oborudovanie/index.html" title="Стержневое оборудование" >Стержневое оборудование</a><ul><li ><a href="sterzhnevoe-oborudovanie-peskostrelnyie-sterzhnevyie-avtomatyi.html" title="Пескострельный стержневой автомат" >Пескострельный стержневой автомат</a></li>
+<li ><a href="sterzhnevoe-oborudovanie-gazogeneratoryi.html" title="Газогенератор" >Газогенератор</a></li>
+<li ><a href="sterzhnevoe-oborudovanie-sistemyi-nejtralizaczii-gazov.html" title="Система нейтрализации газов" >Система нейтрализации газов</a></li>
+</ul></li>
+<li ><a href="oborudovanie-dlya-obrubki-litya/index.html" title="Оборудование для обрубки литья" >Оборудование для обрубки литья</a><ul><li ><a href="gidroklin-dlya-obrubki-litya.html" title="Гидравлический клин" >Гидравлический клин</a></li>
+<li ><a href="pnevmopushka.html" title="Пневмомолот для отделения прибылей" >Пневмомолот для отделения прибылей</a></li>
+<li ><a href="podvesnoj-shlifovalnyij-stanok.html" title="Подвесной шлифовальный станок" >Подвесной шлифовальный станок</a></li>
+</ul></li>
+<li ><a href="metalloobrabatyivayushhie-stanki/index.html" title="Металлообрабатывающие станки" >Металлообрабатывающие станки</a><ul><li ><a href="tokarnyi-centr.html" title="Токарные обрабатывающие центры с ЧПУ" >Токарные обрабатывающие центры с ЧПУ</a></li>
+<li ><a href="frezernyie-5-osevyie-obrabatyivayushhie-czentryi-s-chpu.html" title="Фрезерные 5-осевые обрабатывающие центры с ЧПУ" >Фрезерные 5-осевые обрабатывающие центры с ЧПУ</a></li>
+<li ><a href="stanok-lazer.html" title="Станок лазерной резки металлов" >Станок лазерной резки металлов</a></li>
+</ul></li>
+</ul>
+    </li>
+    <li><a href="proektyi/index.html">Проекты</a>
+     <ul><li ><a href="proektyi-2016g/index.html" title="Проекты 2016" >Проекты 2016</a><ul><li ><a href="postavka-i-zapusk-formovochnogo-uchastka-lvm-v-g.-samara.-samara" title="Поставка и запуск формовочного участка ЛВМ в г. Самара" >Поставка и запуск формовочного участка ЛВМ в г. Самара</a></li>
+<li ><a href="zapusk-i-postavka-drobemeta-barabannogo-tipa-s-lentochnyim-transporterom-q32.html" title="Запуск и поставка дробемета барабанного типа с ленточным транспортером Q32" >Запуск и поставка дробемета барабанного типа с ленточным транспортером Q32</a></li>
+<li ><a href="postavka-i-zapusk-2-x-mobilnoj-indukczionnyix-pechej-serii-gwm.html" title="Поставка и запуск 2-х мобильной индукционных печей серии GMF" >Поставка и запуск 2-х мобильной индукционных печей серии GMF</a></li>
+<li ><a href="postavka-formovochnyix-mashin-fd-2-v-tverskuyu-obl.html" title="Поставка формовочных машин FD-2 в Тверскую обл." >Поставка формовочных машин FD-2 в Тверскую обл.</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-k-g.berezniki" title="Поставка и запуск формовочного участка ХТС в г.Березники" >Поставка и запуск формовочного участка ХТС в г.Березники</a></li>
+<li ><a href="postavka-i-zapusk-formovochnyix-mashin-serii-fd-2-v-krasnoyarskij-kraj.html" title="Поставка и запуск формовочных машин серии FD-2 в Красноярский край" >Поставка и запуск формовочных машин серии FD-2 в Красноярский край</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-nepreryivnogo-dejstviya-serii-s24-v-g.miass" title="Поставка и запуск смесителя непрерывного действия серии S24 в г.Миасс" >Поставка и запуск смесителя непрерывного действия серии S24 в г.Миасс</a></li>
+</ul></li>
+<li  class="current_page_item"><a href="proektyi-2017g/index.html" title="Проекты 2017" >Проекты 2017</a><ul><li ><a href="postavka-i-zapusk-uchastka-plavki-i-zalivki-v-kaliningradskoj-oblasti.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в Калининградской области" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в Калининградской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-czentrobezhnogo-litya-j514-v-g.-pervouralsk.-pervouralsk" title="Поставка и запуск машины центробежного литья J514 в г. Первоуральск" >Поставка и запуск машины центробежного литья J514 в г. Первоуральск</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-samarskoj-obl.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в Самарской обл." >Поставка и запуск плавильного участка на базе индукционной плавильной печи в Самарской обл.</a></li>
+<li ><a href="postavka-formovochnogo-uchastka-pgs-v-g.-lgov.-lgov" title="Поставка формовочного участка ПГС в г. Льгов" >Поставка формовочного участка ПГС в г. Льгов</a></li>
+<li ><a href="postavka-i-zapusk-stanczij-oxlazhdeniya-fl-2000-v-kurskoj-obl.html" title="Поставка и запуск станций охлаждения FL-2000 в Курской обл." >Поставка и запуск станций охлаждения FL-2000 в Курской обл.</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-barabannogo-tipa-q3113-v-tverskoj-oblasti.html" title="Поставка и запуск дробемета барабанного типа Q3113 в Тверской области" >Поставка и запуск дробемета барабанного типа Q3113 в Тверской области</a></li>
+<li ><a href="postavka-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi,-vitebskaya-oblast.html" title="Поставка плавильного участка на базе индукционной плавильной печи в республику Беларусь" >Поставка плавильного участка на базе индукционной плавильной печи в республику Беларусь</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.-tomsk.-tomsk" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Томск" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Томск</a></li>
+<li ><a href="postavka-formovochnogo-uchastka-pgs-na-baze-litejnogo-smesitelya-s1110-v-moskovskuyu-oblast.html" title="Поставка формовочного участка ПГС в Московскую область  " >Поставка формовочного участка ПГС в Московскую область  </a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-q3720-v-g.berezniki" title="Поставка и запуск дробеметной установки Q3720 в г. Березники" >Поставка и запуск дробеметной установки Q3720 в г. Березники</a></li>
+<li ><a href="vvedena-v-ekspluatacziyu-mashina-litya-pod-davleniem-zlc-400-v-g.kirov" title="Введена в эксплуатацию машина литья под давлением с холодной камерой ZLC-400 в г.Киров " >Введена в эксплуатацию машина литья под давлением с холодной камерой ZLC-400 в г.Киров </a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.perm" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Ижевск" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Ижевск</a></li>
+<li ><a href="postavka-i-zapusk-stanczii-oxlazhdeniya-fl-1000-v-g.-cheboksaryi.-cheboksaryi" title="Поставка и запуск станции охлаждения FL-1000 в г. Чебоксары" >Поставка и запуск станции охлаждения FL-1000 в г. Чебоксары</a></li>
+<li ><a href="postavka-i-zapusk-plavilnoj-pechi-dlya-plavki-zolota-v-g.aldan-(yakutiya).aldan-(yakutiya)" title="Поставка и запуск плавильной печи для плавки золота в г.Алдан (Якутия)" >Поставка и запуск плавильной печи для плавки золота в г.Алдан (Якутия)</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.49-v-g.ulyanovsk" title="Поставка и запуск индукционной плавильной печи GW-0.49 в г.Ульяновск" >Поставка и запуск индукционной плавильной печи GW-0.49 в г.Ульяновск</a></li>
+<li ><a href="vvedena-v-ekspluatacziyu-liniya-lvm-v-g.nizhnij-novgorod.nizhnij-novgorod" title="Введен в эксплуатацию участок  ЛВМ в г.Нижний Новгород" >Введен в эксплуатацию участок  ЛВМ в г.Нижний Новгород</a></li>
+<li ><a href="postavka-formovochnyix-mashin-fd-4-v-tverskuyu-obl.html" title="Поставка формовочных машин FD-4 в Тверскую область" >Поставка формовочных машин FD-4 в Тверскую область</a></li>
+<li ><a href="postavka-i-zapusk-avtomatizirovannoj-formovochnoj-linii-lgm-v-ivanovskoj-obl.html" title="Поставка и запуск автоматизированной формовочной линии ЛГМ в Ивановской обл." >Поставка и запуск автоматизированной формовочной линии ЛГМ в Ивановской обл.</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-g.barnaul" title="Поставка и запуск формовочного участка ХТС в г.Барнаул" >Поставка и запуск формовочного участка ХТС в г.Барнаул</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-s-povorotnyim-stolom-v-g.orel" title="Поставка и запуск дробемета с поворотным столом в г.Орел" >Поставка и запуск дробемета с поворотным столом в г.Орел</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.barnaul" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Барнаул" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Барнаул</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-gazovoj-pechi-v-permskij-kraj.html" title="Поставка и запуск термической газовой печи в Пермском крае" >Поставка и запуск термической газовой печи в Пермском крае</a></li>
+<li ><a href="postavka-avtoklava-ws-150yda-v-g.-mogilev,-belorussiya.-mogilev,-belorussiya" title="Поставка Автоклава WS-150YDA в г. Могилев, Белоруссия " >Поставка Автоклава WS-150YDA в г. Могилев, Белоруссия </a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-lentochnogo-tipa-q326-v-g.leninogorsk.leninogorsk" title="Поставка и запуск дробемета ленточного типа Q326 в г.Лениногорск" >Поставка и запуск дробемета ленточного типа Q326 в г.Лениногорск</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-nepreryivnogo-dejstviya-serii-s24-v-g.cherepovecz.cherepovecz" title="Поставка и запуск смесителя непрерывного действия серии S24 в г. Череповец" >Поставка и запуск смесителя непрерывного действия серии S24 в г. Череповец</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-vixrevogo-serii-s14-v-g.-magnitogorsk.-magnitogorsk" title="Поставка и запуск смесителя вихревого серии S14 в г. Магнитогорск" >Поставка и запуск смесителя вихревого серии S14 в г. Магнитогорск</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-g.-ulyanovsk.-ulyanovsk" title="Поставка и запуск формовочного участка ХТС в г. Ульяновск" >Поставка и запуск формовочного участка ХТС в г. Ульяновск</a></li>
+<li ><a href="postavka-stanczii-oxlazhdeniya-serii-fl-v-volgogradskuyu-obl.html" title="Поставка станции охлаждения серии FL в Волгоградскую обл." >Поставка станции охлаждения серии FL в Волгоградскую обл.</a></li>
+<li ><a href="postavka-formovochnyix-mashin-fd-3-v-g.lyisva" title="Поставка и запуск формовочных машин FD-3 в Пермский край" >Поставка и запуск формовочных машин FD-3 в Пермский край</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-lentochnogo-tipa-serii-q32-v-g.novokuzneczk.novokuzneczk" title="Поставка и запуск дробеметной установки ленточного типа серии Q32 в г.Новокузнецк" >Поставка и запуск дробеметной установки ленточного типа серии Q32 в г.Новокузнецк</a></li>
+<li ><a href="postavka-i-zapusk-pechi-serii-gmf-dlya-plavki-serebra-v-g.ekaterinburg.ekaterinburg" title="Поставка и запуск печи серии GMF для плавки серебра в г.Екатеринбург" >Поставка и запуск печи серии GMF для плавки серебра в г.Екатеринбург</a></li>
+<li  class="current_page_item"><span>Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск</span></li>
+<li ><a href="postavka,-montazh-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.16-v-g.ulan-ude.ulan-ude" title="Поставка, монтаж и запуск индукционной плавильной печи GW-0.16 в г.Улан-Удэ" >Поставка, монтаж и запуск индукционной плавильной печи GW-0.16 в г.Улан-Удэ</a></li>
+<li ><a href="indukczionnaya-plavilnaya-pechgw-0.45-350g-v-g.bijsk" title="Индукционная плавильная печь GW-0.45-350 в г. Бийск, Алтайский край" >Индукционная плавильная печь GW-0.45-350 в г. Бийск, Алтайский край</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-nepreryivnogo-dejstviya-serii-s24-v-g.perm" title="Поставка и запуск смесителя непрерывного действия серии S24 в г.Пермь" >Поставка и запуск смесителя непрерывного действия серии S24 в г.Пермь</a></li>
+</ul></li>
+<li ><a href="proektyi-2018g/index.html" title="Проекты 2018" >Проекты 2018</a><ul><li ><a href="postavka-i-zapusk-gazovoj-pechi-dlya-zakalki-drobi.html" title="Поставка и запуск газовой печи RT 320х2500-11 для закалки дроби в республике Чувашия" >Поставка и запуск газовой печи RT 320х2500-11 для закалки дроби в республике Чувашия</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-rostovskoj-obl.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в Ростовской обл." >Поставка и запуск плавильного участка на базе индукционной плавильной печи в Ростовской обл.</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-novosibirskoj-obl.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в Новосибирской обл." >Поставка и запуск плавильного участка на базе индукционной плавильной печи в Новосибирской обл.</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-q3113-v-voronezhskoj-obl.html" title="Поставка и запуск дробемета Q3113 в Воронежской обл." >Поставка и запуск дробемета Q3113 в Воронежской обл.</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-q3720-v-g.-novosibirsk.-novosibirsk" title="Поставка и запуск дробеметной установки Q3210 в г. Новосибирск" >Поставка и запуск дробеметной установки Q3210 в г. Новосибирск</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-dlya-litya-pod-nizkim-davleniem-j456s-v-leningradskoj-obl.html" title="Поставка и запуск машины ЛНД  J456С в Ленинградской обл." >Поставка и запуск машины ЛНД  J456С в Ленинградской обл.</a></li>
+<li ><a href="postavka-i-zapusk-elektrotermicheskix-pechej-v-g.-kamensk-uralskij.-kamensk-uralskij" title="Поставка и запуск электротермических печей в г. Каменск-Уральский" >Поставка и запуск электротермических печей в г. Каменск-Уральский</a></li>
+<li ><a href="vveden-v-ekspluatacziyu-plavilnyij-uchastok-v-g.-livnyi.-livnyi" title="Введен в эксплуатацию плавильный участок в г. Ливны, Орловская область" >Введен в эксплуатацию плавильный участок в г. Ливны, Орловская область</a></li>
+<li ><a href="postavka-i-zapusk-stanczii-oxlazhdeniya-fl-1250-v-kazaxstan.html" title="Поставка и запуск станции охлаждения FL-1250 в Казахстан" >Поставка и запуск станции охлаждения FL-1250 в Казахстан</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-podvesnogo-tipa-q3720-v-g.bryansk" title="Поставка и запуск дробемета подвесного типа Q3720 в г.Брянск" >Поставка и запуск дробемета подвесного типа Q3720 в г.Брянск</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.-taganrog.-taganrog" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Таганрог" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Таганрог</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-czentrobezhnogo-litya-j518-v-ufimskoj-obl.html" title="Поставка и запуск машины центробежного литья с горизонтальной осью вращения J518 в республике Башкортостан" >Поставка и запуск машины центробежного литья с горизонтальной осью вращения J518 в республике Башкортостан</a></li>
+<li ><a href="vvedena-v-ekspluatacziyu-liniya-lgm-v-g.bodajbo-irkutskoj-obl.bodajbo-irkutskoj-obl" title="Введена в эксплуатацию линия ЛГМ в г.Бодайбо Иркутской обл." >Введена в эксплуатацию линия ЛГМ в г.Бодайбо Иркутской обл.</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.miass" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Миасс" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Миасс</a></li>
+<li ><a href="postavka-i-zapusk-sistemyi-prigotavleniya-i-dozirovaniya-smesi-pgs-v-g.voronezh" title="Поставка и запуск системы приготавления и дозирования смеси ПГС в г.Воронеж" >Поставка и запуск системы приготавления и дозирования смеси ПГС в г.Воронеж</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-p.oktyabrskij,-ufimskoj-obl.oktyabrskij,-ufimskoj-obl" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Октябрьский" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Октябрьский</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.elektrostal.elektrostal" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Электросталь" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г.Электросталь</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-lentochnogo-tipa-q326-v-g.kazan" title="Поставка и запуск дробемета ленточного типа Q326 в г.Казань" >Поставка и запуск дробемета ленточного типа Q326 в г.Казань</a></li>
+<li ><a href="indukczionnaya-plavilnaya-pech-gw-0,1-100-v-g.kazan" title="Поставка и запуск индукционной плавильной печи GW-0,1-100 в республику Татарстан" >Поставка и запуск индукционной плавильной печи GW-0,1-100 в республику Татарстан</a></li>
+<li ><a href="postavka-i-zapusk-formovochnoj-linii-lgm-v-g.-kazan.-kazan" title="Поставка и запуск формовочной линии ЛГМ  в г. Казань" >Поставка и запуск формовочной линии ЛГМ  в г. Казань</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.novosibirsk.novosibirsk" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Новосибирск" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Новосибирск</a></li>
+</ul></li>
+<li ><a href="proektyi-2019/index.html" title="Проекты 2019" >Проекты 2019</a><ul><li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-ivanovskoj-oblasti.html" title="Поставка и запуск плавильного участка в Ивановской области" >Поставка и запуск плавильного участка в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-q3210-v-g.-lipeczk.-lipeczk" title="Поставка и запуск дробемета Q3210 в г. Липецкой области" >Поставка и запуск дробемета Q3210 в г. Липецкой области</a></li>
+<li ><a href="postavka-i-zapusk-modelnogo-poluavtomata-serii-eps-v-ivanovskoj-oblasti.html" title="Поставка и запуск модельного полуавтомата серии EPS в Ивановской области" >Поставка и запуск модельного полуавтомата серии EPS в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-v-stavropolskom-krae.html" title="Поставка и запуск машины литья под низким давлением J4510B в Ставропольском крае" >Поставка и запуск машины литья под низким давлением J4510B в Ставропольском крае</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-tulskoj-oblasti.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в в Тульской области" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в в Тульской области</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-g.-perm.-perm" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Пермь" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в г. Пермь</a></li>
+<li ><a href="postavka-i-zapusk-modelnogo-avtomata-eps-bc-1210-v-g.-ryazan.-ryazan" title="Поставка и запуск модельного автомата EPS-BC-1210 в г. Рязань" >Поставка и запуск модельного автомата EPS-BC-1210 в г. Рязань</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-g.-samara.-samara" title="Поставка и запуск формовочного участка ХТС в г. Самара" >Поставка и запуск формовочного участка ХТС в г. Самара</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-samarskoj-oblasti.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в Самарской области" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в Самарской области</a></li>
+<li ><a href="postavka-i-zapusk-litejnogo-czexa-v-respublike-tatarstan.html" title="Поставка и запуск литейного цеха в республике Татарстан" >Поставка и запуск литейного цеха в республике Татарстан</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в Нижегородской области" >Поставка и запуск плавильного участка на базе индукционной плавильной печи в Нижегородской области</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-v-respublike-bashkortostan.html" title="Поставка и запуск линии для литья по газифицируемым моделям в республике Башкортостан " >Поставка и запуск линии для литья по газифицируемым моделям в республике Башкортостан </a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-permskij-kraj.html" title="Поставка и запуск формовочного участка ХТС в Пермский край" >Поставка и запуск формовочного участка ХТС в Пермский край</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnyix-plavilnyix-pechej-v-kurganskoj-oblasti.html" title="Поставка и запуск плавильного участка на базе индукционных плавильных печей в Курганской области" >Поставка и запуск плавильного участка на базе индукционных плавильных печей в Курганской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-samarskoj-obl.html" title="Поставка и запуск дробеметной установки Q376 в Самарской обл" >Поставка и запуск дробеметной установки Q376 в Самарской обл</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-q326-v-respublike-tatarstan.html" title="Поставка и запуск дробемета Q326 в республике Татарстан" >Поставка и запуск дробемета Q326 в республике Татарстан</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-vixrevogo-s1412-v-sverdlovskoj-obl.html" title="Поставка и запуск смесителя вихревого S1412 в Свердловской обл." >Поставка и запуск смесителя вихревого S1412 в Свердловской обл.</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-primorskom-krae.html" title="Поставка и запуск формовочного участка ХТС в Приморском крае" >Поставка и запуск формовочного участка ХТС в Приморском крае</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-dlya-litya-pod-nizkim-davleniem.html" title="Поставка и запуск машины для литья под низким давлением J456С в Свердловской области" >Поставка и запуск машины для литья под низким давлением J456С в Свердловской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemeta-q3210-v-kemerovskoj-oblasti.html" title="Поставка и запуск дробемета Q3210 в Кемеровской области" >Поставка и запуск дробемета Q3210 в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-sistemyi-regeneraczii-xts-v-krasnoyarskom-krae.html" title="Поставка и запуск системы регенерации ХТС в Красноярском крае" >Поставка и запуск системы регенерации ХТС в Красноярском крае</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-dlya-plavki-zolota-v-r.-kazaxstan.-kazaxstan" title="Поставка и запуск индукционной плавильной печи для плавки золота в республику Казахстан" >Поставка и запуск индукционной плавильной печи для плавки золота в республику Казахстан</a></li>
+<li ><a href="postavka-i-zapusk-elektrotermicheskoj-pechi-rt3-280-12.html" title="Поставка и запуск электротермической печи RT3-280-12 в Красноярском крае" >Поставка и запуск электротермической печи RT3-280-12 в Красноярском крае</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-na-baze-indukczionnoj-plavilnoj-pechi-v-volgogradskoj-obl.html" title="Поставка и запуск плавильного участка на базе индукционной плавильной печи в Волгоградской обл." >Поставка и запуск плавильного участка на базе индукционной плавильной печи в Волгоградской обл.</a></li>
+</ul></li>
+<li ><a href="proektyi-2020/index.html" title="Проекты 2020" >Проекты 2020</a><ul><li ><a href="postavka-i-zapusk-termicheskogo-uchastka-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск термического участка в Челябинской области" >Поставка и запуск термического участка в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-sverdlovskoj-oblasti.html" title="Поставка и запуск термической печи серии RT в Свердловской области" >Поставка и запуск термической печи серии RT в Свердловской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3210-v-sverdlovskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3210 в Свердловской области" >Поставка и запуск дробеметной установки Q3210 в Свердловской области</a></li>
+<li ><a href="postavka-indukczionnoj-plavilnoj-pechi-gmf-15-v-kazaxstan.html" title="Поставка индукционной плавильной печи GMF-15 в республику  Казахстан " >Поставка индукционной плавильной печи GMF-15 в республику  Казахстан </a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3710-v-voronezhskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3710 в Воронежской области" >Поставка и запуск дробеметной установки Q3710 в Воронежской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-j456c-v-leningradskoj-obl.html" title="Поставка и запуск машины ЛНД J456C в Ленинградской обл." >Поставка и запуск машины ЛНД J456C в Ленинградской обл.</a></li>
+<li ><a href="postavka-i-zapusk-avtoklava-ws-280yda-v-sverdlovskoj-oblasti.html" title="Поставка и запуск автоклава WS-280YDA в Свердловской области" >Поставка и запуск автоклава WS-280YDA в Свердловской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-j453b-v-kemerovskoj-obl.html" title="Поставка и запуск машины литья под низким давлением J453B в Кемеровской обл." >Поставка и запуск машины литья под низким давлением J453B в Кемеровской обл.</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-j456c.html" title="Поставка и запуск машины литья под низким давлением J456C в Ленинградской обл." >Поставка и запуск машины литья под низким давлением J456C в Ленинградской обл.</a></li>
+<li ><a href="postavka-i-zapusk-gazovoj-termicheskoj-pechi-v-kurganskoj-oblasti.html" title="Поставка и запуск газовой термической печи в Курганской области" >Поставка и запуск газовой термической печи в Курганской области</a></li>
+<li ><a href="vosstanovlenie-rabotosposobnosti-indukczionnoj-pechi-v-kemerovskoj-obl.html" title="Поставка и запуск индукционных плавильных печей в Алтайском крае" >Поставка и запуск индукционных плавильных печей в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-kurganskoj-obl.html" title="Поставка и запуск плавильного участка в Курганской обл" >Поставка и запуск плавильного участка в Курганской обл</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-krasnodarskom-krae.html" title="Поставка и запуск плавильного участка в Краснодарском крае" >Поставка и запуск плавильного участка в Краснодарском крае</a></li>
+<li ><a href="postavka-i-zapusk-uchastka-smeseprigotovleniya-v-irkutskoj-oblasti.html" title="Поставка и запуск участка смесеприготовления в Иркутской области" >Поставка и запуск участка смесеприготовления в Иркутской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3720-v-irkutskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3720 в Иркутской области" >Поставка и запуск дробеметной установки Q3720 в Иркутской области</a></li>
+<li ><a href="postavka-i-zapusk-vibrovozdushnogo-oxladitelya-s8614-v-smolenskoj-obl.html" title="Поставка и запуск вибровоздушного охладителя S8614 в Смоленской обл." >Поставка и запуск вибровоздушного охладителя S8614 в Смоленской обл.</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-v-tulskoj-obl.html" title="Поставка и запуск формовочного участка ПГС в Тульской обл." >Поставка и запуск формовочного участка ПГС в Тульской обл.</a></li>
+<li ><a href="postavka-i-distanczionnyij-zapusk-indukczionnoj-pechi-gwt-0.45-500-v-ryazanskoj-oblasti.45-500-v-ryazanskoj-oblasti" title="Поставка и дистанционный запуск индукционной печи GWT 0.45-500 в Рязанской области " >Поставка и дистанционный запуск индукционной печи GWT 0.45-500 в Рязанской области </a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-nepreryivnogo-dejstviya-s243-v-kaluzhskoj-obl.html" title="Поставка и запуск смесителя непрерывного действия S243 в Калужской обл." >Поставка и запуск смесителя непрерывного действия S243 в Калужской обл.</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-nepreryivnogo-dejstviya-s243-v-lipeczkoj-obl.html" title="Поставка и запуск смесителя непрерывного действия S243 в Липецкой обл." >Поставка и запуск смесителя непрерывного действия S243 в Липецкой обл.</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3210-v-leningradskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3210 в Ленинградской области" >Поставка и запуск дробеметной установки Q3210 в Ленинградской области</a></li>
+<li ><a href="postavka-i-zapusk-ustanovki-indukczionnogo-nagreva-hf-120-v-g.-novosibirsk.-novosibirsk" title="Поставка и запуск установки индукционного нагрева HF-120 в г. Новосибирск" >Поставка и запуск установки индукционного нагрева HF-120 в г. Новосибирск</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.45-500-v-ivanovskoj-oblasti.45-500-v-ivanovskoj-oblasti" title="Поставка и запуск индукционной плавильной печи GW 0.45-500 в Ивановской области" >Поставка и запуск индукционной плавильной печи GW 0.45-500 в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-altajskom-krae.html" title="Поставка и запуск плавильного участка в Алтайском крае" >Поставка и запуск плавильного участка в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-oborudovaniya-belogo-czexa-dlya-litya-po-gazificziruemyim-modelyam-v-altajskom-krae.html" title="Поставка и запуск оборудования "белого цеха" для литья по газифицируемым моделям в Алтайском крае" >Поставка и запуск оборудования "белого цеха" для литья по газифицируемым моделям в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnyix-ustanovok-qr3210-i-q376-v-altajskom-krae.html" title="Поставка и запуск дробеметных установок QR3210 и Q376 в Алтайском крае " >Поставка и запуск дробеметных установок QR3210 и Q376 в Алтайском крае </a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск автоматизированной  линии для литья по газифицируемым моделям (ЛГМ) в Нижегородской области" >Поставка и запуск автоматизированной  линии для литья по газифицируемым моделям (ЛГМ) в Нижегородской области</a></li>
+<li ><a href="postavka-i-zapusk-belogo-czexa-dlya-litya-po-gazificziruemyim-modelyam-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск "белого цеха" для литья по газифицируемым моделям в Нижегородской области " >Поставка и запуск "белого цеха" для литья по газифицируемым моделям в Нижегородской области </a></li>
+<li ><a href="zapusk-indukczionnoj-plavilnoj-pechi-v-nizhegorodskoj-oblasti.html" title="Запуск индукционной плавильной печи в Нижегородской области" >Запуск индукционной плавильной печи в Нижегородской области</a></li>
+<li ><a href="postavka,-shef-montazh-i-zapusk-plavilnogo-uchastka-v-g.-magadan.-magadan" title="Поставка, шеф-монтаж и запуск плавильного участка в г. Магадан" >Поставка, шеф-монтаж и запуск плавильного участка в г. Магадан</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-dlya-zakalki-izdelij-rx-280-10.html" title="Поставка и запуск термической печи для закалки изделий RX-280-10 в г. Иваново" >Поставка и запуск термической печи для закалки изделий RX-280-10 в г. Иваново</a></li>
+<li ><a href="postavka.html" title="Поставка и запуск индукционной плавильной печи GWL 0.35 в Томской области" >Поставка и запуск индукционной плавильной печи GWL 0.35 в Томской области</a></li>
+</ul></li>
+<li ><a href="proektyi-2021/index.html" title="Проекты 2021" >Проекты 2021</a><ul><li ><a href="postavka-i-zapusk-modelnogo-avtomata-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск модельного автомата в Нижегородской области" >Поставка и запуск модельного автомата в Нижегородской области</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-zabajkalskom-krae).html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Забайкальском крае" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Забайкальском крае</a></li>
+<li ><a href="zapusk-modelnogo-uchastka-(belyij-czex)-lgm-v-zabajkalskom-krae.html" title="Запуск модельного участка (Белый цех) ЛГМ в Забайкальском крае" >Запуск модельного участка (Белый цех) ЛГМ в Забайкальском крае</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-zabajkalskom-krae.html" title="Поставка и запуск дробеметной установки Q376 в Забайкальском крае" >Поставка и запуск дробеметной установки Q376 в Забайкальском крае</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-sverdlovskoj-oblasti.html" title="Поставка и запуск плавильного участка в Свердловской области" >Поставка и запуск плавильного участка в Свердловской области</a></li>
+<li ><a href="zapusk-plavilnogo-kompleksa-v-rostovskoj-oblasti.html" title="Запуск плавильного комплекса для плавки цветных маталлов в Ростовской области" >Запуск плавильного комплекса для плавки цветных маталлов в Ростовской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3710-v-novosibirskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3710 в Новосибирской области " >Поставка и запуск дробеметной установки Q3710 в Новосибирской области </a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.49-350-v-novosibirskoj-oblasti.49-350-v-novosibirskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.49-350 В Новосибирской области" >Поставка и запуск индукционной печи GW 0.49-350 В Новосибирской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-nizhegorodskoj-oblasti.25-250-v-nizhegorodskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.25-250 в Нижегородской области" >Поставка и запуск индукционной печи GW 0.25-250 в Нижегородской области</a></li>
+<li ><a href="postavka-i-zapusk-oborudovaniya-modelnogo-uchastka-dlya-texnologii-lgm-v-orenburgskoj-oblasti.html" title="Поставка и запуск оборудования модельного участка для технологии ЛГМ в Оренбургской области" >Поставка и запуск оборудования модельного участка для технологии ЛГМ в Оренбургской области</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-permskoj-oblasti.html" title="Поставка и запуск плавильного участка в Пермской области" >Поставка и запуск плавильного участка в Пермской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gwl-0.49-250-v-tomskoj-obl.49-250-v-tomskoj-obl" title="Поставка и запуск индукционной плавильной печи GWL 0.49-250 в Томской области" >Поставка и запуск индукционной плавильной печи GWL 0.49-250 в Томской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnyix-ustanovok-qr3220-v-kaluzhskoj-oblasti.html" title="Поставка и запуск дробеметных установок QR3220 в Калужской области" >Поставка и запуск дробеметных установок QR3220 в Калужской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.49-500-v-sverdlovskoj-oblasti.49-500-v-sverdlovskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.49-500 в Свердловской области" >Поставка и запуск индукционной печи GW 0.49-500 в Свердловской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-v-respubliku-buryatiya.html" title="Поставка и запуск индукционной плавильной печи в республику Бурятия" >Поставка и запуск индукционной плавильной печи в республику Бурятия</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-kostromskoj-oblasti.html" title="Поставка и запуск плавильного участка в Костромской области" >Поставка и запуск плавильного участка в Костромской области</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-ryazanskoj-oblasti.html" title="Поставка и запуск плавильного комплекса в Рязанской области" >Поставка и запуск плавильного комплекса в Рязанской области</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-omskoj-oblasti.html" title="Поставка и запуск плавильного участка в Омской области" >Поставка и запуск плавильного участка в Омской области</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-omskoj-oblasti.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Омской области" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Омской области</a></li>
+<li ><a href="postavka-i-zapusk-oborudovaniya-belogo-czexa-dlya-litya-po-gazificziruemyim-modelyam-v-omskoj-oblasti.html" title="Поставка и запуск оборудования "белого цеха" для литья по газифицируемым моделям в Омской области" >Поставка и запуск оборудования "белого цеха" для литья по газифицируемым моделям в Омской области</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-omskoj-oblasti-oblasti.html" title="Поставка и запуск термической печи серии RT в Омской области " >Поставка и запуск термической печи серии RT в Омской области </a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-omskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q376 в Омской области" >Поставка и запуск дробеметной установки Q376 в Омской области</a></li>
+<li ><a href="postavka-i-zapusk-tiristornogo-preobrazovatelya-chastotyi-v-kemerovskoj-oblasti.html" title="Поставка и запуск тиристорного преобразователя частоты в Кемеровской области" >Поставка и запуск тиристорного преобразователя частоты в Кемеровской области</a></li>
+</ul></li>
+<li ><a href="proektyi-2022/index.html" title="Проекты 2022" >Проекты 2022</a><ul><li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm-chernyij-czex)-v-altajskom-krae.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ цех)  в Алтайском крае" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ цех)  в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-modelnogo-uchastka-(belyij-czex)-lgm-v-altajskom-krae.html" title="Поставка и запуск модельного участка (Белый цех) ЛГМ в Алтайском крае" >Поставка и запуск модельного участка (Белый цех) ЛГМ в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.49-350-v-altajskom-krae.49-350-v-altajskom-krae" title="Поставка и запуск индукционной плавильной печи GW 0.49-350 в Алтайском крае" >Поставка и запуск индукционной плавильной печи GW 0.49-350 в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3210-v-altajskom-krae.html" title="Поставка и запуск дробеметной установки Q3210 в Алтайском крае." >Поставка и запуск дробеметной установки Q3210 в Алтайском крае.</a></li>
+<li ><a href="postavka-i-zapusk-smeseprigotovitelnogo-kompleksa-v-permskom-krae.html" title="Поставка и запуск смесеприготовительного комплекса в Пермском крае" >Поставка и запуск смесеприготовительного комплекса в Пермском крае</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-permskom-krae.html" title="Поставка и запуск термической печи серии RT в Пермском крае" >Поставка и запуск термической печи серии RT в Пермском крае</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.1-150,-krasnodarskij-kraj.1-150,-krasnodarskij-kraj" title="Поставка и запуск индукционной плавильной печи GW 0.1-150, Краснодарский край" >Поставка и запуск индукционной плавильной печи GW 0.1-150, Краснодарский край</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-avtomata-z427-v-permskom-krae.html" title="Поставка и запуск формовочного автомата Z427 в Пермском крае" >Поставка и запуск формовочного автомата Z427 в Пермском крае</a></li>
+<li ><a href="postavka-i-zapusk-formovochnoj-linii-xts-v-rostovskoj-oblasti.html" title="Поставка и запуск формовочной линии ХТС в Ростовской области" >Поставка и запуск формовочной линии ХТС в Ростовской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-permskom-krae.html" title="Поставка и запуск дробеметной установки Q376 в Пермском крае" >Поставка и запуск дробеметной установки Q376 в Пермском крае</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-permskoj-oblasti.25-250-v-permskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.25-250 в Пермском крае" >Поставка и запуск индукционной печи GW 0.25-250 в Пермском крае</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-rostovskoj-oblasti.25-250-v-rostovskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.25-250 в Ростовской области" >Поставка и запуск индукционной печи GW 0.25-250 в Ростовской области</a></li>
+<li ><a href="postavka-i-zapusk-ustanovki-dlya-degazaczii-alyuminievyix-splavov-v-nizhnem-novgorode.html" title="Поставка и запуск установки для дегазации алюминиевых сплавов в Нижнем Новгороде" >Поставка и запуск установки для дегазации алюминиевых сплавов в Нижнем Новгороде</a></li>
+<li ><a href="postavka-i-zapusk-drobemnoj-ustanovki-modeli-qr3210-v-kemerovskoj-oblasti.html" title="Поставка и запуск дробемной установки модели QR3210 в Кемеровской области" >Поставка и запуск дробемной установки модели QR3210 в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3210-v-kemerovskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3210 в Кемеровской области" >Поставка и запуск дробеметной установки Q3210 в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-czentrobezhnogo-litya-s-gorizontalnoj-osyu-v-kemerovskoj-oblasti.html" title="Поставка и запуск машины центробежного литья с горизонтальной осью в Кемеровской области" >Поставка и запуск машины центробежного литья с горизонтальной осью в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-formovochnoj-mashinyi-pgs-v-kemerovskoj-oblasti.html" title="Поставка и запуск формовочной машины ПГС в Кемеровской области" >Поставка и запуск формовочной машины ПГС в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-kemerovskoj-oblasti.html" title="Поставка и запуск термической печи серии RT в Кемеровской области" >Поставка и запуск термической печи серии RT в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-modelnogo-uchastka-(belyij-czex)-lgm-v-kemerovskoj-oblasti.html" title="Поставка и запуск модельного участка (Белый цех) ЛГМ в Кемеровской области" >Поставка и запуск модельного участка (Белый цех) ЛГМ в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-kemerovskoj-oblasti.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Кемеровской области" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-tiristornogo-preobrazovatelya-chastotyi-v-rostovskoj-oblasti.html" title="Поставка и запуск тиристорного преобразователя частоты в Ростовской области" >Поставка и запуск тиристорного преобразователя частоты в Ростовской области</a></li>
+<li ><a href="zapusk-i-otrabotka-texnologii-modelnogo-avtomata-i-predvspenivatelya-dlya-lgm-v-kirovskoj-oblasti.html" title="Запуск и отработка технологии работы модельного автомата и предвспенивателя для ЛГМ в Кировской области" >Запуск и отработка технологии работы модельного автомата и предвспенивателя для ЛГМ в Кировской области</a></li>
+<li ><a href="postavka-i-zapusk-plazmoreza-s-chpu-i-lentochnopilnogo-stanka-v-zabajkalskij-kraj.html" title="Поставка и запуск плазмореза с ЧПУ и ленточнопильного станка в Забайкальский край" >Поставка и запуск плазмореза с ЧПУ и ленточнопильного станка в Забайкальский край</a></li>
+<li ><a href="postavka-i-zapusk-vakuumnoj-indukczionnoj-plavilnoj-pechi-zig-50-v-kurganskoj-oblasti.html" title="Поставка и запуск вакуумной индукционной плавильной печи ZIG-50 в Курганской области" >Поставка и запуск вакуумной индукционной плавильной печи ZIG-50 в Курганской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-160-v-kurganskoj-oblasti.25-160-v-kurganskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.25-160 в Курганской области" >Поставка и запуск индукционной печи GW 0.25-160 в Курганской области</a></li>
+<li ><a href="postavka-i-zapusk-ochistnogo-oborudovaniya-dlya-litya-po-vyiplavlyaemyim-modelyam-(lvm)-v-kurganskoj-oblasti.html" title="Поставка и запуск очистного оборудования для литья по выплавляемым моделям (ЛВМ) в Курганской области" >Поставка и запуск очистного оборудования для литья по выплавляемым моделям (ЛВМ) в Курганской области</a></li>
+<li ><a href="postavka-i-zapusk-uchastka-termoobrabotki-v-kurganskoj-oblasti.html" title="Поставка и запуск участка термообработки в Курганской области" >Поставка и запуск участка термообработки в Курганской области</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-dlya-litya-po-vyiplavlyaemyim-modelyam-(lvm)-v-kurganskoj-oblasti.html" title="Поставка и запуск формовочного участка для литья по выплавляемым моделям (ЛВМ) в Курганской области" >Поставка и запуск формовочного участка для литья по выплавляемым моделям (ЛВМ) в Курганской области</a></li>
+<li ><a href="postavka-i-zapusk-uchastka-dlya-izgotovleniya-modelej-metodom-litya-po-vyiplavlyaemyim-modelyam-(lvm)-v-kurganskoj-obl.html" title="Поставка и запуск участка для изготовления моделей методом литья по выплавляемым моделям (ЛВМ)" >Поставка и запуск участка для изготовления моделей методом литья по выплавляемым моделям (ЛВМ)</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-respublike-kazaxstan.25-250-v-respublike-kazaxstan" title="Поставка и запуск индукционной печи GW 0.25-250 в Республике Казахстан" >Поставка и запуск индукционной печи GW 0.25-250 в Республике Казахстан</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.49-500-v-altajskom-krae.49-500-v-altajskom-krae" title="Поставка и запуск индукционной печи GW 0.49-500 В Алтайском крае" >Поставка и запуск индукционной печи GW 0.49-500 В Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-altajskom-krae.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в городе Бийск" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в городе Бийск</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnyix-ustanovok-q376-i-q3210-v-altajskom-krae.html" title="Поставка и запуск дробеметных установок Q376 и Q3210 в Алтайском крае" >Поставка и запуск дробеметных установок Q376 и Q3210 в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-altajskom-krae.html" title="Поставка и запуск термической печи серии RT в Алтайском крае" >Поставка и запуск термической печи серии RT в Алтайском крае</a></li>
+</ul></li>
+<li ><a href="proektyi-2023/index.html" title="Проекты 2023" >Проекты 2023</a><ul><li ><a href="postavka-i-zapusk-formovochnoj-linii-xts-v-chelyabinskoj-oblasti.html" title="Поставка и запуск формовочной линии ХТС в Челябинской области" >Поставка и запуск формовочной линии ХТС в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.15-160,-ulyanovskaya-oblast.15-160,-ulyanovskaya-oblast" title="Поставка и запуск индукционной плавильной печи GW 0.49-350-1, Пермский край" >Поставка и запуск индукционной плавильной печи GW 0.49-350-1, Пермский край</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-nepreryivnogo-dejstviya-s258-v-altajskom-krae.html" title="Поставка и запуск смесеприготовительного оборудования ХТС в Пермском крае" >Поставка и запуск смесеприготовительного оборудования ХТС в Пермском крае</a></li>
+<li ><a href="smesitel-dvuhrukavnyi.html" title="Поставка и запуск смесителя ХТС непрерывного действия S258 в Алтайском крае" >Поставка и запуск смесителя ХТС непрерывного действия S258 в Алтайском крае</a></li>
+<li ><a href="termicheskaya-pech-s-vikatnyim-podom.html" title="Поставка и запуск термической печи серии RT в Пермском крае" >Поставка и запуск термической печи серии RT в Пермском крае</a></li>
+<li ><a href="11.html" title="Поставка и запуск термической печи серии RT в Нижегородской области" >Поставка и запуск термической печи серии RT в Нижегородской области</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск печи ионного азотирования RJ-MZJ150 в Курганской области" >Поставка и запуск печи ионного азотирования RJ-MZJ150 в Курганской области</a></li>
+<li ><a href="postavka-i-zapusk-bojlerklava-mdtl100-v-leningradskoj-oblasti.html" title="Поставка и запуск бойлерклава MDTL100 в Ленинградской области" >Поставка и запуск бойлерклава MDTL100 в Ленинградской области</a></li>
+<li ><a href="postavka-i-zapusk-smeseprigotovitelnogo-kompleksa-pgs-v-permskom-krae.html" title="Поставка и запуск смесеприготовительного комплекса ПГС в Новосибирской области" >Поставка и запуск смесеприготовительного комплекса ПГС в Новосибирской области</a></li>
+<li ><a href="drobemetnaya-ustanovka-q3720-v-respublike-tatarstan.html" title="Поставка и запуск дробеметной установки Q3720 в Республике Татарстан" >Поставка и запуск дробеметной установки Q3720 в Республике Татарстан</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-sverdlovskoj-oblasti.html" title="Поставка и запуск формовочного участка ХТС в Свердловской области" >Поставка и запуск формовочного участка ХТС в Свердловской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.49-350-v-altajskom-krae.49-350-v-altajskom-krae" title="Поставка и запуск индукционной плавильной печи GW 0.49-350 в Самарской области" >Поставка и запуск индукционной плавильной печи GW 0.49-350 в Самарской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-drobemetnoj-ustanovki-q3210-v-altajskom-krae.html" title="Поставка и запуск дробеметной установки QR3220 в Ивановской области." >Поставка и запуск дробеметной установки QR3220 в Ивановской области.</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-smeseprigotovitelnogo-kompleksa-pgs-v-permskom-krae.html" title="Поставка и запуск смесеприготовительного комплекса ПГС в Оренбургской области" >Поставка и запуск смесеприготовительного комплекса ПГС в Оренбургской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw-0.1-150,-krasnodarskij-kraj.1-150,-krasnodarskij-kraj" title="Поставка и запуск индукционной плавильной печи GW 0.15-160, Ульяновская область" >Поставка и запуск индукционной плавильной печи GW 0.15-160, Ульяновская область</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-formovochnoj-linii-xts-v-rostovskoj-oblasti.html" title="Поставка и запуск формовочного участка ХТС в Ульяновской области" >Поставка и запуск формовочного участка ХТС в Ульяновской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-permskom-krae.html" title="Поставка и запуск дробеметной установки Q3210 в Ульяновской области" >Поставка и запуск дробеметной установки Q3210 в Ульяновской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-rostovskoj-oblasti.25-250-v-rostovskoj-oblasti" title="Поставка и запуск плавильного участка в Ульяновской области" >Поставка и запуск плавильного участка в Ульяновской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-drobemetnoj-ustanovki-q3210-v-kemerovskoj-oblasti.html" title="Поставка и запуск дробеметной установки QWD 1250K-4 в Смоленской области" >Поставка и запуск дробеметной установки QWD 1250K-4 в Смоленской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnyix-ustanovok-q376-v-permskom-krae.html" title="Поставка и запуск дробеметной установки Q376 в Пермском крае" >Поставка и запуск дробеметной установки Q376 в Пермском крае</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-(lnd)-j453a-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск машины литья под низким давлением (ЛНД) J453A в Нижегородской области" >Поставка и запуск машины литья под низким давлением (ЛНД) J453A в Нижегородской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-indukczionnoj-pechi-gw-0.49-500-v-altajskom-krae.49-500-v-altajskom-krae" title="Поставка и запуск индукционной печи GW 0.49-500 в Кемеровской области" >Поставка и запуск индукционной печи GW 0.49-500 в Кемеровской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-altajskom-krae.html" title="Поставка и запуск газовой термической печи серии RT в Рязанской области" >Поставка и запуск газовой термической печи серии RT в Рязанской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-3-v-respublike-tatarstan.html" title="Поставка и запуск индукционной печи GW 3 в республике Татарстан" >Поставка и запуск индукционной печи GW 3 в республике Татарстан</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-nepreryivnogo-dejstviya-s243-v-sverdlovskoj-oblasti.html" title="Поставка и запуск смесителя ХТС непрерывного действия S243 в  Свердловской области" >Поставка и запуск смесителя ХТС непрерывного действия S243 в  Свердловской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-samarskoj-oblasti.25-250-v-samarskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.25-250 в Самарской области" >Поставка и запуск индукционной печи GW 0.25-250 в Самарской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-(lnd)-j456c-v-orenburgskoj-oblasti.html" title="Поставка и запуск машины литья под низким давлением (ЛНД) J456C в Оренбургской области" >Поставка и запуск машины литья под низким давлением (ЛНД) J456C в Оренбургской области</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-orenburgskoj-oblasti.html" title="Поставка и запуск формовочного участка ХТС в Оренбургской области" >Поставка и запуск формовочного участка ХТС в Оренбургской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnogo-miksera-gwm-2-v-moskovskoj-oblasti.html" title="Поставка и запуск индукционного миксера GWM 2 в Московской области" >Поставка и запуск индукционного миксера GWM 2 в Московской области</a></li>
+<li ><a href="plavilnyi-uchastock.html" title="Поставка и запуск плавильного участка в Пермском крае" >Поставка и запуск плавильного участка в Пермском крае</a></li>
+<li ><a href="postavka-i-zapusk-sterzhnevogo-avtomata-co2-v-chuvashskoj-respublike.html" title="Поставка и запуск стержневого автомата в Оренбургской области" >Поставка и запуск стержневого автомата в Оренбургской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-respublike-tatarstan.25-250-v-respublike-tatarstan" title="Поставка и запуск индукционной печи GW 0.25-250 в Республике Татарстан" >Поставка и запуск индукционной печи GW 0.25-250 в Республике Татарстан</a></li>
+</ul></li>
+<li ><a href="proektyi-2024/index.html" title="Проекты 2024" >Проекты 2024</a><ul><li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-altajskom-krae.html" title="Поставка и запуск дробеметной установки Q376 в Алтайском крае" >Поставка и запуск дробеметной установки Q376 в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-i-termicheskoj-pechi-v-respublike-tatarstan.html" title="Поставка и запуск дробеметной установки Q376 и термической печи RT в Республике Татарстан" >Поставка и запуск дробеметной установки Q376 и термической печи RT в Республике Татарстан</a></li>
+<li ><a href="postavka-i-zapusk-vakuumnoj-indukczionnoj-plavilnoj.html" title="Поставка и запуск плавильного участка в Ивановской области" >Поставка и запуск плавильного участка в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-plavilnogo-uchastka-v-chuvashskoj-respublike.html" title="Поставка и запуск плавильного участка в Чувашской республике" >Поставка и запуск плавильного участка в Чувашской республике</a></li>
+<li ><a href="postavka-i-zapusk-vakuumnoj-indukczionnoj-plavilnoj-pechi-zig-10-v-sverdlovskoj-oblasti.html" title="Поставка и запуск индукционной плавильной печи GW 2-1500-0.5 в Челябинской области" >Поставка и запуск индукционной плавильной печи GW 2-1500-0.5 в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-s2410-v-respublike-bashkortostan.html" title="Поставка и запуск смесителя ХТС S2410 в республике Башкортостан" >Поставка и запуск смесителя ХТС S2410 в республике Башкортостан</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-zakalochnoj-pechi-v-belgorodskoj-oblasti.html" title="Поставка и запуск термической закалочной печи в Белгородской области" >Поставка и запуск термической закалочной печи в Белгородской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,49-350-v-ulyanovskoj-oblasti.html" title="Поставка и запуск индукционной печи GW 0,49-350 в в Ульяновской области" >Поставка и запуск индукционной печи GW 0,49-350 в в Ульяновской области</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-s243-v-ivanovskoj-oblasti.html" title="Поставка и запуск смесителя ХТС S243 в Ивановской области" >Поставка и запуск смесителя ХТС S243 в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,49-350-v-ivanovskoj-oblasti.html" title="Поставка и запуск индукционной печи GW 0,49-350 в Ивановской области" >Поставка и запуск индукционной печи GW 0,49-350 в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-g.-voronezh.-voronezh" title="Поставка и запуск формовочного участка ХТС в г. Воронеж" >Поставка и запуск формовочного участка ХТС в г. Воронеж</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-chuvashskoj-respublike.html" title="Поставка и запуск формовочного участка ХТС в Чувашской республике" >Поставка и запуск формовочного участка ХТС в Чувашской республике</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-11111111.html" title="Поставка и запуск дробеметной установки Q376 в Воронежской области" >Поставка и запуск дробеметной установки Q376 в Воронежской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-modelnogo-uchastka-(belyij-czex)-lgm-v-altajskom-krae.html" title="Поставка и запуск модельного участка (Белый цех) ЛГМ в Челябинской области" >Поставка и запуск модельного участка (Белый цех) ЛГМ в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-bryanskoj-oblasti.html" title="Поставка и запуск системы пескооборота ЛГМ в Брянской области" >Поставка и запуск системы пескооборота ЛГМ в Брянской области</a></li>
+<li ><a href="postavka-i-zapusk-sistemyi-peskooborota-lgm-v-bryanskoj-oblasti.html" title="Поставка и запуск системы пескооборота ЛГМ в Челябинской области" >Поставка и запуск системы пескооборота ЛГМ в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-nepreryivnogo-dejstviya-s245-v-ivanovskoj-oblasti.html" title="Поставка и запуск смесителя ХТС непрерывного действия S245 в Майдаково" >Поставка и запуск смесителя ХТС непрерывного действия S245 в Майдаково</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-nepreryivnogo-dejstviya-s245-v-ivanovskoi.html" title="Поставка и запуск смесителя ХТС непрерывного действия S245 в Ивановской области" >Поставка и запуск смесителя ХТС непрерывного действия S245 в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-nepreryivnogo-dejstviya-s245-v-krasnoyarskom-krae.html" title="Поставка и запуск смесителя ХТС непрерывного действия S245 в Красноярском крае" >Поставка и запуск смесителя ХТС непрерывного действия S245 в Красноярском крае</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-orenburgskoj-oblasti.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Оренбургской области" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Оренбургской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-kemerovskoj-oblasti.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Брянской области" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Брянской области</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-chelyabiskoj-oblasti.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Челябинске" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Челябинске</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-3-v-orenburgskoi-oblasti.html" title="Поставка и запуск индукционной печи GW 3 в Оренбургской области" >Поставка и запуск индукционной печи GW 3 в Оренбургской области</a></li>
+<li ><a href="dozator-zalivshhik-metalla-v-samarskoj-oblasti.html" title="Дозатор-заливщик металла в Самарской области" >Дозатор-заливщик металла в Самарской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-j456-v-tulskoj-oblasti.html" title="Поставка и запуск машины литья под низким давлением (ЛНД) J453A в Нижегородской области" >Поставка и запуск машины литья под низким давлением (ЛНД) J453A в Нижегородской области</a></li>
+<li ><a href="postavka-i-zapusk-vibraczionnogo-zagruzchika-shixtyi-v-chelyabinskoj-oblasti.html" title="Поставка и запуск вибрационного загрузчика шихты  в Челябинской области" >Поставка и запуск вибрационного загрузчика шихты  в Челябинской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-plazmoreza-s-chpu-i-lentochnopilnogo-stanka-v-zabajkalskij-kraj.html" title="Поставка и запуск обрабатывающего центра в Забайкальский край" >Поставка и запуск обрабатывающего центра в Забайкальский край</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3210-v-ryazanskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3210 в Рязанской области" >Поставка и запуск дробеметной установки Q3210 в Рязанской области</a></li>
+</ul></li>
+<li ><a href="proektyi-2025/index.html" title="" >Проекты 2025</a><ul><li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,49-350-v-g.-voronezh.-voronezh" title="Поставка и запуск индукционной печи GW 0,49-500 в Алтайском крае" >Поставка и запуск индукционной печи GW 0,49-500 в Алтайском крае</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-vertikalno-stopochnoj-formovki-z416a-v-chuvashskoj-respublike.html" title="Поставка и запуск машины вертикально-стопочной формовки Z416A в Чувашской республике" >Поставка и запуск машины вертикально-стопочной формовки Z416A в Чувашской республике</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,75-500-v-luganskoj-oblasti.html" title="Поставка и запуск индукционной печи GW 0,75-500 в Луганской области" >Поставка и запуск индукционной печи GW 0,75-500 в Луганской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,4-320-v-tatarstane.html" title="Поставка и запуск индукционной печи GW 0,4-320 в Татарстане" >Поставка и запуск индукционной печи GW 0,4-320 в Татарстане</a></li>
+<li ><a href="postavka,-shef-montazh-i-zapusk-linii-peremeshheniya-bezopochnyix-form-v-smolenskoj-oblasti.html" title="Поставка, шеф-монтаж и запуск линии перемещения безопочных форм в Смоленской области" >Поставка, шеф-монтаж и запуск линии перемещения безопочных форм в Смоленской области</a></li>
+<li ><a href="postavka-i-zapusk-smesitelya-xts-nepreryivnogo-dejstviya-s245-v-ryazanskoj-oblasti.html" title="Поставка и запуск смесителя ХТС непрерывного действия S245 в Рязанской области" >Поставка и запуск смесителя ХТС непрерывного действия S245 в Рязанской области</a></li>
+<li ><a href="postavka-i-zapusk-plavilnoj-pechi-soprotivleniya-rt100-v-ryazanskoj-oblasti.html" title="Поставка и запуск плавильной печи сопротивления RT100 в Рязанской области" >Поставка и запуск плавильной печи сопротивления RT100 в Рязанской области</a></li>
+<li ><a href="postavka-i-zapusk-smeseprigotovitelnogo-kompleksa-pgs-v-smolenskoj-oblasti.html" title="Поставка и запуск смесеприготовительного комплекса ПГС в Смоленской области" >Поставка и запуск смесеприготовительного комплекса ПГС в Смоленской области</a></li>
+<li ><a href="postavka-i-zapusk-oxladitelya-peschano-glinistoj-smesi-v-smolenskoj-oblasti.html" title="Поставка и запуск охладителя песчано-глинистой смеси в Смоленской области" >Поставка и запуск охладителя песчано-глинистой смеси в Смоленской области</a></li>
+<li ><a href="postavka-i-zapusk-gazovoj-termicheskoj-pechi-serii-rt-v-luganskoj-oblasti.html" title="Поставка и запуск газовой термической печи серии RT в Луганской области" >Поставка и запуск газовой термической печи серии RT в Луганской области</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-avtomata-s-razmerom-koma-1100x1000-mm-v-smolenskoj-oblasti.html" title="Поставка и запуск формовочного автомата с размером кома 1100х1000 мм в Смоленской области" >Поставка и запуск формовочного автомата с размером кома 1100х1000 мм в Смоленской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,49-350-v-omskoj-oblasti.html" title="Поставка и запуск индукционной печи GW 1.5-1000 в Омской области" >Поставка и запуск индукционной печи GW 1.5-1000 в Омской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-qr3220-v-ivanovskoj-oblasti.html" title="Поставка и запуск дробеметной установки QR3220 в Ивановской области." >Поставка и запуск дробеметной установки QR3220 в Ивановской области.</a></li>
+<li ><a href="postavka-i-zapusk-linii-dlya-litya-po-gazificziruemyim-modelyam-(lgm)-v-omskoj-oblast.html" title="Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Омской области" >Поставка и запуск линии для литья по газифицируемым моделям (ЛГМ) в Омской области</a></li>
+<li ><a href="postavka-i-zapusk-oborudovaniya-dlya-spekaniya-modelej-lgm-v-belgorodskoj-oblasti.html" title="Поставка и запуск оборудования для спекания моделей ЛГМ в Белгородской области" >Поставка и запуск оборудования для спекания моделей ЛГМ в Белгородской области</a></li>
+<li ><a href="postavka,-shef-montazh-i-zapusk-indukczionnoj-plavilnoj-pechi-gw3-1500-v-tatarstane.html" title="Поставка, шеф-монтаж и запуск индукционной плавильной печи GW3-1500 в Татарстане" >Поставка, шеф-монтаж и запуск индукционной плавильной печи GW3-1500 в Татарстане</a></li>
+<li ><a href="postavka-i-zapusk-sterzhnevogo-avtomata-v-ivanovskoj-oblasti.html" title="Поставка и запуск стержневого автомата в Ивановской области" >Поставка и запуск стержневого автомата в Ивановской области</a></li>
+<li ><a href="postavka-i-zapusk-sistemyi-regeneraczii-xts-v-krasnoyarskom-kra.html" title="Поставка и запуск системы регенерации ХТС в Красноярском крае" >Поставка и запуск системы регенерации ХТС в Красноярском крае</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,49-500-v-tatarstane.html" title="Поставка и запуск индукционной печи GW 0,49-500 в Татарстане" >Поставка и запуск индукционной печи GW 0,49-500 в Татарстане</a></li>
+<li ><a href="postavka-i-zapusk-dvux-indukczionnyix-pechej-gw-3-v-ryazanskoj-oblasti.html" title="Поставка и запуск двух индукционных печей GW 3 в Рязанской области" >Поставка и запуск двух индукционных печей GW 3 в Рязанской области</a></li>
+<li ><a href="postavka-i-zapusk-sistemyi-regeneraczii-xts-v-tambovskoj-oblasti.html" title="Поставка и запуск формовочного участка ХТС в Тамбовской области" >Поставка и запуск формовочного участка ХТС в Тамбовской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gwl-0.49-250-v-tambovskoj-oblasti.49-250-v-tambovskoj-oblasti" title="Поставка и запуск индукционной плавильной печи GWL 0.49-250 в Тамбовской области" >Поставка и запуск индукционной плавильной печи GWL 0.49-250 в Тамбовской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q3720-v-sverdlovskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q3720 в Свердловской области" >Поставка и запуск дробеметной установки Q3720 в Свердловской области</a></li>
+<li ><a href="postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-tambovskoj-oblasti.html" title="Поставка и запуск газовых термических печей серии RT в Тамбовской области" >Поставка и запуск газовых термических печей серии RT в Тамбовской области</a></li>
+<li ><a href="shef-montazh,-postavka-i-zapusk-uchastka-drobestrujnoj-obrabotki-v-tambovskoj-oblasti.html" title="Шеф-монтаж, поставка и запуск участка дробеструйной обработки в Тамбовской области" >Шеф-монтаж, поставка и запуск участка дробеструйной обработки в Тамбовской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,49-350-v-smolenskoj-oblasti.html" title="Поставка и запуск индукционной печи GW 0,49-350 в Смоленской области" >Поставка и запуск индукционной печи GW 0,49-350 в Смоленской области</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-tambovskoj-oblasti.html" title="Поставка и запуск формовочного участка ХТС в Тамбовской области" >Поставка и запуск формовочного участка ХТС в Тамбовской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0,49-350-v-sverdlovskoj-oblasti.html" title="Поставка и запуск индукционной печи GW 0,49-350 в Свердловской области" >Поставка и запуск индукционной печи GW 0,49-350 в Свердловской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-permskom-krae.html" title="Запуск газовой термической печи серии RT в Челябинской области" >Запуск газовой термической печи серии RT в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gw3-1500-v-tatarstane.html" title="Поставка, шеф-монтаж и запуск индукционной плавильной печи GW3-1500 в Татарстане" >Поставка, шеф-монтаж и запуск индукционной плавильной печи GW3-1500 в Татарстане</a></li>
+<li ><a href="postavka,-shef-montazh-i-zapusk-indukczionnoj-plavilnoj-pechi-gw2-1500-v-chelyabinskoj-oblasti.html" title="Поставка, шеф-монтаж и запуск индукционной плавильной печи GW2-1500 в Челябинской области" >Поставка, шеф-монтаж и запуск индукционной плавильной печи GW2-1500 в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-oborudovaniya-dlya-spekaniya-modelej-lgm-v-chelyabinskoj-oblasti.html" title="Поставка и запуск оборудования для спекания моделей ЛГМ в Челябинской области" >Поставка и запуск оборудования для спекания моделей ЛГМ в Челябинской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-pechi-gw-0.25-250-v-tulskoj-oblasti.25-250-v-tulskoj-oblasti" title="Поставка и запуск индукционной печи GW 0.25-250 в Тульской области" >Поставка и запуск индукционной печи GW 0.25-250 в Тульской области</a></li>
+<li ><a href="kopiya-postavka-i-zapusk-termicheskoj-pechi-serii-rt-v-kemerovskoj-oblasti.html" title="Поставка и запуск термической печи серии RT в Кемеровской области" >Поставка и запуск термической печи серии RT в Кемеровской области</a></li>
+<li ><a href="postavka-i-zapusk-indukczionnoj-plavilnoj-pechi-gwt-0.49-250-v-tambovskoj-oblasti.49-250-v-tambovskoj-oblasti" title="Поставка и запуск индукционной плавильной печи GWT 0.49-250 в Тамбовской области" >Поставка и запуск индукционной плавильной печи GWT 0.49-250 в Тамбовской области</a></li>
+<li ><a href="postavka-i-zapusk-pechi-ionnogo-azotirovaniya-rj-mzj150-v-novosibirskoj-oblasti.html" title="Поставка и запуск печи ионного азотирования RJ-MZJ150 в Новосибирской области" >Поставка и запуск печи ионного азотирования RJ-MZJ150 в Новосибирской области</a></li>
+<li ><a href="postavka-i-zapusk-osnastki-dlya-modelnogo-poluavtomata-lgm-v-nizhegorodskoj-oblasti.html" title="Поставка и запуск оснастки для модельного полуавтомата ЛГМ в Нижегородской области" >Поставка и запуск оснастки для модельного полуавтомата ЛГМ в Нижегородской области</a></li>
+<li ><a href="postavka-i-zapusk-smeseprigotovitelnogo-kompleksa-pgs-v-novosibirskoj-oblasti.html" title="Поставка, монтаж и запуск смесеприготовительного комплекса ПГС в Новосибирской области" >Поставка, монтаж и запуск смесеприготовительного комплекса ПГС в Новосибирской области</a></li>
+<li ><a href="postavka-i-zapusk-formovochnogo-uchastka-xts-v-novgorodskoj-oblasti.html" title="Поставка и запуск формовочного участка ХТС в Новгородской области" >Поставка и запуск формовочного участка ХТС в Новгородской области</a></li>
+<li ><a href="postavka-i-zapusk-drobemetnoj-ustanovki-q376-v-novgorodskoj-oblasti.html" title="Поставка и запуск дробеметной установки Q376 в Новгородской области" >Поставка и запуск дробеметной установки Q376 в Новгородской области</a></li>
+<li ><a href="postavka-i-zapusk-mashinyi-litya-pod-nizkim-davleniem-j456-v-novgorodskoj-oblasti.html" title="Поставка и запуск машины литья под низким давлением J456 в Новгородской области" >Поставка и запуск машины литья под низким давлением J456 в Новгородской области</a></li>
+</ul></li>
+</ul>
+    </li>
+    <li id="mobhide"><a href="zapasnyie-chasti/index.html">ЗИП</a></li>
+    <li id="mobhide"><a href="osnastka/index.html">Оснастка</a></li>
+    <li class="li_a" id="mobhide"><a href="material/index.html">Материалы</a></li>
+    <li><a href="otzyivyi/index.html">Отзывы</a>
+    
+    </li>
+    <li id="mobhide"><a href="video/index.html">Видео</a></li>
+    <li id="mobhide"><a href="dostavka/index.html">Доставка</a></li>
+    <li><a href="kontaktyi/index.html">Контакты</a>
+         
+    </li>
+    <li class="li_a" id="mobhide"><a href="likvidacziya-kompleksa-lgm-po-snizhennoj-czene!.html">Ликвидация</a></li>
+</ul>
+                    </div>
+                    <nav>
+	<div class="bc1">
+    <ul><li><a href="index.html">Главная</a></li>
+ <li>/</li> <li><a href="proektyi/index.html">Проекты</a></li>
+ <li>/</li> <li><a href="proektyi-2017g/index.html">Проекты 2017</a></li>
+ <li>/</li> <li><li>Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск</li></li>
+</ul>
+    </div>
+</nav>     
+                    <div class="content">
+                        
+                        <h1>Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск</h1>
+                        
+                        <div class="lc"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск" title="Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск" width="300px" padding-left="40px" ></div>
+                        
+                        <div id="content-wrapp">
+                            <p>В октябре 2017г введена в эксплуатацию дробемтная установка для очистки листа в г.Новосибирск. </p>
+<p>Оборудование было поставлено в комлекте с системой подачи  и выгрузки изделий. Заказчик полностью удовлетворен качеством и работоспособностью очистного оборудования.</p>
+                        </div>
+                        
+                        <div class="scc">
+                            
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="clr"></div>
+                    <nav>
+	<div class="bc2">
+    <ul><li><a href="index.html">Главная</a></li>
+ <li>/</li> <li><a href="proektyi/index.html">Проекты</a></li>
+ <li>/</li> <li><a href="proektyi-2017g/index.html">Проекты 2017</a></li>
+ <li>/</li> <li><li>Введена в эксплуатацию дробеметная установка для очистки листа в г.Новосибирск</li></li>
+</ul>
+    </div>
+</nav> 
+                    <footer>
+                        <div class="ft">
+                            <div class="cntf">
+                                <p>Россия, 630008 г. Новосибирск, Сакко и Ванцетти д.77, офис 701, тел.: 8-800-550-60-54, +7 (383) 335-40-54 e-mail: <a href="mailto:info@sibtehlit.ru">info@sibtehlit.ru</a></p>
+                            </div>
+                        </div>
+                        <!-- Заявка, почта, телефон -->
+                        <div class="oep-block">
+                            <div class="oep-block__block obb-hidden oep-phone">
+                                <div class="oep-visible">
+                                    <a style="cursor:pointer" id="openphone" >
+                                     
+                                    </a>
+                                </div>
+                                <div class="oep-hidden">
+                                    <a href="tel:88005506054">8 800 550-60-54</a> <br/>
+                                    <a href="tel:+73833354054">+7 383 335-40-54</a>
+                                </div>
+                            </div>
+                            <!-- -->
+                            <div class="oep-block__block obb-hidden oep-mail">
+                                <div class="oep-visible">
+                                    <a style="cursor:pointer">
+                                         
+                                    </a>
+                                </div>
+                                <div class="oep-hidden">
+                                    <a href="mailto:info@sibtehlit.ru">info@sibtehlit.ru</a>
+                                </div>
+                            </div>
+                            <!-- -->
+                            
+                            <div class="oep-block__block obb-hidden oep-form">
+                                <div class="oep-visible">
+                                    <a style="cursor:pointer">
+                                      
+                                    </a>
+                                </div>
+                                <div class="oep-hidden">
+                                    <h4>Оставить заявку</h4>
+                                    <form method="post" class="ajax_form" action="vvedena-v-ekspluatacziyu-drobemetnaya-ustanovka-dlya-ochistki-lista-serii-v-g.novosibirsk" id="fixedform">
+                                                            <input type="text" name="name" placeholder="Имя">
+                                                            <input type="text" name="phone" placeholder="Телефон">
+                                                            <input type="text" name="email" placeholder="Email">
+                                                            <div class="form-group checkbox-wrapper">
+                                                                <label>
+                                                                    <input type="hidden" name="agree[]" value="" />
+                                                                    <input type="checkbox" name="agree[]" value="1" class=""   > 
+                                                                    <p class="checkbox-text">* Я соглашаюсь с <a href="assets/docs/privacy.pdf" download="">политикой конфиденциальности</a> <a href="assets/docs/policy.pdf" download="">и пользовательским соглашением</a></p>
+                                                               </label>
+                                                                <br>
+                                                            <span class="error_agree error"></span>
+                                                        </div>
+                                                            <input type="submit" value="Отправить">
+                                                        
+	<input type="hidden" name="af_action" value="78d84df0446c7ecb044f0720bf52d9e4" />
+</form><!--  -->
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <!-- -->
+                        <!-- END Заявка, почта, телефон -->
+                    </footer>
+    
+    <div id="modalEquipment" style="display:none;" class="modal-equipment">
+        <h3>Какое оборудование мы поставляем и обслуживаем </h3>
+        <div class="mci">
+            <div class="eb">
+                <div class="im"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Плавильное оборудование" title="Плавильное оборудование" /></div>
+                <p class="eqm--header">Плавильное оборудование</p>
+            </div>
+                            
+            <div class="eb">
+                <div class="im"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Дробеметная установка" title="Дробеметная установка" /></div>
+                <p class="eqm--header">Дробеметы</p>
+            </div>
+            
+            <div class="eb">
+                <div class="im"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Модель формовочной линии ЛГМ" title="Модель формовочной линии ЛГМ" /></div>
+                <p class="eqm--header">Формовочное оборудование ЛГМ</p>
+            </div>
+            
+            <div class="eb">
+                <div class="im"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Модель формовочной линии ХТС" title="Модель формовочной линии ХТС" /></div>
+                <p class="eqm--header">Формовочное оборудование ХТС</p>
+            </div>
+            
+            <div class="eb">
+                <div class="im"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Модель формовочной машины" title="Модель формовочной машины" /></div>
+                <p class="eqm--header">Формовочное оборудование ПГС</p>
+            </div>
+            
+            <div class="eb">
+                <div class="im"><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Литейная машина" title="Литейная машина" /></div>
+                <p class="eqm--header">Литейные машины</p>
+            </div>
+        </div>
+        <form class="ajax_form" action="" method="post">
+            <span class="span-choosed-eq" id="spanChoosedEq">Сделайте выбор и мы вас проконсультируем</span>
+            <input type="hidden" name="choosed_equipment" id="choosedEquipment" value="">
+            <input type="text" name="mename" placeholder="Имя">
+            <input type="text" name="mephone" placeholder="Телефон">
+            <input type="text" name="meemail" placeholder="Email">
+            <input type="submit" value="Отправить">
+        
+	<input type="hidden" name="af_action" value="f622f5e6d2947ba9e8dd5fefc53eaf6d" />
+</form>
+        
+    </div>
+    <div id="cookieConsentModal" class="cookie-consent">
+    <div class="cookie-consent__content">
+        <p class="cookie-consent__text">
+            Продолжая пользоваться Сайтом, вы соглашаетесь на использование файлов cookie в соответствии с нашими 
+            <a href="privacy.html" class="cookie-consent__link">правилами</a>.
+        </p>
+        <button id="cookieConsentAccept" class="cookie-consent__button">Принять</button>
+    </div>
+</div>
+
+<style>
+.cookie-consent {
+  position: fixed;
+    right: 20px;
+    bottom: 20px;
+    max-width: 480px;
+    padding: 15px;
+    background: #00333b;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    z-index: 999;
+    display: none;
+    font-family: Arial, sans-serif;
+    opacity: 0.7;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.cookie-consent__content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.cookie-consent__text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.cookie-consent__link {
+    color: #fff;
+    text-decoration: unset !important;
+    font-weight: 600;
+}
+
+.cookie-consent__button {
+    padding: 8px 15px;
+    background: #e81f0c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    height: 45px;
+}
+
+.cookie-consent__button:hover {
+    background: #e81f0c96;
+}
+
+@media (max-width: 768px) {
+    .cookie-consent {
+        right: 0;
+        left: 0;
+        bottom: 85px;
+        max-width: 100%;
+        border-radius: 0;
+    }
+    .cookie-consent__text {
+   	 font-size: 12px;
+		}
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (!localStorage.getItem('cookieConsentAccepted')) {
+        const modal = document.getElementById('cookieConsentModal');
+        modal.style.display = 'block';
+        
+        document.getElementById('cookieConsentAccept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsentAccepted', 'true');
+            modal.style.display = 'none';
+        });
+    }
+});
+</script>
+                    <!--<footer>
+                        <div class="ft">
+                            <div class="cntf">
+                                <p>Россия, 630008 г. Новосибирск, Сакко и Ванцетти д.77, офис 701, тел.: 8-800-550-60-54, +7 (383) 335-40-54 e-mail: <a href="mailto:info@sibtehlit.ru">info@sibtehlit.ru</a></p>
+                            </div>
+                        </div>
+                    </footer>-->
+                </div>
+            </div>
+        </div>
+        <div id="modal_form">
+            <h3>Запрос</h3>
+            <div class="comment">Оставьте свои данные и мы свяжемся с вами в ближайшее время!</div>
+            <a class="exit"></a>
+            <form method="post" class="ajax_form af_example" action="vvedena-v-ekspluatacziyu-drobemetnaya-ustanovka-dlya-ochistki-lista-serii-v-g.novosibirsk">
+    <div>
+		<input type="text" name="name" value="" id="workemail"/>
+        <input type="text" placeholder="Ваше имя и фамилия *" value="" name="workname-zv" id="workname-zv" class="input_text form-control"/>
+        <input type="text" placeholder="Контактный телефон *" name="phone-zv" value="" id="phone-zv" class="phone-zv form-control"/>
+		<input type="text" placeholder="E-mail *" value="" name="email" id="email" class="input_text form-control"/>
+		<input type="text" placeholder="Оборудование *" value="" name="eq" id="eq" class="input_text form-control"/>
+	</div>
+		<div class="form-group checkbox-wrapper">
+            <label>
+                <input type="hidden" name="agree[]" value="" />
+                <input type="checkbox" name="agree[]" value="1" class=""   > 
+                <p class="checkbox-text">* Я соглашаюсь с <a href="assets/docs/privacy.pdf" download="">политикой конфиденциальности</a> <a href="assets/docs/policy.pdf" download="">и пользовательским соглашением</a></p>
+           </label>
+            <br>
+        <span class="error_agree error"></span>
+        </div>
+		<div class="comment">Поля отмеченные <span class="required">*</span> обязательны для заполнения</div>
+        <div class="ajaxbut"><input class="button" type="submit" onclick="yaCounter41538704.reachGoal('OK'); return true;" value="Отправить запрос"></div>
+    
+    
+
+	<input type="hidden" name="af_action" value="6417031c6cd0f404ccc9ff1282bf0994" />
+</form>
+        </div>
+        <div id="overlay"></div>
+        <div id="modal_form2">
+            <h3>Участие в акции</h3>
+            <div class="comment">Оставьте свои данные и мы свяжемся с вами в ближайшее время!</div>
+            <a class="exit"></a>
+            <form method="post" class="ajax_form af_example" action="vvedena-v-ekspluatacziyu-drobemetnaya-ustanovka-dlya-ochistki-lista-serii-v-g.novosibirsk">
+		<input type="text" name="name" value="" id="workemail"/>
+        <input type="text" placeholder="Ваше имя и фамилия *" value="" name="workname-zv" id="workname-zv" class="input_text form-control"/>
+        <input type="text" placeholder="Контактный телефон *" name="phone-zv" value="" id="phone-zv" class="phone-zv form-control"/>
+		<input type="text" placeholder="Оборудование *" value="" name="eq" id="eq" class="input_text form-control"/>
+		<input type="text" placeholder="Ваша цена *" value="" name="price" id="price" class="input_text form-control"/>
+		<div class="form-group checkbox-wrapper">
+            <label>
+                <input type="hidden" name="agree[]" value="" />
+                <input type="checkbox" name="agree[]" value="1" class=""   > 
+                <p class="checkbox-text">* Я соглашаюсь с <a href="assets/docs/privacy.pdf" download="">политикой конфиденциальности</a> <a href="assets/docs/policy.pdf" download="">и пользовательским соглашением</a></p>
+           </label>
+            <br>
+        <span class="error_agree error"></span>
+        </div>
+		<div class="comment">Поля отмеченные <span class="required">*</span> обязательны для заполнения</div>
+        <div class="ajaxbut"><input class="button" type="submit" onclick="yaCounter41538704.reachGoal('OK'); return true;" value="Отправить запрос"></div>
+    
+    
+
+	<input type="hidden" name="af_action" value="9d177d3976fef8e722014aa533145073" />
+</form>
+        </div>
+        <div id="overlay"></div>
+        
+        <div id="modal_form3" style="display:none">
+            <h3>Запрос</h3>
+            <div class="comment">Оставьте свои данные и мы свяжемся с вами в ближайшее время!</div>
+            <a class="exit"></a>
+            <form method="post" class="ajax_form af_example" action="vvedena-v-ekspluatacziyu-drobemetnaya-ustanovka-dlya-ochistki-lista-serii-v-g.novosibirsk">
+    <div>
+		<input type="text" name="name" value="" id="workemail"/>
+        <input type="text" placeholder="Ваше имя и фамилия *" value="" name="workname-zv" id="workname-zv" class="input_text form-control"/>
+        <input type="text" placeholder="Контактный телефон *" name="phone-zv" value="" id="phone-zv" class="phone-zv form-control"/>
+		<input type="text" placeholder="E-mail *" value="" name="email" id="email" class="input_text form-control"/>
+		<input type="text" placeholder="Оборудование *" value="" name="eq" id="eq" class="input_text form-control"/>
+	</div>
+		<div class="form-group checkbox-wrapper">
+            <label>
+                <input type="hidden" name="agree[]" value="" />
+                <input type="checkbox" name="agree[]" value="1" class=""   > 
+                <p class="checkbox-text">* Я соглашаюсь с <a href="assets/docs/privacy.pdf" download="">политикой конфиденциальности</a> <a href="assets/docs/policy.pdf" download="">и пользовательским соглашением</a></p>
+           </label>
+            <br>
+        <span class="error_agree error"></span>
+        </div>
+		<div class="comment">Поля отмеченные <span class="required">*</span> обязательны для заполнения</div>
+        <div class="ajaxbut"><input class="button" type="submit" onclick="yaCounter41538704.reachGoal('OK'); return true;" value="Отправить запрос"></div>
+    
+    
+
+	<input type="hidden" name="af_action" value="6417031c6cd0f404ccc9ff1282bf0994" />
+</form>
+        </div>
+        
+        <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {w.yaCounter33501495 = new Ya.Metrika({id:33501495,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});w.yaCounter41538704 = new Ya.Metrika({id:41538704,clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});} catch(e) { }
+        });
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src="https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="position:absolute; left:-9999px;" alt="" /><img class="siteone-crawler-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script type='text/javascript'>
+(function(){ document.jivositeloaded=0;var widget_id = '0BYNUSgPlD';var d=document;var w=window;function l(){var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src='https://code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}//эта строка обычная для кода JivoSite
+function zy(){
+    //удаляем EventListeners
+    if(w.detachEvent){//поддержка IE8
+        w.detachEvent('onscroll',zy);
+        w.detachEvent('onmousemove',zy);
+        w.detachEvent('ontouchmove',zy);
+        w.detachEvent('onresize',zy);
+    }else {
+        w.removeEventListener("scroll", zy, false);
+        w.removeEventListener("mousemove", zy, false);
+        w.removeEventListener("touchmove", zy, false);
+        w.removeEventListener("resize", zy, false);
+    }
+    //запускаем функцию загрузки JivoSite
+    if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}
+    //Устанавливаем куку по которой отличаем первый и второй хит
+    var cookie_date = new Date ( );
+    cookie_date.setTime ( cookie_date.getTime()+60*60*28*1000); //24 часа для Москвы
+    d.cookie = "JivoSiteLoaded=1;path=/;expires=" + cookie_date.toGMTString();
+}
+if (d.cookie.search ( 'JivoSiteLoaded' )<0){//проверяем, первый ли это визит на наш сайт, если да, то назначаем EventListeners на события прокрутки, изменения размера окна браузера и скроллинга на ПК и мобильных устройствах, для отложенной загрузке JivoSite.
+    if(w.attachEvent){// поддержка IE8
+        w.attachEvent('onscroll',zy);
+        w.attachEvent('onmousemove',zy);
+        w.attachEvent('ontouchmove',zy);
+        w.attachEvent('onresize',zy);
+    }else {
+        w.addEventListener("scroll", zy, {capture: false, passive: true});
+        w.addEventListener("mousemove", zy, {capture: false, passive: true});
+        w.addEventListener("touchmove", zy, {capture: false, passive: true});
+        w.addEventListener("resize", zy, {capture: false, passive: true});
+    }
+}else {zy();}
+})();</script>
+<!-- {/literal} END JIVOSITE CODE -->
+        
+        <!-- {/literal} END JIVOSITE CODE -->
+        <script src="app/js/lazyload.min.js"></script>
+        <script>
+            var lazyLoadInstance = new LazyLoad({
+                });
+                $(document).on('click','.jcarousel-prev',function(){
+                     lazyLoadInstance.update();
+                })
+        </script>
+        <!-- BEGIN JIVOSITE CODE {literal} -->
+        <script type='text/javascript'>
+            (function(){ var widget_id = '0BYNUSgPlD';var d=document;var w=window;function l(){
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src='https://code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+        </script>
+        <!-- {/literal} END JIVOSITE CODE -->
+      <!--  <div class="linebot"></div>  -->
+    <script type="text/javascript" src="assets/components/ajaxform/js/default.js"></script>
+<script type="text/javascript">AjaxForm.initialize({"assetsUrl":"\/assets\/components\/ajaxform\/","actionUrl":"\/assets\/components\/ajaxform\/action.php","closeMessage":"\u0437\u0430\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435","formSelector":"form.ajax_form","pageId":277});</script>
+</body>
+</html>
