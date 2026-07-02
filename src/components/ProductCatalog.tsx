@@ -486,6 +486,11 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
     setIsLightboxOpen(false);
   }, [selectedProductId]);
 
+  // Compute subcategories for the active category
+  const subcategories = useMemo(() => {
+    return activeCategory !== 'all' ? SUBCATEGORIES_MAP[activeCategory] || [] : [];
+  }, [activeCategory]);
+
   // Compute sub-subcategories available dynamically from physical products data for active choice
   const availableSubsubcategories = useMemo(() => {
     if (activeCategory === 'all' || activeSubcategory === 'all') return [];
@@ -1265,11 +1270,11 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                               (p) => p.category === cat.id && p.subcategory === sub.id
                             ).reduce((acc, p) => {
                               if (p.subsubcategory && !acc.some((x) => x.id === p.subsubcategory)) {
-                                acc.push({
-                                  id: p.subsubcategory,
-                                  nameRu: p.subsubcategoryRu || p.subsubcategory,
-                                  nameEn: p.subsubcategoryEn || p.subsubcategory,
-                                });
+                                  acc.push({
+                                    id: p.subsubcategory,
+                                    nameRu: p.subsubcategoryRu || p.subsubcategory,
+                                    nameEn: p.subsubcategoryEn || p.subsubcategory,
+                                  });
                               }
                               return acc;
                             }, [] as { id: string; nameRu: string; nameEn: string }[]);
@@ -1287,7 +1292,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                                   className={`w-full text-left px-2 py-1.5 text-[10px] font-bold uppercase transition-all duration-150 rounded-none flex items-center justify-between cursor-pointer border-none bg-transparent ${
                                     isSubSelected
                                       ? 'text-[#e65410] font-black'
-                                      : 'text-slate-650 hover:text-[#e65410] hover:bg-slate-100'
+                                      : 'text-[#00333b] hover:text-[#e65410] hover:bg-slate-100'
                                   }`}
                                 >
                                   <span className="leading-tight whitespace-normal pr-1 text-[10px]">{lang === 'en' ? sub.nameEn : sub.nameRu}</span>
@@ -1337,7 +1342,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
               <h4 className="text-xs font-black uppercase tracking-tight text-white leading-tight">
                 {lang === 'en' ? 'Custom dimensions are available' : 'Изготовление под индивидуальные условия'}
               </h4>
-              <p className="text-[10px] text-gray-400 leading-relaxed">
+              <p className="text-[10px] text-gray-450 leading-relaxed">
                 {lang === 'en' 
                   ? 'We can adapt layout footprints, loader arms, output slopes, and thermal controls to match your factory setup.'
                   : 'Изменим контур фундаментов, вылеты лопастей, высоту завала расплава и температурный режим под параметры вашего цеха.'}
@@ -1347,10 +1352,9 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
           {/* Right Main Content Area */}
           <div className="lg:col-span-9 space-y-8 min-w-0">
-            
-            {/* Render Page A: Main Catalog Categories Index Page (When Category === 'all') */}
             {activeCategory === 'all' && !searchQuery.trim() ? (
-              <div className="space-y-12">
+              /* Render Page A: Main Catalog Categories Index Page */
+              <div className="space-y-12 animate-fade-in">
                 <div className="border-l-4 border-[#e65410] pl-4">
                   <h2 className="text-xs font-mono uppercase tracking-widest text-[#00333b] font-bold">
                     {lang === 'en' ? 'Industrial Departments' : 'Официальные направления поставок'}
@@ -1365,256 +1369,81 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
                   </p>
                 </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
-              {sltDivisions.map((div) => {
-                const IconComp = div.icon;
-                const title = lang === 'en' ? div.titleEn : div.titleRu;
-                const desc = lang === 'en' ? div.descEn : div.descRu;
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
+                  {sltDivisions.map((div) => {
+                    const title = lang === 'en' ? div.titleEn : div.titleRu;
+                    const desc = lang === 'en' ? div.descEn : div.descRu;
 
-                const DIVISION_IMAGES: Record<string, string> = {
-                  'sand-mixers-xtc': sandMixerXTC,
-                  'furnaces': inductionFurnaceImg,
-                  'green-sand': sandMixerXTC,
-                  'core-making': sandMixerXTC,
-                  'shot-blast': shotBlasterImg,
-                  'casting-machines': inductionFurnaceImg,
-                  'cooling-systems': inductionFurnaceImg,
-                };
-                const cardImage = DIVISION_IMAGES[div.id] || DIVISION_IMAGES['sand-mixers-xtc'];
+                    const DIVISION_IMAGES: Record<string, string> = {
+                      'sand-mixers-xtc': sandMixerXTC,
+                      'furnaces': inductionFurnaceImg,
+                      'green-sand': sandMixerXTC,
+                      'core-making': sandMixerXTC,
+                      'shot-blast': shotBlasterImg,
+                      'casting-machines': inductionFurnaceImg,
+                      'cooling-systems': inductionFurnaceImg,
+                    };
+                    const cardImage = DIVISION_IMAGES[div.id] || DIVISION_IMAGES['sand-mixers-xtc'];
 
-                return (
-                  <div
-                    key={div.id}
-                    className="group bg-white rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-350 hover:shadow-xl hover:-translate-y-1 cursor-pointer select-none relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-0"
-                    onClick={() => handleSelectDivision(div.id)}
-                  >
-                    <div className="space-y-4">
-                      {/* Image container conforming to physical aspect ratio with slick hover scale, stretched fully at the top */}
-                      <div className="relative aspect-[4/3] w-full bg-gray-55 overflow-hidden flex items-center justify-center border-b border-gray-100">
-                        <img
-                          src={cardImage}
-                          onError={(e) => {
-                            e.currentTarget.src = sandMixerXTC;
-                          }}
-                          alt={title}
-                          className="w-full h-full object-cover transition-all duration-500 ease-out filter brightness-100 group-hover:scale-105"
-                          referrerPolicy="no-referrer"
-                        />
-                        {/* Elegant mini "Подробнее" button overlay */}
-                        <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm text-[#00333b] group-hover:bg-[#e65410] group-hover:text-white font-extrabold text-[10px] uppercase px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1 transition-all duration-300">
-                          <span>{lang === 'en' ? 'Learn More' : 'Подробнее'}</span>
-                          <ArrowRight className="h-3 w-3 transition-transform duration-250 group-hover:translate-x-1" />
+                    return (
+                      <div
+                        key={div.id}
+                        className="group bg-white rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-350 hover:shadow-xl hover:-translate-y-1 cursor-pointer select-none relative shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-0"
+                        onClick={() => handleSelectDivision(div.id)}
+                      >
+                        <div className="space-y-4">
+                          {/* Image container conforming to physical aspect ratio with slick hover scale, stretched fully at the top */}
+                          <div className="relative aspect-[4/3] w-full bg-gray-55 overflow-hidden flex items-center justify-center border-b border-gray-100">
+                            <img
+                              src={cardImage}
+                              onError={(e) => {
+                                e.currentTarget.src = sandMixerXTC;
+                              }}
+                              alt={title}
+                              className="w-full h-full object-cover transition-all duration-500 ease-out filter brightness-100 group-hover:scale-105"
+                              referrerPolicy="no-referrer"
+                            />
+                            {/* Elegant mini "Подробнее" button overlay */}
+                            <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm text-[#00333b] group-hover:bg-[#e65410] group-hover:text-white font-extrabold text-[10px] uppercase px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1 transition-all duration-300">
+                              <span>{lang === 'en' ? 'Learn More' : 'Подробнее'}</span>
+                              <ArrowRight className="h-3 w-3 transition-transform duration-250 group-hover:translate-x-1" />
+                            </div>
+                          </div>
+
+                          {/* Title & Description with beautiful padding */}
+                          <div className="px-5 pb-6 space-y-2">
+                            <h4 className="font-sans font-extrabold text-[#00333b] text-base group-hover:text-[#e65410] transition-colors leading-tight uppercase tracking-tight line-clamp-1">
+                              {title}
+                            </h4>
+                            <p className="text-xs text-[#718096] leading-relaxed line-clamp-2">
+                              {desc}
+                            </p>
+                          </div>
                         </div>
                       </div>
+                    );
+                  })}
+                </div>
 
-                      {/* Title & Description with beautiful padding */}
-                      <div className="px-5 pb-6 space-y-2">
-                        <h4 className="font-sans font-extrabold text-[#00333b] text-base group-hover:text-[#e65410] transition-colors leading-tight uppercase tracking-tight line-clamp-1">
-                          {title}
-                        </h4>
-                        <p className="text-xs text-gray-550 leading-relaxed line-clamp-2">
-                          {desc}
-                        </p>
-                      </div>
-                    </div>
+                {/* Quick search guide and assistance */}
+                <div className="bg-orange-50 border border-orange-200 p-6 rounded-none flex items-center justify-between flex-col sm:flex-row gap-4">
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-bold text-gray-900 uppercase font-sans">Нужна помощь с проектированием технологического плана?</h4>
+                    <p className="text-xs text-gray-650 max-w-2xl font-sans">Запустите интерактивного мастера на главной странице или получите моментальный расчет химических компонентов формовки в нашем расчетном модуле.</p>
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Quick search guide and assistance */}
-            <div className="bg-orange-50 border border-orange-200 p-6 rounded-none flex items-center justify-between flex-col sm:flex-row gap-4">
-              <div className="space-y-1">
-                <h4 className="text-sm font-bold text-gray-900 uppercase">Нужна помощь с проектированием технологического плана?</h4>
-                <p className="text-xs text-gray-600 max-w-2xl">Запустите интерактивного мастера на главной странице или получите моментальный расчет химических компонентов формовки в нашем расчетном модуле.</p>
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="shrink-0 px-4 py-2 bg-[#e65410] hover:bg-orange-700 text-white font-mono text-xs uppercase font-extrabold rounded border-none cursor-pointer tracking-wider"
+                  >
+                    Показать весь список
+                  </button>
+                </div>
               </div>
-              <button
-                onClick={() => setSearchQuery('')}
-                className="shrink-0 px-4 py-2 bg-[#e65410] hover:bg-orange-700 text-white font-mono text-xs uppercase font-extrabold rounded border-none cursor-pointer tracking-wider"
-              >
-                Показать весь список
-              </button>
-            </div>
-          </div>
-        ) : (
-          
-          /* Render Page B: Dedicated Section Page - Clean Full Width Layout with Interactive Subcategory filtering and Custom stats banners */
-          <div className="w-full space-y-6 animate-fade-in">
-            {/* Header / Back button panel with zero rounding */}
-            <div className="flex flex-row items-center justify-between gap-3 bg-white border-b border-gray-200/85 p-4 rounded-none">
-              <span className="text-xs font-mono font-bold text-[#00333b] uppercase">
-                {lang === 'en' ? 'Section navigation' : 'Навигация по разделу'}
-              </span>
-              <button
-                onClick={() => {
-                  setActiveCategory('all');
-                  setActiveSubcategory('all');
-                  setSearchQuery('');
-                }}
-                className="flex items-center space-x-1.5 px-3.5 py-1.5 bg-[#00333b] hover:bg-[#e65410] text-white font-mono text-[10px] uppercase font-bold rounded-none shadow-none transition cursor-pointer border-none"
-              >
-                <ArrowRight className="h-3.5 w-3.5 transform rotate-180 text-white" />
-                <span>{lang === 'en' ? 'Back to Divisions' : 'Назад к разделам'}</span>
-              </button>
-            </div>
-            
-
-            {/* Premium Subcategories Navigation Tabs with zero rounding and thin strict gray border */}
-            {(() => {
-               const subcategories = SUBCATEGORIES_MAP[activeCategory] || [];
-               if (subcategories.length === 0) return null;
-
-               return (
-                 <div className="space-y-4">
-                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
-                     {/* Rebuilt flat design second level menu with 0 rounding and thin borders */}
-                     <div className="lg:col-span-8 bg-white border border-gray-200 flex flex-wrap divide-x divide-gray-200 rounded-none shadow-xs">
-                       <button
-                         onClick={() => {
-                           setActiveSubcategory('all');
-                           setActiveSubsubcategory('all');
-                           setSelectedProductId(null);
-                         }}
-                         className={`px-5 py-3.5 text-xs font-mono font-black uppercase tracking-wider transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
-                           activeSubcategory === 'all'
-                             ? 'bg-[#e65410] text-white font-black'
-                             : 'bg-transparent text-[#00333b] hover:text-[#e65410] hover:bg-slate-50'
-                         }`}
-                       >
-                         {lang === 'en' ? 'All Types' : 'Все подкатегории'}
-                       </button>
-                       {subcategories.map((sub) => {
-                         const isSelected = activeSubcategory === sub.id;
-                         return (
-                           <button
-                             key={sub.id}
-                             onClick={() => {
-                               setActiveSubcategory(sub.id);
-                               setActiveSubsubcategory('all');
-                               setSelectedProductId(null);
-                             }}
-                             className={`px-5 py-3.5 text-xs font-mono font-black uppercase tracking-wider transition-all duration-200 cursor-pointer border-none flex-grow sm:flex-none text-center ${
-                               isSelected
-                                 ? 'bg-[#e65410] text-white font-black'
-                                 : 'bg-transparent text-[#00333b] hover:text-[#e65410] hover:bg-slate-50'
-                             }`}
-                           >
-                             {lang === 'en' ? sub.nameEn : sub.nameRu}
-                           </button>
-                         );
-                       })}
-                     </div>
-
-                     {/* Division search box */}
-                     <div className="lg:col-span-4 select-none">
-                       <div className="relative">
-                         <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                           <Search className="h-4 w-4 text-[#e65410]" />
-                         </span>
-                         <input
-                           type="text"
-                           value={searchQuery}
-                           onChange={(e) => {
-                             setSearchQuery(e.target.value);
-                             setSelectedProductId(null);
-                           }}
-                           placeholder={lang === 'en' ? 'Search in this section...' : 'Поиск в этом разделе...'}
-                           className="w-full pl-9 pr-8 py-3.5 bg-white border border-gray-200 rounded-none text-xs text-slate-800 placeholder-gray-400 focus:ring-1 focus:ring-[#e65410] focus:border-[#e65410] focus:outline-hidden font-mono"
-                         />
-                         {searchQuery && (
-                           <button
-                             type="button"
-                             onClick={() => {
-                               setSearchQuery('');
-                               setSelectedProductId(null);
-                             }}
-                             className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-405 hover:text-gray-700 bg-transparent border-none cursor-pointer"
-                           >
-                             ✕
-                           </button>
-                         )}
-                       </div>
-                       {(() => {
-                         const qTags: Record<string, string[]> = {
-                           'sand-mixers-xtc': ['СХ-10', 'РП', 'ВСФ'],
-                           'furnaces': ['GW', 'КЛ', 'КБ'],
-                           'green-sand': ['СТ', 'АФЛ', 'ФМ', 'ОС'],
-                           'core-making': ['СА-12', 'СА-400'],
-                           'shot-blast': ['Q32', 'Q37', 'Q69'],
-                           'casting-machines': ['КМ', 'ЦЛ'],
-                           'cooling-systems': ['ГЗ']
-                         };
-                         const tags = qTags[activeCategory] || [];
-                         if (tags.length === 0) return null;
-                         return (
-                           <p className="text-[9px] text-gray-500 font-mono mt-1 pl-1 select-none">
-                             {lang === 'en' ? 'Quick text: ' : 'Теги: '}
-                             {tags.map((tg, idx) => (
-                               <button
-                                 key={idx}
-                                 type="button"
-                                 onClick={() => {
-                                   setSearchQuery(tg);
-                                   setSelectedProductId(null);
-                                 }}
-                                 className="text-[#e65410] hover:underline bg-transparent border-none p-0 cursor-pointer font-bold mx-1 text-[9px]"
-                               >
-                                 #{tg}
-                               </button>
-                             ))}
-                           </p>
-                         );
-                       })()}
-                     </div>
-                   </div>
-
-{/* Secondary Line: Sub-subcategories Series (pills) with 0 rounding and thin borders */}
-                   {activeSubcategory !== 'all' && availableSubsubcategories.length > 0 && (
-                     <div className="flex flex-wrap items-center gap-2 bg-slate-50 p-2.5 rounded-none border border-slate-200 animate-slideDown">
-                       <span className="text-[10px] font-mono font-black uppercase text-slate-500 mr-2 flex items-center gap-1 select-none">
-                         <Sliders className="h-3 w-3 text-[#e65410]" />
-                         <span>{lang === 'en' ? 'Model Lineup:' : 'Линейка модификаций:'}</span>
-                       </span>
-                       <button
-                         onClick={() => {
-                           setActiveSubsubcategory('all');
-                           setSelectedProductId(null);
-                         }}
-                         className={`px-3 py-1 text-xs font-mono font-bold uppercase rounded-none border transition-all cursor-pointer ${
-                           activeSubsubcategory === 'all'
-                             ? 'bg-orange-50 border-orange-200 text-[#e65410]'
-                             : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
-                         }`}
-                       >
-                         {lang === 'en' ? 'All series' : 'Все серии'}
-                       </button>
-                       {availableSubsubcategories.map((subsub) => {
-                         const isSelected = activeSubsubcategory === subsub.id;
-                         return (
-                           <button
-                             key={subsub.id}
-                             onClick={() => {
-                               setActiveSubsubcategory(subsub.id);
-                               setSelectedProductId(null);
-                             }}
-                             className={`px-3 py-1 text-xs font-mono font-bold uppercase rounded-none border transition-all cursor-pointer ${
-                               isSelected
-                                 ? 'bg-orange-50 border-orange-200 text-[#e65410]'
-                                 : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
-                             }`}
-                           >
-                             {lang === 'en' ? subsub.nameEn : subsub.nameRu}
-                           </button>
-                         );
-                       })}
-                     </div>
-                   )}
-                 </div>
-               );
-            })()}
-
-            {/* MAIN CATALOG CONTENT ON THE DEDICATED PAGE */}
-            <div className="space-y-6">
+            ) : (
+              /* Render Page B: Dedicated Section Page - Clean Full Width Layout with Interactive Subcategory filtering and Custom stats banners */
+              <div className="w-full space-y-6 animate-fade-in">
+                {/* MAIN CATALOG CONTENT ON THE DEDICATED PAGE */}
+                <div className="space-y-6">
               
               {selectedProductId && filteredProducts.some((prod) => prod.id === selectedProductId) ? (
                 /* 1. SINGLE DETAILED PRODUCT DETAILED VIEW - Clean simple and strict space-saving layout */
@@ -1631,14 +1460,7 @@ export default function ProductCatalog({ onAddToRFQ, selectedCategory, rfqItemsK
 
                   return (
                     <div className="space-y-6 animate-fade-in">
-                      {/* Back to cards listing button */}
-                      <button
-                        onClick={() => setSelectedProductId(null)}
-                        className="flex items-center space-x-2 px-5 py-3 bg-white border-2 border-gray-200 hover:border-[#e65410] text-[#00333b] hover:text-[#e65410] font-black font-mono text-[10px] uppercase rounded-none transition duration-150 cursor-pointer shadow-xs"
-                      >
-                        <ArrowRight className="h-4 w-4 transform rotate-180 text-[#e65410]" />
-                        <span>{lang === 'en' ? 'Back to series choice' : 'Назад к выбору моделей серии'}</span>
-                      </button>
+
 
                       <div className="bg-white border border-gray-200 rounded-none overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-none">
                         
